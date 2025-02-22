@@ -1,0 +1,32 @@
+.sider {
+  overflow: auto;
+  height: 100vh;
+  position: sticky !important;
+  inset-inline-start: 0;
+  top: 0;
+  bottom: 0;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.user {
+  color: $color-base0;
+  padding: 0 $spacing-xl 0 $spacing-xxl24;
+  margin: $spacing-xs;
+  display: flex;
+  gap: $spacing-m;
+  align-items: center;
+}
+.avatar {
+  flex-shrink: 0;
+}
+.username {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item {
+  position: absolute;
+  inset: 0;
+  opacity: $opacity-0;
+}

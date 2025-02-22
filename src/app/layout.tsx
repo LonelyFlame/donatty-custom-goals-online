@@ -1,4 +1,9 @@
+import { Layout } from 'antd';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { PropsWithChildren } from 'react';
+
+import Sidebar from '@/components/common/Sidebar';
+import { Wrapper } from '@/components/common/Layout';
 
 import './globals.css';
 
@@ -13,7 +18,16 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-        {children}
+        <AntdRegistry>
+          <Layout hasSider>
+            <Sidebar />
+            <Layout>
+              <Wrapper>
+                {children}
+              </Wrapper>
+            </Layout>
+          </Layout>
+        </AntdRegistry>
       </body>
     </html>
   );
