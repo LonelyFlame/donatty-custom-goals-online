@@ -1,0 +1,402 @@
+@import './variables';
+
+/* labels */
+@mixin lRegularDefaults {
+  font-family: $fontFamilyDefault;
+  line-height: 100%;
+  font-weight: 400;
+}
+
+@mixin lBookDefaults {
+  font-family: $fontFamilyAdditional;
+  line-height: 100%;
+  font-weight: 400;
+}
+
+@mixin l1Regular {
+  @include lRegularDefaults;
+  font-size: $sizeText-xl;
+}
+
+@mixin l2Regular {
+  @include lRegularDefaults;
+  font-size: $sizeText-l;
+}
+
+@mixin l3Regular {
+  @include lRegularDefaults;
+  font-size: $sizeText-m;
+}
+
+@mixin l4Regular {
+  @include lRegularDefaults;
+  font-size: $sizeText-s;
+}
+
+@mixin l5Regular {
+  @include lRegularDefaults;
+  font-size: $sizeText-xs;
+}
+
+@mixin l6Regular {
+  @include lRegularDefaults;
+  font-size: $sizeText-xxs;
+}
+
+@mixin l1Book {
+  @include lBookDefaults;
+  font-size: $sizeText-xl;
+}
+
+@mixin l2Book {
+  @include lBookDefaults;
+  font-size: $sizeText-l;
+}
+
+@mixin l3Book {
+  @include lBookDefaults;
+  font-size: $sizeText-m;
+}
+
+@mixin l4Book {
+  @include lBookDefaults;
+  font-size: $sizeText-s;
+}
+
+@mixin l5Book {
+  @include lBookDefaults;
+  font-size: $sizeText-xs;
+}
+
+@mixin l6Book {
+  @include lBookDefaults;
+  font-size: $sizeText-xxs;
+}
+
+/* headings */
+@mixin hRegularDefaults {
+  font-family: $fontFamilyDefault;
+  line-height: 120%;
+  font-weight: 400;
+}
+
+@mixin hBookDefaults {
+  font-family: $fontFamilyAdditional;
+  line-height: 120%;
+  font-weight: 400;
+}
+
+@mixin h1Regular {
+  @include hRegularDefaults;
+  font-size: $sizeHeading-xl;
+}
+
+@mixin h2Regular {
+  @include hRegularDefaults;
+  font-size: $sizeHeading-l;
+}
+
+@mixin h3Regular {
+  @include hRegularDefaults;
+  font-size: $sizeHeading-m;
+}
+
+@mixin h4Regular {
+  @include hRegularDefaults;
+  font-size: $sizeHeading-s;
+}
+
+@mixin h5Regular {
+  @include hRegularDefaults;
+  font-size: $sizeHeading-xs;
+}
+
+@mixin h6Regular {
+  @include hRegularDefaults;
+  font-size: $sizeHeading-xxs;
+}
+
+@mixin h1Book {
+  @include hBookDefaults;
+  font-size: $sizeHeading-xl;
+}
+
+@mixin h2Book {
+  @include hBookDefaults;
+  font-size: $sizeHeading-l;
+}
+
+@mixin h3Book {
+  @include hBookDefaults;
+  font-size: $sizeHeading-m;
+}
+
+@mixin h4Book {
+  @include hBookDefaults;
+  font-size: $sizeHeading-s;
+}
+
+@mixin h5Book {
+  @include hBookDefaults;
+  font-size: $sizeHeading-xs;
+}
+
+@mixin h6Book {
+  @include hBookDefaults;
+  font-size: $sizeHeading-xxs;
+}
+
+/* shortTexts */
+@mixin tRegularDefaults {
+  font-family: $fontFamilyDefault;
+  line-height: 132%;
+  font-weight: 400;
+}
+
+@mixin tBookDefaults {
+  font-family: $fontFamilyAdditional;
+  line-height: 132%;
+  font-weight: 400;
+}
+
+@mixin t1Regular {
+  @include tRegularDefaults;
+  font-size: $sizeText-xl;
+}
+
+@mixin t2Regular {
+  @include tRegularDefaults;
+  font-size: $sizeText-l;
+}
+
+@mixin t3Regular {
+  @include tRegularDefaults;
+  font-size: $sizeText-m;
+}
+
+@mixin t4Regular {
+  @include tRegularDefaults;
+  font-size: $sizeText-s;
+}
+
+@mixin t5Regular {
+  @include tRegularDefaults;
+  font-size: $sizeText-xs;
+}
+
+@mixin t6Regular {
+  @include tRegularDefaults;
+  font-size: $sizeText-xxs;
+}
+
+@mixin t1Book {
+  @include tBookDefaults;
+  font-size: $sizeText-xl;
+}
+
+@mixin t2Book {
+  @include tBookDefaults;
+  font-size: $sizeText-l;
+}
+
+@mixin t3Book {
+  @include tBookDefaults;
+  font-size: $sizeText-m;
+}
+
+@mixin t4Book {
+  @include tBookDefaults;
+  font-size: $sizeText-s;
+}
+
+@mixin t5Book {
+  @include tBookDefaults;
+  font-size: $sizeText-xs;
+}
+
+@mixin t6Book {
+  @include tBookDefaults;
+  font-size: $sizeText-xxs;
+}
+
+/* paragraphs */
+@mixin pRegularDefaults {
+  font-family: $fontFamilyDefault;
+  line-height: 148%;
+  font-weight: 400;
+}
+
+@mixin pBookDefaults {
+  font-family: $fontFamilyAdditional;
+  line-height: 148%;
+  font-weight: 400;
+}
+
+@mixin p1Regular {
+  @include pRegularDefaults;
+  font-size: $sizeText-xl;
+}
+
+@mixin p2Regular {
+  @include pRegularDefaults;
+  font-size: $sizeText-l;
+}
+
+@mixin p3Regular {
+  @include pRegularDefaults;
+  font-size: $sizeText-m;
+}
+
+@mixin p4Regular {
+  @include pRegularDefaults;
+  font-size: $sizeText-s;
+}
+
+@mixin p5Regular {
+  @include pRegularDefaults;
+  font-size: $sizeText-xs;
+}
+
+@mixin p6Regular {
+  @include pRegularDefaults;
+  font-size: $sizeText-xxs;
+}
+
+@mixin p1Book {
+  @include pBookDefaults;
+  font-size: $sizeText-xl;
+}
+
+@mixin p2Book {
+  @include pBookDefaults;
+  font-size: $sizeText-l;
+}
+
+@mixin p3Book {
+  @include pBookDefaults;
+  font-size: $sizeText-m;
+}
+
+@mixin p4Book {
+  @include pBookDefaults;
+  font-size: $sizeText-s;
+}
+
+@mixin p5Book {
+  @include pBookDefaults;
+  font-size: $sizeText-xs;
+}
+
+@mixin p6Book {
+  @include pBookDefaults;
+  font-size: $sizeText-xxs;
+}
+
+/* display fonts */
+@mixin aRegularDefaults {
+  font-family: $fontFamilyAccent;
+  line-height: 112%;
+  font-weight: 400;
+}
+
+@mixin aLightDefaults {
+  font-family: $fontFamilyAccent;
+  line-height: 112%;
+  font-weight: 300;
+}
+
+@mixin aThinDefaults {
+  font-family: $fontFamilyAccent;
+  line-height: 112%;
+  font-weight: 200;
+}
+
+@mixin a1Regular {
+  @include aRegularDefaults;
+  font-size: $sizeHeading-xl;
+}
+
+@mixin a2Regular {
+  @include aRegularDefaults;
+  font-size: $sizeHeading-l;
+}
+
+@mixin a3Regular {
+  @include aRegularDefaults;
+  font-size: $sizeHeading-m;
+}
+
+@mixin a4Regular {
+  @include aRegularDefaults;
+  font-size: $sizeHeading-s;
+}
+
+@mixin a5Regular {
+  @include aRegularDefaults;
+  font-size: $sizeHeading-xs;
+}
+
+@mixin a6Regular {
+  @include aRegularDefaults;
+  font-size: $sizeHeading-xxs;
+}
+
+@mixin a1Light {
+  @include aLightDefaults;
+  font-size: $sizeHeading-xl;
+}
+
+@mixin a2Light {
+  @include aLightDefaults;
+  font-size: $sizeHeading-l;
+}
+
+@mixin a3Light {
+  @include aLightDefaults;
+  font-size: $sizeHeading-m;
+}
+
+@mixin a4Light {
+  @include aLightDefaults;
+  font-size: $sizeHeading-s;
+}
+
+@mixin a5Light {
+  @include aLightDefaults;
+  font-size: $sizeHeading-xs;
+}
+
+@mixin a6Light {
+  @include aLightDefaults;
+  font-size: $sizeHeading-xxs;
+}
+
+@mixin a1Thin {
+  @include aThinDefaults;
+  font-size: $sizeHeading-xl;
+}
+
+@mixin a2Thin {
+  @include aThinDefaults;
+  font-size: $sizeHeading-l;
+}
+
+@mixin a3Thin {
+  @include aThinDefaults;
+  font-size: $sizeHeading-m;
+}
+
+@mixin a4Thin {
+  @include aThinDefaults;
+  font-size: $sizeHeading-s;
+}
+
+@mixin a5Thin {
+  @include aThinDefaults;
+  font-size: $sizeHeading-xs;
+}
+
+@mixin a6Thin {
+  @include aThinDefaults;
+  font-size: $sizeHeading-xxs;
+}

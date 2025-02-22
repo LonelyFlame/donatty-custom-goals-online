@@ -1,0 +1,215 @@
+$pagesBlocksContentSmallDesktop: 124rem;
+$pagesBlocksContentLargeDesktop: 172rem;
+$layoutSpacingMobile: 1.6rem;
+$layoutSpacingDesktop: 10rem;
+$headerHeightMobile: 6.4rem;
+$headerHeightDesktop: 12.5rem;
+
+// spacing
+$spacing-xxs: 2px;
+$spacing-xs: 4px;
+$spacing-s: 6px;
+$spacing-m: 8px;
+$spacing-l: 12px;
+$spacing-xl: 16px;
+$spacing-xxl: 20px;
+$spacing-xxl24: 24px;
+$spacing-xxl32: 32px;
+$spacing-xxl40: 40px;
+$spacing-xxl48: 48px;
+$spacing-xxl56: 56px;
+$spacing-xxl64: 64px;
+$spacing-xxl100: 100px;
+
+// colors
+$color-base0: #ffffff;
+$color-base50: #f5f5f5;
+$color-base100: #e5e5e5;
+$color-base200: #cccccc;
+$color-base300: #b3b3b3;
+$color-base400: #999999;
+$color-base500: #808080;
+$color-base600: #666666;
+$color-base700: #4c4c4c;
+$color-base800: #262626;
+$color-base900: #1a1a1a;
+$color-base1000: #000000;
+$color-primary50: #ccd3ff;
+$color-primary100: #96a7fa;
+$color-primary200: #6375f8;
+$color-primary300: #4245f5;
+$color-primary400: #3625f5;
+$color-primary500: #3200f0;
+$color-primary600: #1100cc;
+$color-primary700: #0000ad;
+$color-primary800: #000093;
+$color-primary900: #00007d;
+$color-secondary50: #f1f3f6;
+$color-secondary100: #e6ebf0;
+$color-secondary200: #d1dbe4;
+
+$colorTransportSPbLine1: #df4d3d;
+$colorTransportSPbLine4: #e4903f;
+$colorTransportSPbLine3: #5aa449;
+$colorTransportSPbLine2: #2f6eb9;
+$colorTransportSPbLine5: #7d4aac;
+$colorСustomLkTimeAwaiting: #FAA12A;
+
+$colorTransportMskLine11: #79bdbe;
+$colorTransportMskLine5: #79533e;
+
+$discountPrimary: #ed4242;
+$discountSecondary: #5b9742;
+
+$colorSocialMediaTelegram: #4D9EDB;
+$colorSocialMediaWhatsApp: #61CF4A;
+$colorSocialMediaInstagram: linear-gradient(133deg, #FFDD55 0%, #FF543E 50%, #C837AB 100%);
+$colorSocialMediaSber: #21A038;
+$colorSocialMediaWhatsApp: #61CF4A;
+$colorSocialMediaFacebook: #4267B2;
+$colorSocialMediaVK: #2787F5;
+$colorSocialMediaTelegram: #4D9EDB;
+$colorSocialMediaYoutube: #FF0000;
+$colorSocialMediaDzen: $color-base1000;
+
+// opacities
+$opacity-100: 1;
+$opacity-96: 0.96;
+$opacity-90: 0.9;
+$opacity-80: 0.8;
+$opacity-70: 0.7;
+$opacity-60: 0.6;
+$opacity-50: 0.5;
+$opacity-40: 0.4;
+$opacity-30: 0.3;
+$opacity-25: 0.25;
+$opacity-20: 0.2;
+$opacity-15: 0.15;
+$opacity-10: 0.1;
+$opacity-0: 0;
+
+// radius
+$radius-xxs: 2px;
+$radius-xs: 4px;
+$radius-s: 6px;
+$radius-m: 8px;
+$radius-l: 12px;
+$radius-xl: 16px;
+$radius-xxl: 24px;
+$radius-xxl32: 32px;
+
+// fonts
+$fontFamilyDefault: 'Stolzl', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+  'Droid Sans', 'Helvetica Neue', sansserif;
+$fontFamilyAdditional: 'StolzlBook', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+  'Fira Sans', 'Droid Sans', 'Helvetica Neue', sansserif;
+$fontFamilyAccent: 'NormalidadExtended', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+  'Fira Sans', 'Droid Sans', 'Helvetica Neue', sansserif;
+
+// sizes
+$sizeQR: 8.5rem;
+$sizeFooterLeftColumn: 32.2rem;
+$sizeHintIcon-l: 2.4rem;
+$sizeHintIcon-m: 2rem;
+$sizeHintIcon-s: 1.6rem;
+
+$sizeText-xl: 2.4rem;
+$sizeText-l: 2rem;
+$sizeText-m: 1.8rem;
+$sizeText-s: 1.6rem;
+$sizeText-xs: 1.4rem;
+$sizeText-xxs: 1.2rem;
+
+$sizeButtons-xl: 6.4rem;
+$sizeButtons-l: 5.6rem;
+$sizeButtons-m: 4.8rem;
+$sizeButtons-s: 4rem;
+$sizeButtons-xs: 3.2rem;
+$sizeButtons-xxs: 2.4rem;
+
+$sizeTagIcon-s: 1.6rem;
+$sizeTagIcon-xs: 1.2rem;
+$sizeTagIcon-xxs: 1.2rem;
+
+$sizeHeading-xl: 6.4rem;
+$sizeHeading-l: 4.8rem;
+$sizeHeading-m: 4rem;
+$sizeHeading-s: 3.2rem;
+$sizeHeading-xs: 2.4rem;
+$sizeHeading-xxs: 2rem;
+
+$sizeIconButton-xl: 6.4rem;
+$sizeIconButton-l: 5.6rem;
+$sizeIconButton-m: 4.8rem;
+$sizeIconButton-s: 4rem;
+
+$sizeTabsButtons: (
+  xl: 1.8rem,
+  l: 1.6rem,
+  m: 1.4rem,
+  s: 1.2rem,
+);
+
+$sizeModal: (
+  small: 57.6rem,
+  medium: 72rem,
+  large: 144rem,
+);
+
+$rangeIcon-l: 2rem;
+$rangeIcon-m: 1.6rem;
+
+$inputIcon-l: 2rem;
+$inputIcon-m: 1.6rem;
+
+$mapSizeTablet: 65.5rem;
+$mapSizeLarge: 80rem;
+
+$rangeThumbSize: 1.2rem;
+
+$squareSlideMobile: 31.2rem;
+$squareSlideDesktop: 33.2rem;
+
+// animation durations
+$durationShort: 0.1s;
+$durationBase: 0.3s;
+$durationHoverExpand: 0.4s;
+$durationFooterCopyRightAccordionDetails: 0.3s;
+$durationAnimatedRow: 3s;
+$durationAnimatedBanner: 0.4s;
+$durationSlider: 0.5s;
+$durationAnimatedPapersSlider: 0.2s;
+$durationTabsIndicator: 0.3s;
+$durationGalleryDescription: 2s;
+
+// old variables
+$default-color-transition: 0.4s ease;
+$default-transition: 0.4s ease;
+
+$error: (
+  10: #fff0f0,
+  50: #ffdbdb,
+  100: #fbbcbc,
+  200: #f59e9e,
+  300: #f37777,
+  400: #f23c3c,
+  500: #e52222,
+  600: #bf0404,
+  700: #8d0700,
+  800: #591212,
+  900: #321616,
+  1000: #f00000,
+);
+
+$size-input: (
+  xLarge: 6.4rem,
+  large: 5.6rem,
+  medium: 4.8rem,
+  small: 4rem,
+);
+
+$customScrollbarWidth: 7px;
+
+$themeColsCount: 16;
+
+$benefitHeaderHeight: 8rem;
