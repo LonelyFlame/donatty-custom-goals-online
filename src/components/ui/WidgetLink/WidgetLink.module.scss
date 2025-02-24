@@ -1,0 +1,15 @@
+.space {
+  width: 100%;
+}
+
+.tooltip.tooltip {
+  max-width: none;
+}
+.success {
+  display: flex;
+  gap: $spacing-s;
+
+  &Icon {
+    color: $color-success200;
+  }
+}
