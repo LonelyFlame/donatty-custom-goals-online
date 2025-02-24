@@ -13,11 +13,13 @@ import type { MenuProps } from 'antd';
 
 import { template } from '@/utils/strings';
 import { ROUTES } from '@/constants/routes';
+import translations from '@/translations';
 
 import LogIn from './LogIn';
 import LogOut from './LogOut';
 import Item from './Item';
-import t from './translations';
+
+const { sidebar: t } = translations;
 
 export const getItems = (session: Session | null): MenuProps['items'] => {
   if (!session?.user) {

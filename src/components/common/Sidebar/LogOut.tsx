@@ -1,7 +1,7 @@
 import { signOut } from '@/auth';
 import styles from './Sidebar.module.scss';
 
-import t from './translations';
+import t from '@/translations';
 
 const SignIn = () => {
   return (
@@ -11,7 +11,7 @@ const SignIn = () => {
         await signOut();
       }}
     >
-      {t.logout}
+      {t.sidebar.logout}
       <button type="submit" className={styles.item} />
     </form>
   );

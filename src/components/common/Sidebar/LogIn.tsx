@@ -1,6 +1,6 @@
 import { signIn } from '@/auth';
 
-import t from './translations';
+import t from '@/translations';
 import styles from './Sidebar.module.scss';
 
 const SignIn = () => {
@@ -11,7 +11,7 @@ const SignIn = () => {
         await signIn("twitch");
       }}
     >
-      {t.loginTwitch}
+      {t.sidebar.loginTwitch}
       <button type="submit" className={styles.item} />
     </form>
   );

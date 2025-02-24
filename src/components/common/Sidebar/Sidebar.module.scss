@@ -11,7 +11,7 @@
 
 .user {
   color: $color-base0;
-  padding: 0 $spacing-xl 0 $spacing-xxl24;
+  padding: $spacing-xl $spacing-xl 0 $spacing-xxl24;
   margin: $spacing-xs;
   display: flex;
   gap: $spacing-m;
