@@ -1,3 +1,3 @@
-import Wrapper from './Wrapper';
+import Layout from './Layout';
 
-export { Wrapper };
+export default Layout;
