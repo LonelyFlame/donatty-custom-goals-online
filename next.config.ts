@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       @import "@/theme/mixins.scss";
       @import "@/theme/typography.scss";
     `,
+    quietDeps: true, // disable warning msg
   },
 };
 
