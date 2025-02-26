@@ -10,7 +10,6 @@ const mockedData: WidgetOpposite = {
   colorSecondary: '#321321',
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getGoal = (slug: string): WidgetOpposite => {
+export const getGoal = (_slug: string): WidgetOpposite => {
   return { ...mockedData };
 }

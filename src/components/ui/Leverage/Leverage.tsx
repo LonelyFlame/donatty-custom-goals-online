@@ -14,7 +14,7 @@ const { components: { leverage: t } } = translations;
 
 const popover = <Popover />;
 
-const Leverage = ({ name = 'leverage' }: Props) =>  {
+const Leverage = ({ name = 'leverage' }: Props) => {
   return (
     <FormItem name={name} label={t.label}>
       <InputNumber

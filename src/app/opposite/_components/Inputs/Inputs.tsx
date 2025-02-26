@@ -8,7 +8,7 @@ import Goal from '@/components/ui/Goal';
 
 const { forms: t } = translations;
 
-const Inputs = () =>  {
+const Inputs = () => {
   return (
     <>
       <FormItem name="name" label={t.name.label}>

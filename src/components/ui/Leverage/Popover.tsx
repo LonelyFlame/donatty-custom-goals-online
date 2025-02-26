@@ -5,7 +5,7 @@ import PopoverContent from './PopoverContent';
 
 const content = <PopoverContent />;
 
-const Popover = () =>  {
+const Popover = () => {
   return (
     <AntdPopover content={content}>
       <InfoCircleOutlined />

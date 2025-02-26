@@ -2,7 +2,7 @@ import translations from '@/translations';
 
 const { components: { leverage: { popover: t } } } = translations;
 
-const PopoverContent = () =>  {
+const PopoverContent = () => {
   return (
     <ul>
       <li>{t.first}</li>

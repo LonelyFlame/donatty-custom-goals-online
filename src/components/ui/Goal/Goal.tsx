@@ -11,7 +11,7 @@ interface Props {
 
 const { forms: { goal: t } } = translations;
 
-const Goal = ({ name = 'goal' }: Props) =>  {
+const Goal = ({ name = 'goal' }: Props) => {
   return (
     <FormItem name={name} label={t.label}>
       <Input.Password placeholder={t.placeholder} />

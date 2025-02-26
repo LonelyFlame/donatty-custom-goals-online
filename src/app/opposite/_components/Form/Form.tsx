@@ -17,7 +17,7 @@ const Form = ({ children, data }: Props) => {
     if (!data) return;
 
     form.setFieldsValue(data);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <AntdForm layout='vertical' form={form}>
