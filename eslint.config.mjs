@@ -11,7 +11,8 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: ['next', 'prettier'],
+    extends: ['next', 'prettier', 'plugin:drizzle/recommended'],
+    plugins: ['drizzle'],
     rules: {
       "react/static-property-placement": 0,
       "react/no-unknown-property": 0,
@@ -93,7 +94,7 @@ const eslintConfig = [
       ],
       "arrow-body-style": 0,
       "prefer-arrow-callback": 0,
-      "import/extensions": 0
+      "import/extensions": 0,
     }
   }),
 ];
