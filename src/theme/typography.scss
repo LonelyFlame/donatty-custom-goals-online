@@ -1,151 +1,151 @@
-@import './variables';
+@use 'variables';
 
 /* labels */
 @mixin lRegularDefaults {
-  font-family: $fontFamilyDefault;
+  font-family: variables.$fontFamily-default;
   line-height: 100%;
   font-weight: 400;
 }
 
 @mixin l1Regular {
   @include lRegularDefaults;
-  font-size: $sizeText-xl;
+  font-size: variables.$sizeText-xl;
 }
 
 @mixin l2Regular {
   @include lRegularDefaults;
-  font-size: $sizeText-l;
+  font-size: variables.$sizeText-l;
 }
 
 @mixin l3Regular {
   @include lRegularDefaults;
-  font-size: $sizeText-m;
+  font-size: variables.$sizeText-m;
 }
 
 @mixin l4Regular {
   @include lRegularDefaults;
-  font-size: $sizeText-s;
+  font-size: variables.$sizeText-s;
 }
 
 @mixin l5Regular {
   @include lRegularDefaults;
-  font-size: $sizeText-xs;
+  font-size: variables.$sizeText-xs;
 }
 
 @mixin l6Regular {
   @include lRegularDefaults;
-  font-size: $sizeText-xxs;
+  font-size: variables.$sizeText-xxs;
 }
 
 /* headings */
 @mixin hRegularDefaults {
-  font-family: $fontFamilyDefault;
+  font-family: $fontFamily-default;
   line-height: 120%;
   font-weight: 400;
 }
 
 @mixin h1Regular {
   @include hRegularDefaults;
-  font-size: $sizeHeading-xl;
+  font-size: variables.$sizeHeading-xl;
 }
 
 @mixin h2Regular {
   @include hRegularDefaults;
-  font-size: $sizeHeading-l;
+  font-size: variables.$sizeHeading-l;
 }
 
 @mixin h3Regular {
   @include hRegularDefaults;
-  font-size: $sizeHeading-m;
+  font-size: variables.$sizeHeading-m;
 }
 
 @mixin h4Regular {
   @include hRegularDefaults;
-  font-size: $sizeHeading-s;
+  font-size: variables.$sizeHeading-s;
 }
 
 @mixin h5Regular {
   @include hRegularDefaults;
-  font-size: $sizeHeading-xs;
+  font-size: variables.$sizeHeading-xs;
 }
 
 @mixin h6Regular {
   @include hRegularDefaults;
-  font-size: $sizeHeading-xxs;
+  font-size: variables.$sizeHeading-xxs;
 }
 
 /* shortTexts */
 @mixin tRegularDefaults {
-  font-family: $fontFamilyDefault;
+  font-family: $fontFamily-default;
   line-height: 132%;
   font-weight: 400;
 }
 
 @mixin t1Regular {
   @include tRegularDefaults;
-  font-size: $sizeText-xl;
+  font-size: variables.$sizeText-xl;
 }
 
 @mixin t2Regular {
   @include tRegularDefaults;
-  font-size: $sizeText-l;
+  font-size: variables.$sizeText-l;
 }
 
 @mixin t3Regular {
   @include tRegularDefaults;
-  font-size: $sizeText-m;
+  font-size: variables.$sizeText-m;
 }
 
 @mixin t4Regular {
   @include tRegularDefaults;
-  font-size: $sizeText-s;
+  font-size: variables.$sizeText-s;
 }
 
 @mixin t5Regular {
   @include tRegularDefaults;
-  font-size: $sizeText-xs;
+  font-size: variables.$sizeText-xs;
 }
 
 @mixin t6Regular {
   @include tRegularDefaults;
-  font-size: $sizeText-xxs;
+  font-size: variables.$sizeText-xxs;
 }
 
 /* paragraphs */
 @mixin pRegularDefaults {
-  font-family: $fontFamilyDefault;
+  font-family: $fontFamily-default;
   line-height: 148%;
   font-weight: 400;
 }
 
 @mixin p1Regular {
   @include pRegularDefaults;
-  font-size: $sizeText-xl;
+  font-size: variables.$sizeText-xl;
 }
 
 @mixin p2Regular {
   @include pRegularDefaults;
-  font-size: $sizeText-l;
+  font-size: variables.$sizeText-l;
 }
 
 @mixin p3Regular {
   @include pRegularDefaults;
-  font-size: $sizeText-m;
+  font-size: variables.$sizeText-m;
 }
 
 @mixin p4Regular {
   @include pRegularDefaults;
-  font-size: $sizeText-s;
+  font-size: variables.$sizeText-s;
 }
 
 @mixin p5Regular {
   @include pRegularDefaults;
-  font-size: $sizeText-xs;
+  font-size: variables.$sizeText-xs;
 }
 
 @mixin p6Regular {
   @include pRegularDefaults;
-  font-size: $sizeText-xxs;
+  font-size: variables.$sizeText-xxs;
 }
 
 /* display fonts */
@@ -169,90 +169,90 @@
 
 @mixin a1Regular {
   @include aRegularDefaults;
-  font-size: $sizeHeading-xl;
+  font-size: variables.$sizeHeading-xl;
 }
 
 @mixin a2Regular {
   @include aRegularDefaults;
-  font-size: $sizeHeading-l;
+  font-size: variables.$sizeHeading-l;
 }
 
 @mixin a3Regular {
   @include aRegularDefaults;
-  font-size: $sizeHeading-m;
+  font-size: variables.$sizeHeading-m;
 }
 
 @mixin a4Regular {
   @include aRegularDefaults;
-  font-size: $sizeHeading-s;
+  font-size: variables.$sizeHeading-s;
 }
 
 @mixin a5Regular {
   @include aRegularDefaults;
-  font-size: $sizeHeading-xs;
+  font-size: variables.$sizeHeading-xs;
 }
 
 @mixin a6Regular {
   @include aRegularDefaults;
-  font-size: $sizeHeading-xxs;
+  font-size: variables.$sizeHeading-xxs;
 }
 
 @mixin a1Light {
   @include aLightDefaults;
-  font-size: $sizeHeading-xl;
+  font-size: variables.$sizeHeading-xl;
 }
 
 @mixin a2Light {
   @include aLightDefaults;
-  font-size: $sizeHeading-l;
+  font-size: variables.$sizeHeading-l;
 }
 
 @mixin a3Light {
   @include aLightDefaults;
-  font-size: $sizeHeading-m;
+  font-size: variables.$sizeHeading-m;
 }
 
 @mixin a4Light {
   @include aLightDefaults;
-  font-size: $sizeHeading-s;
+  font-size: variables.$sizeHeading-s;
 }
 
 @mixin a5Light {
   @include aLightDefaults;
-  font-size: $sizeHeading-xs;
+  font-size: variables.$sizeHeading-xs;
 }
 
 @mixin a6Light {
   @include aLightDefaults;
-  font-size: $sizeHeading-xxs;
+  font-size: variables.$sizeHeading-xxs;
 }
 
 @mixin a1Thin {
   @include aThinDefaults;
-  font-size: $sizeHeading-xl;
+  font-size: variables.$sizeHeading-xl;
 }
 
 @mixin a2Thin {
   @include aThinDefaults;
-  font-size: $sizeHeading-l;
+  font-size: variables.$sizeHeading-l;
 }
 
 @mixin a3Thin {
   @include aThinDefaults;
-  font-size: $sizeHeading-m;
+  font-size: variables.$sizeHeading-m;
 }
 
 @mixin a4Thin {
   @include aThinDefaults;
-  font-size: $sizeHeading-s;
+  font-size: variables.$sizeHeading-s;
 }
 
 @mixin a5Thin {
   @include aThinDefaults;
-  font-size: $sizeHeading-xs;
+  font-size: variables.$sizeHeading-xs;
 }
 
 @mixin a6Thin {
   @include aThinDefaults;
-  font-size: $sizeHeading-xxs;
+  font-size: variables.$sizeHeading-xxs;
 }

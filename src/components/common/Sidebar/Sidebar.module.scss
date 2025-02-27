@@ -1,3 +1,5 @@
+@use '@/theme';
+
 .sider {
   overflow: auto;
   height: 100vh;
@@ -10,11 +12,11 @@
 }
 
 .user {
-  color: $color-base0;
-  padding: $spacing-xl $spacing-xl 0 $spacing-xxl24;
-  margin: $spacing-xs;
+  color: theme.$color-base0;
+  padding: theme.$spacing-xl theme.$spacing-xl 0 theme.$spacing-xxl24;
+  margin: theme.$spacing-xs;
   display: flex;
-  gap: $spacing-m;
+  gap: theme.$spacing-m;
   align-items: center;
 }
 .avatar {
@@ -28,5 +30,5 @@
 .item {
   position: absolute;
   inset: 0;
-  opacity: $opacity-0;
+  opacity: theme.$opacity-0;
 }

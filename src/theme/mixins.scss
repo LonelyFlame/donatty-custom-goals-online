@@ -1,5 +1,3 @@
-@import './variables';
-
 // <= 767
 @mixin isPhone {
   @warn "don't use it (adapt UI from mobile to desktop)";

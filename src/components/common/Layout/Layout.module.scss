@@ -1,3 +1,5 @@
+@use "@/theme";
+
 .content {
-  padding: $spacing-xxl24;
+  padding: theme.$spacing-xxl24;
 }

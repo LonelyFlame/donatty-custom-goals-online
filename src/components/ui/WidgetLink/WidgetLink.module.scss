@@ -1,19 +1,13 @@
-.space {
-  width: 100%;
-}
-
-.hidden.hidden {
-  filter: blur(3px);
-}
+@use "@/theme";
 
 .tooltip.tooltip {
   max-width: none;
 }
 .success {
   display: flex;
-  gap: $spacing-s;
+  gap: theme.$spacing-s;
 
   &Icon {
-    color: $color-success200;
+    color: theme.$color-success200;
   }
 }

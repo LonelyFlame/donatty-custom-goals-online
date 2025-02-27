@@ -30,7 +30,7 @@ const WidgetLink = ({ type }: Props) => {
 
   const timeoutRef = useRef<number>(undefined);
 
-  if (!slug || !window) return null;
+  if (!slug || typeof window === 'undefined') return null;
 
   const origin = window.location.origin;
   const route = template(MAP_TYPE_TO_ROUTE[type], { slug });
