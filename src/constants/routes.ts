@@ -1,5 +1,6 @@
 export const ROUTES = {
   HOME: '/',
+  COOKIES: '/cookies',
 
   OPPOSITE: '/opposite/{slug}',
   CLOCK: '/clock/{slug}',
