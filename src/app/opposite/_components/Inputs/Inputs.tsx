@@ -1,17 +1,20 @@
 import { Col, Row, Input, ColorPicker, Switch, Divider, } from 'antd';
 
-import translations from '@/translations';
-
 import FormItem from '@/components/ui/FormItem';
 import Leverage from '@/components/ui/Leverage';
 import Goal from '@/components/ui/Goal';
+import translations from '@/translations';
 
 const { forms: t } = translations;
 
 const Inputs = () => {
   return (
     <>
-      <FormItem name="name" label={t.name.label}>
+      <FormItem
+        name="name"
+        label={t.name.label}
+        rules={[{ required: true, message: t.name.required }]}
+      >
         <Input placeholder={t.name.placeholder} />
       </FormItem>
 
@@ -33,10 +36,14 @@ const Inputs = () => {
             {t.leverage.negative}
           </Divider>
 
-          <Goal />
+          <Goal required />
 
-          <FormItem name="color" label={t.color.label}>
-            <ColorPicker />
+          <FormItem
+            name="color"
+            label={t.color.label}
+            rules={[{ required: true, message: t.validation.required }]}
+          >
+            <ColorPicker showText />
           </FormItem>
         </Col>
 
@@ -45,10 +52,14 @@ const Inputs = () => {
             {t.leverage.positive}
           </Divider>
 
-          <Goal name="goalSecondary" />
+          <Goal name="goalSecondary" required />
 
-          <FormItem name="colorSecondary" label={t.color.label}>
-            <ColorPicker />
+          <FormItem
+            name="colorSecondary"
+            label={t.color.label}
+            rules={[{ required: true, message: t.validation.required }]}
+          >
+            <ColorPicker showText />
           </FormItem>
         </Col>
       </Row>

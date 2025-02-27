@@ -1,10 +1,12 @@
 import { WIDGET_TYPES } from '@/constants/widgets';
 import type { ValueOf } from '@/types/utils';
 
-export type WidgetTypes = ValueOf<typeof WIDGET_TYPES>;
+export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
 
-export interface Widget {
-  name?: string;
+export interface TWidget {
+  slug?: string;
+  type: TWidgetType;
+  name: string;
   goal: string;
   goalSecondary?: string;
   color?: string;
@@ -18,41 +20,33 @@ export interface Widget {
   infinite?: boolean;
 }
 
-export interface WidgetOpposite extends Widget {
+export interface TWidgetOpposite extends TWidget {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_OPPOSITE;
   goalSecondary: string;
   color: string;
   colorSecondary: string;
   image?: string;
   imageSecondary?: string;
   leverage?: number;
-  rotate?: never;
-  half?: never;
   liquid?: boolean;
-  infinite?: never;
 }
 
-export interface WidgetClock extends Widget {
+export interface TWidgetClock extends TWidget {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_CLOCK;
   goalSecondary?: string;
-  color: never;
-  colorSecondary: never;
   image: string;
-  imageSecondary: never;
   leverage?: number;
-  rotate?: never;
   half?: boolean;
-  liquid?: never;
   infinite?: boolean;
 }
 
-export interface WidgetPieChart extends Widget {
+export interface TWidgetCircle extends TWidget {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_CIRCLE;
   goalSecondary?: string;
   color?: string;
   colorSecondary?: string;
   image?: string;
-  imageSecondary?: never;
   leverage?: number;
   rotate?: boolean;
   half?: boolean;
-  liquid?: never;
-  infinite?: never;
 }

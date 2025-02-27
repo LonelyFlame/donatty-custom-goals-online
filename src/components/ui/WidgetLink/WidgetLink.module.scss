@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.hidden.hidden {
+  filter: blur(3px);
+}
+
 .tooltip.tooltip {
   max-width: none;
 }

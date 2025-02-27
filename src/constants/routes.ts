@@ -8,4 +8,6 @@ export const ROUTES = {
   WIDGETS_OPPOSITE: '/widgets/opposite/{slug}',
   WIDGETS_CLOCK: '/widgets/clock/{slug}',
   WIDGETS_CIRCLE: '/widgets/circle/{slug}',
+
+  API_WIDGETS: '/api/widgets',
 } satisfies Record<string, string>;
