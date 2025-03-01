@@ -1,9 +1,9 @@
 import { Col, Row, Input, ColorPicker, Switch, Divider, } from 'antd';
 
-import FormItem from '@/components/ui/FormItem';
-import Leverage from '@/components/ui/Leverage';
-import Goal from '@/components/ui/Goal';
-import translations from '@/translations';
+import FormItem from '../../../../../components/ui/FormItem';
+import Leverage from '../../../../../components/ui/Leverage';
+import Goal from '../../../../../components/ui/Goal';
+import translations from '../../../../../translations';
 
 const { forms: t } = translations;
 

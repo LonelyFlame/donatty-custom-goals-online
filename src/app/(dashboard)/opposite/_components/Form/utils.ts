@@ -1,5 +1,5 @@
-import { ROUTES } from '@/constants/routes';
-import type { TWidgetOppositeFormData } from '@/types/forms';
+import { ROUTES } from '../../../../../constants/routes';
+import type { TWidgetOppositeFormData } from '../../../../../types/forms';
 
 export const postSubmit = async (
   { color, colorSecondary, ...restData }: TWidgetOppositeFormData,

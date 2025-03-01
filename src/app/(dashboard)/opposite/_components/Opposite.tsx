@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 
 import Inputs from './Inputs';
-import WidgetLink from '@/components/ui/WidgetLink';
+import WidgetLink from '../../../../components/ui/WidgetLink';
 
 const Opposite = () => {
   return (
