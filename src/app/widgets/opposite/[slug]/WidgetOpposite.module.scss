@@ -1,0 +1,10 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+
+  --color-bubbles: gray;
+  --size-bubbles: 1;
+  --size-wave: 0.8vw;
+}

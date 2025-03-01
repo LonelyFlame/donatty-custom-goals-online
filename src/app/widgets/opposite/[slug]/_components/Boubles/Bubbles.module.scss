@@ -1,0 +1,37 @@
+.bubble {
+  position: absolute;
+  background-color: transparent;
+  height: calc(var(--size-bubbles) * 5vh);
+  width: calc(var(--size-bubbles) * 5vh);
+  border-radius: 50%;
+  box-shadow: var(--color-bubbles) 1px -1px 2px 1px;
+
+  animation-name: shaking, surfacing;
+  animation-duration: calc(var(--size-bubbles) * 2s), calc(var(--size-bubbles) * 10s);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes shaking {
+  0% {
+    transform: translateX(calc(var(--size-bubbles) * 100% + 0px));
+  }
+
+  50% {
+    transform: translateX(calc(var(--size-bubbles) * -100% + 0px));
+  }
+
+  100% {
+    transform: translateX(calc(var(--size-bubbles) * 100% + 0px));
+  }
+}
+
+@keyframes surfacing {
+  0% {
+    bottom: calc(var(--size-bubbles) * -1vh);
+  }
+
+  100% {
+    bottom: calc(var(--size-bubbles) * -1vh + 100vh);
+  }
+}
