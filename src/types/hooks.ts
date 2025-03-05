@@ -1,4 +1,4 @@
-export interface useGoal {
+export interface TUseGoals {
   goal: string;
   goalSecondary?: string;
   leverage?: number;

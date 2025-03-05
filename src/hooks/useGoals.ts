@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 
-import useDGoal from '@/libs/dontatty/hooks/useGoal';
+import { useGoal } from '@/libs/dontatty/hooks';
 
-import type { useGoal } from '@/types/hooks';
+import type { TUseGoals } from '@/types/hooks';
 
-const useGoal = ({ goal, goalSecondary, leverage, infinite }: useGoal): number => {
-  const { goal: goalValue, raised: raisedValue } = useDGoal(goal);
-  const { goal: goalValueSecondary, raised: raisedValueSecondary } = useDGoal(goalSecondary);
+const useGoals = ({ goal, goalSecondary, leverage, infinite }: TUseGoals): number => {
+  const { goal: goalValue, raised: raisedValue } = useGoal(goal);
+  const { goal: goalValueSecondary, raised: raisedValueSecondary } = useGoal(goalSecondary);
 
   const percent = useMemo<number>(() => {
     let percent = 0;
@@ -32,10 +32,16 @@ const useGoal = ({ goal, goalSecondary, leverage, infinite }: useGoal): number =
       return percent;
     }
 
-    return Math.max(Math.min(percent, 1), -1);
+    const max = 1;
+    const min = raisedValueSecondary ? -1 : 0;
+
+    return Math.max(
+      Math.min(percent, max),
+      min
+    );
   }, [goalValue, raisedValue, goalValueSecondary, raisedValueSecondary, leverage, infinite]);
 
   return percent;
 }
 
-export default useGoal;
+export default useGoals;
