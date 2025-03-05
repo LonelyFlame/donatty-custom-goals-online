@@ -1,6 +1,6 @@
 import { unauthorized } from 'next/navigation';
 
-import { auth } from '../../../auth';
+import { auth } from '@/auth';
 
 import OppositeComponent from './_components/Opposite';
 import Form from './_components/Form';

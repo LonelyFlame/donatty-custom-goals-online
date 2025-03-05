@@ -11,19 +11,15 @@ export default function Layout({
   children,
 }: PropsWithChildren) {
   return (
-    <html lang="ru">
-      <body>
-        <AntdRegistry>
-          <AntdLayout hasSider>
-            <Sidebar />
-            <AntdLayout>
-              <Wrapper>
-                {children}
-              </Wrapper>
-            </AntdLayout>
-          </AntdLayout>
-        </AntdRegistry>
-      </body>
-    </html>
+    <AntdRegistry>
+      <AntdLayout hasSider>
+        <Sidebar />
+        <AntdLayout>
+          <Wrapper>
+            {children}
+          </Wrapper>
+        </AntdLayout>
+      </AntdLayout>
+    </AntdRegistry>
   );
 };

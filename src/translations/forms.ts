@@ -20,6 +20,9 @@ const translations = {
   color: {
     label: 'Цвет',
   },
+  bubbles: {
+    colorLabel: 'Цвет пузырьков',
+  },
   submit: {
     create: 'Создать',
     update: 'Сохранить',

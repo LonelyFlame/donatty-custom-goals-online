@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 import { Button, Form as AntdForm } from 'antd';
 import type { PropsWithChildren } from 'react';
 
-import { template } from '../../../../../utils/strings';
-import { ROUTES } from '../../../../../constants/routes';
-import translations from '../../../../../translations';
-import type { TWidgetOpposite } from '../../../../../types/widgets';
-import type { TWidgetOppositeFormData } from '../../../../../types/forms';
+import { template } from '@/utils/strings';
+import { ROUTES } from '@/constants/routes';
+import translations from '@/translations';
+import type { TWidgetOpposite } from '@/types/widgets';
+import type { TWidgetOppositeFormData } from '@/types/forms';
 
 import { postSubmit } from './utils';
 

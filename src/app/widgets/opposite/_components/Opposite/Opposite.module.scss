@@ -1,18 +1,48 @@
+@use '@/theme';
+
+.opposite {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+
+  --color-bubbles: gray;
+  --color-primary: gray;
+  --color-secondary: gray;
+  --size-bubbles: 1;
+  --size-wave: 0.8vw;
+}
+
+
 .item {
   height: 100%;
   width: 100%;
   overflow: hidden;
   display: flex;
 }
+.right {
+  justify-content: flex-start;
+
+  .fill {
+    background-color: var(--color-primary);
+  }
+}
+.left {
+  justify-content: flex-end;
+
+  .fill {
+    background-color: var(--color-secondary);
+  }
+}
 
 .fill {
   height: 100%;
-  width: 100%;
-  transition: transform 1s;
+  width: 0;
+  transition: width theme.$duration-1;
   overflow: hidden;
   position: relative;
 
-  animation-duration: 3s;
+  animation-duration: theme.$duration-3;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -26,7 +56,7 @@
   }
 
   .fill {
-    transition: transform 3s cubic-bezier(0.5, 0, 0.5, 1.5);
+    transition: width theme.$duration-3 cubic-bezier(0.5, 0, 0.5, 1.5);
   }
 }
 

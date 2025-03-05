@@ -17,6 +17,7 @@ export interface TWidget {
   rotate?: boolean;
   half?: boolean;
   liquid?: boolean;
+  bubblesColor?: string;
   infinite?: boolean;
 }
 
@@ -29,6 +30,7 @@ export interface TWidgetOpposite extends TWidget {
   imageSecondary?: string;
   leverage?: number;
   liquid?: boolean;
+  bubblesColor?: string;
 }
 
 export interface TWidgetClock extends TWidget {

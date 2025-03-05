@@ -1,9 +1,11 @@
 import { Col, Row, Input, ColorPicker, Switch, Divider, } from 'antd';
 
-import FormItem from '../../../../../components/ui/FormItem';
-import Leverage from '../../../../../components/ui/Leverage';
-import Goal from '../../../../../components/ui/Goal';
-import translations from '../../../../../translations';
+import FormItem from '@/components/ui/FormItem';
+import Leverage from '@/components/ui/Leverage';
+import Goal from '@/components/ui/Goal';
+import translations from '@/translations';
+
+import Bubbles from './Bubbles';
 
 const { forms: t } = translations;
 
@@ -19,14 +21,21 @@ const Inputs = () => {
       </FormItem>
 
       <Row gutter={16}>
-        <Col span={12}>
+        <Col span={10}>
           <Leverage />
         </Col>
 
-        <Col span={12}>
-          <FormItem name="liquid" label={t.liquid.label}>
-            <Switch />
-          </FormItem>
+        <Col span={14}>
+          <Row gutter={16}>
+            <Col span={11}>
+              <FormItem name="liquid" label={t.liquid.label}>
+                <Switch />
+              </FormItem>
+            </Col>
+            <Col span={13}>
+              <Bubbles />
+            </Col>
+          </Row>
         </Col>
       </Row>
 
@@ -36,10 +45,10 @@ const Inputs = () => {
             {t.leverage.negative}
           </Divider>
 
-          <Goal required />
+          <Goal name="goalSecondary" required />
 
           <FormItem
-            name="color"
+            name="colorSecondary"
             label={t.color.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
@@ -52,10 +61,10 @@ const Inputs = () => {
             {t.leverage.positive}
           </Divider>
 
-          <Goal name="goalSecondary" required />
+          <Goal required />
 
           <FormItem
-            name="colorSecondary"
+            name="color"
             label={t.color.label}
             rules={[{ required: true, message: t.validation.required }]}
           >

@@ -7,3 +7,5 @@ export const WIDGET_TYPES = {
   WIDGET_TYPE_CLOCK,
   WIDGET_TYPE_CIRCLE,
 };
+
+export const BUBBLES_COUNT = 30;
