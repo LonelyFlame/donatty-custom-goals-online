@@ -46,6 +46,12 @@ class GoalRepository {
       },
     });
   };
+
+  public static getByUser = async (userId: number): Promise<TGoal[]> => {
+    return db.query.goals.findMany({
+      where: eq(goals.userId, userId),
+    });
+  };
 }
 
 export default GoalRepository;

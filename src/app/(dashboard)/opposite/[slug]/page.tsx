@@ -13,7 +13,7 @@ const Opposite = async ({ params }: Props) => {
 
   return (
     <Form data={data} slug={slug}>
-      <OppositeComponent />
+      <OppositeComponent slug={slug} />
     </Form>
   );
 }

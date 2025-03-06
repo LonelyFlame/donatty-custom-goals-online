@@ -1,11 +1,11 @@
-import { notFound, redirect, forbidden } from 'next/navigation';
+import { notFound, permanentRedirect, forbidden } from 'next/navigation';
 
 import { auth } from '@/auth';
 import GoalRepository from '@/db/repositories/GoalRepository';
-import { mapGoalToWidget } from '@/mappers/goals';
+import { mapGoalToWidget } from '@/utils/mappers/goals';
 import { template } from '@/utils/strings';
-import { ROUTES } from '@/constants/routes';
 import { WIDGET_TYPE_OPPOSITE } from '@/constants/widgets';
+import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
 import type { TWidgetOpposite } from '@/types/widgets';
 
 export const getData = async (slug: string): Promise<TWidgetOpposite> => {
@@ -22,7 +22,9 @@ export const getData = async (slug: string): Promise<TWidgetOpposite> => {
 
   const data = mapGoalToWidget(goal);
   if (data.type !== WIDGET_TYPE_OPPOSITE) {
-    return redirect(template(ROUTES.OPPOSITE, { slug }));
+    const route = MAP_TYPE_TO_MANAGE_ROUTE[data.type];
+
+    return permanentRedirect(template(route, { slug }));
   }
 
   return data;

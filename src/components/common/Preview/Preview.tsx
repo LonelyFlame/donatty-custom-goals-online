@@ -14,7 +14,7 @@ import styles from './Preview.module.scss';
 
 const reloadIcon = <ReloadOutlined />;
 
-const { preview: t } = translations;
+const { components: { preview: t } } = translations;
 
 const Preview = () => {
   const [src, setSrc] = useState('');

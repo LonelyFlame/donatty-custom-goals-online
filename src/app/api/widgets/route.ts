@@ -2,7 +2,7 @@ import { unauthorized } from 'next/navigation';
 
 import { auth } from '@/auth';
 import WidgetsServices from '@/services/WidgetsServices';
-import { mapGoalToWidget } from '@/mappers/goals';
+import { mapGoalToWidget } from '@/utils/mappers/goals';
 
 export const POST = auth(async (request) => {
   const session = request.auth;

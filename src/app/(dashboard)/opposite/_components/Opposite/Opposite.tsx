@@ -5,12 +5,16 @@ import WidgetLink from '@/components/ui/WidgetLink';
 
 import Inputs from '../Inputs';
 
-const Opposite = () => {
+interface Props {
+  slug?: string;
+}
+
+const Opposite = ({ slug }: Props) => {
   return (
     <div>
       <Row gutter={16}>
         <Col span={10}>
-          <WidgetLink type="opposite" />
+          {!!slug && <WidgetLink type="opposite" slug={slug} />}
           <Inputs />
         </Col>
         <Col span={14}>

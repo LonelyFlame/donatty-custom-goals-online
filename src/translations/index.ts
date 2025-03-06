@@ -2,14 +2,16 @@ import sidebar from './sidebar';
 import footer from './footer';
 import components from './components';
 import forms from './forms';
-import preview from './preview';
+import pages from './pages';
+import widgets from './widgets';
 
 const translations = {
   sidebar,
   footer,
   components,
   forms,
-  preview,
+  pages,
+  widgets,
 };
 
 export default translations;
