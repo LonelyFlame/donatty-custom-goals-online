@@ -1,14 +1,12 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Space, Button, Tooltip } from 'antd';
+import { Button, Tooltip } from 'antd';
 import { CopyOutlined, CheckCircleFilled } from '@ant-design/icons';
 
-import { template } from '@/utils/strings';
 import useWidgetLink from '@/hooks/useWidgetLink';
 import FormItem from '@/components/ui/FormItem';
 import BlurredInput from '@/components/ui/BlurredInput';
-import { MAP_TYPE_TO_WIDGET_ROUTE } from '@/constants/routes';
 import translations from '@/translations';
 import type { TWidgetType } from '@/types/widgets';
 
@@ -43,27 +41,25 @@ const WidgetLink = ({ type, slug }: Props) => {
 
   return (
     <FormItem label={t.label}>
-      <Space.Compact>
-        <BlurredInput
-          value={widgetLink.link}
-          readOnly
+      <BlurredInput
+        value={widgetLink.link}
+        readOnly
+      >
+        <Tooltip
+          title={
+            <div className={styles.success}>
+              {checkIcon}
+              {t.success}
+            </div>
+          }
+          placement="right"
+          arrow={false}
+          open={showSuccess}
+          rootClassName={styles.tooltip}
         >
-          <Tooltip
-            title={
-              <div className={styles.success}>
-                {checkIcon}
-                {t.success}
-              </div>
-            }
-            placement="right"
-            arrow={false}
-            open={showSuccess}
-            rootClassName={styles.tooltip}
-          >
-            <Button icon={copyIcon} onClick={handleCopy} />
-          </Tooltip>
-        </BlurredInput>
-      </Space.Compact>
+          <Button icon={copyIcon} onClick={handleCopy} />
+        </Tooltip>
+      </BlurredInput>
     </FormItem>
   );
 };

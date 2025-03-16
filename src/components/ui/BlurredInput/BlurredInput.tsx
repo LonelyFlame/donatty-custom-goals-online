@@ -41,7 +41,7 @@ const BlurredInput = ({
   return (
     <Space.Compact className={styles.space}>
       <Input
-        className={cn(className, { [styles.hidden]: !isVisible })}
+        className={cn(className, { [styles.hidden]: !isVisible && value })}
         value={value}
         onChange={onChange}
         readOnly={readOnly}
