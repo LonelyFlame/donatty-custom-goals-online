@@ -2,8 +2,9 @@ import { unauthorized } from 'next/navigation';
 
 import { auth } from '@/auth';
 
+import Form from '@/app/(dashboard)/_components/Form';
+
 import OppositeComponent from './_components/Opposite';
-import Form from './_components/Form';
 
 const Opposite = async () => {
   const session = await auth();
@@ -12,7 +13,7 @@ const Opposite = async () => {
   }
 
   return (
-    <Form>
+    <Form type="opposite">
       <OppositeComponent />
     </Form>
   );

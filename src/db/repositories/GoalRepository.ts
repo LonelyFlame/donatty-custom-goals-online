@@ -5,14 +5,12 @@ import first from 'lodash/first';
 import db from '@/db';
 import { goals } from '@/db/schema';
 import type { TGoal, TUser } from '@/types/entities';
-import type { TWidgetType, TWidget } from '@/types/widgets';
+import type { TWidget } from '@/types/widgets';
 
 class GoalRepository {
   public static create = async (
-    name: string,
-    type: TWidgetType,
     userId: number,
-    settings: Omit<TWidget, 'name'>
+    { type, name, ...settings }: Omit<TWidget, 'slug'>,
   ): Promise<TGoal | undefined> => {
     const fields: typeof goals.$inferInsert = {
       name,
@@ -27,8 +25,7 @@ class GoalRepository {
 
   public static update = async (
     slug: string,
-    name: string,
-    settings: Omit<TWidget, 'name'>
+    { type, name, ...settings }: Omit<TWidget, 'slug'>,
   ): Promise<TGoal | undefined> => {
     const fields = {
       name,

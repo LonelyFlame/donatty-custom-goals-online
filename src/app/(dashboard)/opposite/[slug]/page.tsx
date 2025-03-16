@@ -1,5 +1,6 @@
+import Form from '@/app/(dashboard)/_components/Form';
+
 import OppositeComponent from '../_components/Opposite';
-import Form from '../_components/Form';
 import { getData } from './utils';
 
 interface Props {
@@ -12,7 +13,7 @@ const Opposite = async ({ params }: Props) => {
   const data = await getData(slug);
 
   return (
-    <Form data={data} slug={slug}>
+    <Form data={data} slug={slug} type="opposite">
       <OppositeComponent slug={slug} />
     </Form>
   );

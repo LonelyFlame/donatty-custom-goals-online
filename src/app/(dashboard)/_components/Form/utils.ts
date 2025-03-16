@@ -1,8 +1,10 @@
 import { ROUTES } from '@/constants/routes';
+import type { TWidgetType } from '@/types/widgets';
 import type { TWidgetOppositeFormData } from '@/types/forms';
 
 export const postSubmit = async (
   { color, colorSecondary, bubblesColor, ...restData }: TWidgetOppositeFormData,
+  type: TWidgetType,
   slug?: string,
 ) => {
   const colorValue = typeof color === 'string'
@@ -25,6 +27,7 @@ export const postSubmit = async (
     colorSecondary: colorSecondaryValue,
     bubblesColor: bubblesColorValue,
     slug,
+    type,
   };
 
   return fetch(

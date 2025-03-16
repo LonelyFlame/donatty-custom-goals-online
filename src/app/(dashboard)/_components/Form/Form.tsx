@@ -8,19 +8,20 @@ import type { PropsWithChildren } from 'react';
 import { template } from '@/utils/strings';
 import { ROUTES } from '@/constants/routes';
 import translations from '@/translations';
-import type { TWidgetOpposite } from '@/types/widgets';
+import type { TWidgetOpposite, TWidgetType } from '@/types/widgets';
 import type { TWidgetOppositeFormData } from '@/types/forms';
 
 import { postSubmit } from './utils';
 
 interface Props extends PropsWithChildren {
+  type: TWidgetType;
   data?: TWidgetOpposite;
   slug?: string;
 }
 
 const { forms: { submit: t } } = translations;
 
-const Form = ({ children, data, slug }: Props) => {
+const Form = ({ children, type, data, slug }: Props) => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -37,7 +38,7 @@ const Form = ({ children, data, slug }: Props) => {
     setLoading(true);
 
     try {
-      const response = await postSubmit(data, slug);
+      const response = await postSubmit(data, type, slug);
       const responseJson = await response.json();
 
       if (slug) {

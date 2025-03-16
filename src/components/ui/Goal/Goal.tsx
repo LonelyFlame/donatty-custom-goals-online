@@ -3,6 +3,7 @@
 import FormItem from '@/components/ui/FormItem';
 import BlurredInput from '@/components/ui/BlurredInput';
 import translations from '@/translations';
+import { validateGoal } from '../../../validation/widget';
 
 interface Props {
   name?: string;
@@ -20,10 +21,12 @@ const Goal = ({ name = 'goal', required }: Props) => {
         { required: required, message: t.required },
         {
           validator: (_, value: string) => {
-            // TODO: Add donatty link validation
-            if (value || true) {
+            const isValid = validateGoal(value, false);
+
+            if (isValid === true) {
               return Promise.resolve();
             }
+
             return Promise.reject(new Error(t.format));
           },
         },
