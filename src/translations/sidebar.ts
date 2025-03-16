@@ -6,9 +6,9 @@ const translations = {
   home: 'Главная',
   create: {
     title: 'Создать',
-    opposite: widgets.opposite,
-    clock: widgets.clock,
-    circle: widgets.circle,
+    opposite: widgets.opposite.title,
+    clock: widgets.clock.title,
+    circle: widgets.circle.title,
   },
 };
 
