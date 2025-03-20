@@ -14,9 +14,10 @@ interface Props {
   leverage?: number;
   liquid?: boolean;
   bubblesColor?: string;
+  delay?: number;
 }
 
-const Opposite = async ({ goal, goalSecondary, color, colorSecondary, leverage, liquid, bubblesColor }: Props) => {
+const Opposite = async ({ goal, goalSecondary, color, colorSecondary, leverage, liquid, bubblesColor, delay }: Props) => {
   return (
     <div
       style={{
@@ -31,6 +32,7 @@ const Opposite = async ({ goal, goalSecondary, color, colorSecondary, leverage, 
         goalSecondary={goalSecondary}
         leverage={leverage}
         liquid={liquid}
+        delay={delay}
       >
         {liquid && <Bubbles />}
       </Items>

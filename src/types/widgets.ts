@@ -5,6 +5,7 @@ export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
 
 export interface TWidget {
   slug?: string;
+  delay?: number;
   type: TWidgetType;
   name: string;
   goal: string;

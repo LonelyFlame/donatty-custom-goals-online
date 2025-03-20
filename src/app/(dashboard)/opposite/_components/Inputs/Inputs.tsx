@@ -1,4 +1,4 @@
-import { Col, Row, Input, ColorPicker, Switch, Divider, } from 'antd';
+import { Col, Row, Input, InputNumber, ColorPicker, Switch, Divider, } from 'antd';
 
 import FormItem from '@/components/ui/FormItem';
 import Leverage from '@/components/ui/Leverage';
@@ -12,13 +12,22 @@ const { forms: t } = translations;
 const Inputs = () => {
   return (
     <>
-      <FormItem
-        name="name"
-        label={t.name.label}
-        rules={[{ required: true, message: t.name.required }]}
-      >
-        <Input placeholder={t.name.placeholder} />
-      </FormItem>
+      <Row gutter={16}>
+        <Col span={18}>
+          <FormItem
+            name="name"
+            label={t.name.label}
+            rules={[{ required: true, message: t.name.required }]}
+          >
+            <Input placeholder={t.name.placeholder} />
+          </FormItem>
+        </Col>
+        <Col span={6}>
+          <FormItem name="delay" label={t.delay.label}>
+            <InputNumber placeholder={t.delay.placeholder} />
+          </FormItem>
+        </Col>
+      </Row>
 
       <Row gutter={16}>
         <Col span={10}>

@@ -8,6 +8,10 @@ const translations = {
     placeholder: 'Введите название виджета',
     required: 'Название обязательно для заполнения',
   },
+  delay: {
+    label: 'Задержка',
+    placeholder: '0',
+  },
   goal: {
     label: 'Ссылка на сбор',
     placeholder: 'https://widgets.donatty.com/goal/?ref=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&token=ffffffffffffffffffffffffffffff',
