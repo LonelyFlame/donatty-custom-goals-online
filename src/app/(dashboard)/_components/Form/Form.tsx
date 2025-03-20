@@ -6,16 +6,16 @@ import { Button, Form as AntdForm } from 'antd';
 import type { PropsWithChildren } from 'react';
 
 import { template } from '@/utils/strings';
-import { ROUTES } from '@/constants/routes';
+import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
 import translations from '@/translations';
-import type { TWidgetOpposite, TWidgetType } from '@/types/widgets';
-import type { TWidgetOppositeFormData } from '@/types/forms';
+import type { TWidgetType } from '@/types/widgets';
+import type { TWidgetFormData } from '@/types/forms';
 
 import { postSubmit } from './utils';
 
 interface Props extends PropsWithChildren {
   type: TWidgetType;
-  data?: TWidgetOpposite;
+  data?: TWidgetFormData;
   slug?: string;
 }
 
@@ -26,7 +26,7 @@ const Form = ({ children, type, data, slug }: Props) => {
 
   const router = useRouter();
 
-  const [form] = AntdForm.useForm<TWidgetOppositeFormData>();
+  const [form] = AntdForm.useForm<TWidgetFormData>();
 
   useEffect(() => {
     if (!data) return;
@@ -34,7 +34,7 @@ const Form = ({ children, type, data, slug }: Props) => {
     form.setFieldsValue(data);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleSubmit = async (data: TWidgetOppositeFormData) => {
+  const handleSubmit = async (data: TWidgetFormData) => {
     setLoading(true);
 
     try {
@@ -48,7 +48,7 @@ const Form = ({ children, type, data, slug }: Props) => {
         return;
       }
 
-      router.push(template(ROUTES.OPPOSITE, { slug: responseJson.slug }));
+      router.push(template(MAP_TYPE_TO_MANAGE_ROUTE[type], { slug: responseJson.slug }));
     } catch (error: any) {
       console.error(error);
 

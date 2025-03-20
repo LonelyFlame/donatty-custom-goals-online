@@ -1,9 +1,9 @@
 import { ROUTES } from '@/constants/routes';
 import type { TWidgetType } from '@/types/widgets';
-import type { TWidgetOppositeFormData } from '@/types/forms';
+import type { TWidgetFormData } from '@/types/forms';
 
 export const postSubmit = async (
-  { color, colorSecondary, bubblesColor, ...restData }: TWidgetOppositeFormData,
+  { color, colorSecondary, bubblesColor, ...restData }: TWidgetFormData,
   type: TWidgetType,
   slug?: string,
 ) => {
