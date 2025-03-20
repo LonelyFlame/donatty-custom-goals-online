@@ -26,7 +26,6 @@ const Items = ({ goal, goalSecondary, leverage, liquid, delay = 0, children }: P
   const [percentSecondary, setPercentSecondary] = useState(0);
 
   useEffect(() => {
-    console.log({delay});
     clearTimeout(timeoutRef.current);
     timeoutRef.current = window.setTimeout(() => {
       setPercentSecondary(percent < 0 ? -percent : 0);

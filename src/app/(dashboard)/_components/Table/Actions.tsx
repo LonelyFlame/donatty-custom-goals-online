@@ -8,7 +8,7 @@ import type { MenuProps } from 'antd';
 
 import { template } from '@/utils/strings';
 import useWidgetLink from '@/hooks/useWidgetLink';
-import { MAP_TYPE_TO_WIDGET_ROUTE } from '@/constants/routes';
+import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
 import translations from '@/translations';
 import type { TWidgetType } from '@/types/widgets';
 
@@ -30,7 +30,7 @@ const Actions = ({ type, slug }: Props) => {
   const widgetLink = useWidgetLink(type, slug);
 
   const handleEdit = () => {
-    const route = template(MAP_TYPE_TO_WIDGET_ROUTE[type], { slug });
+    const route = template(MAP_TYPE_TO_MANAGE_ROUTE[type], { slug });
     router.push(route);
   };
 

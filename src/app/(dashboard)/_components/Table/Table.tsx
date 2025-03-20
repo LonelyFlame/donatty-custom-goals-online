@@ -10,23 +10,23 @@ import { template } from '@/utils/strings';
 import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
 import { MAP_TYPE_TO_ICON_COMPONENT, MAP_TYPE_TO_TITLE } from '@/constants/widgets';
 import translations from '@/translations';
-import type { TGoal } from '@/types/entities';
+import type { TGoalCompact } from '@/types/entities';
 import type { TWidgetType } from '@/types/widgets';
 
 import Actions from './Actions';
 
 interface Props {
-  data: TGoal[];
+  data: TGoalCompact[];
 }
 
 const { pages: { dashboard: t } } = translations;
 
-const columns: TableColumnsType<TGoal> = [
+const columns: TableColumnsType<TGoalCompact> = [
   {
     key: 'name',
     dataIndex: 'name',
     title: t.table.columns.name,
-    render: (_, { slug, name, type }: TGoal) => {
+    render: (_, { slug, name, type }: TGoalCompact) => {
       const route = MAP_TYPE_TO_MANAGE_ROUTE[type];
 
       return <Link href={template(route, { slug })}>{name}</Link>;
@@ -71,7 +71,7 @@ const Table = ({ data }: Props) => {
     setSelectedRowKeys(selectedKeys.map(String));
   }
 
-  const filteredData = useMemo<TGoal[]>(() => {
+  const filteredData = useMemo<TGoalCompact[]>(() => {
     if (!filerName) return data;
 
     return data.filter(({ name }) => name.includes(filerName));
@@ -92,7 +92,7 @@ const Table = ({ data }: Props) => {
         </Col>
       </Row>
       <br />
-      <AntdTable<TGoal>
+      <AntdTable<TGoalCompact>
         dataSource={filteredData}
         columns={columns}
         pagination={false}
