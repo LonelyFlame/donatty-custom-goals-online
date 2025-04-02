@@ -31,14 +31,14 @@ const useGoals = ({ goal, goalSecondary, leverage, infinite }: TUseGoals): numbe
     }
 
     if (infinite) {
-      return percent;
+      return percent || 0;
     }
 
     const max = 1;
     const min = raisedValueSecondary ? -1 : 0;
 
     return Math.max(
-      Math.min(percent, max),
+      Math.min(percent || 0, max),
       min
     );
   }, [goalValue, raisedValue, goalValueSecondary, raisedValueSecondary, leverage, infinite]);

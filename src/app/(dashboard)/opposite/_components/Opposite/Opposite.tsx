@@ -18,7 +18,7 @@ const Opposite = ({ slug }: Props) => {
           <Inputs />
         </Col>
         <Col span={14}>
-          <Preview />
+          <Preview type="opposite" />
         </Col>
       </Row>
     </div>

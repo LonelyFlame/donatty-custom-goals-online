@@ -22,6 +22,8 @@ export const WIDGET_TYPES = {
 
 export const BUBBLES_COUNT = 30;
 
+export const DEFAULT_CLOCK_IMAGE_URL = '/widgets/clockHand.png';
+
 export const MAP_TYPE_TO_TITLE = {
   [WIDGET_TYPE_OPPOSITE]: t.opposite.title,
   [WIDGET_TYPE_CLOCK]: t.clock.title,

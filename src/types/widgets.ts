@@ -2,6 +2,7 @@ import { WIDGET_TYPES } from '@/constants/widgets';
 import type { ValueOf } from '@/types/utils';
 
 export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
+export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle;
 
 export interface TWidget {
   slug?: string;

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 import Bubbles from '../Boubles';
 
@@ -17,7 +17,16 @@ interface Props {
   delay?: number;
 }
 
-const Opposite = async ({ goal, goalSecondary, color, colorSecondary, leverage, liquid, bubblesColor, delay }: Props) => {
+const Opposite = async ({
+  goal,
+  goalSecondary,
+  color,
+  colorSecondary,
+  leverage,
+  liquid,
+  bubblesColor,
+  delay,
+}: Props) => {
   return (
     <div
       style={{

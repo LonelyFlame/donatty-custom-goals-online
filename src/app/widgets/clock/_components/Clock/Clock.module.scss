@@ -1,0 +1,23 @@
+@use '@/theme';
+
+.clock {
+  height: 100vh;
+  width: 100vw;
+  max-height: 100vw;
+  max-width: 100vh;
+  margin: auto;
+  display: flex;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hand {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 2s;
+  background-image: var(--clock-hand);
+}

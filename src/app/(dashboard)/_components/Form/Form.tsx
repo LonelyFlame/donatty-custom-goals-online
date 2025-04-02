@@ -1,28 +1,35 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button, Form as AntdForm } from 'antd';
+import { v4 as uuidv4 } from 'uuid';
+import { Button, Form as AntdForm, type UploadFile } from 'antd';
 import type { PropsWithChildren } from 'react';
 
 import { template } from '@/utils/strings';
+import SuccessTooltip from '@/components/ui/SuccessTooltip';
 import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
 import translations from '@/translations';
-import type { TWidgetType } from '@/types/widgets';
+import type { TWidgetType, TWidget } from '@/types/widgets';
 import type { TWidgetFormData } from '@/types/forms';
 
 import { postSubmit } from './utils';
 
 interface Props extends PropsWithChildren {
   type: TWidgetType;
-  data?: TWidgetFormData;
+  data?: TWidget;
   slug?: string;
 }
 
 const { forms: { submit: t } } = translations;
 
 const Form = ({ children, type, data, slug }: Props) => {
+  const isUpdate = Boolean(slug);
+
   const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const timeoutRef = useRef<number|undefined>(undefined);
 
   const router = useRouter();
 
@@ -31,7 +38,21 @@ const Form = ({ children, type, data, slug }: Props) => {
   useEffect(() => {
     if (!data) return;
 
-    form.setFieldsValue(data);
+    const { image, imageSecondary } = data;
+    const imageData: undefined | [UploadFile] = !image ? undefined : [{
+      uid: uuidv4(),
+      name: 'image',
+      url: image,
+    }];
+    const imageSecondaryData: undefined | [UploadFile] = !imageSecondary ? undefined : [{
+      uid: uuidv4(),
+      name: 'imageSecondary',
+      url: imageSecondary,
+    }];
+
+    const formData: TWidgetFormData = { ...data, image: imageData, imageSecondary: imageSecondaryData }
+
+    form.setFieldsValue(formData);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSubmit = async (data: TWidgetFormData) => {
@@ -41,9 +62,15 @@ const Form = ({ children, type, data, slug }: Props) => {
       const response = await postSubmit(data, type, slug);
       const responseJson = await response.json();
 
+      setShowSuccess(true);
+
       if (slug) {
         setLoading(false);
-        // TODO: Show success popup
+
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = window.setTimeout(() => {
+          setShowSuccess(false);
+        }, 1000);
 
         return;
       }
@@ -56,12 +83,16 @@ const Form = ({ children, type, data, slug }: Props) => {
     }
   }
 
+  const submitDisabled = loading || (!isUpdate && showSuccess);
+
   return (
     <AntdForm layout="vertical" form={form} onFinish={handleSubmit} autoComplete="off">
       {children}
-      <Button disabled={loading} type="primary" htmlType="submit">
-        {slug ? t.update : t.create}
-      </Button>
+      <SuccessTooltip title={t.success} open={showSuccess && isUpdate}>
+        <Button disabled={submitDisabled} type="primary" htmlType="submit">
+          {isUpdate ? t.update : t.create}
+        </Button>
+      </SuccessTooltip>
     </AntdForm>
   );
 };

@@ -1,15 +1,18 @@
-import { Popover as AntdPopover } from 'antd';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import Hint from '@/components/ui/Hint';
+import translations from '@/translations';
 
-import PopoverContent from './PopoverContent';
-
-const content = <PopoverContent />;
+const { components: { leverage: { popover: t } } } = translations;
 
 const Popover = () => {
   return (
-    <AntdPopover content={content}>
-      <InfoCircleOutlined />
-    </AntdPopover>
+    <Hint>
+      <ul>
+        <li>{t.first}</li>
+        <li>{t.second}</li>
+        <li>{t.third}</li>
+        <li>{t.fourth}</li>
+      </ul>
+    </Hint>
   );
 };
 

@@ -4,7 +4,7 @@ import { auth } from '@/auth';
 import WidgetsServices from '@/services/WidgetsServices';
 import { mapGoalToWidget } from '@/utils/mappers/goals';
 import { validateWidget } from '@/validation/widget';
-import type { TWidget } from '@/types/widgets';
+import type { TWidgets } from '@/types/widgets';
 
 export const POST = auth(async (request) => {
   const session = request.auth;
@@ -13,7 +13,7 @@ export const POST = auth(async (request) => {
   }
 
   try {
-    const body: TWidget = await request.json();
+    const body: TWidgets = await request.json();
 
     const { isValid, errors } = validateWidget(body);
     if (!isValid) {

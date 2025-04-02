@@ -15,6 +15,7 @@ export const ROUTES = {
   WIDGETS_CIRCLE: '/widgets/circle/{slug}',
 
   API_WIDGETS: '/api/widgets',
+  API_UPLOAD: '/api/upload',
 } satisfies Record<string, string>;
 
 export const MAP_TYPE_TO_MANAGE_ROUTE = {

@@ -12,7 +12,7 @@ interface Props {
 
 const { components: { leverage: t } } = translations;
 
-const popover = <Popover />;
+const addon = <Popover />;
 
 const Leverage = ({ name = 'leverage' }: Props) => {
   return (
@@ -20,7 +20,7 @@ const Leverage = ({ name = 'leverage' }: Props) => {
       <InputNumber
         className={styles.leverage}
         placeholder={t.placeholder}
-        addonAfter={popover}
+        addonAfter={addon}
       />
     </FormItem>
   );

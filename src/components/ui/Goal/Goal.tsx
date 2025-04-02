@@ -3,7 +3,7 @@
 import FormItem from '@/components/ui/FormItem';
 import BlurredInput from '@/components/ui/BlurredInput';
 import translations from '@/translations';
-import { validateGoal } from '../../../validation/widget';
+import { validateGoal } from '@/validation/validators';
 
 interface Props {
   name?: string;

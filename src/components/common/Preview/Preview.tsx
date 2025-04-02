@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import cn from 'classnames';
 import { Form, Button } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 
 import { template } from '@/utils/strings';
-import { ROUTES } from '@/constants/routes';
+import { MAP_TYPE_TO_WIDGET_ROUTE } from '@/constants/routes';
 import translations from '@/translations';
-import type { TWidget } from '@/types/widgets';
+import type { TWidget, TWidgetType } from '@/types/widgets';
 import type { TWidgetFormData } from '@/types/forms';
 
 import styles from './Preview.module.scss';
@@ -16,29 +17,52 @@ const reloadIcon = <ReloadOutlined />;
 
 const { components: { preview: t } } = translations;
 
-const Preview = () => {
+interface Props {
+  type: TWidgetType;
+  variant?: 'square' | 'rectangle';
+}
+
+const Preview = ({ type, variant = 'rectangle' }: Props) => {
   const [src, setSrc] = useState('');
 
   const form = Form.useFormInstance<TWidgetFormData>();
 
   const handleRefresh = () => {
-    const { color, colorSecondary, bubblesColor, ...fields } = form.getFieldsValue();
+    const { color, colorSecondary, bubblesColor, image, imageSecondary, ...fields } = form.getFieldsValue();
     const settings: Omit<TWidget, 'type'> = { ...fields };
 
     if (color) {
-      settings.color = typeof color === 'string' ? color : color?.toHexString() || '';
+      settings.color = typeof color === 'string'
+        ? color
+        : color?.toHexString() || '';
     }
+
     if (colorSecondary) {
-      settings.colorSecondary = typeof colorSecondary === 'string' ? colorSecondary : colorSecondary?.toHexString() || '';
+      settings.colorSecondary = typeof colorSecondary === 'string'
+        ? colorSecondary
+        : colorSecondary?.toHexString() || '';
     }
+
     if (bubblesColor) {
-      settings.bubblesColor = typeof bubblesColor === 'string' ? bubblesColor : bubblesColor?.toHexString() || '';
+      settings.bubblesColor = typeof bubblesColor === 'string'
+        ? bubblesColor
+        : bubblesColor?.toHexString() || '';
+    }
+
+    if (image?.length) {
+      settings.image = image.at(0)?.url;
+    }
+
+    if (imageSecondary?.length) {
+      settings.imageSecondary = imageSecondary.at(0)?.url;
     }
 
     const searchParams = Object.entries(settings).map<string>(([key, value]) => {
       return `${key}=${encodeURIComponent(String(value || ''))}`;
     });
-    const url = template(ROUTES.WIDGETS_OPPOSITE, { slug: '' });
+
+
+    const url = template(MAP_TYPE_TO_WIDGET_ROUTE[type], { slug: '' });
 
     setSrc(`${url}?${searchParams.join('&')}`);
   };
@@ -48,7 +72,7 @@ const Preview = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div>
+    <div className={cn({ [styles.variantSquare]: variant === 'square' })}>
       <div className={styles.iframeContainer}>
         {src && <iframe src={src} className={styles.iframe} />}
       </div>
@@ -57,7 +81,7 @@ const Preview = () => {
           {t.reload}
         </Button>
         <i>
-          {t.viewArea}
+          {t.viewArea[variant]}
         </i>
       </div>
     </div>
