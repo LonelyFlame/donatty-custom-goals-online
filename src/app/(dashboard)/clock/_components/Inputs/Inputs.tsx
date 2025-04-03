@@ -9,6 +9,7 @@ import translations from '@/translations';
 
 import { TopInputs } from '@/app/(dashboard)/_components/Form';
 
+import Infinite from './Infinite';
 import styles from './ClockInputs.module.scss';
 
 const { forms: t } = translations;
@@ -30,14 +31,7 @@ const Inputs = () => {
           </FormItem>
         </Col>
         <Col span={6}>
-          <FormItem label={t.infinite.label} className={styles.checkWithHint}>
-            <FormItem name="infinite">
-              <Switch />
-            </FormItem>
-            <Hint>
-              {t.infinite.hint}
-            </Hint>
-          </FormItem>
+          <Infinite />
         </Col>
 
         <Col span={13}>

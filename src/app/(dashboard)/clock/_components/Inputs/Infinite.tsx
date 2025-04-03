@@ -12,11 +12,6 @@ import styles from './ClockInputs.module.scss';
 
 const { forms: t } = translations;
 
-/**
- * @deprecated Warning: [antd: compatible] antd v5 support React is 16 ~ 18
- * @see https://u.ant.design/v5-for-19 for compatible.
- * @todo update it to disable checkbox on related fields fill
- */
 const Infinite = () => {
   const form = Form.useFormInstance<TWidgetClockFormData>();
   const half = Form.useWatch('half', form);
