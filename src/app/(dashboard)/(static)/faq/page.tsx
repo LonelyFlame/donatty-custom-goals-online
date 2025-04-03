@@ -35,10 +35,24 @@ const Faq = async () => {
         Код сайта открыт и хранится на Github по адресу <a href="https://github.com/LonelyFlame/donatty-custom-goals-online">https://github.com/LonelyFlame/donatty-custom-goals-online</a>. При желании вы можете развернуть у себя копию сайта.
       </p>
 
+      <h4>
+        Будут ли кастомные виджеты алертов?
+      </h4>
+      <p>
+        Пока нет идей на этот счет.
+      </p>
+
+      <h4>
+        Будет ли поддержка чего-то кроме Донатти?
+      </h4>
+      <p>
+        Пока нет идей на этот счет.
+      </p>
+
       <hr style={{ margin: '50px 0' }} />
 
       <p>
-        По любым дополнительным вопросам вы можете связаться с нами по адресу <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+        По любым дополнительным вопросам и/или предложениям вы можете связаться с нами по адресу <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
       </p>
     </div>
   );
