@@ -47,9 +47,8 @@ export interface TWidgetClock extends TWidget {
 export interface TWidgetCircle extends TWidget {
   type: typeof WIDGET_TYPES.WIDGET_TYPE_CIRCLE;
   goalSecondary?: string;
-  color?: string;
-  colorSecondary?: string;
-  image?: string;
+  image: string;
+  imageSecondary?: string;
   leverage?: number;
   rotate?: boolean;
   half?: boolean;

@@ -1,0 +1,20 @@
+@use "@/theme";
+
+.divider {
+  :global(.ant-divider-inner-text.ant-divider-inner-text) {
+    display: inline-flex;
+    align-items: center;
+    gap: theme.$spacing-xs;
+  }
+}
+
+.checkWithHint {
+  :global(.ant-form-item-control-input-content) {
+    display: flex;
+    align-items: center;
+    gap: theme.$spacing-l;
+  }
+  :global(.ant-form-item) {
+    margin-bottom: 0;
+  }
+}

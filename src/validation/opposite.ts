@@ -23,11 +23,11 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
   }
 
   if (data.delay && !isNumber(data.delay)) {
-    errors.delay = 'enptyOrNumber';
+    errors.delay = 'emptyOrNumber';
   }
 
   if (data.leverage && !isNumber(data.leverage)) {
-    errors.leverage = 'enptyOrNumber';
+    errors.leverage = 'emptyOrNumber';
   }
 
   if (data.liquid) {

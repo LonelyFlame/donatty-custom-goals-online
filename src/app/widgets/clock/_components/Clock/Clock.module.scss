@@ -12,12 +12,12 @@
   overflow: hidden;
 }
 
-.hand {
+.image {
   position: absolute;
   inset: 0;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   transition: transform 2s;
-  background-image: var(--clock-hand);
+  background-image: var(--image);
 }

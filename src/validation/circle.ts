@@ -1,11 +1,11 @@
 import isNumber from 'lodash/isNumber';
 import isString from 'lodash/isString';
 
-import { TWidgetClock } from '@/types/widgets';
+import { TWidgetCircle } from '@/types/widgets';
 
 import { validateGoal } from './validators';
 
-export const validateClockWidget = (data: TWidgetClock): Record<string, string> => {
+export const validateCircleWidget = (data: TWidgetCircle): Record<string, string> => {
   const errors: Record<string, string> = {};
 
   if (!data.goal) {
@@ -31,6 +31,10 @@ export const validateClockWidget = (data: TWidgetClock): Record<string, string> 
   }
 
   if (!data.image) {
+    errors.image = 'required';
+  }
+
+  if (!data.imageSecondary && !!data.goalSecondary) {
     errors.image = 'required';
   }
 

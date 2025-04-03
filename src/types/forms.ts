@@ -1,7 +1,7 @@
 import type { UploadFile } from 'antd';
 
 import type { TAntdColorValue } from './inputs';
-import type { TWidgetOpposite, TWidgetClock, TWidget } from './widgets';
+import type { TWidgetOpposite, TWidgetClock, TWidgetCircle, TWidget } from './widgets';
 
 export interface TWidgetFormData extends Omit<TWidget, 'type' | 'color' | 'colorSecondary' | 'bubblesColor' | 'image' | 'imageSecondary'> {
   color?: string | TAntdColorValue;
@@ -19,4 +19,9 @@ export interface TWidgetOppositeFormData extends Omit<TWidgetOpposite, 'type' | 
 
 export interface TWidgetClockFormData extends Omit<TWidgetClock, 'type' | 'image'> {
   image: [UploadFile];
+}
+
+export interface TWidgetCircleFormData extends Omit<TWidgetCircle, 'type' | 'image' | 'imageSecondary'> {
+  image: [UploadFile];
+  imageSecondary?: [UploadFile];
 }

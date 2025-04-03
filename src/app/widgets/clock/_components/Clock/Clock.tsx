@@ -54,11 +54,11 @@ const Clock = ({
   return (
     <div
       style={{
-        '--clock-hand': `url(${image})`,
+        '--image': `url(${image})`,
       } as CSSProperties}
       className={cn('container', styles.clock)}
     >
-      <div className={cn('hand', styles.hand)} style={{ transform: `rotate(${degrees}deg)` }} id="hours" />
+      <div className={cn('image', styles.image)} style={{ transform: `rotate(${degrees}deg)` }} />
     </div>
   )
 };
