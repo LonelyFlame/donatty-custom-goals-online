@@ -11,7 +11,9 @@ export default async function Page() {
     return (
       <div className={styles.page}>
         <main className={styles.main}>
-          Ну что-то тут написать надо приветственное
+          Ну что-то тут написать надо приветственное.
+          <br />
+          Короче, тут можно делать виджеты сборов чуть более прикольные, чем позволяет это сделать Донатти.
         </main>
       </div>
     );
