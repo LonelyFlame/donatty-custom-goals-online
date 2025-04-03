@@ -7,6 +7,7 @@ import {
   BoxPlotFilled,
   ClockCircleOutlined,
   PieChartOutlined,
+  QuestionCircleOutlined,
 } from '@ant-design/icons';
 import type { Session } from 'next-auth';
 import type { MenuProps } from 'antd';
@@ -22,12 +23,21 @@ import Item from './Item';
 const { sidebar: t } = translations;
 
 export const getItems = (session: Session | null): MenuProps['items'] => {
+  const faqItem = {
+    key: 'faq',
+    icon: createElement(QuestionCircleOutlined),
+    label: createElement(Item, { title: t.faq, href: ROUTES.FAQ }),
+  };
+
   if (!session?.user) {
-    return [{
-      key: 'login',
-      icon: createElement(TwitchOutlined),
-      label: createElement(LogIn),
-    }];
+    return [
+      faqItem,
+      {
+        key: 'login',
+        icon: createElement(TwitchOutlined),
+        label: createElement(LogIn),
+      }
+    ];
   }
 
   return [
@@ -67,6 +77,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
         },
       ],
     },
+    faqItem,
     {
       key: 'logout',
       icon: createElement(LogoutOutlined),

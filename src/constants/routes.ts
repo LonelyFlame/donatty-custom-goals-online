@@ -5,6 +5,7 @@ import { WIDGET_TYPE_OPPOSITE, WIDGET_TYPE_CLOCK, WIDGET_TYPE_CIRCLE } from './w
 export const ROUTES = {
   HOME: '/',
   COOKIES: '/cookies',
+  FAQ: '/faq',
 
   OPPOSITE: '/opposite/{slug}',
   CLOCK: '/clock/{slug}',

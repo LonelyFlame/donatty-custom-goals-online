@@ -4,6 +4,7 @@ const translations = {
   loginTwitch: 'Войти c Twitch',
   logout: 'Выйти',
   home: 'Главная',
+  faq: 'F.A.Q.',
   create: {
     title: 'Создать',
     opposite: widgets.opposite.title,
