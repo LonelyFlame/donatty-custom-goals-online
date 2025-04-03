@@ -63,7 +63,7 @@ const ImageUpload = ({ name, label, required }: Props) => {
         <Upload
           onPreview={() => setOpen(true)}
           className={styles.image}
-          action={ROUTES.API_UPLOAD}
+          action={ROUTES.API_IMAGES}
           listType="picture-card"
           accept="image/png, image/gif, image/jpeg"
         >
