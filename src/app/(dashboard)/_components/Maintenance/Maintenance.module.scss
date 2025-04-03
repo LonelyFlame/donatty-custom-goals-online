@@ -1,0 +1,5 @@
+@use "@/theme";
+
+.alert.alert {
+  margin-bottom: theme.$spacing-xxl24;
+}
