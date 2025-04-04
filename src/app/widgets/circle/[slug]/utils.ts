@@ -1,6 +1,5 @@
-import { notFound, redirect, forbidden } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
-import { auth } from '@/auth';
 import GoalRepository from '@/db/repositories/GoalRepository';
 import { getWidgetLink } from '@/utils/widgets';
 import { mapGoalToWidget } from '@/utils/mappers/goals';
@@ -12,11 +11,6 @@ export const getData = async (slug: string): Promise<TWidgetCircle> => {
 
   if (!goal) {
     return notFound();
-  }
-
-  const session = await auth();
-  if (goal.user.email !== session?.user?.email) {
-    return forbidden();
   }
 
   const data = mapGoalToWidget(goal);
