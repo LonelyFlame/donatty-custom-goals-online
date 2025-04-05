@@ -10,6 +10,9 @@
   position: relative;
   border-radius: 50%;
   overflow: hidden;
+
+  --animation-duration: #{theme.$duration-2};
+  --animation-function: linear;
 }
 
 .image {
@@ -18,6 +21,8 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  transition: transform 2s;
+  transition: transform theme.$duration-2;
   background-image: var(--image);
+  transition-duration: var(--animation-duration);
+  transition-timing-function: var(--animation-function);
 }

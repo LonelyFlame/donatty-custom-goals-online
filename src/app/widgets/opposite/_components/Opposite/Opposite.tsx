@@ -15,6 +15,8 @@ interface Props {
   liquid?: boolean;
   tertiaryColor?: string;
   delay?: number;
+  animationDuration?: number;
+  animationFunction?: string;
 }
 
 const Opposite = async ({
@@ -26,6 +28,8 @@ const Opposite = async ({
   liquid,
   tertiaryColor,
   delay,
+  animationDuration,
+  animationFunction,
 }: Props) => {
   return (
     <div
@@ -33,6 +37,8 @@ const Opposite = async ({
         '--color-tertiary': tertiaryColor || 'gray',
         '--color-primary': color || 'gray',
         '--color-secondary': colorSecondary || 'gray',
+        '--animation-duration': `${animationDuration}s`,
+        '--animation-function': animationFunction,
       } as CSSProperties}
       className={cn('container', styles.opposite)}
     >

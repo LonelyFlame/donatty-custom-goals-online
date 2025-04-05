@@ -21,6 +21,15 @@ const translations = {
     required: 'Ссылка на сбор обязательна для заполнения',
     format: 'Недействительная ссылка',
   },
+  animationDuration: {
+    label: 'Длительность',
+    placeholder: 'В секундах',
+  },
+  animationFunction: {
+    label: 'Функция анимации',
+    placeholder: 'linear',
+    hint: 'Можно выбрать и скопировать тут:'
+  },
   liquid: {
     label: 'Это жидкость?',
   },

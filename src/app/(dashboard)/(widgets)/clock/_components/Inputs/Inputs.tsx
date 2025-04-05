@@ -1,13 +1,13 @@
 import { Col, Row, Switch, Divider } from 'antd';
 
-import Hint from '../../../../../../components/ui/Hint';
-import FormItem from '../../../../../../components/ui/FormItem';
-import Leverage from '../../../../../../components/ui/Leverage';
-import Goal from '../../../../../../components/ui/Goal';
-import ImageUpload from '../../../../../../components/ui/ImageUpload';
-import translations from '../../../../../../translations';
+import Hint from '@/components/ui/Hint';
+import FormItem from '@/components/ui/FormItem';
+import Leverage from '@/components/ui/Leverage';
+import Goal from '@/components/ui/Goal';
+import ImageUpload from '@/components/ui/ImageUpload';
+import translations from '@/translations';
 
-import { TopInputs } from '../../../../_components/Form';
+import { AnimationSettings, TopInputs } from '@/app/(dashboard)/_components/Form';
 
 import Infinite from './Infinite';
 import styles from './ClockInputs.module.scss';
@@ -18,6 +18,8 @@ const Inputs = () => {
   return (
     <>
       <TopInputs />
+
+      <AnimationSettings />
 
       <Row gutter={16}>
         <Col span={5}>

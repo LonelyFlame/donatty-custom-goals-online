@@ -1,13 +1,13 @@
 import { Col, Row, Switch, Divider } from 'antd';
 
-import Hint from '../../../../../../components/ui/Hint';
-import FormItem from '../../../../../../components/ui/FormItem';
-import Leverage from '../../../../../../components/ui/Leverage';
-import Goal from '../../../../../../components/ui/Goal';
-import ImageUpload from '../../../../../../components/ui/ImageUpload';
-import translations from '../../../../../../translations';
+import Hint from '@/components/ui/Hint';
+import FormItem from '@/components/ui/FormItem';
+import Leverage from '@/components/ui/Leverage';
+import Goal from '@/components/ui/Goal';
+import ImageUpload from '@/components/ui/ImageUpload';
+import translations from '@/translations';
 
-import { TopInputs } from '../../../../_components/Form';
+import { TopInputs } from '@/app/(dashboard)/_components/Form';
 
 import ImageSecondary from './ImageSecondary';
 import styles from './CircleInputs.module.scss';

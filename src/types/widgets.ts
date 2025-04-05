@@ -21,6 +21,8 @@ export interface TWidget {
   liquid?: boolean;
   tertiaryColor?: string;
   infinite?: boolean;
+  animationDuration?: number;
+  animationFunction?: string;
 }
 
 export interface TWidgetOpposite extends TWidget {

@@ -3,10 +3,10 @@
 import { useEffect } from 'react';
 import { Switch, Form } from 'antd';
 
-import Hint from '../../../../../../components/ui/Hint';
-import FormItem from '../../../../../../components/ui/FormItem';
-import translations from '../../../../../../translations';
-import type { TWidgetClockFormData } from '../../../../../../types/forms';
+import Hint from '@/components/ui/Hint';
+import FormItem from '@/components/ui/FormItem';
+import translations from '@/translations';
+import type { TWidgetClockFormData } from '@/types/forms';
 
 import styles from './ClockInputs.module.scss';
 

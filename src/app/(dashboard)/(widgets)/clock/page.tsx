@@ -1,10 +1,10 @@
 import { unauthorized } from 'next/navigation';
 
-import { auth } from '../../../../auth';
+import { auth } from '@/auth';
 
-import Form from '../../_components/Form';
-import { DEFAULT_CLOCK_IMAGE_URL } from '../../../../constants/widgets';
-import type { TWidget } from '../../../../types/widgets';
+import Form from '@/app/(dashboard)/_components/Form';
+import { DEFAULT_CLOCK_IMAGE_URL } from '@/constants/widgets';
+import type { TWidget } from '@/types/widgets';
 
 import Clock from './_components/Clock';
 

@@ -1,4 +1,4 @@
-import Form from '../../../_components/Form';
+import Form from '@/app/(dashboard)/_components/Form';
 
 import Opposite from '../_components/Opposite';
 import { getData } from './utils';

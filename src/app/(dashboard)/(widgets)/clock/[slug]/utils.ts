@@ -1,12 +1,12 @@
 import { notFound, permanentRedirect, forbidden } from 'next/navigation';
 
-import { auth } from '../../../../../auth';
-import GoalRepository from '../../../../../db/repositories/GoalRepository';
-import { mapGoalToWidget } from '../../../../../utils/mappers/goals';
-import { template } from '../../../../../utils/strings';
-import { WIDGET_TYPE_CLOCK } from '../../../../../constants/widgets';
-import { MAP_TYPE_TO_MANAGE_ROUTE } from '../../../../../constants/routes';
-import type { TWidgetClock } from '../../../../../types/widgets';
+import { auth } from '@/auth';
+import GoalRepository from '@/db/repositories/GoalRepository';
+import { mapGoalToWidget } from '@/utils/mappers/goals';
+import { template } from '@/utils/strings';
+import { WIDGET_TYPE_CLOCK } from '@/constants/widgets';
+import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
+import type { TWidgetClock } from '@/types/widgets';
 
 export const getData = async (slug: string): Promise<TWidgetClock> => {
   const goal = await GoalRepository.findBySlug(slug);

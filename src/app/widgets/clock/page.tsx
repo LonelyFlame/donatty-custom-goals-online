@@ -9,13 +9,25 @@ interface Props {
     infinite?: boolean;
     half?: boolean;
     delay?: number;
+    animationDuration?: number;
+    animationFunction?: string;
   }>;
 
 }
 
 
 const WidgetClock = async ({ searchParams }: Props) => {
-  const { goal, goalSecondary, image, infinite, leverage, half, delay } = await searchParams || {};
+  const {
+    goal,
+    goalSecondary,
+    image,
+    infinite,
+    leverage,
+    half,
+    delay,
+    animationDuration,
+    animationFunction,
+  } = await searchParams || {};
 
   const invalid = !goal || !image;
   if (invalid) {
@@ -31,6 +43,8 @@ const WidgetClock = async ({ searchParams }: Props) => {
       infinite={infinite}
       half={half}
       delay={delay}
+      animationDuration={animationDuration}
+      animationFunction={animationFunction}
     />
   )
 };

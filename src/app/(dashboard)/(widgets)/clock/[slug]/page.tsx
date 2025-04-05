@@ -1,4 +1,4 @@
-import Form from '../../../_components/Form';
+import Form from '@/app/(dashboard)/_components/Form';
 
 import Clock from '../_components/Clock';
 import { getData } from './utils';

@@ -2,9 +2,9 @@
 
 import { Form } from 'antd';
 
-import ImageUpload from '../../../../../../components/ui/ImageUpload';
-import translations from '../../../../../../translations';
-import type { TWidgetClockFormData } from '../../../../../../types/forms';
+import ImageUpload from '@/components/ui/ImageUpload';
+import translations from '@/translations';
+import type { TWidgetClockFormData } from '@/types/forms';
 
 const { forms: t } = translations;
 

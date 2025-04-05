@@ -1,11 +1,11 @@
-import { Col, Row, ColorPicker, Switch, Divider, } from 'antd';
+import { Col, Row, ColorPicker, Switch, Divider } from 'antd';
 
-import FormItem from '../../../../../../components/ui/FormItem';
-import Leverage from '../../../../../../components/ui/Leverage';
-import Goal from '../../../../../../components/ui/Goal';
-import translations from '../../../../../../translations';
+import FormItem from '@/components/ui/FormItem';
+import Leverage from '@/components/ui/Leverage';
+import Goal from '@/components/ui/Goal';
+import translations from '@/translations';
 
-import { TopInputs } from '../../../../_components/Form';
+import { TopInputs, AnimationSettings } from '@/app/(dashboard)/_components/Form';
 
 import Bubbles from './Bubbles';
 
@@ -15,6 +15,8 @@ const Inputs = () => {
   return (
     <>
       <TopInputs />
+
+      <AnimationSettings />
 
       <Row gutter={16}>
         <Col span={10}>

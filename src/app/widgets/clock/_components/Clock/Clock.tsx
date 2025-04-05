@@ -17,6 +17,8 @@ interface Props {
   infinite?: boolean;
   half?: boolean;
   delay?: number;
+  animationDuration?: number;
+  animationFunction?: string;
 }
 
 const Clock = ({
@@ -27,6 +29,8 @@ const Clock = ({
   infinite,
   half,
   delay = 0,
+  animationDuration,
+  animationFunction,
 }: Props) => {
   const isOpposite = Boolean(goalSecondary);
   const isInfinite = infinite && !half && !isOpposite;
@@ -55,6 +59,8 @@ const Clock = ({
     <div
       style={{
         '--image': `url(${image})`,
+        '--animation-duration': `${animationDuration}s`,
+        '--animation-function': animationFunction,
       } as CSSProperties}
       className={cn('container', styles.clock)}
     >

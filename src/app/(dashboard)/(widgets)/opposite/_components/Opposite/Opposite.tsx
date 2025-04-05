@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 
-import Preview from '../../../../../../components/common/Preview';
-import WidgetLink from '../../../../../../components/ui/WidgetLink';
+import Preview from '@/components/common/Preview';
+import WidgetLink from '@/components/ui/WidgetLink';
 
 import Inputs from '../Inputs';
 
