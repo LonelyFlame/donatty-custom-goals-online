@@ -28,7 +28,7 @@ const Preview = ({ type, variant = 'rectangle' }: Props) => {
   const form = Form.useFormInstance<TWidgetFormData>();
 
   const handleRefresh = () => {
-    const { color, colorSecondary, bubblesColor, image, imageSecondary, ...fields } = form.getFieldsValue();
+    const { color, colorSecondary, tertiaryColor, image, imageSecondary, ...fields } = form.getFieldsValue();
     const settings: Omit<TWidget, 'type'> = { ...fields };
 
     if (color) {
@@ -43,10 +43,10 @@ const Preview = ({ type, variant = 'rectangle' }: Props) => {
         : colorSecondary?.toHexString() || '';
     }
 
-    if (bubblesColor) {
-      settings.bubblesColor = typeof bubblesColor === 'string'
-        ? bubblesColor
-        : bubblesColor?.toHexString() || '';
+    if (tertiaryColor) {
+      settings.tertiaryColor = typeof tertiaryColor === 'string'
+        ? tertiaryColor
+        : tertiaryColor?.toHexString() || '';
     }
 
     if (image?.length) {

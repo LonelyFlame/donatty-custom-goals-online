@@ -8,7 +8,7 @@ interface Props {
     colorSecondary?: string;
     leverage?: number;
     liquid?: boolean;
-    bubblesColor?: string;
+    tertiaryColor?: string;
     delay?: number;
   }>;
 
@@ -16,7 +16,7 @@ interface Props {
 
 
 const WidgetOpposite = async ({ searchParams }: Props) => {
-  const { goal, goalSecondary, color, colorSecondary, leverage, liquid, bubblesColor, delay } = await searchParams || {};
+  const { goal, goalSecondary, color, colorSecondary, leverage, liquid, tertiaryColor, delay } = await searchParams || {};
 
   const missingPrimary = !goal || !color;
   const missingSecondary = goalSecondary && !colorSecondary;
@@ -32,7 +32,7 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
       colorSecondary={colorSecondary}
       leverage={leverage}
       liquid={liquid}
-      bubblesColor={bubblesColor}
+      tertiaryColor={tertiaryColor}
       delay={delay}
     />
   )

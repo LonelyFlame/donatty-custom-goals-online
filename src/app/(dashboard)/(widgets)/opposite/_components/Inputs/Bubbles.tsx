@@ -2,9 +2,9 @@
 
 import { ColorPicker, Form } from 'antd';
 
-import FormItem from '../../../../../../components/ui/FormItem';
-import translations from '../../../../../../translations';
-import type { TWidgetOppositeFormData } from '../../../../../../types/forms';
+import FormItem from '@/components/ui/FormItem';
+import translations from '@/translations';
+import type { TWidgetOppositeFormData } from '@/types/forms';
 
 const { forms: t } = translations;
 
@@ -18,7 +18,7 @@ const Bubbles = () => {
 
   return (
     <FormItem
-      name="bubblesColor"
+      name="tertiaryColor"
       label={t.bubbles.colorLabel}
       rules={[{ required: true, message: t.validation.required }]}
       initialValue="#808080"

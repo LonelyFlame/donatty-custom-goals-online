@@ -4,7 +4,7 @@
   height: calc(var(--size-bubbles) * 5vh);
   width: calc(var(--size-bubbles) * 5vh);
   border-radius: 50%;
-  box-shadow: var(--color-bubbles) 1px -1px 2px 1px;
+  box-shadow: var(--color-tertiary) 1px -1px 2px 1px;
 
   animation-name: shaking, surfacing;
   animation-duration: calc(var(--size-bubbles) * 2s), calc(var(--size-bubbles) * 10s);

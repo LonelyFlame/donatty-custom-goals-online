@@ -31,10 +31,10 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
   }
 
   if (data.liquid) {
-    const validate = validateColor(data.bubblesColor);
+    const validate = validateColor(data.tertiaryColor);
 
     if (isString(validate)) {
-      errors.bubblesColor = validate;
+      errors.tertiaryColor = validate;
     }
   }
 

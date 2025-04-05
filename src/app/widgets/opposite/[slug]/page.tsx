@@ -16,7 +16,7 @@ const WidgetOpposite = async ({ params }: Props) => {
     colorSecondary,
     leverage,
     liquid,
-    bubblesColor,
+    tertiaryColor,
     delay,
   } = await getData(slug);
 
@@ -28,7 +28,7 @@ const WidgetOpposite = async ({ params }: Props) => {
       colorSecondary={colorSecondary}
       leverage={leverage}
       liquid={liquid}
-      bubblesColor={bubblesColor}
+      tertiaryColor={tertiaryColor}
       delay={delay}
     />
   )

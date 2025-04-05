@@ -13,7 +13,7 @@ interface Props {
   colorSecondary?: string;
   leverage?: number;
   liquid?: boolean;
-  bubblesColor?: string;
+  tertiaryColor?: string;
   delay?: number;
 }
 
@@ -24,13 +24,13 @@ const Opposite = async ({
   colorSecondary,
   leverage,
   liquid,
-  bubblesColor,
+  tertiaryColor,
   delay,
 }: Props) => {
   return (
     <div
       style={{
-        '--color-bubbles': bubblesColor || 'gray',
+        '--color-tertiary': tertiaryColor || 'gray',
         '--color-primary': color || 'gray',
         '--color-secondary': colorSecondary || 'gray',
       } as CSSProperties}

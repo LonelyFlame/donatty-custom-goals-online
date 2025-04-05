@@ -8,6 +8,13 @@
       "when": 1740622584439,
       "tag": "0000_init_users_and_goals_tables",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1743820077030,
+      "tag": "0001_rename_bubblesColor_setting_to_tertiaryColor",
+      "breakpoints": true
     }
   ]
 }
