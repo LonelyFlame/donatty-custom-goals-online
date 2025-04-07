@@ -18,7 +18,7 @@ const Bubbles = () => {
 
   return (
     <FormItem
-      name="tertiaryColor"
+      name="colorTertiary"
       label={t.bubbles.colorLabel}
       rules={[{ required: true, message: t.validation.required }]}
       initialValue="#808080"

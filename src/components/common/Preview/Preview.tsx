@@ -19,16 +19,16 @@ const { components: { preview: t } } = translations;
 
 interface Props {
   type: TWidgetType;
-  variant?: 'square' | 'rectangle';
+  variant?: 'square' | 'rectangle' | 'default';
 }
 
-const Preview = ({ type, variant = 'rectangle' }: Props) => {
+const Preview = ({ type, variant = 'default' }: Props) => {
   const [src, setSrc] = useState('');
 
   const form = Form.useFormInstance<TWidgetFormData>();
 
   const handleRefresh = () => {
-    const { color, colorSecondary, tertiaryColor, image, imageSecondary, ...fields } = form.getFieldsValue();
+    const { color, colorSecondary, colorTertiary, image, imageSecondary, ...fields } = form.getFieldsValue();
     const settings: Omit<TWidget, 'type'> = { ...fields };
 
     if (color) {
@@ -43,10 +43,10 @@ const Preview = ({ type, variant = 'rectangle' }: Props) => {
         : colorSecondary?.toHexString() || '';
     }
 
-    if (tertiaryColor) {
-      settings.tertiaryColor = typeof tertiaryColor === 'string'
-        ? tertiaryColor
-        : tertiaryColor?.toHexString() || '';
+    if (colorTertiary) {
+      settings.colorTertiary = typeof colorTertiary === 'string'
+        ? colorTertiary
+        : colorTertiary?.toHexString() || '';
     }
 
     if (image?.length) {
@@ -72,7 +72,7 @@ const Preview = ({ type, variant = 'rectangle' }: Props) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className={cn({ [styles.variantSquare]: variant === 'square' })}>
+    <div className={cn({ [styles.variantSquare]: variant === 'square', [styles.variantRectangle]: variant === 'rectangle' })}>
       <div className={styles.iframeContainer}>
         {src && <iframe src={src} className={styles.iframe} />}
       </div>

@@ -11,9 +11,7 @@ interface Props {
     half?: boolean;
     delay?: number;
   }>;
-
 }
-
 
 const WidgetCircle = async ({ searchParams }: Props) => {
   const { goal, goalSecondary, image, imageSecondary, rotate, leverage, half, delay } = await searchParams || {};

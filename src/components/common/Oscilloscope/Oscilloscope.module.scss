@@ -1,0 +1,16 @@
+@use '@/theme';
+
+.oscilloscope {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 14 / 9;
+  margin: auto;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.display {
+  height: 100%;
+  width: 100%;
+}

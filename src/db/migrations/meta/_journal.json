@@ -15,6 +15,13 @@
       "when": 1743820077030,
       "tag": "0001_rename_bubblesColor_setting_to_tertiaryColor",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1743967302189,
+      "tag": "0002_rename_tertiaryColor_setting_to_colorTertiary",
+      "breakpoints": true
     }
   ]
 }

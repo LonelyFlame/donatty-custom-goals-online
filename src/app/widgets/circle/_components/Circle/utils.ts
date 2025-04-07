@@ -127,11 +127,3 @@ export const getDegrees = (percent: number, isHalf?: boolean, isOpposite?: boole
 
   return Math.round(Math.min(full * resultPercent, full));
 };
-
-const roundPercents = (percent: number): number => {
-  return Math.round(percent * 100) / 100;
-}
-
-export const matchPercents = (first: number, second: number): boolean => {
-  return roundPercents(first) === roundPercents(second);
-}

@@ -5,9 +5,10 @@ import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import type { CSSProperties } from 'react';
 
 import useGoals from '@/hooks/useGoals';
+import { matchPercents } from '@/utils/numbers';
 
 import Item from './Item';
-import { getPolygon, getDegrees, matchPercents } from './utils';
+import { getPolygon, getDegrees } from './utils';
 import styles from './Circle.module.scss';
 
 interface Props {

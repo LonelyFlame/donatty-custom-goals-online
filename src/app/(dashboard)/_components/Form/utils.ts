@@ -3,7 +3,7 @@ import type { TWidgetType } from '@/types/widgets';
 import type { TWidgetFormData } from '@/types/forms';
 
 export const postSubmit = async (
-  { color, colorSecondary, tertiaryColor, image, imageSecondary, ...restData }: TWidgetFormData,
+  { color, colorSecondary, colorTertiary, image, imageSecondary, ...restData }: TWidgetFormData,
   type: TWidgetType,
   slug?: string,
 ) => {
@@ -15,18 +15,18 @@ export const postSubmit = async (
     ? colorSecondary
     : colorSecondary?.toHexString();
 
-  let tertiaryColorValue: undefined | string;
-  if (restData.liquid && tertiaryColor) {
-    tertiaryColorValue = typeof tertiaryColor === 'string'
-      ? tertiaryColor
-      : tertiaryColor?.toHexString();
+  let colorTertiaryValue: undefined | string;
+  if (colorTertiary) {
+    colorTertiaryValue = typeof colorTertiary === 'string'
+      ? colorTertiary
+      : colorTertiary?.toHexString();
   }
 
   const data = {
     ...restData,
     color: colorValue,
     colorSecondary: colorSecondaryValue,
-    tertiaryColor: tertiaryColorValue,
+    colorTertiary: colorTertiaryValue,
     image: image?.at(0)?.url,
     imageSecondary: imageSecondary?.at(0)?.url,
     slug,

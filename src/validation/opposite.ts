@@ -3,7 +3,7 @@ import isString from 'lodash/isString';
 
 import { TWidgetOpposite } from '@/types/widgets';
 
-import { validateGoal, validateColor } from './validators';
+import { goalValidator, colorValidator } from './validators';
 
 export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, string> => {
   const errors: Record<string, string> = {};
@@ -12,12 +12,12 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
     errors.goal = 'required';
   }
 
-  const goalValidate = validateGoal(data.goal);
+  const goalValidate = goalValidator(data.goal);
   if (isString(goalValidate)) {
     errors.goal = goalValidate;
   }
 
-  const goalSecondaryValidate = validateGoal(data.goalSecondary);
+  const goalSecondaryValidate = goalValidator(data.goalSecondary);
   if (isString(goalSecondaryValidate)) {
     errors.goalSecondary = goalSecondaryValidate;
   }
@@ -31,19 +31,19 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
   }
 
   if (data.liquid) {
-    const validate = validateColor(data.tertiaryColor);
+    const validate = colorValidator(data.colorTertiary);
 
     if (isString(validate)) {
-      errors.tertiaryColor = validate;
+      errors.colorTertiary = validate;
     }
   }
 
-  const colorValidate = validateColor(data.color);
+  const colorValidate = colorValidator(data.color);
   if (isString(colorValidate)) {
     errors.color = colorValidate;
   }
 
-  const colorSecondaryValidate = validateColor(data.colorSecondary);
+  const colorSecondaryValidate = colorValidator(data.colorSecondary);
   if (isString(colorSecondaryValidate)) {
     errors.colorSecondary = colorSecondaryValidate;
   }

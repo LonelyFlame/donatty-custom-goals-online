@@ -13,14 +13,16 @@ export interface TWidget {
   goalSecondary?: string;
   color?: string;
   colorSecondary?: string;
+  colorTertiary?: string;
   image?: string;
   imageSecondary?: string;
   leverage?: number;
   rotate?: boolean;
   half?: boolean;
   liquid?: boolean;
-  tertiaryColor?: string;
   infinite?: boolean;
+  fade?: boolean;
+  variant?: string;
   animationDuration?: number;
   animationFunction?: string;
 }
@@ -34,7 +36,7 @@ export interface TWidgetOpposite extends TWidget {
   imageSecondary?: string;
   leverage?: number;
   liquid?: boolean;
-  tertiaryColor?: string;
+  colorTertiary?: string;
 }
 
 export interface TWidgetClock extends TWidget {
@@ -55,3 +57,16 @@ export interface TWidgetCircle extends TWidget {
   rotate?: boolean;
   half?: boolean;
 }
+
+export interface TWidgetOscilloscope extends TWidget {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_OSCILLOSCOPE;
+  goalSecondary?: string;
+  color: string;
+  colorSecondary: string;
+  colorTertiary: string;
+  leverage?: number;
+  fade?: boolean;
+  variant: TOscilloscopeVariants;
+}
+
+export type TOscilloscopeVariants = 'sin' | 'heart';

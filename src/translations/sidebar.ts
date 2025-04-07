@@ -10,6 +10,7 @@ const translations = {
     opposite: widgets.opposite.title,
     clock: widgets.clock.title,
     circle: widgets.circle.title,
+    oscilloscope: widgets.oscilloscope.title,
   },
 };
 

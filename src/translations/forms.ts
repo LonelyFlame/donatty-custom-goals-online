@@ -36,6 +36,15 @@ const translations = {
   color: {
     label: 'Цвет',
   },
+  colorEmpty: {
+    label: 'Цвет пустого',
+  },
+  colorFill: {
+    label: 'Цвет заполненного',
+  },
+  colorFull: {
+    label: 'Цвет при 100%',
+  },
   bubbles: {
     colorLabel: 'Цвет пузырьков',
   },
@@ -53,6 +62,12 @@ const translations = {
   rotate: {
     label: 'С поворотом?',
     hint: 'Должна ли картинка поворачиваться вслед за заполнением цели или быть статичной',
+  },
+  fade: {
+    label: 'Fade-in-out',
+  },
+  plot: {
+    label: 'График',
   },
   submit: {
     create: 'Создать',

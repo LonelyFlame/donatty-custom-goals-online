@@ -18,7 +18,7 @@ const WidgetOpposite = async ({ params }: Props) => {
     colorSecondary,
     leverage,
     liquid,
-    tertiaryColor,
+    colorTertiary,
     delay,
     animationDuration,
     animationFunction,
@@ -32,7 +32,7 @@ const WidgetOpposite = async ({ params }: Props) => {
       colorSecondary={colorSecondary}
       leverage={leverage}
       liquid={liquid}
-      tertiaryColor={tertiaryColor}
+      colorTertiary={colorTertiary}
       delay={delay}
       animationDuration={!animationDuration && liquid ? LIQUID_DEFAULT_ANIMATION_DURATION : animationDuration}
       animationFunction={!animationFunction && liquid ? LIQUID_DEFAULT_ANIMATION_FUNCTION : animationFunction}

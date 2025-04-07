@@ -13,7 +13,7 @@ interface Props {
   colorSecondary?: string;
   leverage?: number;
   liquid?: boolean;
-  tertiaryColor?: string;
+  colorTertiary?: string;
   delay?: number;
   animationDuration?: number;
   animationFunction?: string;
@@ -26,7 +26,7 @@ const Opposite = async ({
   colorSecondary,
   leverage,
   liquid,
-  tertiaryColor,
+  colorTertiary,
   delay,
   animationDuration,
   animationFunction,
@@ -34,7 +34,7 @@ const Opposite = async ({
   return (
     <div
       style={{
-        '--color-tertiary': tertiaryColor || 'gray',
+        '--color-tertiary': colorTertiary || 'gray',
         '--color-primary': color || 'gray',
         '--color-secondary': colorSecondary || 'gray',
         '--animation-duration': `${animationDuration}s`,

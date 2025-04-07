@@ -1,4 +1,6 @@
-export const validateGoal = (value?: string, required: boolean = true): true|string => {
+import { validateColor } from './colors';
+
+export const goalValidator = (value?: string, required: boolean = true): true|string => {
   if (!value) {
     return !required || 'required';
   }
@@ -18,13 +20,13 @@ export const validateGoal = (value?: string, required: boolean = true): true|str
   return true;
 };
 
-const colorFormatRegexp = /^#[\dabcdefABCDEF]{6}$/;
-export const validateColor = (value?: string): true|string => {
+export const colorValidator = (value?: string): true|string => {
   if (!value) {
     return 'required';
   }
 
-  if (!colorFormatRegexp.test(value)) {
+  const isValid = validateColor(value);
+  if (!isValid) {
     return 'colorFormat';
   }
 

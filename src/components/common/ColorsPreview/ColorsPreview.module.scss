@@ -1,0 +1,7 @@
+@use "@/theme";
+
+.container {
+  height: theme.$spacing-xxl24;
+  display: grid;
+  grid-auto-flow: column;
+}

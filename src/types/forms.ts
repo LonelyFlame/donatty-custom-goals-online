@@ -1,20 +1,20 @@
 import type { UploadFile } from 'antd';
 
 import type { TAntdColorValue } from './inputs';
-import type { TWidgetOpposite, TWidgetClock, TWidgetCircle, TWidget } from './widgets';
+import { TWidgetOpposite, TWidgetClock, TWidgetCircle, TWidget, TWidgetOscilloscope } from './widgets';
 
-export interface TWidgetFormData extends Omit<TWidget, 'type' | 'color' | 'colorSecondary' | 'tertiaryColor' | 'image' | 'imageSecondary'> {
+export interface TWidgetFormData extends Omit<TWidget, 'type' | 'color' | 'colorSecondary' | 'colorTertiary' | 'image' | 'imageSecondary'> {
   color?: string | TAntdColorValue;
   colorSecondary?: string | TAntdColorValue;
-  tertiaryColor?: TAntdColorValue;
+  colorTertiary?: TAntdColorValue;
   image?: [UploadFile];
   imageSecondary?: [UploadFile];
 }
 
-export interface TWidgetOppositeFormData extends Omit<TWidgetOpposite, 'type' | 'color' | 'colorSecondary' | 'tertiaryColor'> {
+export interface TWidgetOppositeFormData extends Omit<TWidgetOpposite, 'type' | 'color' | 'colorSecondary' | 'colorTertiary'> {
   color: string | TAntdColorValue;
   colorSecondary: string | TAntdColorValue;
-  tertiaryColor?: TAntdColorValue;
+  colorTertiary?: TAntdColorValue;
 }
 
 export interface TWidgetClockFormData extends Omit<TWidgetClock, 'type' | 'image'> {
@@ -24,4 +24,10 @@ export interface TWidgetClockFormData extends Omit<TWidgetClock, 'type' | 'image
 export interface TWidgetCircleFormData extends Omit<TWidgetCircle, 'type' | 'image' | 'imageSecondary'> {
   image: [UploadFile];
   imageSecondary?: [UploadFile];
+}
+
+export interface TWidgetOscilloscopeFormData extends Omit<TWidgetOscilloscope, 'type' | 'color' | 'colorSecondary' | 'colorTertiary'> {
+  color: string | TAntdColorValue;
+  colorSecondary: string | TAntdColorValue;
+  colorTertiary: string | TAntdColorValue;
 }

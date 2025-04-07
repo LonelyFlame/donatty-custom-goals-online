@@ -4,9 +4,6 @@ import {
   LogoutOutlined,
   HomeOutlined,
   PlusSquareOutlined,
-  BoxPlotFilled,
-  ClockCircleOutlined,
-  PieChartOutlined,
   QuestionCircleOutlined,
 } from '@ant-design/icons';
 import type { Session } from 'next-auth';
@@ -14,6 +11,7 @@ import type { MenuProps } from 'antd';
 
 import { template } from '@/utils/strings';
 import { ROUTES } from '@/constants/routes';
+import { MAP_TYPE_TO_ICON_COMPONENT } from '@/constants/widgets';
 import translations from '@/translations';
 
 import LogIn from './LogIn';
@@ -53,7 +51,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
       children: [
         {
           key: 'create_opposite',
-          icon: createElement(BoxPlotFilled),
+          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.opposite),
           label: createElement(Item, {
             title: t.create.opposite,
             href: template(ROUTES.OPPOSITE, { id: '' }),
@@ -61,7 +59,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
         },
         {
           key: 'create_clock',
-          icon: createElement(ClockCircleOutlined),
+          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.clock),
           label: createElement(Item, {
             title: t.create.clock,
             href: template(ROUTES.CLOCK, { id: '' }),
@@ -69,10 +67,18 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
         },
         {
           key: 'create_circle',
-          icon: createElement(PieChartOutlined),
+          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.circle),
           label: createElement(Item, {
             title: t.create.circle,
             href: template(ROUTES.CIRCLE, { id: '' }),
+          }),
+        },
+        {
+          key: 'create_oscilloscope',
+          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.oscilloscope),
+          label: createElement(Item, {
+            title: t.create.oscilloscope,
+            href: template(ROUTES.OSCILLOSCOPE, { id: '' }),
           }),
         },
       ],

@@ -3,7 +3,7 @@
 import FormItem from '@/components/ui/FormItem';
 import BlurredInput from '@/components/ui/BlurredInput';
 import translations from '@/translations';
-import { validateGoal } from '@/validation/validators';
+import { goalValidator } from '@/validation/validators';
 
 interface Props {
   name?: string;
@@ -21,7 +21,7 @@ const Goal = ({ name = 'goal', required }: Props) => {
         { required: required, message: t.required },
         {
           validator: (_, value: string) => {
-            const isValid = validateGoal(value, false);
+            const isValid = goalValidator(value, false);
 
             if (isValid === true) {
               return Promise.resolve();

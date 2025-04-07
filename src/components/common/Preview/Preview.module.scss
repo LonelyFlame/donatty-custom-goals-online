@@ -13,6 +13,14 @@
   }
 }
 
+.variantRectangle {
+  .iframeContainer {
+    width: 400px;
+    aspect-ratio: 14 / 9;
+    margin: auto;
+  }
+}
+
 .iframe {
   width: 100%;
   height: 100%;
