@@ -1,6 +1,7 @@
-import { WIDGET_TYPES, GOALS_TYPES, ALERTS_TYPES } from '@/constants/widgets';
+import { TYPES, WIDGET_TYPES, GOALS_TYPES, ALERTS_TYPES } from '@/constants/widgets';
 import type { ValueOf } from '@/types/utils';
 
+export type TType = ValueOf<typeof TYPES>;
 export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
 export type TGoalType = ValueOf<typeof GOALS_TYPES>;
 export type TAlertType = ValueOf<typeof ALERTS_TYPES>;

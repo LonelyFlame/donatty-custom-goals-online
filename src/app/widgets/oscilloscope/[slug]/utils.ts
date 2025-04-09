@@ -15,7 +15,7 @@ export const getData = async (slug: string): Promise<TWidgetOscilloscope> => {
 
   const data = mapGoalToWidget(goal);
   if (data.type !== WIDGET_TYPE_OSCILLOSCOPE) {
-    const route = getWidgetLink(slug, false);
+    const route = getWidgetLink(slug, false, 'goal');
 
     return redirect(route);
   }

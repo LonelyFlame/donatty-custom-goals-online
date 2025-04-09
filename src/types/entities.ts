@@ -6,4 +6,4 @@ export type TGoal = typeof goals.$inferSelect;
 export type TGoalCompact = Pick<TGoal, 'slug' | 'name' | 'type'>;
 
 export type TAlert = typeof alerts.$inferSelect;
-export type TAlertCompact = Pick<TGoal, 'slug' | 'name' | 'type'>;
+export type TAlertCompact = Pick<TAlert, 'slug' | 'name' | 'type'>;

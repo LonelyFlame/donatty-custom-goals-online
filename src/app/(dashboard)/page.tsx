@@ -1,7 +1,9 @@
+import { Row, Col } from 'antd';
+
 import { auth } from '@/auth';
 
 import Table from './_components/Table';
-import { getData } from './utils';
+import { getUser, getGoals, getAlerts } from './utils';
 import styles from './page.module.scss';
 
 export default async function Page() {
@@ -19,9 +21,18 @@ export default async function Page() {
     );
   }
 
-  const data = await getData(session.user.email);
+  const user = await getUser(session.user.email);
+  const goals = await getGoals(user);
+  const alerts = await getAlerts(user);
 
   return (
-    <Table data={data} />
+    <Row gutter={[16, 16]}>
+      <Col span={12}>
+        <Table data={goals} />
+      </Col>
+      <Col span={12}>
+        <Table data={alerts} />
+      </Col>
+    </Row>
   );
 }

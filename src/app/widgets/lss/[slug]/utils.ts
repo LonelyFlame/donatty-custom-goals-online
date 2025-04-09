@@ -15,7 +15,7 @@ export const getData = async (slug: string): Promise<TWidgetLSS> => {
 
   const data = mapAlertToWidget(alert);
   if (data.type !== WIDGET_TYPE_LSS) {
-    const route = getWidgetLink(slug, false);
+    const route = getWidgetLink(slug, false, 'alert');
 
     return redirect(route);
   }

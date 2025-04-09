@@ -9,21 +9,23 @@ import FormItem from '@/components/ui/FormItem';
 import BlurredInput from '@/components/ui/BlurredInput';
 import SuccessTooltip from '@/components/ui/SuccessTooltip';
 import translations from '@/translations';
+import type { TType } from '@/types/widgets';
 
 interface Props {
   slug: string;
+  type: TType;
 }
 
 const copyIcon = <CopyOutlined />;
 
 const { components: { widgetLink: t } } = translations;
 
-const WidgetLink = ({ slug }: Props) => {
+const WidgetLink = ({ slug, type }: Props) => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   const timeoutRef = useRef<number|undefined>(undefined);
 
-  const widgetLink = useWidgetLink(slug);
+  const widgetLink = useWidgetLink(slug, type);
 
   const handleCopy = async () => {
     await widgetLink.copy();

@@ -15,7 +15,7 @@ export const getData = async (slug: string): Promise<TWidgetCircle> => {
 
   const data = mapGoalToWidget(goal);
   if (data.type !== WIDGET_TYPE_CIRCLE) {
-    const route = getWidgetLink(slug, false);
+    const route = getWidgetLink(slug, false, 'goal');
 
     return redirect(route);
   }

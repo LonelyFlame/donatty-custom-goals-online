@@ -12,7 +12,7 @@ import type { MenuProps } from 'antd';
 
 import { template } from '@/utils/strings';
 import { ROUTES } from '@/constants/routes';
-import { MAP_TYPE_TO_ICON_COMPONENT } from '@/constants/widgets';
+import { MAP_WIDGET_TYPE_TO_ICON_COMPONENT } from '@/constants/widgets';
 import translations from '@/translations';
 
 import LogIn from './LogIn';
@@ -52,7 +52,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
       children: [
         {
           key: 'create_opposite',
-          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.opposite),
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.opposite),
           label: createElement(Item, {
             title: t.goals.opposite,
             href: template(ROUTES.OPPOSITE, { id: '' }),
@@ -60,7 +60,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
         },
         {
           key: 'create_clock',
-          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.clock),
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.clock),
           label: createElement(Item, {
             title: t.goals.clock,
             href: template(ROUTES.CLOCK, { id: '' }),
@@ -68,7 +68,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
         },
         {
           key: 'create_circle',
-          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.circle),
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.circle),
           label: createElement(Item, {
             title: t.goals.circle,
             href: template(ROUTES.CIRCLE, { id: '' }),
@@ -76,7 +76,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
         },
         {
           key: 'create_oscilloscope',
-          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.oscilloscope),
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.oscilloscope),
           label: createElement(Item, {
             title: t.goals.oscilloscope,
             href: template(ROUTES.OSCILLOSCOPE, { id: '' }),
@@ -91,7 +91,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
       children: [
         {
           key: 'create_lss',
-          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.lss),
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.lss),
           label: createElement(Item, {
             title: t.alerts.lss,
             href: template(ROUTES.LSS, { id: '' }),

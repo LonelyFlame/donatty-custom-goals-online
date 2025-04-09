@@ -4,10 +4,10 @@ import { useMemo, useCallback } from 'react';
 
 import { getWidgetLink } from '@/utils/widgets';
 
-const useWidgetLink = (slug: string) => {
+const useWidgetLink = (slug: string, type: 'goal' | 'alert') => {
   const link = useMemo(() => {
-    return getWidgetLink(slug);
-  }, [slug]);
+    return getWidgetLink(slug, true, type);
+  }, [slug, type]);
 
   const copy = useCallback(async (): Promise<void> => {
     if (!navigator) return;

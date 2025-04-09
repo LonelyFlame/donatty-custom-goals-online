@@ -15,7 +15,7 @@ const Lss = ({ slug }: Props) => {
     <div>
       <Row gutter={16}>
         <Col span={12}>
-          {!!slug && <WidgetLink slug={slug} />}
+          {!!slug && <WidgetLink slug={slug} type="alert" />}
           <Inputs />
         </Col>
         <Col span={12}>
