@@ -4,14 +4,14 @@ import first from 'lodash/first';
 
 import db from '@/db';
 import { goals } from '@/db/schema';
-import type { TGoal, TUser } from '@/types/entities';
-import type { TWidget } from '@/types/widgets';
+import type { TGoal as TGoalEntities, TUser } from '@/types/entities';
+import type { TGoal } from '@/types/widgets';
 
 class GoalRepository {
   public static create = async (
     userId: number,
-    { type, name, ...settings }: Omit<TWidget, 'slug'>,
-  ): Promise<TGoal | undefined> => {
+    { type, name, ...settings }: Omit<TGoal, 'slug'>,
+  ): Promise<TGoalEntities | undefined> => {
     const fields: typeof goals.$inferInsert = {
       name,
       type,
@@ -20,22 +20,22 @@ class GoalRepository {
       settings: JSON.stringify(settings),
     };
 
-    return db.insert(goals).values(fields).returning().then(first<TGoal>);
+    return db.insert(goals).values(fields).returning().then(first<TGoalEntities>);
   };
 
   public static update = async (
     slug: string,
-    { type, name, ...settings }: Omit<TWidget, 'slug'>,
-  ): Promise<TGoal | undefined> => {
+    { type, name, ...settings }: Omit<TGoal, 'slug'>,
+  ): Promise<TGoalEntities | undefined> => {
     const fields = {
       name,
       settings: JSON.stringify(settings),
     };
 
-    return db.update(goals).set(fields).where(eq(goals.slug, slug)).returning().then(first<TGoal>);
+    return db.update(goals).set(fields).where(eq(goals.slug, slug)).returning().then(first<TGoalEntities>);
   };
 
-  public static findBySlug = async (slug: string): Promise<(TGoal & { user: TUser }) | undefined> => {
+  public static findBySlug = async (slug: string): Promise<(TGoalEntities & { user: TUser }) | undefined> => {
     return db.query.goals.findFirst({
       where: eq(goals.slug, slug),
       with: {
@@ -44,7 +44,7 @@ class GoalRepository {
     });
   };
 
-  public static getByUser = async (userId: number): Promise<TGoal[]> => {
+  public static getByUser = async (userId: number): Promise<TGoalEntities[]> => {
     return db.query.goals.findMany({
       where: eq(goals.userId, userId),
     });
