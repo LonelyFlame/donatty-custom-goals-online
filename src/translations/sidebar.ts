@@ -6,11 +6,15 @@ const translations = {
   home: 'Главная',
   faq: 'F.A.Q.',
   goals: {
-    title: 'Создать',
+    title: 'Сборы',
     opposite: widgets.opposite.title,
     clock: widgets.clock.title,
     circle: widgets.circle.title,
     oscilloscope: widgets.oscilloscope.title,
+  },
+  alerts: {
+    title: 'Алерты',
+    lss: widgets.lss.title,
   },
 };
 

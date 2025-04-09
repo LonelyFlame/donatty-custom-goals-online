@@ -3,6 +3,7 @@ import {
   WIDGET_TYPE_OPPOSITE,
   WIDGET_TYPE_CIRCLE,
   WIDGET_TYPE_OSCILLOSCOPE,
+  WIDGET_TYPE_LSS,
 } from '@/constants/widgets';
 import { TWidgets } from '@/types/widgets';
 
@@ -39,6 +40,10 @@ export const validateWidget = (data: TWidgets): { isValid: boolean; errors: Reco
       break;
     }
     case WIDGET_TYPE_OSCILLOSCOPE: {
+      // TODO
+      break;
+    }
+    case WIDGET_TYPE_LSS: {
       // TODO
       break;
     }

@@ -1,5 +1,15 @@
+import { TDWidgetType } from './types/widget';
+
 export const API_BASE_URI = 'https://api.donatty.com';
 export const BASE_URI = 'https://widgets.donatty.com';
+
+export const PATHNAMES = ['goal', 'events', 'donations'];
+export const WIDGET_TYPES: TDWidgetType[] = ['GOAL', 'EVENTS', 'ALERT'];
+export const WIDGET_TYPES_TO_PATHNAMES: Record<TDWidgetType, string> = {
+  GOAL: 'goal',
+  EVENTS: 'events',
+  ALERT: 'donations',
+};
 
 export const AUTH_RETRY_LIMIT = 5;
 

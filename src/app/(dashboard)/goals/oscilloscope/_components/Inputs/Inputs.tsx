@@ -2,11 +2,12 @@ import { Col, Row, ColorPicker, Switch, Select, Divider } from 'antd';
 
 import FormItem from '@/components/ui/FormItem';
 import Leverage from '@/components/ui/Leverage';
-import Goal from '@/components/ui/Goal';
+import WidgetInput from '@/components/ui/WidgetInput';
 import ColorsPreview from '@/components/common/ColorsPreview';
 import translations from '@/translations';
 
 import { TopInputs } from '@/app/(dashboard)/_components/Form';
+import { VARIANTS_OPTIONS } from './constants';
 
 const { forms: t } = translations;
 
@@ -36,7 +37,7 @@ const Inputs = () => {
                 rules={[{ required: true, message: t.validation.required }]}
 
               >
-                <Select options={[{ label: 'ЭКГ', value: 'heart' }, { label: 'Синуслида', value: 'sin' }]} />
+                <Select options={VARIANTS_OPTIONS} />
               </FormItem>
             </Col>
           </Row>
@@ -44,25 +45,25 @@ const Inputs = () => {
       </Row>
 
       <Row gutter={16}>
-        <Col span={7}>
+        <Col span={8}>
           <FormItem
             name="color"
-            label={t.colorEmpty.label}
+            label={t.colorMin.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
           </FormItem>
         </Col>
-        <Col span={10}>
+        <Col span={8}>
           <FormItem
             name="colorSecondary"
-            label={t.colorFill.label}
+            label={t.colorMax.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
           </FormItem>
         </Col>
-        <Col span={7}>
+        <Col span={8}>
           <FormItem
             name="colorTertiary"
             label={t.colorFull.label}
@@ -81,7 +82,7 @@ const Inputs = () => {
             {t.leverage.negative}
           </Divider>
 
-          <Goal name="goalSecondary" />
+          <WidgetInput widgetType="GOAL" name="goalSecondary" />
         </Col>
 
         <Col span={12}>
@@ -89,7 +90,7 @@ const Inputs = () => {
             {t.leverage.positive}
           </Divider>
 
-          <Goal required />
+          <WidgetInput widgetType="GOAL" name="goal" required />
         </Col>
       </Row>
     </>

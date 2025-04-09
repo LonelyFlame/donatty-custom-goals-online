@@ -1,18 +1,21 @@
 'use client';
 
+import type { TDWidgetType } from '@/libs/dontatty/types/widget';
+
 import FormItem from '@/components/ui/FormItem';
 import BlurredInput from '@/components/ui/BlurredInput';
 import translations from '@/translations';
-import { goalValidator } from '@/validation/validators';
+import { widgetValidator } from '@/validation/validators';
 
 interface Props {
-  name?: string;
+  name: string;
+  widgetType: TDWidgetType,
   required?: boolean;
 }
 
-const { forms: { goal: t } } = translations;
+const { forms: { widget: t } } = translations;
 
-const Goal = ({ name = 'goal', required }: Props) => {
+const WidgetInput = ({ name, required, widgetType }: Props) => {
   return (
     <FormItem
       name={name}
@@ -21,7 +24,7 @@ const Goal = ({ name = 'goal', required }: Props) => {
         { required: required, message: t.required },
         {
           validator: (_, value: string) => {
-            const isValid = goalValidator(value, false);
+            const isValid = widgetValidator(widgetType, value, false);
 
             if (isValid === true) {
               return Promise.resolve();
@@ -37,4 +40,4 @@ const Goal = ({ name = 'goal', required }: Props) => {
   );
 };
 
-export default Goal;
+export default WidgetInput;

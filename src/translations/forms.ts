@@ -15,10 +15,10 @@ const translations = {
     label: 'Задержка',
     placeholder: '0',
   },
-  goal: {
-    label: 'Ссылка на сбор',
+  widget: {
+    label: 'Ссылка на виджет',
     placeholder: 'https://widgets.donatty.com/goal/?ref=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&token=ffffffffffffffffffffffffffffff',
-    required: 'Ссылка на сбор обязательна для заполнения',
+    required: 'Ссылка на виджет обязательна для заполнения',
     format: 'Недействительная ссылка',
   },
   animationDuration: {
@@ -37,10 +37,13 @@ const translations = {
     label: 'Цвет',
   },
   colorEmpty: {
-    label: 'Цвет пустого',
+    label: 'Цвет при 0%',
   },
-  colorFill: {
-    label: 'Цвет заполненного',
+  colorMin: {
+    label: 'Цвет минимума',
+  },
+  colorMax: {
+    label: 'Цвет максимума',
   },
   colorFull: {
     label: 'Цвет при 100%',
@@ -68,6 +71,21 @@ const translations = {
   },
   plot: {
     label: 'График',
+    sin: 'Синусоида',
+    heart: 'ЭКГ',
+  },
+  maxValue: {
+    label: 'Макс. значение',
+    placeholder: 'В рублях',
+  },
+  lifetime: {
+    label: 'Время жизни',
+    placeholder: 'В минутах',
+    hint: {
+      units: 'В минутах',
+      description: 'Время, за которое "жизнь" падает со 100% до 0%',
+      ticks: 'Уровень жизни будет уменьшать на 1% за шаг',
+    },
   },
   submit: {
     create: 'Создать',

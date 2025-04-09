@@ -1,13 +1,13 @@
 import {
   TDAlertMessageBits,
   TDAlertMessageDonate,
-  TDAlertMessageFollow,
   TDAlertMessageGiftChannel,
   TDAlertMessageGiftViewer,
   TDAlertMessageHypeTrain,
-  TDAlertMessagePoints, TDAlertMessageRaid,
+  TDAlertMessagePoints,
+  TDAlertMessageRaid,
   TDAlertMessageSubscribe,
-} from '../libs/dontatty/types/alert';
+} from '@/libs/dontatty/types/alert';
 
 export interface TUseGoals {
   goal: string;

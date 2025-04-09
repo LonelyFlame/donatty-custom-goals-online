@@ -4,6 +4,7 @@ import {
   LogoutOutlined,
   HomeOutlined,
   PlusSquareOutlined,
+  PlusCircleOutlined,
   QuestionCircleOutlined,
 } from '@ant-design/icons';
 import type { Session } from 'next-auth';
@@ -79,6 +80,21 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
           label: createElement(Item, {
             title: t.goals.oscilloscope,
             href: template(ROUTES.OSCILLOSCOPE, { id: '' }),
+          }),
+        },
+      ],
+    },
+    {
+      key: 'alerts',
+      icon: createElement(PlusCircleOutlined),
+      label: t.alerts.title,
+      children: [
+        {
+          key: 'create_lss',
+          icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.lss),
+          label: createElement(Item, {
+            title: t.alerts.lss,
+            href: template(ROUTES.LSS, { id: '' }),
           }),
         },
       ],

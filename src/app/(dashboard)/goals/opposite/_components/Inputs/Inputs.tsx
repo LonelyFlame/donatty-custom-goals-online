@@ -2,7 +2,7 @@ import { Col, Row, ColorPicker, Switch, Divider } from 'antd';
 
 import FormItem from '@/components/ui/FormItem';
 import Leverage from '@/components/ui/Leverage';
-import Goal from '@/components/ui/Goal';
+import WidgetInput from '@/components/ui/WidgetInput';
 import translations from '@/translations';
 
 import { TopInputs, AnimationSettings } from '@/app/(dashboard)/_components/Form';
@@ -43,7 +43,7 @@ const Inputs = () => {
             {t.leverage.negative}
           </Divider>
 
-          <Goal name="goalSecondary" required />
+          <WidgetInput widgetType="GOAL" name="goalSecondary" required />
 
           <FormItem
             name="colorSecondary"
@@ -59,7 +59,7 @@ const Inputs = () => {
             {t.leverage.positive}
           </Divider>
 
-          <Goal required />
+          <WidgetInput widgetType="GOAL" name="goal" required />
 
           <FormItem
             name="color"

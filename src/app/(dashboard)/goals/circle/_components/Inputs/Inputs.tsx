@@ -3,7 +3,7 @@ import { Col, Row, Switch, Divider } from 'antd';
 import Hint from '@/components/ui/Hint';
 import FormItem from '@/components/ui/FormItem';
 import Leverage from '@/components/ui/Leverage';
-import Goal from '@/components/ui/Goal';
+import WidgetInput from '@/components/ui/WidgetInput';
 import ImageUpload from '@/components/ui/ImageUpload';
 import translations from '@/translations';
 
@@ -64,7 +64,7 @@ const Inputs = () => {
 
           <ImageSecondary />
 
-          <Goal name="goalSecondary" />
+          <WidgetInput widgetType="GOAL" name="goalSecondary" />
         </Col>
 
         <Col span={12}>
@@ -74,7 +74,7 @@ const Inputs = () => {
 
           <ImageUpload label={t.image.label} name="image" required />
 
-          <Goal required />
+          <WidgetInput widgetType="GOAL" name="goal" required />
         </Col>
       </Row>
     </>
