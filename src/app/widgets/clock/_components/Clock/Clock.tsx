@@ -16,7 +16,7 @@ interface Props {
   leverage?: number;
   infinite?: boolean;
   half?: boolean;
-  delay?: number;
+  timer?: number;
   animationDuration?: number;
   animationFunction?: string;
 }
@@ -28,7 +28,7 @@ const Clock = ({
   leverage,
   infinite,
   half,
-  delay = 0,
+  timer = 0,
   animationDuration,
   animationFunction,
 }: Props) => {
@@ -48,19 +48,19 @@ const Clock = ({
       const degrees = calculateDegrees(percent, half, isOpposite);
 
       setDegrees(degrees);
-    }, delay * 1000);
+    }, timer * 1000);
 
     return () => {
       clearTimeout(timeoutRef.current);
     };
-  }, [percent, delay, half, isOpposite]);
+  }, [percent, timer, half, isOpposite]);
 
   return (
     <div
       style={{
         '--image': `url(${image})`,
-        '--animation-duration': `${animationDuration}s`,
-        '--animation-function': animationFunction,
+        ...(!!animationDuration && { '--animation-duration': `${animationDuration}s` }),
+        ...(!!animationFunction && { '--animation-function': animationFunction }),
       } as CSSProperties}
       className={cn('container', styles.clock)}
     >

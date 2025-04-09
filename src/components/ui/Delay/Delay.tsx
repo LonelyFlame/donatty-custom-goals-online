@@ -11,7 +11,7 @@ const addon = <Popover />
 
 const Delay = () => {
   return (
-    <FormItem name="delay" label={t.label}>
+    <FormItem name="timer" label={t.label}>
       <InputNumber placeholder={t.placeholder} addonAfter={addon}/>
     </FormItem>
   );

@@ -11,7 +11,7 @@ interface Props {
     leverage?: number;
     liquid?: boolean;
     colorTertiary?: string;
-    delay?: number;
+    timer?: number;
     animationDuration?: number;
     animationFunction?: string;
   }>;
@@ -28,7 +28,7 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
     leverage,
     liquid,
     colorTertiary,
-    delay,
+    timer,
     animationDuration,
     animationFunction,
   } = await searchParams || {};
@@ -48,7 +48,7 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
       leverage={leverage}
       liquid={liquid}
       colorTertiary={colorTertiary}
-      delay={delay}
+      timer={timer}
       animationDuration={!animationDuration && liquid ? LIQUID_DEFAULT_ANIMATION_DURATION : animationDuration}
       animationFunction={!animationFunction && liquid ? LIQUID_DEFAULT_ANIMATION_FUNCTION : animationFunction}
     />

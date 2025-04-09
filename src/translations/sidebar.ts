@@ -5,12 +5,16 @@ const translations = {
   logout: 'Выйти',
   home: 'Главная',
   faq: 'F.A.Q.',
-  create: {
-    title: 'Создать',
+  goals: {
+    title: 'Сборы',
     opposite: widgets.opposite.title,
     clock: widgets.clock.title,
     circle: widgets.circle.title,
     oscilloscope: widgets.oscilloscope.title,
+  },
+  alerts: {
+    title: 'Алерты',
+    lss: widgets.lss.title,
   },
 };
 

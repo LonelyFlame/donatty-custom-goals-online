@@ -19,7 +19,7 @@ const WidgetOpposite = async ({ params }: Props) => {
     leverage,
     liquid,
     colorTertiary,
-    delay,
+    timer,
     animationDuration,
     animationFunction,
   } = await getData(slug);
@@ -33,7 +33,7 @@ const WidgetOpposite = async ({ params }: Props) => {
       leverage={leverage}
       liquid={liquid}
       colorTertiary={colorTertiary}
-      delay={delay}
+      timer={timer}
       animationDuration={!animationDuration && liquid ? LIQUID_DEFAULT_ANIMATION_DURATION : animationDuration}
       animationFunction={!animationFunction && liquid ? LIQUID_DEFAULT_ANIMATION_FUNCTION : animationFunction}
     />

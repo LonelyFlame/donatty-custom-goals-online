@@ -1,0 +1,11 @@
+@use "@/theme";
+
+.lss {
+  height: 100%;
+  width: 100%;
+}
+
+.pauseIcon {
+  @include theme.positionCenter;
+  font-size: 80px;
+}

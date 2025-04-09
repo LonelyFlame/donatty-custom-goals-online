@@ -8,25 +8,25 @@ import type { TableColumnsType } from 'antd';
 
 import { template } from '@/utils/strings';
 import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
-import { MAP_TYPE_TO_ICON_COMPONENT, MAP_TYPE_TO_TITLE } from '@/constants/widgets';
+import { MAP_WIDGET_TYPE_TO_ICON_COMPONENT, MAP_WIDGET_TYPE_TO_TITLE } from '@/constants/widgets';
 import translations from '@/translations';
-import type { TGoalCompact } from '@/types/entities';
+import type { TGoalCompact, TAlertCompact } from '@/types/entities';
 import type { TWidgetType } from '@/types/widgets';
 
 import Actions from './Actions';
 
 interface Props {
-  data: TGoalCompact[];
+  data: TGoalCompact[] | TAlertCompact[];
 }
 
 const { pages: { dashboard: t } } = translations;
 
-const columns: TableColumnsType<TGoalCompact> = [
+const columns: TableColumnsType<TGoalCompact | TAlertCompact> = [
   {
     key: 'name',
     dataIndex: 'name',
     title: t.table.columns.name,
-    render: (_, { slug, name, type }: TGoalCompact) => {
+    render: (_, { slug, name, type }: TGoalCompact | TAlertCompact) => {
       const route = MAP_TYPE_TO_MANAGE_ROUTE[type];
 
       return <Link href={template(route, { slug })}>{name}</Link>;
@@ -38,8 +38,8 @@ const columns: TableColumnsType<TGoalCompact> = [
     dataIndex: 'type',
     width: '20%',
     render: (type: TWidgetType) => {
-      const IconComponent = MAP_TYPE_TO_ICON_COMPONENT[type];
-      const label = MAP_TYPE_TO_TITLE[type];
+      const IconComponent = MAP_WIDGET_TYPE_TO_ICON_COMPONENT[type];
+      const label = MAP_WIDGET_TYPE_TO_TITLE[type];
 
       return (
         <Tag icon={<IconComponent />}>
@@ -53,7 +53,7 @@ const columns: TableColumnsType<TGoalCompact> = [
     title: '',
     width: '10%',
     render: (_, { type, slug }) => {
-      return <Actions type={type} slug={slug} />
+      return <Actions widgetType={type} slug={slug} />
     },
   },
 ];
@@ -71,7 +71,7 @@ const Table = ({ data }: Props) => {
     setSelectedRowKeys(selectedKeys.map(String));
   }
 
-  const filteredData = useMemo<TGoalCompact[]>(() => {
+  const filteredData = useMemo<(TGoalCompact | TAlertCompact)[]>(() => {
     if (!filerName) return data;
 
     return data.filter(({ name }) => name.includes(filerName));
@@ -80,7 +80,7 @@ const Table = ({ data }: Props) => {
   return (
     <div>
       <Row gutter={16} justify="space-between">
-        <Col span={12}>
+        <Col span={24}>
           <Input addonBefore={t.filter.name} onChange={handleChangeFilter} allowClear />
         </Col>
         <Col>
@@ -92,7 +92,7 @@ const Table = ({ data }: Props) => {
         </Col>
       </Row>
       <br />
-      <AntdTable<TGoalCompact>
+      <AntdTable<TGoalCompact | TAlertCompact>
         dataSource={filteredData}
         columns={columns}
         pagination={false}

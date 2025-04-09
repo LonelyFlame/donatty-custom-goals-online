@@ -1,14 +1,18 @@
 import { template } from './strings';
-import { MAP_TYPE_TO_WIDGET_ROUTE } from '@/constants/routes';
-import type { TWidgetType } from '@/types/widgets';
+import { ROUTES } from '@/constants/routes';
 
+const mapTypeToRoute = {
+  goal: ROUTES.GOALS,
+  alert: ROUTES.ALERTS,
+}
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URI;
-export const getWidgetLink = (type: TWidgetType, slug: string, includeOrigin: boolean = true): string => {
-  const route = template(MAP_TYPE_TO_WIDGET_ROUTE[type], { slug });
+export const getWidgetLink = (slug: string, includeOrigin: boolean, widgetType: 'goal' | 'alert'): string => {
+  const route = mapTypeToRoute[widgetType];
+  const urn = template(route, { slug });
 
   if (!includeOrigin) {
-    return route;
+    return urn;
   }
 
-  return `${baseUrl}${route}`;
+  return `${baseUrl}${urn}`;
 }

@@ -3,6 +3,7 @@ import { unauthorized } from 'next/navigation';
 import { auth } from '@/auth';
 import WidgetsServices from '@/services/WidgetsServices';
 import { mapGoalToWidget } from '@/utils/mappers/goals';
+import { mapAlertToWidget } from '@/utils/mappers/alerts';
 import { validateWidget } from '@/validation/widget';
 import type { TWidgets } from '@/types/widgets';
 
@@ -20,9 +21,13 @@ export const POST = auth(async (request) => {
       return Response.json({ message: 'Widget data is invalid', errors }, { status: 422 });
     }
 
-    const goal = await WidgetsServices.createOrUpdate(session.user.email, body);
+    const widget = await WidgetsServices.createOrUpdate(session.user.email, body);
+    const isAlert = widget.type === 'lss';
 
-    return Response.json(mapGoalToWidget(goal));
+    if (isAlert) {
+      return Response.json(mapAlertToWidget(widget));
+    }
+    return Response.json(mapGoalToWidget(widget));
   } catch (error: any) {
     return Response.json({ message: error.message }, { status: 500 });
   }

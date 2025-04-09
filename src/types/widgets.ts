@@ -1,16 +1,19 @@
-import { WIDGET_TYPES } from '@/constants/widgets';
+import { TYPES, WIDGET_TYPES, GOALS_TYPES, ALERTS_TYPES } from '@/constants/widgets';
 import type { ValueOf } from '@/types/utils';
 
+export type TType = ValueOf<typeof TYPES>;
 export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
-export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle;
+export type TGoalType = ValueOf<typeof GOALS_TYPES>;
+export type TAlertType = ValueOf<typeof ALERTS_TYPES>;
+export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS;
+export type TGoals = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope;
+export type TAlerts = TWidgetLSS;
 
 export interface TWidget {
   slug?: string;
-  delay?: number;
+  timer?: number;
   type: TWidgetType;
   name: string;
-  goal: string;
-  goalSecondary?: string;
   color?: string;
   colorSecondary?: string;
   colorTertiary?: string;
@@ -27,19 +30,28 @@ export interface TWidget {
   animationFunction?: string;
 }
 
-export interface TWidgetOpposite extends TWidget {
+export interface TGoal extends TWidget {
+  goal: string;
+  goalSecondary?: string;
+  type: TGoalType;
+}
+
+export interface TAlert extends TWidget {
+  alert: string;
+  type: TAlertType;
+}
+
+export interface TWidgetOpposite extends TGoal {
   type: typeof WIDGET_TYPES.WIDGET_TYPE_OPPOSITE;
   goalSecondary: string;
   color: string;
   colorSecondary: string;
-  image?: string;
-  imageSecondary?: string;
   leverage?: number;
   liquid?: boolean;
   colorTertiary?: string;
 }
 
-export interface TWidgetClock extends TWidget {
+export interface TWidgetClock extends TGoal {
   type: typeof WIDGET_TYPES.WIDGET_TYPE_CLOCK;
   goalSecondary?: string;
   image: string;
@@ -48,7 +60,7 @@ export interface TWidgetClock extends TWidget {
   infinite?: boolean;
 }
 
-export interface TWidgetCircle extends TWidget {
+export interface TWidgetCircle extends TGoal {
   type: typeof WIDGET_TYPES.WIDGET_TYPE_CIRCLE;
   goalSecondary?: string;
   image: string;
@@ -58,7 +70,7 @@ export interface TWidgetCircle extends TWidget {
   half?: boolean;
 }
 
-export interface TWidgetOscilloscope extends TWidget {
+export interface TWidgetOscilloscope extends TGoal {
   type: typeof WIDGET_TYPES.WIDGET_TYPE_OSCILLOSCOPE;
   goalSecondary?: string;
   color: string;
@@ -66,6 +78,18 @@ export interface TWidgetOscilloscope extends TWidget {
   colorTertiary: string;
   leverage?: number;
   fade?: boolean;
+  variant: TOscilloscopeVariants;
+}
+
+export interface TWidgetLSS extends TAlert {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_LSS;
+  timer: number;
+  color: string;
+  colorSecondary: string;
+  colorTertiary: string;
+  leverage: number;
+  fade?: boolean;
+  goals?: string[]
   variant: TOscilloscopeVariants;
 }
 

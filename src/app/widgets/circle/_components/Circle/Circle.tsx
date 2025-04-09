@@ -19,7 +19,7 @@ interface Props {
   leverage?: number;
   rotate?: boolean;
   half?: boolean;
-  delay?: number;
+  timer?: number;
 }
 
 const ANIMATION_STEP = 0.01;
@@ -33,7 +33,7 @@ const Circle = ({
   leverage,
   rotate,
   half,
-  delay = 0,
+  timer = 0,
 }: Props) => {
   const isOpposite = Boolean(goalSecondary);
 
@@ -69,12 +69,12 @@ const Circle = ({
     percentRef.current = percent;
     timeoutRef.current = window.setTimeout(() => {
       animate();
-    }, delay * 1000 || (DEFAULT_DELAY * 2));
+    }, timer * 1000 || (DEFAULT_DELAY * 2));
 
     return () => {
       clearTimeout(timeoutRef.current);
     }
-  }, [percent, delay, animate]);
+  }, [percent, timer, animate]);
 
   const degrees = useMemo<number>(() => {
     return getDegrees(animatedPercent, half, isOpposite);

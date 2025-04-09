@@ -67,3 +67,8 @@ export interface TDEventMessageDataGoal {
 }
 
 export type TDEventMessageGoal = TDEventMessage<TDWidgetsResponseGoal, TDEventMessageDataGoal>;
+
+export interface TDGoalMessage {
+  goal: number;
+  raised: number;
+}

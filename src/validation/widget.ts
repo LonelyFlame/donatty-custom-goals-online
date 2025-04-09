@@ -1,4 +1,10 @@
-import { WIDGET_TYPE_CLOCK, WIDGET_TYPE_OPPOSITE, WIDGET_TYPE_CIRCLE } from '@/constants/widgets';
+import {
+  WIDGET_TYPE_CLOCK,
+  WIDGET_TYPE_OPPOSITE,
+  WIDGET_TYPE_CIRCLE,
+  WIDGET_TYPE_OSCILLOSCOPE,
+  WIDGET_TYPE_LSS,
+} from '@/constants/widgets';
 import { TWidgets } from '@/types/widgets';
 
 import { validateOppositeWidget } from './opposite';
@@ -31,6 +37,14 @@ export const validateWidget = (data: TWidgets): { isValid: boolean; errors: Reco
       const validation = validateCircleWidget(data);
 
       errors = { ...errors, ...validation };
+      break;
+    }
+    case WIDGET_TYPE_OSCILLOSCOPE: {
+      // TODO
+      break;
+    }
+    case WIDGET_TYPE_LSS: {
+      // TODO
       break;
     }
   }

@@ -12,6 +12,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 `DB_FILE_NAME=file:local.db`
 
+`NEXT_PUBLIC_ALERTS_CURRENCY=` - populate with some if want to use as. separate with comma
+
 `NEXT_PUBLIC_BASE_URI="http://localhost:3000"`
 
 `NEXT_PUBLIC_CONTACT_EMAIL="test.test@mail.com"`

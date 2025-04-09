@@ -15,7 +15,7 @@ export const getData = async (slug: string): Promise<TWidgetClock> => {
 
   const data = mapGoalToWidget(goal);
   if (data.type !== WIDGET_TYPE_CLOCK) {
-    const route = getWidgetLink(data.type, slug, false);
+    const route = getWidgetLink(slug, false, 'goal');
 
     return redirect(route);
   }

@@ -12,11 +12,9 @@ interface Props {
   goalSecondary?: string;
   leverage?: number;
   color: string;
-  colorSecondary?: string;
+  colorSecondary: string;
   colorTertiary?: string;
-  delay?: number;
-  amplitude?: number;
-  speed?: number;
+  timer?: number;
   fade?: boolean;
   variant?: TOscilloscopeVariants;
 }
@@ -31,7 +29,7 @@ const Oscilloscope = ({
   color,
   colorSecondary,
   colorTertiary,
-  delay = 0,
+  timer = 0,
   fade,
   variant,
 }: Props) => {
@@ -75,8 +73,8 @@ const Oscilloscope = ({
 
     timeoutRef.current = window.setTimeout(() => {
       handleUpdatePercent();
-    }, delay * 1000 || (DEFAULT_DELAY * 2));
-  }, [delay, percent, handleUpdatePercent]);
+    }, timer * 1000 || (DEFAULT_DELAY * 2));
+  }, [timer, percent, handleUpdatePercent]);
 
   return (
     <Visualisation

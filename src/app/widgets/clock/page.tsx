@@ -8,7 +8,7 @@ interface Props {
     leverage?: number;
     infinite?: boolean;
     half?: boolean;
-    delay?: number;
+    timer?: number;
     animationDuration?: number;
     animationFunction?: string;
   }>;
@@ -24,7 +24,7 @@ const WidgetClock = async ({ searchParams }: Props) => {
     infinite,
     leverage,
     half,
-    delay,
+    timer,
     animationDuration,
     animationFunction,
   } = await searchParams || {};
@@ -42,7 +42,7 @@ const WidgetClock = async ({ searchParams }: Props) => {
       leverage={leverage}
       infinite={infinite}
       half={half}
-      delay={delay}
+      timer={timer}
       animationDuration={animationDuration}
       animationFunction={animationFunction}
     />

@@ -1,6 +1,6 @@
 import DWidget from './DWidget';
 import { TypeError } from './errors';
-import type { TDWidgetsResponseGoal, TDEventMessageDataGoal } from './types/goal';
+import type { TDWidgetsResponseGoal, TDEventMessageDataGoal, TDGoalMessage } from './types/goal';
 import type { TDEventMessageData, TDEventMessageProps } from './types/messages';
 import type { TDWidgetType } from './types/widget';
 
@@ -16,7 +16,12 @@ class DGoal extends DWidget<TDWidgetsResponseGoal, TDEventMessageDataGoal> {
     return true;
   }
 
-  protected processMessage({ action, data }: TDEventMessageProps<TDWidgetsResponseGoal> | TDEventMessageData<TDEventMessageDataGoal>): { goal: number; raised: number } {
+  protected processMessage(
+    {
+      action,
+      data,
+    }: TDEventMessageProps<TDWidgetsResponseGoal> | TDEventMessageData<TDEventMessageDataGoal>
+  ): TDGoalMessage {
     if (action === 'REFRESH' || action === 'INIT') {
       const { props: { data: { goal, goalCollected } } } = data;
 

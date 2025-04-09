@@ -9,7 +9,7 @@ interface Props {
     color?: string;
     colorSecondary?: string;
     colorTertiary?: string;
-    delay?: number;
+    timer?: number;
     fade?: boolean;
     variant?: TOscilloscopeVariants;
   }>;
@@ -25,12 +25,12 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
     color,
     colorSecondary,
     colorTertiary,
-    delay,
+    timer,
     fade,
     variant,
   } = await searchParams || {};
 
-  if (!goal || !color) {
+  if (!goal || !color || !colorSecondary) {
     return null;
   }
 
@@ -42,7 +42,7 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
       color={color}
       colorSecondary={colorSecondary}
       colorTertiary={colorTertiary}
-      delay={delay}
+      timer={timer}
       fade={fade}
       variant={variant}
     />
