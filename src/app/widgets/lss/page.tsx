@@ -28,7 +28,7 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
     variant,
   } = await searchParams || {};
 
-  if (!alert || !leverage || !color || !timer || !colorSecondary) {
+  if (!alert || !leverage || !timer || !color || !colorSecondary) {
     return null;
   }
 

@@ -42,8 +42,8 @@ const Opposite = async ({
         '--color-tertiary': colorTertiary || 'gray',
         '--color-primary': color || 'gray',
         '--color-secondary': colorSecondary || 'gray',
-        '--animation-duration': `${animationDurationValue}s`,
-        '--animation-function': animationFunctionValue,
+        ...(!!animationDurationValue && { '--animation-duration': `${animationDurationValue}s` }),
+        ...(!!animationFunctionValue && { '--animation-function': animationFunctionValue }),
       } as CSSProperties}
       className={cn('container', styles.opposite)}
     >

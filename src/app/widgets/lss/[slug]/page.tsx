@@ -30,6 +30,7 @@ const WidgetOscilloscope = async ({ params }: Props) => {
       timer={timer}
       fade={fade}
       variant={variant}
+      slug={slug}
     />
   )
 };

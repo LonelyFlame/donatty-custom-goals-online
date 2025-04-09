@@ -59,8 +59,8 @@ const Clock = ({
     <div
       style={{
         '--image': `url(${image})`,
-        '--animation-duration': `${animationDuration}s`,
-        '--animation-function': animationFunction,
+        ...(!!animationDuration && { '--animation-duration': `${animationDuration}s` }),
+        ...(!!animationFunction && { '--animation-function': animationFunction }),
       } as CSSProperties}
       className={cn('container', styles.clock)}
     >

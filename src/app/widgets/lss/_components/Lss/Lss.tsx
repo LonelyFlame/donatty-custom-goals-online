@@ -8,7 +8,7 @@ import type { TOnData } from '@/libs/dontatty/hooks/useAlert';
 
 import { matchPercents } from '@/utils/numbers';
 import Visualisation from '@/components/common/Oscilloscope';
-import { SEC_BY_MLSECS } from '@/constants/datetime';
+import { MIN_BY_MLSECS } from '@/constants/datetime';
 import type { TOscilloscopeVariants } from '@/types/widgets';
 import type { TDCurrency } from '@/libs/dontatty/types/alert';
 
@@ -23,6 +23,7 @@ interface Props {
   timer: number;
   fade?: boolean;
   variant?: TOscilloscopeVariants;
+  slug?: string;
 }
 
 const ANIMATION_STEP = 0.01;
@@ -40,37 +41,52 @@ const Lss = ({
   timer,
   fade,
   variant,
+  slug,
 }: Props) => {
-  const tick = (timer * SEC_BY_MLSECS) / 100;
+  const tick = (timer * MIN_BY_MLSECS) / 100;
   const step = leverage / 100;
 
   const percentRef = useRef<number>(0);
   const timeoutRef = useRef<number|undefined>(undefined);
-  const pauseRef = useRef<boolean>(false);
+  const pauseRef = useRef<boolean>(!!slug);
 
   const [value, setValue] = useState<number>(0);
-  const [pause, setPause] = useState<boolean>(false);
+  const [pause, setPause] = useState<boolean>(!!slug);
   const [percentValue, setPercentValue] = useState<number>(0);
+
+  const rememberValue = useCallback((value: number) => {
+    if (slug) {
+      localStorage.setItem(`${slug}_value`, String(value));
+    }
+  }, [slug]);
 
   const handleAlert = useCallback<TOnData>(({ amount, currency }) => {
     const acceptedCurrency = !!currency && !!ALERTS_CURRENCY?.length && ALERTS_CURRENCY.includes(currency);
     if (!amount || !acceptedCurrency) return;
 
     setValue((current) => {
-      return Math.min(leverage, current + amount);
+      const newValue = Math.min(leverage, current + amount);
+
+      rememberValue(newValue);
+      return newValue;
     });
-  }, [leverage]);
+  }, [leverage, rememberValue]);
   useAlert(alert, handleAlert);
 
   const handleSchedulePercentTick = useCallback(() => {
     if (pauseRef.current) return;
 
     timeoutRef.current = window.setTimeout(() => {
+      if (pauseRef.current) return;
+
       setValue((current: number) => {
-        return Math.max(0, current - step);
+        const newValue = Math.max(0, current - step);
+
+        rememberValue(newValue);
+        return newValue;
       });
     }, tick);
-  }, [step, tick]);
+  }, [rememberValue, step, tick]);
 
   const handleUpdatePercent = useCallback(() => {
     clearTimeout(timeoutRef.current);
@@ -78,7 +94,11 @@ const Lss = ({
     const percent = percentRef.current;
 
     setPercentValue((current) => {
-      if (current === percent) return current
+      if (current === percent) {
+        handleSchedulePercentTick();
+
+        return current;
+      }
 
       const sign: 1 | -1 = current <= percent ? 1 : -1;
       const localPercent = current + (ANIMATION_STEP * sign);
@@ -111,12 +131,19 @@ const Lss = ({
     setPause(paused);
 
     if (!paused) {
-      handleSchedulePercentTick();
+      handleUpdatePercent();
     }
   };
 
+  useEffect(() => {
+    if (slug) {
+      const initialValue = Number(localStorage.getItem(`${slug}_value`));
+      setValue(initialValue || 0);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
-    <div onClick={handleClick}>
+    <div className={styles.lss} onClick={handleClick}>
       <Visualisation
         color={colorSecondary}
         colorSecondary={colorTertiary}
