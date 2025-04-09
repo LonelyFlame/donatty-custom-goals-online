@@ -9,20 +9,20 @@ interface Props {
   slug?: string;
 }
 
-const Circle = ({ slug }: Props) => {
+const Clock = ({ slug }: Props) => {
   return (
     <div>
       <Row gutter={16}>
         <Col span={10}>
-          {!!slug && <WidgetLink type="circle" slug={slug} />}
+          {!!slug && <WidgetLink slug={slug} />}
           <Inputs />
         </Col>
         <Col span={14}>
-          <Preview type="circle" variant="square" />
+          <Preview type="clock" variant="square" />
         </Col>
       </Row>
     </div>
   );
 }
 
-export default Circle;
+export default Clock;

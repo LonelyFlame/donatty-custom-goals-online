@@ -1,6 +1,8 @@
 import cn from 'classnames';
 import type { CSSProperties } from 'react';
 
+import { LIQUID_DEFAULT_ANIMATION_DURATION, LIQUID_DEFAULT_ANIMATION_FUNCTION } from '@/constants/widgets';
+
 import Bubbles from '../Boubles';
 
 import Items from './Items';
@@ -14,7 +16,7 @@ interface Props {
   leverage?: number;
   liquid?: boolean;
   colorTertiary?: string;
-  delay?: number;
+  timer?: number;
   animationDuration?: number;
   animationFunction?: string;
 }
@@ -27,18 +29,21 @@ const Opposite = async ({
   leverage,
   liquid,
   colorTertiary,
-  delay,
+  timer,
   animationDuration,
   animationFunction,
 }: Props) => {
+  const animationDurationValue = !animationDuration && liquid ? LIQUID_DEFAULT_ANIMATION_DURATION : animationDuration;
+  const animationFunctionValue= !animationFunction && liquid ? LIQUID_DEFAULT_ANIMATION_FUNCTION : animationFunction;
+
   return (
     <div
       style={{
         '--color-tertiary': colorTertiary || 'gray',
         '--color-primary': color || 'gray',
         '--color-secondary': colorSecondary || 'gray',
-        '--animation-duration': `${animationDuration}s`,
-        '--animation-function': animationFunction,
+        '--animation-duration': `${animationDurationValue}s`,
+        '--animation-function': animationFunctionValue,
       } as CSSProperties}
       className={cn('container', styles.opposite)}
     >
@@ -47,7 +52,7 @@ const Opposite = async ({
         goalSecondary={goalSecondary}
         leverage={leverage}
         liquid={liquid}
-        delay={delay}
+        timer={timer}
       >
         {liquid && <Bubbles />}
       </Items>

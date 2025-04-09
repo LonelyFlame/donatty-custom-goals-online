@@ -1,10 +1,9 @@
-import Oscilloscope from './_components/Oscilloscope';
+import Lss from './_components/Lss';
 import type { TOscilloscopeVariants } from '@/types/widgets';
 
 interface Props {
   searchParams?: Promise<{
-    goal?: string;
-    goalSecondary?: string;
+    alert?: string;
     leverage?: number;
     color?: string;
     colorSecondary?: string;
@@ -19,8 +18,7 @@ interface Props {
 
 const WidgetOscilloscope = async ({ searchParams }: Props) => {
   const {
-    goal,
-    goalSecondary,
+    alert,
     leverage,
     color,
     colorSecondary,
@@ -30,14 +28,13 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
     variant,
   } = await searchParams || {};
 
-  if (!goal || !color || !colorSecondary) {
+  if (!alert || !leverage || !color || !timer || !colorSecondary) {
     return null;
   }
 
   return (
-    <Oscilloscope
-      goal={goal}
-      goalSecondary={goalSecondary}
+    <Lss
+      alert={alert}
       leverage={leverage}
       color={color}
       colorSecondary={colorSecondary}

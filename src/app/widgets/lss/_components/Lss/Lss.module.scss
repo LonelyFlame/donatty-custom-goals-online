@@ -1,0 +1,6 @@
+@use "@/theme";
+
+.pauseIcon {
+  @include theme.positionCenter;
+  font-size: 80px;
+}

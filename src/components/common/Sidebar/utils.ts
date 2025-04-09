@@ -45,15 +45,15 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
       label: createElement(Item, { title: t.home, href: ROUTES.HOME }),
     },
     {
-      key: 'create',
+      key: 'goals',
       icon: createElement(PlusSquareOutlined),
-      label: t.create.title,
+      label: t.goals.title,
       children: [
         {
           key: 'create_opposite',
           icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.opposite),
           label: createElement(Item, {
-            title: t.create.opposite,
+            title: t.goals.opposite,
             href: template(ROUTES.OPPOSITE, { id: '' }),
           }),
         },
@@ -61,7 +61,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
           key: 'create_clock',
           icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.clock),
           label: createElement(Item, {
-            title: t.create.clock,
+            title: t.goals.clock,
             href: template(ROUTES.CLOCK, { id: '' }),
           }),
         },
@@ -69,7 +69,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
           key: 'create_circle',
           icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.circle),
           label: createElement(Item, {
-            title: t.create.circle,
+            title: t.goals.circle,
             href: template(ROUTES.CIRCLE, { id: '' }),
           }),
         },
@@ -77,7 +77,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
           key: 'create_oscilloscope',
           icon: createElement(MAP_TYPE_TO_ICON_COMPONENT.oscilloscope),
           label: createElement(Item, {
-            title: t.create.oscilloscope,
+            title: t.goals.oscilloscope,
             href: template(ROUTES.OSCILLOSCOPE, { id: '' }),
           }),
         },

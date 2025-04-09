@@ -9,20 +9,20 @@ interface Props {
   slug?: string;
 }
 
-const Clock = ({ slug }: Props) => {
+const Oscilloscope = ({ slug }: Props) => {
   return (
     <div>
       <Row gutter={16}>
         <Col span={10}>
-          {!!slug && <WidgetLink type="clock" slug={slug} />}
+          {!!slug && <WidgetLink slug={slug} />}
           <Inputs />
         </Col>
         <Col span={14}>
-          <Preview type="clock" variant="square" />
+          <Preview type="oscilloscope" variant="rectangle" />
         </Col>
       </Row>
     </div>
   );
 }
 
-export default Clock;
+export default Oscilloscope;

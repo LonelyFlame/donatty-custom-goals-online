@@ -5,7 +5,7 @@ const translations = {
   logout: 'Выйти',
   home: 'Главная',
   faq: 'F.A.Q.',
-  create: {
+  goals: {
     title: 'Создать',
     opposite: widgets.opposite.title,
     clock: widgets.clock.title,

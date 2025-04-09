@@ -14,10 +14,10 @@ interface Props extends PropsWithChildren {
   goalSecondary?: string;
   leverage?: number;
   liquid?: boolean;
-  delay?: number;
+  timer?: number;
 }
 
-const Items = ({ goal, goalSecondary, leverage, liquid, delay = 0, children }: Props) => {
+const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children }: Props) => {
   const timeoutRef = useRef<number|undefined>(undefined);
 
   const percent = useGoals({ goal, goalSecondary, leverage });
@@ -30,8 +30,8 @@ const Items = ({ goal, goalSecondary, leverage, liquid, delay = 0, children }: P
     timeoutRef.current = window.setTimeout(() => {
       setPercentSecondary(percent < 0 ? -percent : 0);
       setPercentPrimary(percent > 0 ? percent : 0);
-    }, delay * 1000);
-  }, [percent, delay]);
+    }, timer * 1000);
+  }, [percent, timer]);
 
   return (
     <>

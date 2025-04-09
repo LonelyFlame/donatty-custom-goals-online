@@ -16,7 +16,7 @@ const WidgetClock = async ({ params }: Props) => {
     leverage,
     infinite,
     half,
-    delay,
+    timer,
     animationDuration,
     animationFunction,
   } = await getData(slug);
@@ -29,7 +29,7 @@ const WidgetClock = async ({ params }: Props) => {
       leverage={leverage}
       infinite={infinite}
       half={half}
-      delay={delay}
+      timer={timer}
       animationDuration={animationDuration}
       animationFunction={animationFunction}
     />

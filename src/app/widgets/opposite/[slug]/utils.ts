@@ -15,7 +15,7 @@ export const getData = async (slug: string): Promise<TWidgetOpposite> => {
 
   const data = mapGoalToWidget(goal);
   if (data.type !== WIDGET_TYPE_OPPOSITE) {
-    const route = getWidgetLink(data.type, slug, false);
+    const route = getWidgetLink(slug, false);
 
     return redirect(route);
   }

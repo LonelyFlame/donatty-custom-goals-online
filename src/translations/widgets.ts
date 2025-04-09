@@ -11,6 +11,9 @@ const translations = {
   oscilloscope: {
     title: 'Осцилограф',
   },
+  lss: {
+    title: 'Жизнеобеспечение',
+  },
 };
 
 export default translations;

@@ -17,7 +17,7 @@ const WidgetCircle = async ({ params }: Props) => {
     leverage,
     rotate,
     half,
-    delay,
+    timer,
   } = await getData(slug);
 
   return (
@@ -29,7 +29,7 @@ const WidgetCircle = async ({ params }: Props) => {
       leverage={leverage}
       rotate={rotate}
       half={half}
-      delay={delay}
+      timer={timer}
     />
   )
 };

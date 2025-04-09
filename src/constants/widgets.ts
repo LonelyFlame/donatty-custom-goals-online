@@ -3,6 +3,7 @@ import {
   DashboardFilled,
   PieChartFilled,
   FundFilled,
+  HeartFilled,
 } from '@ant-design/icons';
 import { ComponentType } from 'react';
 
@@ -15,12 +16,25 @@ export const WIDGET_TYPE_OPPOSITE = 'opposite' as const;
 export const WIDGET_TYPE_CLOCK = 'clock' as const;
 export const WIDGET_TYPE_CIRCLE = 'circle' as const;
 export const WIDGET_TYPE_OSCILLOSCOPE = 'oscilloscope' as const;
+export const WIDGET_TYPE_LSS = 'lss' as const;
 
 export const WIDGET_TYPES = {
   WIDGET_TYPE_OPPOSITE,
   WIDGET_TYPE_CLOCK,
   WIDGET_TYPE_CIRCLE,
   WIDGET_TYPE_OSCILLOSCOPE,
+  WIDGET_TYPE_LSS,
+};
+
+export const GOALS_TYPES = {
+  WIDGET_TYPE_OPPOSITE,
+  WIDGET_TYPE_CLOCK,
+  WIDGET_TYPE_CIRCLE,
+  WIDGET_TYPE_OSCILLOSCOPE,
+};
+
+export const ALERTS_TYPES = {
+  WIDGET_TYPE_LSS,
 };
 
 export const BUBBLES_COUNT = 30;
@@ -32,6 +46,7 @@ export const MAP_TYPE_TO_TITLE = {
   [WIDGET_TYPE_CLOCK]: t.clock.title,
   [WIDGET_TYPE_CIRCLE]: t.circle.title,
   [WIDGET_TYPE_OSCILLOSCOPE]: t.oscilloscope.title,
+  [WIDGET_TYPE_LSS]: t.lss.title,
 } satisfies Record<TWidgetType, string>;
 
 export const MAP_TYPE_TO_ICON_COMPONENT = {
@@ -39,6 +54,7 @@ export const MAP_TYPE_TO_ICON_COMPONENT = {
   [WIDGET_TYPE_CLOCK]: DashboardFilled,
   [WIDGET_TYPE_CIRCLE]: PieChartFilled,
   [WIDGET_TYPE_OSCILLOSCOPE]: FundFilled,
+  [WIDGET_TYPE_LSS]: HeartFilled,
 } satisfies Record<TWidgetType, ComponentType>;
 
 export const LIQUID_DEFAULT_ANIMATION_DURATION = 3;

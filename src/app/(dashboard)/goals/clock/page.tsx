@@ -4,11 +4,11 @@ import { auth } from '@/auth';
 
 import Form from '@/app/(dashboard)/_components/Form';
 import { DEFAULT_CLOCK_IMAGE_URL } from '@/constants/widgets';
-import type { TWidget } from '@/types/widgets';
+import type { TGoal } from '@/types/widgets';
 
 import Clock from './_components/Clock';
 
-const defaultData: TWidget = {
+const defaultData: TGoal = {
   type: 'clock',
   name: '',
   goal: '',

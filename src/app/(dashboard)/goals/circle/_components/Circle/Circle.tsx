@@ -9,20 +9,20 @@ interface Props {
   slug?: string;
 }
 
-const Oscilloscope = ({ slug }: Props) => {
+const Circle = ({ slug }: Props) => {
   return (
     <div>
       <Row gutter={16}>
         <Col span={10}>
-          {!!slug && <WidgetLink type="oscilloscope" slug={slug} />}
+          {!!slug && <WidgetLink slug={slug} />}
           <Inputs />
         </Col>
         <Col span={14}>
-          <Preview type="oscilloscope" variant="rectangle" />
+          <Preview type="circle" variant="square" />
         </Col>
       </Row>
     </div>
   );
 }
 
-export default Oscilloscope;
+export default Circle;

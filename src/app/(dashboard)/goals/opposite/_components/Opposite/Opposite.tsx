@@ -14,7 +14,7 @@ const Opposite = ({ slug }: Props) => {
     <div>
       <Row gutter={16}>
         <Col span={10}>
-          {!!slug && <WidgetLink type="opposite" slug={slug} />}
+          {!!slug && <WidgetLink slug={slug} />}
           <Inputs />
         </Col>
         <Col span={14}>

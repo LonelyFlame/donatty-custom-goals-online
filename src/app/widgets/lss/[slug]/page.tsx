@@ -1,4 +1,4 @@
-import Oscilloscope from '../_components/Oscilloscope';
+import Lss from '../_components/Lss';
 
 import { getData } from './utils';
 
@@ -10,8 +10,7 @@ const WidgetOscilloscope = async ({ params }: Props) => {
   const { slug } = await params;
 
   const {
-    goal,
-    goalSecondary,
+    alert,
     leverage,
     color,
     colorSecondary,
@@ -22,9 +21,8 @@ const WidgetOscilloscope = async ({ params }: Props) => {
   } = await getData(slug);
 
   return (
-    <Oscilloscope
-      goal={goal}
-      goalSecondary={goalSecondary}
+    <Lss
+      alert={alert}
       leverage={leverage}
       color={color}
       colorSecondary={colorSecondary}

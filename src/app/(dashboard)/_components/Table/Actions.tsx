@@ -27,7 +27,7 @@ interface Props {
 const Actions = ({ type, slug }: Props) => {
   const router = useRouter();
 
-  const widgetLink = useWidgetLink(type, slug);
+  const widgetLink = useWidgetLink(slug);
 
   const handleEdit = () => {
     const route = template(MAP_TYPE_TO_MANAGE_ROUTE[type], { slug });

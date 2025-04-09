@@ -1,9 +1,22 @@
-import type { TGoal } from '@/types/entities';
-import type { TWidget, TWidgetOpposite, TWidgetClock, TWidgetCircle, TWidgetOscilloscope, TWidgetType } from '@/types/widgets';
-import { WIDGET_TYPE_CIRCLE, WIDGET_TYPE_CLOCK, WIDGET_TYPE_OPPOSITE, WIDGET_TYPE_OSCILLOSCOPE } from '@/constants/widgets';
+import {
+  WIDGET_TYPE_CIRCLE,
+  WIDGET_TYPE_CLOCK,
+  WIDGET_TYPE_OPPOSITE,
+  WIDGET_TYPE_OSCILLOSCOPE,
+} from '@/constants/widgets';
+import type { TGoal as TGoalEntity } from '@/types/entities';
+import {
+  TGoal,
+  TGoals,
+  TWidgetOpposite,
+  TWidgetClock,
+  TWidgetCircle,
+  TWidgetOscilloscope,
+  TWidgetType,
+} from '@/types/widgets';
 
-export const mapGoalToWidget = ({ settings, type, ...data }: TGoal): TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope => {
-  const parsedSettings = JSON.parse(settings) as Omit<TWidget, 'name' | 'type'>;
+export const mapGoalToWidget = ({ settings, type, ...data }: TGoalEntity): TGoals => {
+  const parsedSettings = JSON.parse(settings) as Omit<TGoal, 'name' | 'type'>;
   const mappedData = {
     ...data,
     ...parsedSettings,
