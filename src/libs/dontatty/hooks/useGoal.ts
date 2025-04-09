@@ -2,16 +2,16 @@ import { useRef, useState, useEffect } from 'react';
 
 import DGoal from '../DGoal';
 
-const useGoal = (widgedLink? : string) => {
+const useGoal = (widgetLink? : string) => {
   const ref = useRef<DGoal | null>(null);
 
   const [goal, setGoal] = useState<number>(0);
   const [raised, setRaised] = useState<number>(0);
 
   useEffect(() => {
-    if (!widgedLink) return;
+    if (!widgetLink) return;
 
-    const goal = new DGoal(widgedLink);
+    const goal = new DGoal(widgetLink);
     goal.onData = ({ goal, raised }) => {
       setGoal(goal);
       setRaised(raised);
@@ -24,7 +24,7 @@ const useGoal = (widgedLink? : string) => {
       goal.stop();
       ref.current = null;
     };
-  }, [widgedLink]);
+  }, [widgetLink]);
 
   return { goal, raised };
 }
