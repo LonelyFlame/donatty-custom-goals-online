@@ -88,6 +88,7 @@ export interface TWidgetLSS extends TAlert {
   colorTertiary: string;
   leverage: number;
   fade?: boolean;
+  goals?: string[]
   variant: TOscilloscopeVariants;
 }
 

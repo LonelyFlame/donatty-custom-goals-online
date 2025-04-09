@@ -3,14 +3,12 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { PauseCircleTwoTone } from '@ant-design/icons';
 
-import { useAlert } from '@/libs/dontatty/hooks';
-import type { TOnData } from '@/libs/dontatty/hooks/useAlert';
-
 import { matchPercents } from '@/utils/numbers';
+import useAlert from '@/hooks/useAlert';
 import Visualisation from '@/components/common/Oscilloscope';
 import { MIN_BY_MLSECS } from '@/constants/datetime';
+import type { TOnData } from '@/types/hooks';
 import type { TOscilloscopeVariants } from '@/types/widgets';
-import type { TDCurrency } from '@/libs/dontatty/types/alert';
 
 import styles from './Lss.module.scss';
 
@@ -24,13 +22,11 @@ interface Props {
   fade?: boolean;
   variant?: TOscilloscopeVariants;
   slug?: string;
+  goals?: string[];
 }
 
 const ANIMATION_STEP = 0.01;
 const DEFAULT_DELAY = 50;
-const ALERTS_CURRENCY = process.env.NEXT_PUBLIC_ALERTS_CURRENCY
-  ? String(process.env.NEXT_PUBLIC_ALERTS_CURRENCY).split(',') as TDCurrency[]
-  : undefined;
 
 const Lss = ({
   alert,
@@ -42,6 +38,7 @@ const Lss = ({
   fade,
   variant,
   slug,
+  goals,
 }: Props) => {
   const tick = (timer * MIN_BY_MLSECS) / 100;
   const step = leverage / 100;
@@ -60,10 +57,7 @@ const Lss = ({
     }
   }, [slug]);
 
-  const handleAlert = useCallback<TOnData>(({ amount, currency }) => {
-    const acceptedCurrency = !!currency && !!ALERTS_CURRENCY?.length && ALERTS_CURRENCY.includes(currency);
-    if (!amount || !acceptedCurrency) return;
-
+  const handleAlert = useCallback<TOnData>(({ amount }) => {
     setValue((current) => {
       const newValue = Math.min(leverage, current + amount);
 
@@ -71,7 +65,7 @@ const Lss = ({
       return newValue;
     });
   }, [leverage, rememberValue]);
-  useAlert(alert, handleAlert);
+  useAlert(alert, handleAlert, goals);
 
   const handleSchedulePercentTick = useCallback(() => {
     if (pauseRef.current) return;

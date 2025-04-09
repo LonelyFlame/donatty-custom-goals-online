@@ -17,6 +17,7 @@ const WidgetOscilloscope = async ({ params }: Props) => {
     colorTertiary,
     timer,
     fade,
+    goals,
     variant,
   } = await getData(slug);
 
@@ -29,6 +30,7 @@ const WidgetOscilloscope = async ({ params }: Props) => {
       colorTertiary={colorTertiary}
       timer={timer}
       fade={fade}
+      goals={goals}
       variant={variant}
       slug={slug}
     />

@@ -10,6 +10,7 @@ interface Props {
     colorTertiary?: string;
     timer?: number;
     fade?: boolean;
+    goals?: string[];
     variant?: TOscilloscopeVariants;
   }>;
 
@@ -25,6 +26,7 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
     colorTertiary,
     timer,
     fade,
+    goals,
     variant,
   } = await searchParams || {};
 
@@ -41,6 +43,7 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
       colorTertiary={colorTertiary}
       timer={timer}
       fade={fade}
+      goals={goals}
       variant={variant}
     />
   )

@@ -62,8 +62,8 @@ export interface TDEventMessageDataAlert {
   message: string;
   amount?: number;
   currency?: TDCurrency;
-  goal: {
-    title: string;
+  goal?: {
+    title?: string;
   };
   mute: {
     audio: boolean;
@@ -202,6 +202,8 @@ export interface TDEventMessageDataAlertRaid extends TDEventMessageDataAlert {
 }
 
 interface TDAlertMessage {
+  message: string;
+  goal?: string;
   amount?: number;
   currency?: TDCurrency;
   twitch?: TDEventMessageTwitchData
@@ -289,6 +291,8 @@ export interface TDAlertMessageRaid extends TDAlertMessage {
 }
 
 export interface TDAlertMessageEmpty {
+  message: string;
+  goal: undefined;
   amount: undefined;
   currency: undefined;
   twitch: undefined;

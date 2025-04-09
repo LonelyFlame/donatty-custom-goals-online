@@ -7,16 +7,16 @@ import type { TDAlertMessages } from '../types/alert';
 export type TOnData = (_data: TDAlertMessages) => void;
 
 const useAlert = (
-  widgetLink? : string,
-  onData?: TOnData,
+  alertLink: string,
+  onData: TOnData,
 ) => {
   const ref = useRef<DAlert | null>(null);
   const handleDataRef = useRef<undefined | TOnData>(undefined);
 
   useEffect(() => {
-    if (!widgetLink) return;
+    if (!alertLink) return;
 
-    const goal = new DAlert(widgetLink);
+    const goal = new DAlert(alertLink);
     goal.onData = (data) => {
       if (handleDataRef.current) {
         handleDataRef.current(data);
@@ -30,7 +30,7 @@ const useAlert = (
       goal.stop();
       ref.current = null;
     };
-  }, [widgetLink]);
+  }, [alertLink]);
 
   useEffect(() => {
     handleDataRef.current = onData;

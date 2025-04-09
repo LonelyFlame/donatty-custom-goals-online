@@ -24,40 +24,94 @@ class DAlert extends DWidget<TDWidgetsResponseAlert, TDEventMessageDataAlerts> {
     }: TDEventMessageProps<TDWidgetsResponseAlert> | TDEventMessageData<TDEventMessageDataAlerts>
   ): TDAlertMessages {
     if (action !== 'DATA') {
-      return { amount: undefined, currency: undefined, twitch: undefined };
+      return {
+        message: '',
+        goal: undefined,
+        amount: undefined,
+        currency: undefined,
+        twitch: undefined,
+      };
     }
 
     if (data.currency === 'TWITCH_BIT') {
-      return { amount: data.amount, currency: data.currency, twitch: data.twitch };
+      return {
+        goal: data?.goal?.title,
+        message: data.message,
+        amount: data.amount,
+        currency: data.currency,
+        twitch: data.twitch,
+      };
     }
 
     // followers
     if (data.currency === undefined) {
-      return { amount: data.amount, currency: data.currency, twitch: data.twitch };
+      return {
+        goal: data?.goal?.title,
+        message: data.message,
+        amount: data.amount,
+        currency: data.currency,
+        twitch: data.twitch,
+      };
     }
 
     if (data.currency === 'MONTH') {
-      return { amount: data.amount, currency: data.currency, twitch: data.twitch };
+      return {
+        goal: data?.goal?.title,
+        message: data.message,
+        amount: data.amount,
+        currency: data.currency,
+        twitch: data.twitch,
+      };
     }
 
     if (data.currency === 'SUBSCRIPTION') {
-      return { amount: data.amount, currency: data.currency, twitch: data.twitch };
+      return {
+        goal: data?.goal?.title,
+        message: data.message,
+        amount: data.amount,
+        currency: data.currency,
+        twitch: data.twitch,
+      };
     }
 
     if (data.currency === 'TWITCH_POINT') {
-      return { amount: data.amount, currency: data.currency, twitch: data.twitch };
+      return {
+        goal: data?.goal?.title,
+        message: data.message,
+        amount: data.amount,
+        currency: data.currency,
+        twitch: data.twitch,
+      };
     }
 
     if (data.currency === 'LEVEL') {
-      return { amount: data.amount, currency: data.currency, twitch: data.twitch };
+      return {
+        goal: data?.goal?.title,
+        message: data.message,
+        amount: data.amount,
+        currency: data.currency,
+        twitch: data.twitch,
+      };
     }
 
     if (data.currency === 'VIEWER') {
-      return { amount: data.amount, currency: data.currency, twitch: data.twitch };
+      return {
+        goal: data?.goal?.title,
+        message: data.message,
+        amount: data.amount,
+        currency: data.currency,
+        twitch: data.twitch,
+      };
     }
 
     // donates
-    return { amount: data.amount, currency: data.currency, twitch: data.twitch };
+    return {
+      goal: data?.goal?.title,
+      message: data.message,
+      amount: data.amount,
+      currency: data.currency,
+      twitch: data.twitch,
+    };
   }
 
   public onData(data: TDAlertMessages) {
