@@ -10,6 +10,8 @@ import { TWidgets } from '@/types/widgets';
 import { validateOppositeWidget } from './opposite';
 import { validateClockWidget } from './clock';
 import { validateCircleWidget } from './circle';
+import { validateOscilloscopeWidget } from './oscilloscope';
+import { validateLssWidget } from './lss';
 
 export const validateWidget = (data: TWidgets): { isValid: boolean; errors: Record<string, string> } => {
   const { name, type } = data;
@@ -40,11 +42,15 @@ export const validateWidget = (data: TWidgets): { isValid: boolean; errors: Reco
       break;
     }
     case WIDGET_TYPE_OSCILLOSCOPE: {
-      // TODO
+      const validation = validateOscilloscopeWidget(data);
+
+      errors = { ...errors, ...validation };
       break;
     }
     case WIDGET_TYPE_LSS: {
-      // TODO
+      const validation = validateLssWidget(data);
+
+      errors = { ...errors, ...validation };
       break;
     }
   }

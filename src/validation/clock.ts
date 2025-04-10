@@ -3,27 +3,27 @@ import isString from 'lodash/isString';
 
 import { TWidgetClock } from '@/types/widgets';
 
-import { goalValidator } from './validators';
+import { goalLinkValidator } from './validators';
 
 export const validateClockWidget = (data: TWidgetClock): Record<string, string> => {
   const errors: Record<string, string> = {};
 
-  if (!data.goal) {
-    errors.goal = 'required';
+  if (!data.name) {
+    errors.name = 'required';
   }
 
-  const goalValidate = goalValidator(data.goal);
+  const goalValidate = goalLinkValidator(data.goal);
   if (isString(goalValidate)) {
     errors.goal = goalValidate;
   }
 
-  const goalSecondaryValidate = goalValidator(data.goalSecondary, false);
+  const goalSecondaryValidate = goalLinkValidator(data.goalSecondary, false);
   if (isString(goalSecondaryValidate)) {
     errors.goalSecondary = goalSecondaryValidate;
   }
 
-  if (data.delay && !isNumber(data.delay)) {
-    errors.delay = 'emptyOrNumber';
+  if (data.timer && !isNumber(data.timer)) {
+    errors.timer = 'emptyOrNumber';
   }
 
   if (data.leverage && !isNumber(data.leverage)) {

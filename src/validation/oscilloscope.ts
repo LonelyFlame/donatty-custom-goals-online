@@ -1,11 +1,11 @@
 import isNumber from 'lodash/isNumber';
 import isString from 'lodash/isString';
 
-import { TWidgetOpposite } from '@/types/widgets';
+import type { TWidgetOscilloscope } from '@/types/widgets';
 
-import { goalLinkValidator, colorValidator } from './validators';
+import { colorValidator, goalLinkValidator } from './validators';
 
-export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, string> => {
+export const validateOscilloscopeWidget = (data: TWidgetOscilloscope): Record<string, string> => {
   const errors: Record<string, string> = {};
 
   if (!data.name) {
@@ -17,7 +17,7 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
     errors.goal = goalValidate;
   }
 
-  const goalSecondaryValidate = goalLinkValidator(data.goalSecondary);
+  const goalSecondaryValidate = goalLinkValidator(data.goalSecondary, false);
   if (isString(goalSecondaryValidate)) {
     errors.goalSecondary = goalSecondaryValidate;
   }
@@ -30,12 +30,8 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
     errors.leverage = 'emptyOrNumber';
   }
 
-  if (data.liquid) {
-    const validate = colorValidator(data.colorTertiary);
-
-    if (isString(validate)) {
-      errors.colorTertiary = validate;
-    }
+  if (!data.variant || !['sin', 'heart'].includes(data.variant)) {
+    errors.leverage = 'requiredOneOf:sin,heart';
   }
 
   const colorValidate = colorValidator(data.color);
@@ -46,6 +42,11 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
   const colorSecondaryValidate = colorValidator(data.colorSecondary);
   if (isString(colorSecondaryValidate)) {
     errors.colorSecondary = colorSecondaryValidate;
+  }
+
+  const colorTertiaryValidate = colorValidator(data.colorTertiary);
+  if (isString(colorTertiaryValidate)) {
+    errors.colorTertiary = colorTertiaryValidate;
   }
 
   return errors;

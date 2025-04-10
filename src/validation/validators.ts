@@ -1,8 +1,9 @@
 import { BASE_URI, WIDGET_TYPES_TO_PATHNAMES } from '@/libs/dontatty/constants';
-import { TDWidgetType } from '../libs/dontatty/types/widget';
+import { TDWidgetType } from '@/libs/dontatty/types/widget';
+
 import { validateColor } from './colors';
 
-export const widgetValidator = (
+export const widgetLinkValidator = (
   widgetType: TDWidgetType,
   value?: string,
   required: boolean = true
@@ -11,7 +12,12 @@ export const widgetValidator = (
     return !required || 'required';
   }
 
-  const url = new URL(value);
+  let url: URL;
+  try {
+    url = new URL(value);
+  } catch {
+    return 'urlFormat';
+  }
 
   const widgetTypePathname = WIDGET_TYPES_TO_PATHNAMES[widgetType];
 
@@ -22,18 +28,18 @@ export const widgetValidator = (
   const isValid = isValidOrigin && isValidPathname && refExists && tokenExists;
 
   if (!isValid) {
-    return 'goalLink';
+    return 'widgetLink';
   }
 
   return true;
 };
 
-export const goalValidator = (value?: string, required: boolean = true): true|string => {
-  return widgetValidator('GOAL', value, required);
+export const goalLinkValidator = (value?: string, required: boolean = true): true|string => {
+  return widgetLinkValidator('GOAL', value, required);
 };
 
-export const alertValidator = (value?: string, required: boolean = true): true|string => {
-  return widgetValidator('ALERT', value, required);
+export const alertLinkValidator = (value?: string, required: boolean = true): true|string => {
+  return widgetLinkValidator('ALERT', value, required);
 };
 
 export const colorValidator = (value?: string): true|string => {
