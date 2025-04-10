@@ -8,8 +8,8 @@ import type { Scale } from 'chroma-js';
 import { getColorScale } from '@/utils/colors';
 import type { TOscilloscopeVariants } from '@/types/widgets';
 
-import styles from './Oscilloscope.module.scss';
 import { MAX_AMPLITUDE, VARIANTS } from './constants';
+import styles from './Oscilloscope.module.scss';
 
 interface Props {
   color: string;
@@ -32,7 +32,8 @@ const Oscilloscope = ({
   variant = 'sin',
   percent = 0,
 }: Props) => {
-  const displayRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const phaseRef = useRef<number>(0);
   const percentRef = useRef<number>(0);
 
@@ -41,14 +42,8 @@ const Oscilloscope = ({
     lastQuart,
     colorScale,
   }: { quart: number, lastQuart: number, colorScale: Scale }) => {
-    const canvas = displayRef.current;
-    const ctx = canvas?.getContext("2d");
-
-    if (!canvas || !ctx) {
-      setTimeout(() => drawWave({ quart, lastQuart, colorScale }), 1000);
-
-      return;
-    }
+    const ctx = ctxRef.current!;
+    const canvas = canvasRef.current!;
 
     const {
       plot,
@@ -110,14 +105,14 @@ const Oscilloscope = ({
     ctx.stroke();
 
     phaseRef.current += stepSpeed / Math.PI;
-    if (phase >= 8 && phase % reset < 0.005) {
+    if (phase >= reset && phase % reset < 0.005) {
       phaseRef.current = 0;
     }
 
     requestAnimationFrame(() => drawWave({ quart, lastQuart, colorScale }));
   }, [fade, colorFull, variant, colorEmpty]);
   const initAnimation = useCallback(() => {
-    const canvas = displayRef.current;
+    const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
 
     if(!canvas || !ctx) {
@@ -125,6 +120,8 @@ const Oscilloscope = ({
 
       return;
     }
+
+    ctxRef.current = ctx;
 
     const quart = canvas.width / (Math.PI - (Math.E / Math.PI));
     const lastQuart = canvas.width - quart;
@@ -148,7 +145,8 @@ const Oscilloscope = ({
   return (
     <div className={cn('container', styles.oscilloscope)}>
       <canvas
-        ref={displayRef}
+        onClick={()=>initAnimation()}
+        ref={canvasRef}
         className={cn('display', styles.display)}
         width="1440"
         height="900"

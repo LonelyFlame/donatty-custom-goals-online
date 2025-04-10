@@ -1,4 +1,5 @@
 import { heartRate, sin } from './plots';
+
 export const MAX_AMPLITUDE = 400;
 
 export const HEART_RATE_RESET = 10;
