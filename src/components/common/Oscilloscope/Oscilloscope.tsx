@@ -34,6 +34,7 @@ const Oscilloscope = ({
 }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
+  const animationFrameRef = useRef<number>(0);
   const phaseRef = useRef<number>(0);
   const percentRef = useRef<number>(0);
 
@@ -109,9 +110,11 @@ const Oscilloscope = ({
       phaseRef.current = 0;
     }
 
-    requestAnimationFrame(() => drawWave({ quart, lastQuart, colorScale }));
+    animationFrameRef.current = requestAnimationFrame(() => drawWave({ quart, lastQuart, colorScale }));
   }, [fade, colorFull, variant, colorEmpty]);
   const initAnimation = useCallback(() => {
+    cancelAnimationFrame(animationFrameRef.current);
+
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
 

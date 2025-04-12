@@ -5,6 +5,27 @@
   width: 100%;
 }
 
+.change {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  border-color: theme.$color-base500;
+
+  &:global(.ant-input-number) {
+    background-color: transparent;
+  }
+
+  :global(.ant-input-number-handler-wrap), {
+    background-color: transparent;
+  }
+
+  :global(.ant-input-number-input),
+  :global(.ant-input-number-handler .anticon) {
+    color: theme.$color-base500;
+  }
+}
+
 .pauseIcon {
   @include theme.positionCenter;
   font-size: 80px;

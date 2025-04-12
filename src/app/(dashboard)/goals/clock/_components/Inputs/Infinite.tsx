@@ -1,14 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Switch, Form } from 'antd';
+import { Form } from 'antd';
 
-import Hint from '@/components/ui/Hint';
-import FormItem from '@/components/ui/FormItem';
+import HintedSwitch from '@/components/ui/HintedSwitch';
 import translations from '@/translations';
 import type { TWidgetClockFormData } from '@/types/forms';
-
-import styles from './ClockInputs.module.scss';
 
 const { forms: t } = translations;
 
@@ -26,14 +23,12 @@ const Infinite = () => {
   }, [disabled, setFieldValue]);
 
   return (
-    <FormItem label={t.infinite.label} className={styles.checkWithHint}>
-      <FormItem name="infinite">
-        <Switch disabled={disabled} />
-      </FormItem>
-      <Hint>
-        {t.infinite.hint}
-      </Hint>
-    </FormItem>
+    <HintedSwitch
+      label={t.infinite.label}
+      hint={t.infinite.hint}
+      disabled={disabled}
+      name="infinite"
+    />
   );
 };
 

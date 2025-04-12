@@ -40,10 +40,10 @@ const translations = {
     label: 'Цвет при 0%',
   },
   colorMin: {
-    label: 'Цвет минимума',
+    label: 'Цвет мин.',
   },
   colorMax: {
-    label: 'Цвет максимума',
+    label: 'Цвет макс.',
   },
   colorFull: {
     label: 'Цвет при 100%',
@@ -68,6 +68,14 @@ const translations = {
   },
   fade: {
     label: 'Fade-in-out',
+    hint: 'График сжимается к середине по краям',
+  },
+  sfx: {
+    label: 'Со звуком?',
+    hint: {
+      beeps: 'Если осталось менее 5% появляется звук сердечного ритма.',
+      death: 'Непрерывный "мертвый" писк при 0%.',
+    },
   },
   plot: {
     label: 'График',

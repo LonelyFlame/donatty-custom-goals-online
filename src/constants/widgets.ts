@@ -7,8 +7,8 @@ import {
 } from '@ant-design/icons';
 import { ComponentType } from 'react';
 
-import translations from '@/translations';
-import { TType, TWidgetType } from '@/types/widgets';
+import translations from '@/translations';;
+import type { TType, TWidgetType } from '@/types/widgets';
 
 const { widgets: t } = translations;
 
@@ -47,7 +47,9 @@ export const ALERTS_TYPES = {
 
 export const BUBBLES_COUNT = 30;
 
-export const DEFAULT_CLOCK_IMAGE_URL = '/widgets/clockHand.png';
+export const DEFAULT_CLOCK_IMAGE_URL = '/images/clockHand.png';
+export const BEEP_SFX_URL = '/audio/beep.mp3';
+export const DEATH_SFX_URL = '/audio/death.mp4';
 
 export const MAP_WIDGET_TYPE_TO_TITLE = {
   [WIDGET_TYPE_OPPOSITE]: t.opposite.title,

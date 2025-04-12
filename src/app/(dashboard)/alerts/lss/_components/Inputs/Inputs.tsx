@@ -1,8 +1,9 @@
-import { Col, Row, ColorPicker, Switch, Select, InputNumber } from 'antd';
+import { Col, Row, ColorPicker, Select, InputNumber } from 'antd';
 
 import FormItem from '@/components/ui/FormItem';
 import WidgetInput from '@/components/ui/WidgetInput';
 import Name from '@/components/ui/Name';
+import HintedSwitch from '@/components/ui/HintedSwitch';
 import ColorsPreview from '@/components/common/ColorsPreview';
 import translations from '@/translations';
 
@@ -34,7 +35,7 @@ const Inputs = () => {
             <InputNumber placeholder={t.maxValue.placeholder}/>
           </FormItem>
         </Col>
-        <Col span={7}>
+        <Col span={6}>
           <FormItem
             name="timer"
             label={t.lifetime.label}
@@ -43,9 +44,44 @@ const Inputs = () => {
             <InputNumber placeholder={t.lifetime.placeholder} addonAfter={lifetimePopover} />
           </FormItem>
         </Col>
-        <Col span={5}>
-          <FormItem name="fade" label={t.fade.label}>
-            <Switch />
+        <Col span={6}>
+          <HintedSwitch label={t.fade.label} hint={t.fade.hint} name="fade" />
+        </Col>
+        <Col span={6}>
+          <HintedSwitch
+            hint={<>{t.sfx.hint.beeps}<br />{t.sfx.hint.death}</>}
+            label={t.sfx.label}
+            name="sfx"
+          />
+        </Col>
+      </Row>
+
+      <Row gutter={16}>
+        <Col span={6}>
+          <FormItem
+            name="color"
+            label={t.colorEmpty.label}
+            rules={[{ required: true, message: t.validation.required }]}
+          >
+            <ColorPicker showText />
+          </FormItem>
+        </Col>
+        <Col span={6}>
+          <FormItem
+            name="colorSecondary"
+            label={t.colorMin.label}
+            rules={[{ required: true, message: t.validation.required }]}
+          >
+            <ColorPicker showText />
+          </FormItem>
+        </Col>
+        <Col span={6}>
+          <FormItem
+            name="colorTertiary"
+            label={t.colorMax.label}
+            rules={[{ required: true, message: t.validation.required }]}
+          >
+            <ColorPicker showText />
           </FormItem>
         </Col>
         <Col span={6}>
@@ -56,36 +92,6 @@ const Inputs = () => {
 
           >
             <Select options={VARIANTS_OPTIONS} />
-          </FormItem>
-        </Col>
-      </Row>
-
-      <Row gutter={16}>
-        <Col span={8}>
-          <FormItem
-            name="color"
-            label={t.colorEmpty.label}
-            rules={[{ required: true, message: t.validation.required }]}
-          >
-            <ColorPicker showText />
-          </FormItem>
-        </Col>
-        <Col span={8}>
-          <FormItem
-            name="colorSecondary"
-            label={t.colorMin.label}
-            rules={[{ required: true, message: t.validation.required }]}
-          >
-            <ColorPicker showText />
-          </FormItem>
-        </Col>
-        <Col span={8}>
-          <FormItem
-            name="colorTertiary"
-            label={t.colorMax.label}
-            rules={[{ required: true, message: t.validation.required }]}
-          >
-            <ColorPicker showText />
           </FormItem>
         </Col>
       </Row>

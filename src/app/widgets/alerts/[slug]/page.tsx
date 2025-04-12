@@ -21,6 +21,7 @@ const Alerts = async ({ params }: Props) => {
       timer,
       fade,
       variant,
+      sfx,
     } = data;
 
     return (
@@ -33,6 +34,8 @@ const Alerts = async ({ params }: Props) => {
         timer={timer}
         fade={fade}
         variant={variant}
+        slug={slug}
+        sfx={sfx}
       />
     );
   }

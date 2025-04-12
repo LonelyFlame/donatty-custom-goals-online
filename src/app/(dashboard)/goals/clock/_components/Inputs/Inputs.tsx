@@ -1,7 +1,7 @@
-import { Col, Row, Switch, Divider } from 'antd';
+import { Col, Row, Divider } from 'antd';
 
 import Hint from '@/components/ui/Hint';
-import FormItem from '@/components/ui/FormItem';
+import HintedSwitch from '@/components/ui/HintedSwitch';
 import Leverage from '@/components/ui/Leverage';
 import WidgetInput from '@/components/ui/WidgetInput';
 import ImageUpload from '@/components/ui/ImageUpload';
@@ -23,14 +23,7 @@ const Inputs = () => {
 
       <Row gutter={16}>
         <Col span={5}>
-          <FormItem label={t.half.label} className={styles.checkWithHint}>
-            <FormItem name="half">
-              <Switch />
-            </FormItem>
-            <Hint>
-              {t.half.hint}
-            </Hint>
-          </FormItem>
+          <HintedSwitch label={t.half.label} hint={t.half.hint} name="half" />
         </Col>
         <Col span={6}>
           <Infinite />

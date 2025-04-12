@@ -10,7 +10,8 @@ import { getFileExt } from '@/utils/files';
 import { validateFile } from '@/validation/file';
 import UserRepository from '@/db/repositories/UserRepository';
 import {
-  FS_UPLOADS_PATH_FILE,
+  FS_UPLOADS_PATH_IMAGES_FILE,
+  FS_UPLOADS_PATH_IMAGES_FOLDER,
   FS_UPLOADS_PATH_USER,
   UPLOADS_FILE_URL,
 } from '@/constants/files';
@@ -41,13 +42,17 @@ export const POST = auth(async (request) => {
     if (!existsSync(folder)) {
       await fs.mkdir(folder);
     }
+    const imagesFolder = template(FS_UPLOADS_PATH_IMAGES_FOLDER, { user: id });
+    if (!existsSync(imagesFolder)) {
+      await fs.mkdir(imagesFolder);
+    }
     const arrayBuffer = await file.arrayBuffer();
     const buffer = new Uint8Array(arrayBuffer);
     const uuid = uuidv4();
     const fileExt = getFileExt(file.name);
     const fileName = `${uuid}.${fileExt}`;
 
-    const path = template(FS_UPLOADS_PATH_FILE, { user: id, fileName });
+    const path = template(FS_UPLOADS_PATH_IMAGES_FILE, { user: id, fileName });
 
     await fs.writeFile(path, buffer);
 

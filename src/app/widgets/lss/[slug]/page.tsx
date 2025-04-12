@@ -19,6 +19,7 @@ const WidgetOscilloscope = async ({ params }: Props) => {
     fade,
     goals,
     variant,
+    sfx,
   } = await getData(slug);
 
   return (
@@ -33,6 +34,7 @@ const WidgetOscilloscope = async ({ params }: Props) => {
       goals={goals}
       variant={variant}
       slug={slug}
+      sfx={sfx}
     />
   )
 };

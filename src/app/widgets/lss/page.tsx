@@ -12,6 +12,7 @@ interface Props {
     fade?: boolean;
     goals?: string[];
     variant?: TOscilloscopeVariants;
+    sfx?: boolean;
   }>;
 
 }
@@ -28,6 +29,7 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
     fade,
     goals,
     variant,
+    sfx,
   } = await searchParams || {};
 
   if (!alert || !leverage || !timer || !color || !colorSecondary) {
@@ -45,6 +47,7 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
       fade={fade}
       goals={goals}
       variant={variant}
+      sfx={sfx}
     />
   )
 };

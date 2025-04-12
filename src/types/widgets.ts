@@ -39,6 +39,7 @@ export interface TGoal extends TWidget {
 export interface TAlert extends TWidget {
   alert: string;
   type: TAlertType;
+  sfx?: boolean;
 }
 
 export interface TWidgetOpposite extends TGoal {
@@ -91,6 +92,7 @@ export interface TWidgetLSS extends TAlert {
   fade?: boolean;
   goals?: string[]
   variant: TOscilloscopeVariants;
+  sfx?: boolean;
 }
 
 export type TOscilloscopeVariants = 'sin' | 'heart';

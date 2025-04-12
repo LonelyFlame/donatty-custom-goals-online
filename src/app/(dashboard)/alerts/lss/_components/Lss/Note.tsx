@@ -21,7 +21,15 @@ const Note = () => {
         <li>
           {t.tests}
         </li>
+        <li>
+          {t.save}
+        </li>
+      </ul>
 
+      <b>
+        {t.pause.title}:
+      </b>
+      <ul>
         <li>
           {t.pause.init}
         </li>
@@ -29,7 +37,19 @@ const Note = () => {
           {t.pause.process}
         </li>
         <li>
+          {t.pause.sfx}
+        </li>
+        <li>
           {t.pause.control}
+        </li>
+        <li>
+          {t.pause.input}
+        </li>
+        <li>
+          {t.pause.negativeValue}
+        </li>
+        <li>
+          {t.pause.changeValue}
         </li>
       </ul>
     </>
