@@ -1,12 +1,13 @@
 import { template } from './strings';
 import { ROUTES } from '@/constants/routes';
+import type { TType } from '@/types/widgets';
 
 const mapTypeToRoute = {
   goal: ROUTES.GOALS,
   alert: ROUTES.ALERTS,
 }
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URI;
-export const getWidgetLink = (slug: string, includeOrigin: boolean, widgetType: 'goal' | 'alert'): string => {
+export const getWidgetLink = (slug: string, includeOrigin: boolean, widgetType: TType): string => {
   const route = mapTypeToRoute[widgetType];
   const urn = template(route, { slug });
 
