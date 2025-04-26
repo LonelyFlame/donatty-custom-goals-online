@@ -5,6 +5,7 @@ import type { TType } from '@/types/widgets';
 const mapTypeToRoute = {
   goal: ROUTES.GOALS,
   alert: ROUTES.ALERTS,
+  cr: ROUTES.WIDGETS_CR,
 }
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URI;
 export const getWidgetLink = (slug: string, includeOrigin: boolean, widgetType: TType): string => {

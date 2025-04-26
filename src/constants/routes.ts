@@ -1,6 +1,13 @@
 import type { TWidgetType } from '@/types/widgets';
 
-import { WIDGET_TYPE_OPPOSITE, WIDGET_TYPE_CLOCK, WIDGET_TYPE_CIRCLE, WIDGET_TYPE_OSCILLOSCOPE, WIDGET_TYPE_LSS } from './widgets';
+import {
+  WIDGET_TYPE_OPPOSITE,
+  WIDGET_TYPE_CLOCK,
+  WIDGET_TYPE_CIRCLE,
+  WIDGET_TYPE_OSCILLOSCOPE,
+  WIDGET_TYPE_LSS,
+  WIDGET_TYPE_CR,
+} from './widgets';
 
 export const ROUTES = {
   HOME: '/',
@@ -14,6 +21,8 @@ export const ROUTES = {
 
   LSS: '/alerts/lss/{slug}',
 
+  CR: '/crowdrepublic/{slug}',
+
   GOALS: '/widgets/goals/{slug}',
   WIDGETS_OPPOSITE: '/widgets/opposite/{slug}',
   WIDGETS_CLOCK: '/widgets/clock/{slug}',
@@ -22,6 +31,8 @@ export const ROUTES = {
 
   ALERTS: '/widgets/alerts/{slug}',
   WIDGETS_LSS: '/widgets/lss/{slug}',
+
+  WIDGETS_CR: '/widgets/crowdrepublic/{slug}',
 
   API_WIDGETS: '/api/widgets',
   API_ALERTS: '/api/alerts',
@@ -34,6 +45,7 @@ export const MAP_TYPE_TO_MANAGE_ROUTE = {
   [WIDGET_TYPE_CIRCLE]: ROUTES.CIRCLE,
   [WIDGET_TYPE_OSCILLOSCOPE]: ROUTES.OSCILLOSCOPE,
   [WIDGET_TYPE_LSS]: ROUTES.LSS,
+  [WIDGET_TYPE_CR]: ROUTES.CR,
 } satisfies Record<TWidgetType, string>;
 
 export const MAP_TYPE_TO_WIDGET_ROUTE = {
@@ -42,4 +54,5 @@ export const MAP_TYPE_TO_WIDGET_ROUTE = {
   [WIDGET_TYPE_CIRCLE]: ROUTES.WIDGETS_CIRCLE,
   [WIDGET_TYPE_OSCILLOSCOPE]: ROUTES.WIDGETS_OSCILLOSCOPE,
   [WIDGET_TYPE_LSS]: ROUTES.WIDGETS_LSS,
+  [WIDGET_TYPE_CR]: ROUTES.WIDGETS_CR,
 } satisfies Record<TWidgetType, string>;

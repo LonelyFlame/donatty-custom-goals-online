@@ -1,14 +1,15 @@
 import GoalRepository from '@/db/repositories/GoalRepository';
 import AlertRepository from '@/db/repositories/AlertRepository';
+import CrRepository from '@/db/repositories/CrRepository';
 import UserRepository from '@/db/repositories/UserRepository';
-import type { TGoal, TAlert } from '@/types/widgets';
-import type { TGoal as TGoalEntity, TAlert as TAlertEntity } from '@/types/entities';
+import type { TGoal, TAlert, TCrowdRepublic } from '@/types/widgets';
+import type { TGoal as TGoalEntity, TAlert as TAlertEntity, TCR as TCREntity } from '@/types/entities';
 
 class WidgetsServices {
   public static createOrUpdate = async (
     authUserEmail: string,
-    { slug, ...data }: TGoal | TAlert
-  ): Promise<TGoalEntity | TAlertEntity> => {
+    { slug, ...data }: TGoal | TAlert | TCrowdRepublic
+  ): Promise<TGoalEntity | TAlertEntity | TCREntity> => {
     const user = await UserRepository.findOrCreateByEmail(authUserEmail);
 
     if (!user?.id) {
@@ -23,6 +24,11 @@ class WidgetsServices {
     const isAlert = data.type === 'lss';
     if (isAlert) {
       return AlertRepository.createOrUpdate(user.id, data, slug);
+    }
+
+    const isCr = data.type === 'cr';
+    if (isCr) {
+      return CrRepository.createOrUpdate(user.id, data, slug);
     }
 
     throw new Error('Something went wrong on widget creation/update. Unsupported widget type.');
