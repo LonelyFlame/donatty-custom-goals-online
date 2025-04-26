@@ -1,6 +1,10 @@
 import { TYPES, WIDGET_TYPES, GOALS_TYPES, ALERTS_TYPES, CR_TYPES } from '@/constants/widgets';
 import type { ValueOf } from '@/types/utils';
 
+import type { TAlertCompact, TCRCompact, TGoalCompact } from './entities';
+
+export type TEntitiesCompact = TGoalCompact | TAlertCompact | TCRCompact
+
 export type TType = ValueOf<typeof TYPES>;
 export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
 export type TGoalType = ValueOf<typeof GOALS_TYPES>;

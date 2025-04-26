@@ -10,23 +10,23 @@ import { template } from '@/utils/strings';
 import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
 import { MAP_WIDGET_TYPE_TO_ICON_COMPONENT, MAP_WIDGET_TYPE_TO_TITLE } from '@/constants/widgets';
 import translations from '@/translations';
-import type { TGoalCompact, TAlertCompact } from '@/types/entities';
-import type { TWidgetType } from '@/types/widgets';
+import type { TGoalCompact, TAlertCompact, TCRCompact } from '@/types/entities';
+import type { TEntitiesCompact, TWidgetType } from '@/types/widgets';
 
 import Actions from './Actions';
 
 interface Props {
-  data: TGoalCompact[] | TAlertCompact[];
+  data: TGoalCompact[] | TAlertCompact[] | TCRCompact[];
 }
 
 const { pages: { dashboard: t } } = translations;
 
-const columns: TableColumnsType<TGoalCompact | TAlertCompact> = [
+const columns: TableColumnsType<TEntitiesCompact> = [
   {
     key: 'name',
     dataIndex: 'name',
     title: t.table.columns.name,
-    render: (_, { slug, name, type }: TGoalCompact | TAlertCompact) => {
+    render: (_, { slug, name, type }: TEntitiesCompact) => {
       const route = MAP_TYPE_TO_MANAGE_ROUTE[type];
 
       return <Link href={template(route, { slug })}>{name}</Link>;
@@ -71,7 +71,7 @@ const Table = ({ data }: Props) => {
     setSelectedRowKeys(selectedKeys.map(String));
   }
 
-  const filteredData = useMemo<(TGoalCompact | TAlertCompact)[]>(() => {
+  const filteredData = useMemo<(TEntitiesCompact)[]>(() => {
     if (!filerName) return data;
 
     return data.filter(({ name }) => name.includes(filerName));
@@ -92,7 +92,7 @@ const Table = ({ data }: Props) => {
         </Col>
       </Row>
       <br />
-      <AntdTable<TGoalCompact | TAlertCompact>
+      <AntdTable<TEntitiesCompact>
         dataSource={filteredData}
         columns={columns}
         pagination={false}

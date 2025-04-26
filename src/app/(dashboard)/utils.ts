@@ -1,7 +1,8 @@
 import UserRepository from '@/db/repositories/UserRepository';
 import GoalRepository from '@/db/repositories/GoalRepository';
 import AlertRepository from '@/db/repositories/AlertRepository';
-import { TUser, TGoalCompact, TAlertCompact } from '@/types/entities';
+import CrRepository from '@/db/repositories/CrRepository';
+import { TUser, TGoalCompact, TAlertCompact, TCRCompact } from '@/types/entities';
 
 export const getUser = async (email: string): Promise<TUser | undefined> => {
   return UserRepository.findByEmail(email);
@@ -21,6 +22,15 @@ export const getAlerts = async (user?: TUser): Promise<TAlertCompact[]> => {
 
   const alerts = await AlertRepository.getByUser(user.id);
   const compact: TAlertCompact[] = alerts.map(({ slug, name, type }) => ({ slug, name, type }));
+
+  return compact;
+};
+
+export const getCrs = async (user?: TUser): Promise<TCRCompact[]> => {
+  if (!user) return [];
+
+  const alerts = await CrRepository.getByUser(user.id);
+  const compact: TCRCompact[] = alerts.map(({ slug, name, type }) => ({ slug, name, type }));
 
   return compact;
 };

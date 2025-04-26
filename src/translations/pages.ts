@@ -7,6 +7,11 @@ const translations = {
     filter: {
       name: 'Отфильтровать по названию:',
     },
+    entities: {
+      goals: 'Сборы',
+      alerts: 'Алерты',
+      crowdrepublic: 'Crowdrepublic',
+    },
     table: {
       columns: {
         name: 'Название',
