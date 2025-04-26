@@ -1,5 +1,3 @@
-import { LIQUID_DEFAULT_ANIMATION_DURATION, LIQUID_DEFAULT_ANIMATION_FUNCTION } from '@/constants/widgets';
-
 import Opposite from '../_components/Opposite';
 
 import { getData } from './utils';
@@ -34,8 +32,8 @@ const WidgetOpposite = async ({ params }: Props) => {
       liquid={liquid}
       colorTertiary={colorTertiary}
       timer={timer}
-      animationDuration={!animationDuration && liquid ? LIQUID_DEFAULT_ANIMATION_DURATION : animationDuration}
-      animationFunction={!animationFunction && liquid ? LIQUID_DEFAULT_ANIMATION_FUNCTION : animationFunction}
+      animationDuration={animationDuration}
+      animationFunction={animationFunction}
     />
   )
 };

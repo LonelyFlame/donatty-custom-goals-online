@@ -1,6 +1,4 @@
-import {
-  WIDGET_TYPE_LSS,
-} from '@/constants/widgets';
+import { WIDGET_TYPE_LSS } from '@/constants/widgets';
 import type { TAlert as TAlertEntity } from '@/types/entities';
 import {
   TAlert,

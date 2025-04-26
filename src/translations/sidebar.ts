@@ -16,6 +16,10 @@ const translations = {
     title: 'Алерты',
     lss: widgets.lss.title,
   },
+  crs: {
+    title: 'Crowdrepublic',
+    cr: widgets.cr.title,
+  },
 };
 
 export default translations;

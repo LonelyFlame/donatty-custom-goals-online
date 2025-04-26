@@ -3,8 +3,9 @@
 import { useMemo, useCallback } from 'react';
 
 import { getWidgetLink } from '@/utils/widgets';
+import type { TType } from '@/types/widgets';
 
-const useWidgetLink = (slug: string, type: 'goal' | 'alert') => {
+const useWidgetLink = (slug: string, type: TType) => {
   const link = useMemo(() => {
     return getWidgetLink(slug, true, type);
   }, [slug, type]);

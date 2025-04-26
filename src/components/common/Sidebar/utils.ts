@@ -6,6 +6,7 @@ import {
   PlusSquareOutlined,
   PlusCircleOutlined,
   QuestionCircleOutlined,
+  ProjectOutlined,
 } from '@ant-design/icons';
 import type { Session } from 'next-auth';
 import type { MenuProps } from 'antd';
@@ -45,6 +46,7 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
       icon: createElement(HomeOutlined),
       label: createElement(Item, { title: t.home, href: ROUTES.HOME }),
     },
+
     {
       key: 'goals',
       icon: createElement(PlusSquareOutlined),
@@ -99,6 +101,22 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
         },
       ],
     },
+    {
+      key: 'crs',
+      icon: createElement(ProjectOutlined),
+      label: t.crs.title,
+      children: [
+        {
+          key: 'create_cr',
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.cr),
+          label: createElement(Item, {
+            title: t.crs.cr,
+            href: template(ROUTES.CR, { id: '' }),
+          }),
+        },
+      ],
+    },
+
     faqItem,
     {
       key: 'logout',

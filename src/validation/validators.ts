@@ -1,7 +1,10 @@
 import { BASE_URI, WIDGET_TYPES_TO_PATHNAMES } from '@/libs/dontatty/constants';
+import { BASE_URI as CR_BASE_URI } from '@/libs/crowdrepublic/constants';
 import { TDWidgetType } from '@/libs/dontatty/types/widget';
 
 import { validateColor } from './colors';
+import { CR_PROJECT_REGEX } from './constants';
+import type { TValidateColorOptions } from './colors';
 
 export const widgetLinkValidator = (
   widgetType: TDWidgetType,
@@ -34,6 +37,32 @@ export const widgetLinkValidator = (
   return true;
 };
 
+export const crProjectLinkValidator = (
+  value?: string,
+  required: boolean = true
+): true|string => {
+  if (!value) {
+    return !required || 'required';
+  }
+
+  let url: URL;
+  try {
+    url = new URL(value);
+  } catch {
+    return 'urlFormat';
+  }
+
+  const isValidOrigin = url.origin === CR_BASE_URI;
+  const isValidPathname = CR_PROJECT_REGEX.test(url.pathname);
+  const isValid = isValidOrigin && isValidPathname;
+
+  if (!isValid) {
+    return 'projectLink';
+  }
+
+  return true;
+};
+
 export const goalLinkValidator = (value?: string, required: boolean = true): true|string => {
   return widgetLinkValidator('GOAL', value, required);
 };
@@ -42,12 +71,12 @@ export const alertLinkValidator = (value?: string, required: boolean = true): tr
   return widgetLinkValidator('ALERT', value, required);
 };
 
-export const colorValidator = (value?: string): true|string => {
+export const colorValidator = (value?: string, options?: TValidateColorOptions): true|string => {
   if (!value) {
     return 'required';
   }
 
-  const isValid = validateColor(value);
+  const isValid = validateColor(value, options);
   if (!isValid) {
     return 'colorFormat';
   }

@@ -1,13 +1,15 @@
-import { TYPES, WIDGET_TYPES, GOALS_TYPES, ALERTS_TYPES } from '@/constants/widgets';
+import { TYPES, WIDGET_TYPES, GOALS_TYPES, ALERTS_TYPES, CR_TYPES } from '@/constants/widgets';
 import type { ValueOf } from '@/types/utils';
 
 export type TType = ValueOf<typeof TYPES>;
 export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
 export type TGoalType = ValueOf<typeof GOALS_TYPES>;
 export type TAlertType = ValueOf<typeof ALERTS_TYPES>;
-export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS;
+export type TCRType = ValueOf<typeof CR_TYPES>;
+export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS | TWidgetCR;
 export type TGoals = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope;
 export type TAlerts = TWidgetLSS;
+export type TCRs = TWidgetCR;
 
 export interface TWidget {
   slug?: string;
@@ -40,6 +42,17 @@ export interface TAlert extends TWidget {
   alert: string;
   type: TAlertType;
   sfx?: boolean;
+}
+
+export interface TCrowdRepublic extends TWidget {
+  project: string;
+  type: TCRType;
+  color?: string;
+  colorSecondary?: string;
+  colorTertiary?: string;
+  text?: string;
+  animationDuration?: number;
+  animationFunction?: string;
 }
 
 export interface TWidgetOpposite extends TGoal {
@@ -93,6 +106,15 @@ export interface TWidgetLSS extends TAlert {
   goals?: string[]
   variant: TOscilloscopeVariants;
   sfx?: boolean;
+}
+
+export interface TWidgetCR extends TCrowdRepublic {
+  color: string;
+  colorSecondary: string;
+  colorTertiary: string;
+  text: string;
+  animationDuration?: number;
+  animationFunction?: string;
 }
 
 export type TOscilloscopeVariants = 'sin' | 'heart';

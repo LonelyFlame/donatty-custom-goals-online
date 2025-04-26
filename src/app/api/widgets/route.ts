@@ -4,6 +4,7 @@ import { auth } from '@/auth';
 import WidgetsServices from '@/services/WidgetsServices';
 import { mapGoalToWidget } from '@/utils/mappers/goals';
 import { mapAlertToWidget } from '@/utils/mappers/alerts';
+import { mapCRToWidget } from '@/utils/mappers/cr';
 import { validateWidget } from '@/validation/widget';
 import type { TWidgets } from '@/types/widgets';
 
@@ -22,11 +23,17 @@ export const POST = auth(async (request) => {
     }
 
     const widget = await WidgetsServices.createOrUpdate(session.user.email, body);
-    const isAlert = widget.type === 'lss';
 
+    const isCR = widget.type === 'cr';
+    if (isCR) {
+      return Response.json(mapCRToWidget(widget));
+    }
+
+    const isAlert = widget.type === 'lss';
     if (isAlert) {
       return Response.json(mapAlertToWidget(widget));
     }
+
     return Response.json(mapGoalToWidget(widget));
   } catch (error: any) {
     return Response.json({ message: error.message }, { status: 500 });
