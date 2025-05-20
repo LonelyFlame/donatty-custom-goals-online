@@ -61,7 +61,7 @@ const translations = {
     label: 'Цвет границ сверхцелей',
   },
   colorLabel: {
-    label: 'Цвет текста цели',
+    label: 'Цвет текста',
   },
   bubbles: {
     colorLabel: 'Цвет пузырьков',
@@ -118,6 +118,10 @@ const translations = {
   validation: {
     required: 'Это поле обязательно для заполнения',
   },
+  alertVisibility: {
+    label: 'Время отображения (в секундах)',
+    placeholder: '0',
+  },
   labelTemplate: {
     label: 'Текст цели',
     placeholder: 'Собрано {amount}₽ из {goal}₽!',
@@ -131,6 +135,16 @@ const translations = {
       max: 'самая дорогая цель. Если нет сверхцелей - равна основной цели.',
       maxPercentage: 'процент от самой дорогой цели.',
       maxName: 'название самой дорогой сверхцели. Пустая строка, если сверхцелей нет.',
+    },
+  },
+  labelAlertTemplate: {
+    label: 'Текст оповещения',
+    placeholder: 'Только что купили {soldCopies}: {title}!',
+    hint: {
+      title: 'название награды',
+      copies: 'всего копий продано',
+      soldCopies: 'новых копий продано(с последнего обновления)',
+      backers: 'кол-во участников',
     },
   },
 };

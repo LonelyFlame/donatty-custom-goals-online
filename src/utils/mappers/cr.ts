@@ -1,11 +1,12 @@
 import type { TCRGoal } from '@/libs/crowdrepublic/types/goal';
 
-import { WIDGET_TYPE_CR, } from '@/constants/widgets';
+import { WIDGET_TYPE_CR, WIDGET_TYPE_CRALERT } from '@/constants/widgets';
 import type { TCR as TCREntity } from '@/types/entities';
 import {
   TCrowdRepublic,
   TCRs,
   TWidgetCR,
+  TWidgetCRAlert,
   TWidgetType,
 } from '@/types/widgets';
 
@@ -28,6 +29,10 @@ export const mapCRToWidget = ({ settings, type, ...data }: TCREntity): TCRs => {
 
   if (type === WIDGET_TYPE_CR) {
     return mappedData as TWidgetCR;
+  }
+
+  if (type === WIDGET_TYPE_CRALERT) {
+    return mappedData as TWidgetCRAlert;
   }
 
   throw new Error('Unexpected widget type?!');

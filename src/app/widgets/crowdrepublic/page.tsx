@@ -12,9 +12,7 @@ interface Props {
     animationDuration?: number;
     animationFunction?: string;
   }>;
-
 }
-
 
 const WidgetCR = async ({ searchParams }: Props) => {
   const {

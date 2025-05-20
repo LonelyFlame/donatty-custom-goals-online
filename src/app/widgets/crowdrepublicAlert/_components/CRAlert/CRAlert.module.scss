@@ -1,0 +1,11 @@
+@use '@/theme';
+
+.goal {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  --color-primary: black;
+  --font: Roboto;
+  --fontSize: min(4.8vw, 20vh);
+}

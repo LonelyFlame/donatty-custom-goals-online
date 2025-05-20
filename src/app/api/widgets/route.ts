@@ -25,7 +25,8 @@ export const POST = auth(async (request) => {
     const widget = await WidgetsServices.createOrUpdate(session.user.email, body);
 
     const isCR = widget.type === 'cr';
-    if (isCR) {
+    const isCRAlert = widget.type === 'crAlert';
+    if (isCR || isCRAlert) {
       return Response.json(mapCRToWidget(widget));
     }
 
@@ -34,6 +35,9 @@ export const POST = auth(async (request) => {
       return Response.json(mapAlertToWidget(widget));
     }
 
+    // TODO: Fix types mismatch issue
+    // @ts-expect-error TS2345: Argument of type
+    // Types of property type are incompatible. Type "cr" | "crAlert" is not assignable to type
     return Response.json(mapGoalToWidget(widget));
   } catch (error: any) {
     return Response.json({ message: error.message }, { status: 500 });

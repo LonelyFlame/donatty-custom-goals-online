@@ -3,6 +3,8 @@ import type { ValueOf } from '@/types/utils';
 
 import type { TAlertCompact, TCRCompact, TGoalCompact } from './entities';
 
+export type TOscilloscopeVariants = 'sin' | 'heart';
+
 export type TEntitiesCompact = TGoalCompact | TAlertCompact | TCRCompact
 
 export type TType = ValueOf<typeof TYPES>;
@@ -10,10 +12,10 @@ export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
 export type TGoalType = ValueOf<typeof GOALS_TYPES>;
 export type TAlertType = ValueOf<typeof ALERTS_TYPES>;
 export type TCRType = ValueOf<typeof CR_TYPES>;
-export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS | TWidgetCR;
+export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS | TWidgetCR | TWidgetCRAlert;
 export type TGoals = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope;
 export type TAlerts = TWidgetLSS;
-export type TCRs = TWidgetCR;
+export type TCRs = TWidgetCR | TWidgetCRAlert;
 
 export interface TWidget {
   slug?: string;
@@ -57,6 +59,7 @@ export interface TCrowdRepublic extends TWidget {
   colorSecondary?: string;
   colorTertiary?: string;
   text?: string;
+  delay?: number;
   animationDuration?: number;
   animationFunction?: string;
 }
@@ -115,12 +118,18 @@ export interface TWidgetLSS extends TAlert {
 }
 
 export interface TWidgetCR extends TCrowdRepublic {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_CR;
   color: string;
   colorSecondary: string;
   colorTertiary: string;
-  text: string;
+  text?: string;
   animationDuration?: number;
   animationFunction?: string;
 }
 
-export type TOscilloscopeVariants = 'sin' | 'heart';
+export interface TWidgetCRAlert extends TCrowdRepublic {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_CRALERT;
+  text: string;
+  delay: number;
+  color: string;
+}

@@ -27,7 +27,8 @@ class WidgetsServices {
     }
 
     const isCr = data.type === 'cr';
-    if (isCr) {
+    const crAlert = data.type === 'crAlert';
+    if (isCr || crAlert) {
       return CrRepository.createOrUpdate(user.id, data, slug);
     }
 

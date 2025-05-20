@@ -6,7 +6,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-const WidgetOscilloscope = async ({ params }: Props) => {
+const WidgetCR = async ({ params }: Props) => {
   const { slug } = await params;
 
   const {
@@ -36,4 +36,4 @@ const WidgetOscilloscope = async ({ params }: Props) => {
   )
 };
 
-export default WidgetOscilloscope;
+export default WidgetCR;

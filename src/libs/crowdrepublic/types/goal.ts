@@ -1,11 +1,9 @@
-import { TCRLanguage } from './language';
+import { TCRResponse, TCRText } from './common';
 
 export type TCRGoalStatus = ''; // TODO: add variants
 
-export interface TCRGoalsResponse {
+export interface TCRGoalsResponse extends TCRResponse {
   Goals: TCRGoal[];
-  success: boolean;
-  selected_region_id: number;
 }
 
 export interface TCRGoal {
@@ -22,10 +20,8 @@ export interface TCRGoal {
   text: TCRGoalText;
 }
 
-export interface TCRGoalText {
-  id: number;
+export interface TCRGoalText extends TCRText {
   project_goal_id: number;
-  language: TCRLanguage;
   name: string;
   short_description: string;
   full_description: string;

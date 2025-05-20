@@ -114,6 +114,14 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
             href: template(ROUTES.CR, { id: '' }),
           }),
         },
+        {
+          key: 'create_cr_alert',
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.crAlert),
+          label: createElement(Item, {
+            title: t.crs.crAlert,
+            href: template(ROUTES.CR_ALERT, { id: '' }),
+          }),
+        },
       ],
     },
 

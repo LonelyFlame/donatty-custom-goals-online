@@ -1,3 +1,4 @@
 import { useProjectSync } from './useProjectSync';
+import { useRewardsQueue } from './useRewardsQueue';
 
-export { useProjectSync };
+export { useProjectSync, useRewardsQueue };

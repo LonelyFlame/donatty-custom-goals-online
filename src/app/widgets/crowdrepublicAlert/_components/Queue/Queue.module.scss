@@ -1,0 +1,31 @@
+@use '@/theme';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: opacity theme.$duration-base;
+  opacity: theme.$opacity-0;
+}
+
+.imageContainer {
+  width: 100%;
+  max-height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.image {
+  height: auto;
+  width: 100%;
+}
+
+.text {
+  color: var(--color-primary);
+  font-family: var(--font), theme.$fontFamily-default;
+  font-size: var(--fontSize);
+  text-align: center;
+}

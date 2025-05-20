@@ -19,6 +19,7 @@ const translations = {
   crs: {
     title: 'Crowdrepublic',
     cr: widgets.cr.title,
+    crAlert: widgets.crAlert.title,
   },
 };
 

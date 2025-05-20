@@ -1,11 +1,11 @@
+import { TCRResponse } from './common';
+
 export type TCRProjectCategory = 'RPG'; // TODO: add variants
 
 export type TCRProjectStatus = 'CHN'; // TODO: add variants
 
-export interface TCRProjectResponse {
+export interface TCRProjectResponse extends TCRResponse {
   Project: TCRProject;
-  success: boolean;
-  selected_region_id: number;
 }
 
 export interface TCRProject {

@@ -1,10 +1,10 @@
 import isString from 'lodash/isString';
 
-import type { TWidgetCR } from '@/types/widgets';
+import type { TWidgetCRAlert } from '@/types/widgets';
 
 import { crProjectLinkValidator, colorValidator } from './validators';
 
-export const validateCrWidget = (data: TWidgetCR): Record<string, string> => {
+export const validateCrAlertWidget = (data: TWidgetCRAlert): Record<string, string> => {
   const errors: Record<string, string> = {};
 
   if (!data.name) {
@@ -14,6 +14,14 @@ export const validateCrWidget = (data: TWidgetCR): Record<string, string> => {
   const crProjectLinkValidate = crProjectLinkValidator(data.project);
   if (isString(crProjectLinkValidate)) {
     errors.project = crProjectLinkValidate;
+  }
+
+  if (!data.text) {
+    errors.text = 'required';
+  }
+
+  if (!data.delay) {
+    errors.delay = 'required';
   }
 
   const colorValidate = colorValidator(data.color, { notTransparent: true });

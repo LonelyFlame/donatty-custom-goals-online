@@ -13,10 +13,6 @@ interface Props extends PropsWithChildren {
 const FontWrapper = ({ slug, className, style, children }: Props) => {
   const font = FONTS.find((item) => item.slug === slug);
 
-  if(!font) {
-    return null;
-  }
-
   return (
     <div
       className={className}
