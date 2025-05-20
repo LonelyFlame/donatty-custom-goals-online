@@ -3,6 +3,7 @@ import { Col, Row, ColorPicker, Input } from 'antd';
 import FormItem from '@/components/ui/FormItem';
 import CRProjectInput from '@/components/ui/CRProjectInput';
 import Name from '@/components/ui/Name';
+import Font from '@/components/ui/Font';
 import translations from '@/translations';
 
 import LabelTemplatePopover from './LabelTemplatePopover';
@@ -15,8 +16,11 @@ const Inputs = () => {
   return (
     <>
       <Row gutter={16}>
-        <Col span={24}>
+        <Col span={10}>
           <Name />
+        </Col>
+        <Col span={14}>
+          <Font />
         </Col>
       </Row>
 

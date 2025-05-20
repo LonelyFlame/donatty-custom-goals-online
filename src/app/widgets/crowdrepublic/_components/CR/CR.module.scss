@@ -10,6 +10,8 @@
   --color-tertiary: black;
   --animation-duration: #{theme.$duration-1};
   --animation-function: linear;
+  --font: Roboto;
+  --fontSize: min(4.8vw, 20vh);
 }
 
 .item {

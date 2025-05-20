@@ -20,6 +20,8 @@ export interface TWidget {
   timer?: number;
   type: TWidgetType;
   name: string;
+  font?: string;
+  fontSize?: number;
   color?: string;
   colorSecondary?: string;
   colorTertiary?: string;

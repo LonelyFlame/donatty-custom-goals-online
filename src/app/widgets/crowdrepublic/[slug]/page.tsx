@@ -15,6 +15,8 @@ const WidgetOscilloscope = async ({ params }: Props) => {
     colorSecondary,
     colorTertiary,
     text,
+    font,
+    fontSize,
     animationDuration,
     animationFunction,
   } = await getData(slug);
@@ -26,6 +28,8 @@ const WidgetOscilloscope = async ({ params }: Props) => {
       colorSecondary={colorSecondary}
       colorTertiary={colorTertiary}
       text={text}
+      font={font}
+      fontSize={fontSize}
       animationDuration={animationDuration}
       animationFunction={animationFunction}
     />

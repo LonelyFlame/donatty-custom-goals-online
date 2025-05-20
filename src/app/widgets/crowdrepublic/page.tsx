@@ -7,6 +7,8 @@ interface Props {
     colorSecondary?: string;
     colorTertiary?: string;
     text?: string;
+    font?: string;
+    fontSize?: number;
     animationDuration?: number;
     animationFunction?: string;
   }>;
@@ -21,6 +23,8 @@ const WidgetCR = async ({ searchParams }: Props) => {
     colorSecondary,
     colorTertiary,
     text,
+    font,
+    fontSize,
     animationDuration,
     animationFunction,
   } = await searchParams || {};
@@ -36,6 +40,8 @@ const WidgetCR = async ({ searchParams }: Props) => {
       colorSecondary={colorSecondary}
       colorTertiary={colorTertiary}
       text={text}
+      font={font}
+      fontSize={fontSize}
       animationDuration={animationDuration}
       animationFunction={animationFunction}
     />

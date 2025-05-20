@@ -8,9 +8,9 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  font-family: theme.$fontFamily-default;
+  font-family: var(--font), theme.$fontFamily-default;
   text-align: center;
-  font-size: min(4.8vw, 20vh);
+  font-size: var(--fontSize);
 }
 
 .funded {

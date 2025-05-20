@@ -3,6 +3,7 @@ import { unauthorized } from 'next/navigation';
 import { auth } from '@/auth';
 
 import Form from '@/app/(dashboard)/_components/Form';
+import { FontsLoader } from '@/components/common/Fonts';
 import translations from '@/translations/widgets';
 import type { TWidgetCR } from '@/types/widgets';
 
@@ -25,9 +26,12 @@ const CreateCr = async () => {
   }
 
   return (
-    <Form data={defaultData} type="cr">
-      <Cr />
-    </Form>
+    <>
+      <Form data={defaultData} type="cr">
+        <Cr />
+      </Form>
+      <FontsLoader />
+    </>
   );
 }
 

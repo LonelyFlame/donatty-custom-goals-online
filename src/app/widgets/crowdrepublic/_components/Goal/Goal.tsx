@@ -35,7 +35,7 @@ const Goal = ({
   const value = useProjectSync(id, initialValue);
 
   const percent = useMemo<number>(() => {
-    return (value / max) * 100;
+    return Math.min((value / max) * 100, 100);
   }, [value, max]);
 
   const label = useMemo<string>(() => {

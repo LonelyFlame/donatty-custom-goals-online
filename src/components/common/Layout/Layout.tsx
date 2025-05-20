@@ -3,7 +3,6 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { PropsWithChildren } from 'react';
 
 import Sidebar from '@/components/common/Sidebar';
-import '@/theme/globals.css';
 
 import Wrapper from './Wrapper';
 
