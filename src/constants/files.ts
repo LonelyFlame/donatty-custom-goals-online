@@ -8,7 +8,7 @@ export const FS_UPLOADS_PATH_IMAGES_FILE = `${FS_UPLOADS_PATH_IMAGES_FOLDER}/{fi
 export const UPLOADS_FILE_URL = `${ROUTES.API_IMAGES}/{user}/{fileName}`;
 
 // up to 5 MBytes
-export const MAX_UPLOAD_IMAGE_SIZE = 5 // Bytes
+export const MAX_UPLOAD_IMAGE_SIZE = 10 // Bytes
   * 1024 // KiBytes
   * 1024; // MiBytes
 

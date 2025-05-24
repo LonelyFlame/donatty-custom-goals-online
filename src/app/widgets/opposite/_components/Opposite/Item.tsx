@@ -16,7 +16,9 @@ const Item = ({ liquid, percent, className, children }: Props) => {
         style={{ width: `${percent * 100}%` }}
         className={cn('fill', styles.fill)}
       >
-        {children}
+        <div className={cn('image', styles.image)}>
+          {children}
+        </div>
       </div>
     </div>
   )

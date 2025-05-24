@@ -17,7 +17,7 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
     errors.goal = goalValidate;
   }
 
-  const goalSecondaryValidate = goalLinkValidator(data.goalSecondary);
+  const goalSecondaryValidate = goalLinkValidator(data.goalSecondary, false);
   if (isString(goalSecondaryValidate)) {
     errors.goalSecondary = goalSecondaryValidate;
   }
@@ -43,7 +43,7 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
     errors.color = colorValidate;
   }
 
-  const colorSecondaryValidate = colorValidator(data.colorSecondary);
+  const colorSecondaryValidate = Boolean(data.colorSecondary) && colorValidator(data.colorSecondary);
   if (isString(colorSecondaryValidate)) {
     errors.colorSecondary = colorSecondaryValidate;
   }

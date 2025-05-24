@@ -13,6 +13,8 @@ interface Props {
   goalSecondary?: string;
   color: string;
   colorSecondary?: string;
+  image?: string;
+  imageSecondary?: string;
   leverage?: number;
   liquid?: boolean;
   colorTertiary?: string;
@@ -26,6 +28,8 @@ const Opposite = async ({
   goalSecondary,
   color,
   colorSecondary,
+  image,
+  imageSecondary,
   leverage,
   liquid,
   colorTertiary,
@@ -36,16 +40,20 @@ const Opposite = async ({
   const animationDurationValue = !animationDuration && liquid ? LIQUID_DEFAULT_ANIMATION_DURATION : animationDuration;
   const animationFunctionValue= !animationFunction && liquid ? LIQUID_DEFAULT_ANIMATION_FUNCTION : animationFunction;
 
+  const isOpposite = Boolean(goalSecondary);
+
   return (
     <div
       style={{
-        '--color-tertiary': colorTertiary || 'gray',
         '--color-primary': color || 'gray',
         '--color-secondary': colorSecondary || 'gray',
+        '--color-tertiary': colorTertiary || 'gray',
+        '--image-primary': image ? `url(${image})` : 'none',
+        '--image-secondary': imageSecondary ? `url(${imageSecondary})` : 'none',
         ...(!!animationDurationValue && { '--animation-duration': `${animationDurationValue}s` }),
         ...(!!animationFunctionValue && { '--animation-function': animationFunctionValue }),
       } as CSSProperties}
-      className={cn('container', styles.opposite)}
+      className={cn('container', styles.opposite, {[styles.isOpposite]: isOpposite})}
     >
       <Items
         goal={goal}

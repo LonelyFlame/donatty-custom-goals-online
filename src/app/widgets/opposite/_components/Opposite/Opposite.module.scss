@@ -6,9 +6,11 @@
   display: flex;
   position: relative;
 
-  --color-tertiary: gray;
   --color-primary: gray;
   --color-secondary: gray;
+  --color-tertiary: gray;
+  --image-primary: none;
+  --image-secondary: none;
   --size-bubbles: 1;
   --size-wave: 0.8vw;
   --animation-duration: #{theme.$duration-1};
@@ -28,12 +30,24 @@
   .fill {
     background-color: var(--color-primary);
   }
+
+  .image {
+    background-image: var(--image-primary);
+    background-position: center left;
+    right: auto;
+  }
 }
 .left {
   justify-content: flex-end;
 
   .fill {
     background-color: var(--color-secondary);
+  }
+
+  .image {
+    background-image: var(--image-secondary);
+    background-position: center right;
+    left: auto;
   }
 }
 
@@ -49,6 +63,20 @@
   animation-duration: theme.$duration-3;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+}
+
+.image {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  inset: 0;
+  background-size: contain;
+}
+
+.isOpposite {
+  .image {
+    width: 50vw;
+  }
 }
 
 .liquid {

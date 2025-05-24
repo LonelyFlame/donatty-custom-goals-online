@@ -6,6 +6,8 @@ interface Props {
     goalSecondary?: string;
     color?: string;
     colorSecondary?: string;
+    image?: string;
+    imageSecondary?: string;
     leverage?: number;
     liquid?: boolean;
     colorTertiary?: string;
@@ -23,6 +25,8 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
     goalSecondary,
     color,
     colorSecondary,
+    image,
+    imageSecondary,
     leverage,
     liquid,
     colorTertiary,
@@ -43,6 +47,8 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
       goalSecondary={goalSecondary}
       color={color}
       colorSecondary={colorSecondary}
+      image={image}
+      imageSecondary={imageSecondary}
       leverage={leverage}
       liquid={liquid}
       colorTertiary={colorTertiary}

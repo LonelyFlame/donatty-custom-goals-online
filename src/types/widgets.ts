@@ -66,9 +66,10 @@ export interface TCrowdRepublic extends TWidget {
 
 export interface TWidgetOpposite extends TGoal {
   type: typeof WIDGET_TYPES.WIDGET_TYPE_OPPOSITE;
-  goalSecondary: string;
   color: string;
-  colorSecondary: string;
+  colorSecondary?: string;
+  image: string;
+  imageSecondary?: string;
   leverage?: number;
   liquid?: boolean;
   colorTertiary?: string;
