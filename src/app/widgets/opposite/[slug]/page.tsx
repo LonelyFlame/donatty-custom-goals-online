@@ -14,6 +14,8 @@ const WidgetOpposite = async ({ params }: Props) => {
     goalSecondary,
     color,
     colorSecondary,
+    image,
+    imageSecondary,
     leverage,
     liquid,
     colorTertiary,
@@ -28,6 +30,8 @@ const WidgetOpposite = async ({ params }: Props) => {
       goalSecondary={goalSecondary}
       color={color}
       colorSecondary={colorSecondary}
+      image={image}
+      imageSecondary={imageSecondary}
       leverage={leverage}
       liquid={liquid}
       colorTertiary={colorTertiary}

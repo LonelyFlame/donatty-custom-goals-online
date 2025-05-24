@@ -20,6 +20,8 @@ const Goals = async ({ params }: Props) => {
       goalSecondary,
       color,
       colorSecondary,
+      image,
+      imageSecondary,
       leverage,
       liquid,
       colorTertiary,
@@ -34,6 +36,8 @@ const Goals = async ({ params }: Props) => {
         goalSecondary={goalSecondary}
         color={color}
         colorSecondary={colorSecondary}
+        image={image}
+        imageSecondary={imageSecondary}
         leverage={leverage}
         liquid={liquid}
         colorTertiary={colorTertiary}
