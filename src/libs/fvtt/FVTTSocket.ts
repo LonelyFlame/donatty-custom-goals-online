@@ -18,6 +18,7 @@ const FVTTSocket = (host: string, session: string, callbacks?: FVTTSocketCallbac
         socket.send('40');
         socket.send(`420${JSON.stringify(['world'])}`);
         socket.send(`421${JSON.stringify(['time'])}`);
+
         break;
       }
       case '2': { // ping

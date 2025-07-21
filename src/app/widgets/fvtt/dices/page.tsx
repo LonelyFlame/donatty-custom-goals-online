@@ -10,7 +10,7 @@ interface Props {
 }
 
 
-const WidgetClock = async ({ searchParams }: Props) => {
+const WidgetFVTT = async ({ searchParams }: Props) => {
   const {
     host,
     session,
@@ -24,4 +24,4 @@ const WidgetClock = async ({ searchParams }: Props) => {
   return <Container host={host} session={session} delay={5} />;
 };
 
-export default WidgetClock;
+export default WidgetFVTT;
