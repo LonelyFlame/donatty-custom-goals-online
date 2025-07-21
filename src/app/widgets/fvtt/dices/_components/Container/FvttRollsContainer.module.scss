@@ -1,0 +1,155 @@
+@use "@/theme";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+$primaryColor: #110d0f;
+$secondaryColor: #552f25;
+$tertiaryColor: #816e63;
+
+@mixin ellipsis {
+  @media (min-width: 540px) {
+    @content;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.container {
+  height: 947px;
+  width: 1104px;
+  color: $primaryColor;
+  font-family: "Noto Serif", serif;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity theme.$duration-1;
+}
+
+.portrait {
+  height: 450px;
+  width: 505px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  background-size: cover;
+  background-position: center;
+}
+
+.backdrop {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  display: grid;
+  gap: theme.$spacing-m theme.$spacing-xxl;
+  grid-template-columns: 515px auto;
+  grid-template-areas:
+      'portrait value'
+      'name name'
+      'raceclass raceclass'
+      'roll roll';
+  padding: 50px;
+  box-sizing: border-box;
+  background-image: url('/images/wih_bg.png');
+}
+
+.levelContainer {
+  grid-area: portrait;
+  height: 445px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.level {
+  height: 144px;
+  width: 151px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/images/wih_lvl.png');
+  font-size: 84pt;
+  font-weight: 900;
+}
+
+.value {
+  grid-area: value;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: theme.$spacing-xxl100;
+  font-size: 110pt;
+  font-weight: 1000;
+  -webkit-text-stroke: 2px $secondaryColor;
+}
+
+.nameWrapper {
+  grid-area: name;
+  width: fit-content;
+  min-width: 493px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url('/images/wih_name.png');
+  background-size: 100% 100%;
+}
+.name {
+  @include ellipsis;
+  font-size: 51pt;
+  line-height: 28pt;
+  font-weight: 1000;
+  -webkit-text-stroke: 1px $tertiaryColor;
+  padding: theme.$spacing-xxl32 theme.$spacing-xxl32;
+}
+
+.raceclass {
+  grid-area: raceclass;
+  min-width: 1004px;
+  display: flex;
+  gap: theme.$spacing-xl;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url('/images/wih_raceclass.png');
+  background-size: 100% 100%;
+  font-size: 40pt;
+  line-height: 30pt;
+  font-weight: 700;
+  padding: 0 theme.$spacing-xxl32;
+  box-sizing: border-box;
+}
+.race {
+  @include ellipsis;
+  padding: theme.$spacing-xxl24 0;
+}
+.class {
+  @include ellipsis;
+  padding: theme.$spacing-xxl24 0;
+  color: $secondaryColor;
+}
+
+.roll {
+  grid-area: roll;
+  min-width: 993px;
+  display: flex;
+  gap: theme.$spacing-xl;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-image: url('/images/wih_check.png');
+  background-size: 100% 100%;
+  padding: theme.$spacing-xxl24 theme.$spacing-xxl32;
+  margin-top: theme.$spacing-s;
+  box-sizing: border-box;
+}
+.rollName {
+  font-size: 56pt;
+  line-height: 47pt;
+  font-weight: 700;
+  -webkit-text-stroke: 1px $tertiaryColor;
+}
+.rollType {
+  font-size: 30pt;
+  line-height: 23pt;
+  color: $secondaryColor;
+}

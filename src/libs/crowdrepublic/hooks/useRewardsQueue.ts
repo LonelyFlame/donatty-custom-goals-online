@@ -4,18 +4,7 @@ import { CRGetRewards } from '../CRRequest';
 import { CRRewardsSync } from '../CRRewards';
 import { getImageUri } from '../utils';
 import type { TCRReward } from '../types/reward';
-
-interface TReward {
-  id: number;
-  price: number;
-  backers: number;
-  copies: number;
-  title: string;
-  picture: string;
-}
-interface TQueueReward extends TReward {
-  soldCopies: number;
-}
+import type { TReward, TQueueReward } from '../types/queue';
 
 export const useRewardsQueue = (id: number) => {
   const rewardsRef = useRef<Record<string, TReward>>({});
