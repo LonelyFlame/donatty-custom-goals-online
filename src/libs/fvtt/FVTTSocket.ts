@@ -36,7 +36,7 @@ const FVTTSocket = (host: string, session: string, callbacks?: FVTTSocketCallbac
         }
 
         if (data[0] === 'modifyDocument') {
-          data[1].request.data.forEach(({ rolls, user, speaker, flags }) => {
+          data[1].request.data?.forEach(({ rolls, user, speaker, flags }) => {
             const actionActorId = speaker?.actor;
 
             rolls?.map((rollData) => {
@@ -62,6 +62,13 @@ const FVTTSocket = (host: string, session: string, callbacks?: FVTTSocketCallbac
       }
       case '431': { // time data
         break;
+      }
+      default: {
+        const data = JSON.parse(message);
+
+        if (callbacks?.onOther) {
+          callbacks.onOther(id, data);
+        }
       }
     }
   });

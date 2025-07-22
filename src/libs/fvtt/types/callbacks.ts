@@ -7,4 +7,5 @@ export interface FVTTSocketCallbacks {
   onInit?: (_data: TFVTTInitialData) => void;
   onAction?: (_data: TFVTTAction) => void;
   onRoll?: (_data: FVTTRolls, _flags: TFVTTFlags, _actionActorId: string | null, _userId: string | null) => void;
+  onOther?: (_id: number, _data: any) => void;
 }
