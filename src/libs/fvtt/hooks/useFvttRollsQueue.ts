@@ -62,7 +62,7 @@ const useFvttRollsQueue = (host: string, session: string) => {
 
       let actorId = value?.actorid;
       if (!tokensToActorsRef.current[key]) {
-        tokensToActorsRef.current = { ...tokensToActorsRef.current, key: actorId };
+        tokensToActorsRef.current[key] = actorId ;
       }
 
       const rollData = value?.roll;
