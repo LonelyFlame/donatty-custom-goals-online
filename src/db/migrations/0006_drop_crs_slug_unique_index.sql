@@ -1,0 +1,1 @@
+DROP INDEX `crs_slug_unique`;

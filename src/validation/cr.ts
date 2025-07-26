@@ -21,5 +21,9 @@ export const validateCrWidget = (data: TWidgetCR): Record<string, string> => {
     errors.color = colorValidate;
   }
 
+  if (!data.variant || !['nearest', 'main', 'full'].includes(data.variant)) {
+    errors.leverage = 'requiredOneOf:nearest,main,full';
+  }
+
   return errors;
 };

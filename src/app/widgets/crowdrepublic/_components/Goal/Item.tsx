@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import cn from 'classnames';
 
-import styles from './CR.module.scss';
+import styles from './Goal.module.scss';
 
 interface Props {
   value: number;

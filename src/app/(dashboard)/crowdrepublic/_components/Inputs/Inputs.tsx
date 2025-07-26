@@ -1,4 +1,4 @@
-import { Col, Row, ColorPicker, Input } from 'antd';
+import { Col, Row, ColorPicker, Input, Select } from 'antd';
 
 import FormItem from '@/components/ui/FormItem';
 import CRProjectInput from '@/components/ui/CRProjectInput';
@@ -7,6 +7,7 @@ import Font from '@/components/ui/Font';
 import translations from '@/translations';
 
 import LabelTemplatePopover from './LabelTemplatePopover';
+import { VARIANTS_OPTIONS } from './constants';
 
 const { forms: t } = translations;
 
@@ -16,10 +17,15 @@ const Inputs = () => {
   return (
     <>
       <Row gutter={16}>
-        <Col span={10}>
+        <Col span={7}>
           <Name />
         </Col>
-        <Col span={14}>
+        <Col span={7}>
+          <FormItem name="variant" label={t.crGoal.label}>
+            <Select options={VARIANTS_OPTIONS} />
+          </FormItem>
+        </Col>
+        <Col span={10}>
           <Font />
         </Col>
       </Row>

@@ -43,6 +43,13 @@
       "when": 1745621735700,
       "tag": "0005_init_crs_table",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1753562813653,
+      "tag": "0006_drop_crs_slug_unique_index",
+      "breakpoints": true
     }
   ]
 }

@@ -1,3 +1,5 @@
+import type { TCrowdRepublicVariants } from '@/types/widgets';
+
 import CR from './_components/CR';
 
 interface Props {
@@ -11,6 +13,7 @@ interface Props {
     fontSize?: number;
     animationDuration?: number;
     animationFunction?: string;
+    variant?: TCrowdRepublicVariants;
   }>;
 }
 
@@ -25,6 +28,7 @@ const WidgetCR = async ({ searchParams }: Props) => {
     fontSize,
     animationDuration,
     animationFunction,
+    variant,
   } = await searchParams || {};
 
   if (!project || !color || !colorSecondary || !colorTertiary) {
@@ -42,6 +46,7 @@ const WidgetCR = async ({ searchParams }: Props) => {
       fontSize={fontSize}
       animationDuration={animationDuration}
       animationFunction={animationFunction}
+      variant={variant}
     />
   )
 };

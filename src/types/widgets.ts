@@ -4,6 +4,7 @@ import type { ValueOf } from '@/types/utils';
 import type { TAlertCompact, TCRCompact, TGoalCompact } from './entities';
 
 export type TOscilloscopeVariants = 'sin' | 'heart';
+export type TCrowdRepublicVariants = 'nearest' | 'main' | 'full';
 
 export type TEntitiesCompact = TGoalCompact | TAlertCompact | TCRCompact
 
@@ -126,6 +127,7 @@ export interface TWidgetCR extends TCrowdRepublic {
   text?: string;
   animationDuration?: number;
   animationFunction?: string;
+  variant: TCrowdRepublicVariants;
 }
 
 export interface TWidgetCRAlert extends TCrowdRepublic {

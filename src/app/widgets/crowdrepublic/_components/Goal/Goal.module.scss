@@ -20,3 +20,11 @@
   transition-duration: var(--animation-duration);
   transition-timing-function: var(--animation-function);
 }
+
+.item {
+  position: absolute;
+  background-color: var(--color-secondary);
+  width: theme.$spacing-xxs;
+  height: 100%;
+  top: 0;
+}

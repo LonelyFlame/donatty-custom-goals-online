@@ -1,10 +1,10 @@
 import type { CSSProperties } from 'react';
 
 import { FontWrapper } from '@/components/common/Fonts';
+import type { TCrowdRepublicVariants } from '@/types/widgets';
 
 import Goal from '../Goal';
 
-import Item from './Item';
 import { getId, getData } from './utils';
 import styles from './CR.module.scss';
 
@@ -18,6 +18,7 @@ interface Props {
   fontSize?: number;
   animationDuration?: number;
   animationFunction?: string;
+  variant?: TCrowdRepublicVariants;
 }
 
 const CR = async ({
@@ -30,9 +31,10 @@ const CR = async ({
   fontSize,
   animationDuration,
   animationFunction,
+  variant = 'nearest',
 }: Props) => {
   const id = getId(project);
-  const { value, max, goal, goals } = await getData(id);
+  const { value, goal, goals } = await getData(id);
 
   return (
     <FontWrapper
@@ -47,13 +49,14 @@ const CR = async ({
         ...(!!fontSize && { '--fontSize': `${fontSize}px` }),
       } as CSSProperties}
     >
-      <Goal id={id} initialValue={value} max={max} goal={goal} goals={goals} labelTemplate={text} />
-      {Boolean(goals.length) && (
-        <Item value={goal} max={max} />
-      )}
-      {goals.map(({ id, value }, index) => index < (goals.length - 1) && (
-        <Item key={id} value={value} max={max} />
-      ))}
+      <Goal
+        id={id}
+        initialValue={value}
+        goal={goal}
+        goals={goals}
+        labelTemplate={text}
+        variant={variant}
+      />
     </FontWrapper>
   );
 }

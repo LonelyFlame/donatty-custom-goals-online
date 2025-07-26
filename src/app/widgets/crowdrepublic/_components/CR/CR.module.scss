@@ -13,11 +13,3 @@
   --font: Roboto;
   --fontSize: min(4.8vw, 20vh);
 }
-
-.item {
-  position: absolute;
-  background-color: var(--color-secondary);
-  width: theme.$spacing-xxs;
-  height: 100%;
-  top: 0;
-}

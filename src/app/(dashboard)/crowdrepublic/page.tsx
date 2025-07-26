@@ -17,6 +17,7 @@ const defaultData: TWidgetCR = {
   text: translations.cr.defaultLabel,
   project: '',
   name: '',
+  variant: 'nearest',
 }
 
 const CreateCr = async () => {

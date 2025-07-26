@@ -1,5 +1,4 @@
 import last from 'lodash/last';
-import sortBy from 'lodash/sortBy';
 
 import { CRGetGoals, CRGetProject } from '@/libs/crowdrepublic/CRRequest';
 
@@ -12,12 +11,10 @@ export const getData = async (id: number) => {
 
   const fundingGoal = project.funding_goal
   const fundedSum = project.funded_sum
-  const max = last(sortBy([...goals, { value: fundingGoal }], 'value'));
 
   return {
     value: fundedSum,
     goal: fundingGoal,
-    max: max?.value || fundingGoal,
     goals,
   };
 };

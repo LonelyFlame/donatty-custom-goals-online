@@ -97,6 +97,12 @@ const translations = {
     sin: 'Синусоида',
     heart: 'ЭКГ',
   },
+  crGoal: {
+    label: 'Цели для отображения',
+    nearest: 'Ближайшая цель',
+    main: 'Только основная цель',
+    full: 'Все цели',
+  },
   maxValue: {
     label: 'Макс. значение',
     placeholder: 'В рублях',

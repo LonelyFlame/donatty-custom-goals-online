@@ -8,7 +8,7 @@ import users from './users';
 const crs = sqliteTable('crs', {
   id: int().primaryKey({ autoIncrement: true }),
   userId: int('user_id').notNull(),
-  slug: text().notNull().unique(),
+  slug: text().notNull(),
   name: text().notNull(),
   type: text({ enum: [
     WIDGET_TYPE_CR,
