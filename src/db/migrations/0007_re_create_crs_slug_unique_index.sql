@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `crs_slug_unique` ON `crs` (`slug`);

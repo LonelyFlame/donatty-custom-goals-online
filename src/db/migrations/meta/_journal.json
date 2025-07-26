@@ -50,6 +50,13 @@
       "when": 1753562813653,
       "tag": "0006_drop_crs_slug_unique_index",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1753567282403,
+      "tag": "0007_re_create_crs_slug_unique_index",
+      "breakpoints": true
     }
   ]
 }
