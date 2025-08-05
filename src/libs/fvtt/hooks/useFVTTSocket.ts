@@ -3,22 +3,11 @@ import { useEffect, useCallback, useRef } from 'react';
 import FVTTSocket from '../FVTTSocket';
 import type { FVTTSocketCallbacks } from '../types';
 
-const useFVTTSocket = (host: string, session: string, callbacks?: FVTTSocketCallbacks): WebSocket | null => {
-  const socketRef = useRef<WebSocket | null>(null);
+const useFVTTSocket = (host: string, session: string, callbacks?: FVTTSocketCallbacks): FVTTSocket | null => {
+  const socketRef = useRef<FVTTSocket | null>(null);
 
   const initSocket = useCallback(() => {
-    const socket = FVTTSocket(host, session, callbacks);
-    socket.onerror = (error) => {
-      console.error(`[FVTT:] Socket error:`, error);
-
-      window.setTimeout(() => {
-        socket?.close();
-
-        console.error(`[FVTT:] Reconection...`);
-
-        initSocket();
-      }, 5000);
-    }
+    const socket = new FVTTSocket(host, session, callbacks);
 
     socketRef.current = socket;
   }, [host, session, callbacks]);

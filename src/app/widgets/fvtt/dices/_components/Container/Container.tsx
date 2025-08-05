@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
-
 import useFvttRollsQueue from '@/libs/fvtt/hooks/useFvttRollsQueue';
 import type { TRoll } from '@/libs/fvtt/types/queue';
 
@@ -18,10 +16,6 @@ interface Props {
 const Container = ({ host, session, delay }: Props) => {
   const { queue, moveFurther } = useFvttRollsQueue(host, session);
   const { visible, item } = useQueue<TRoll>({ queue, moveFurther, delay, moveQueueFurtherDelay: 1 });
-
-  useEffect(() => {
-    fetch('/api/fvtt');
-  }, []);
 
   // return null;
   if (!item) return null;

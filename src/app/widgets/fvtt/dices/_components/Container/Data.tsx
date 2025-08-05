@@ -39,6 +39,7 @@ const Data = ({
   return (
     <div className={styles.container} style={{ opacity: visible ? 1 : 0 }}>
       <div className={styles.portrait} style={{ backgroundImage: `url("${actorImage}")` }}>
+        {!actorImage && '?'}
       </div>
       <div className={styles.backdrop}>
         <div className={styles.levelContainer}>

@@ -32,12 +32,12 @@ const useQueue = <T>({
     setVisible(true);
 
     timeoutRef.current = window.setTimeout(() => {
-      setVisible(false);
+      // setVisible(false);
 
       timeoutRef.current = window.setTimeout(() => {
         timeoutRef.current = null;
 
-        moveFurther();
+        // moveFurther();
       }, moveQueueFurtherDelay * 1000);
     }, delay * 1000);
   }, [moveQueueFurtherDelay, queueLength, delay, moveFurther]);

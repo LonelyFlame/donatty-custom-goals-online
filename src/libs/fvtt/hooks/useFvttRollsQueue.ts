@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState, useEffect } from 'react';
 
 import useFVTTSocket from './useFVTTSocket';
 import type {
@@ -40,7 +40,16 @@ const useFvttRollsQueue = (host: string, session: string) => {
   }, [host]);
 
   const handleInit = useCallback((data: TFVTTInitialData) => {
-    actorsRef.current = data.actors;
+    if (!data?.actors?.length) {
+      return;
+    }
+
+    const { actors } = data;
+
+    actorsRef.current = actors;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('actors', JSON.stringify(actors));
+    }
   }, []);
 
   const handleAction = useCallback((data: TFVTTAction) => {
@@ -107,6 +116,17 @@ const useFvttRollsQueue = (host: string, session: string) => {
 
   const moveFurther = useCallback((size: number = 1) => {
     setQueue((current) => current.slice(size));
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const storedData = localStorage.getItem('actors');
+    if (storedData) {
+      actorsRef.current = JSON.parse(storedData);
+    }
   }, []);
 
   return { queue, moveFurther };

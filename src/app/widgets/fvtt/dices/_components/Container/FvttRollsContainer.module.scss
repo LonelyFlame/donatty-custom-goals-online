@@ -5,6 +5,7 @@
 $primaryColor: #110d0f;
 $secondaryColor: #552f25;
 $tertiaryColor: #816e63;
+$quaternaryColor: #c4a392;
 
 @mixin ellipsis {
   @media (min-width: 540px) {
@@ -33,6 +34,15 @@ $tertiaryColor: #816e63;
   left: 50px;
   background-size: cover;
   background-position: center;
+  background-color: $quaternaryColor;
+  color: $secondaryColor;
+  font-family: "Noto Serif", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 500px;
+  font-style: italic;
+  font-weight: 700;
 }
 
 .backdrop {
