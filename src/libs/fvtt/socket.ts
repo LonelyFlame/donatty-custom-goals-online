@@ -1,3 +1,3 @@
 export const init = (host: string, session: string): WebSocket => {
-  return new WebSocket(`wss://${host}/socket.io/?session=${session}&EIO=4&transport=websocket`);
+  return new WebSocket(`ws://${host}:30000/socket.io/?session=${session}&EIO=4&transport=websocket`);
 };
