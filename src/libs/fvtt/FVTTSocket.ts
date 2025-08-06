@@ -153,7 +153,7 @@ class FVTTSocket {
     const lastPing = this.ping;
     const diff = now.getTime() - lastPing.getTime();
 
-    return diff > LIVE_CHECK_TOLERANCE;
+    return diff < LIVE_CHECK_TOLERANCE;
   };
 
   private readonly clearLiveCheckTimeout = () => {

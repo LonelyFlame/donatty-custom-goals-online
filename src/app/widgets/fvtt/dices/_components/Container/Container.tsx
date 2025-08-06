@@ -17,7 +17,6 @@ const Container = ({ host, session, delay }: Props) => {
   const { queue, moveFurther } = useFvttRollsQueue(host, session);
   const { visible, item } = useQueue<TRoll>({ queue, moveFurther, delay, moveQueueFurtherDelay: 1 });
 
-  // return null;
   if (!item) return null;
 
   return (

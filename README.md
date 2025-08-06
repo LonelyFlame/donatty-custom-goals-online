@@ -28,3 +28,32 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 **Finally**, run it: `npm start`!
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+
+## Foundry VTT
+You could use the site to handle and show rolls from Foundry VTT hosted on Forge-VTT. To generate OBS link use the macro below.
+Also, it supports throws made through the "Monk's TokenBar" module.
+
+**Macro**
+```
+const c = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+const f = () => {
+  const session = c('session');
+
+  if(!session) return;
+
+  const h = location.hostname;
+  const s = session;
+
+  const l = `http://{YOUR_SITE_HOST}/widgets/fvtt/dices?host=${h}&session=${s}`;
+
+  ChatMessage.create({content: `You could use this link in OBS as browser source: <a target="_blank" href="l">${l}</div> Source height: 947 and width: 1104`});
+}
+f();
+```
+
