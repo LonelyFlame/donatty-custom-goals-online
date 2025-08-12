@@ -93,14 +93,19 @@
   height: 100%;
   width: 100%;
   background-color: var(--color-primary);
-  background-image: var(--image-primary);
+  position: relative;
+
+  .image {
+    background-image: var(--image-primary);
+    background-position: center left;
+  }
 }
 
 .contestationItem {
+  position: relative;
   height: 100%;
   width: 50%;
   background-color: var(--color-secondary);
-  background-image: var(--image-secondary);
   transition: width theme.$duration-1;
   transition-duration: var(--animation-duration);
   transition-timing-function: var(--animation-function);
@@ -109,6 +114,11 @@
   animation-duration: theme.$duration-3;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+
+  .image {
+    background-image: var(--image-secondary);
+    background-position: center left;
+  }
 }
 
 @keyframes rightWave {

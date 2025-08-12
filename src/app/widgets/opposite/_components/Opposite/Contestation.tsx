@@ -16,10 +16,13 @@ const Contestation = ({ percentPrimary, percentSecondary = 0, liquid, children }
 
   return (
     <div className={cn('contestationContainer', styles.contestationContainer)}>
+      <div className={cn('image', styles.image)} />
       <div
         className={cn('contestationItem', styles.contestationItem, { [styles.liquid]: liquid })}
         style={{ width: `${percent * 100}%` }}
-      />
+      >
+        <div className={cn('image', styles.image)} />
+      </div>
       {children}
     </div>
   )
