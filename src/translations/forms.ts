@@ -153,6 +153,13 @@ const translations = {
       backers: 'кол-во участников',
     },
   },
+  oppositeVariant: {
+    label: 'Тип отображения',
+    options: {
+      filling: 'Заполнение',
+      contestation: 'Перетягивание',
+    },
+  },
 };
 
 export default translations;

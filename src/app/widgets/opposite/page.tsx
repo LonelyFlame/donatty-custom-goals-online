@@ -1,3 +1,5 @@
+import type { TOppositeVariants } from '@/types/widgets';
+
 import Opposite from './_components/Opposite';
 
 interface Props {
@@ -14,6 +16,7 @@ interface Props {
     timer?: number;
     animationDuration?: number;
     animationFunction?: string;
+    variant?: TOppositeVariants;
   }>;
 
 }
@@ -33,6 +36,7 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
     timer,
     animationDuration,
     animationFunction,
+    variant,
   } = await searchParams || {};
 
   const missingPrimary = !goal || !color;
@@ -55,6 +59,7 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
       timer={timer}
       animationDuration={animationDuration}
       animationFunction={animationFunction}
+      variant={variant}
     />
   )
 };

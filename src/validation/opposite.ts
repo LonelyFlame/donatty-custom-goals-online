@@ -48,5 +48,9 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
     errors.colorSecondary = colorSecondaryValidate;
   }
 
+  if (!data.variant || !['filling', 'contestation'].includes(data.variant)) {
+    errors.variant = 'requiredOneOf:filling,contestation';
+  }
+
   return errors;
 };

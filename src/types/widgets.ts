@@ -3,6 +3,7 @@ import type { ValueOf } from '@/types/utils';
 
 import type { TAlertCompact, TCRCompact, TGoalCompact } from './entities';
 
+export type TOppositeVariants = 'filling' | 'contestation';
 export type TOscilloscopeVariants = 'sin' | 'heart';
 export type TCrowdRepublicVariants = 'nearest' | 'main' | 'full';
 
@@ -74,6 +75,7 @@ export interface TWidgetOpposite extends TGoal {
   leverage?: number;
   liquid?: boolean;
   colorTertiary?: string;
+  variant?: TOppositeVariants;
 }
 
 export interface TWidgetClock extends TGoal {

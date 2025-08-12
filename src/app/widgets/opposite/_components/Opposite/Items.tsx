@@ -1,13 +1,13 @@
 'use client';
 
-import cn from 'classnames';
 import { useRef, useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 
 import useGoals from '@/hooks/useGoals';
+import type { TOppositeVariants } from '@/types/widgets';
 
-import Item from './Item';
-import styles from './Opposite.module.scss';
+import Filling from './Filling';
+import Contestation from './Contestation';
 
 interface Props extends PropsWithChildren {
   goal: string;
@@ -15,9 +15,10 @@ interface Props extends PropsWithChildren {
   leverage?: number;
   liquid?: boolean;
   timer?: number;
+  variant?: TOppositeVariants;
 }
 
-const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children }: Props) => {
+const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children, variant }: Props) => {
   const timeoutRef = useRef<number|undefined>(undefined);
 
   const percent = useGoals({ goal, goalSecondary, leverage });
@@ -35,14 +36,25 @@ const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children }: P
 
   return (
     <>
-      {!!goalSecondary && (
-        <Item className={cn('left', styles.left)} percent={percentSecondary} liquid={liquid}>
+      {variant === 'filling' && (
+        <Filling
+          isOpposite={Boolean(goalSecondary)}
+          percentPrimary={percentPrimary}
+          percentSecondary={percentSecondary}
+          liquid={liquid}
+        >
           {children}
-        </Item>
+        </Filling>
       )}
-      <Item className={cn('right', styles.right)} percent={percentPrimary} liquid={liquid}>
-        {children}
-      </Item>
+      {variant === 'contestation' && (
+        <Contestation
+          percentPrimary={percentPrimary}
+          percentSecondary={percentSecondary}
+          liquid={liquid}
+        >
+          {children}
+        </Contestation>
+      )}
     </>
   )
 };

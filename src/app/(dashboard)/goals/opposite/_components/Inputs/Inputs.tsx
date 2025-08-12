@@ -1,4 +1,4 @@
-import { Col, Row, ColorPicker, Switch, Divider } from 'antd';
+import { Col, Row, ColorPicker, Switch, Divider, Select } from 'antd';
 
 import FormItem from '@/components/ui/FormItem';
 import Leverage from '@/components/ui/Leverage';
@@ -9,6 +9,7 @@ import translations from '@/translations';
 import { TopInputs, AnimationSettings } from '@/app/(dashboard)/_components/Form';
 
 import Bubbles from './Bubbles';
+import { VARIANTS_OPTIONS } from './constants';
 
 const { forms: t } = translations;
 
@@ -20,10 +21,18 @@ const Inputs = () => {
       <AnimationSettings />
 
       <Row gutter={16}>
-        <Col span={10}>
+        <Col span={12}>
           <Leverage />
         </Col>
 
+        <Col span={12}>
+          <FormItem name="variant" label={t.oppositeVariant.label}>
+            <Select options={VARIANTS_OPTIONS} />
+          </FormItem>
+        </Col>
+      </Row>
+
+      <Row gutter={16}>
         <Col span={14}>
           <Row gutter={16}>
             <Col span={11}>
@@ -35,6 +44,8 @@ const Inputs = () => {
               <Bubbles />
             </Col>
           </Row>
+        </Col>
+        <Col span={10}>
         </Col>
       </Row>
 

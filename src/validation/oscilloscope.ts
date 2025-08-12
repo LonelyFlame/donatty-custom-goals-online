@@ -31,7 +31,7 @@ export const validateOscilloscopeWidget = (data: TWidgetOscilloscope): Record<st
   }
 
   if (!data.variant || !['sin', 'heart'].includes(data.variant)) {
-    errors.leverage = 'requiredOneOf:sin,heart';
+    errors.variant = 'requiredOneOf:sin,heart';
   }
 
   const colorValidate = colorValidator(data.color);

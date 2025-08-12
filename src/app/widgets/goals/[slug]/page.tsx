@@ -28,6 +28,7 @@ const Goals = async ({ params }: Props) => {
       timer,
       animationDuration,
       animationFunction,
+      variant,
     } = data;
 
     return (
@@ -44,6 +45,7 @@ const Goals = async ({ params }: Props) => {
         timer={timer}
         animationDuration={animationDuration}
         animationFunction={animationFunction}
+        variant={variant}
       />
     );
   }

@@ -80,12 +80,35 @@
 }
 
 .liquid {
+  &.contestationItem,
   &.right .fill {
     animation-name: rightWave;
   }
   &.left .fill {
     animation-name: leftWave;
   }
+}
+
+.contestationContainer {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-primary);
+  background-image: var(--image-primary);
+}
+
+.contestationItem {
+  height: 100%;
+  width: 50%;
+  background-color: var(--color-secondary);
+  background-image: var(--image-secondary);
+  transition: width theme.$duration-1;
+  transition-duration: var(--animation-duration);
+  transition-timing-function: var(--animation-function);
+  overflow: hidden;
+
+  animation-duration: theme.$duration-3;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 @keyframes rightWave {

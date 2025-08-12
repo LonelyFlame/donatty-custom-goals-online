@@ -23,18 +23,30 @@ const AnimationSettings = () => {
 
   const { setFieldValue } = form;
   useEffect(() => {
+    let newAnimationFunction = animationFunction;
     if (isLiquid && !animationFunction) {
-      setFieldValue('animationFunction', LIQUID_DEFAULT_ANIMATION_FUNCTION);
+      newAnimationFunction = LIQUID_DEFAULT_ANIMATION_FUNCTION;
     } else if (!isLiquid && animationFunction === LIQUID_DEFAULT_ANIMATION_FUNCTION) {
-      setFieldValue('animationFunction', undefined);
+      newAnimationFunction = undefined;
     }
 
-    if (isLiquid && !animationDuration) {
-      setFieldValue('animationDuration', LIQUID_DEFAULT_ANIMATION_DURATION);
-    } else if (!isLiquid && animationDuration === LIQUID_DEFAULT_ANIMATION_DURATION) {
-      setFieldValue('animationDuration', undefined);
+    if (animationFunction !== newAnimationFunction) {
+      setFieldValue('animationFunction', newAnimationFunction);
     }
-  }, [setFieldValue, isLiquid, animationFunction, animationDuration]);
+  }, [setFieldValue, isLiquid, animationFunction]);
+
+  useEffect(() => {
+    let newAnimationDuration = animationDuration;
+    if (isLiquid && !animationDuration) {
+      newAnimationDuration = LIQUID_DEFAULT_ANIMATION_DURATION;
+    } else if (!isLiquid && animationDuration === LIQUID_DEFAULT_ANIMATION_DURATION) {
+      newAnimationDuration = undefined;
+    }
+
+    if (animationDuration !== newAnimationDuration) {
+      setFieldValue('animationDuration', newAnimationDuration);
+    }
+  }, [setFieldValue, isLiquid, animationDuration]);
 
   return (
     <Row gutter={16}>
