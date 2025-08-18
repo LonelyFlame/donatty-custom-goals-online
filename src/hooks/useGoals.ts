@@ -4,9 +4,9 @@ import { useMemo } from 'react';
 
 import { useGoal } from '@/libs/dontatty/hooks';
 
-import type { TUseGoals } from '@/types/hooks';
+import type { TUseGoals, TUseGoalsReturnValue } from '@/types/hooks';
 
-const useGoals = ({ goal, goalSecondary, leverage, infinite }: TUseGoals): number => {
+const useGoals = ({ goal, goalSecondary, leverage, infinite }: TUseGoals): TUseGoalsReturnValue => {
   const { goal: goalValue, raised: raisedValue } = useGoal(goal);
   const { goal: goalValueSecondary, raised: raisedValueSecondary } = useGoal(goalSecondary);
 
@@ -43,7 +43,7 @@ const useGoals = ({ goal, goalSecondary, leverage, infinite }: TUseGoals): numbe
     );
   }, [goalValue, raisedValue, goalValueSecondary, raisedValueSecondary, leverage, infinite]);
 
-  return percent;
+  return { percent, goalLeverage: leverage || goalValue, goalLeverageSecondary: leverage || goalValueSecondary };
 }
 
 export default useGoals;

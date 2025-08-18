@@ -1,0 +1,16 @@
+@use '@/theme';
+
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.part {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: theme.$spacing-xxs;
+  background-color: var(--color-tertiary);
+}

@@ -39,6 +39,10 @@ const translations = {
   liquid: {
     label: 'Это жидкость?',
   },
+  parts: {
+    label: 'Промежуточные цели',
+    available: 'Только целые числа',
+  },
   color: {
     label: 'Цвет',
   },
@@ -62,6 +66,9 @@ const translations = {
   },
   colorLabel: {
     label: 'Цвет текста',
+  },
+  colorAdditional: {
+    label: 'Доп. цвет',
   },
   bubbles: {
     colorLabel: 'Цвет пузырьков',

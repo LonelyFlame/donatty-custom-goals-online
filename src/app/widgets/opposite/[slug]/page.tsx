@@ -23,6 +23,7 @@ const WidgetOpposite = async ({ params }: Props) => {
     animationDuration,
     animationFunction,
     variant,
+    parts,
   } = await getData(slug);
 
   return (
@@ -40,6 +41,7 @@ const WidgetOpposite = async ({ params }: Props) => {
       animationDuration={animationDuration}
       animationFunction={animationFunction}
       variant={variant}
+      parts={parts}
     />
   )
 };

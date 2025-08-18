@@ -83,3 +83,11 @@ export const colorValidator = (value?: string, options?: TValidateColorOptions):
 
   return true;
 };
+
+export const partsValidator = (parts?: (string | number)[]): boolean => {
+  if (!parts) {
+    return true;
+  }
+
+  return parts?.map(Number).every((part) => Number.isSafeInteger(part));
+};

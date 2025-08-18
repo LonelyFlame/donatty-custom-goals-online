@@ -16,6 +16,12 @@ export interface TUseGoals {
   infinite?: boolean;
 }
 
+export interface TUseGoalsReturnValue {
+  percent: number;
+  goalLeverage: number;
+  goalLeverageSecondary: number;
+}
+
 export type TUseAlertData = TDAlertMessageDonate
   | TDAlertMessageBits
   | TDAlertMessageSubscribe

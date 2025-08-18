@@ -14,6 +14,7 @@ const defaultData: TWidgetOpposite = {
   goal: '',
   image: '',
   name: '',
+  parts: [],
 };
 
 const CreateOpposite = async () => {

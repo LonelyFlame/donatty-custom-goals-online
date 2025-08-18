@@ -1,11 +1,7 @@
 'use client';
 
 import cn from 'classnames';
-import { useRef, useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
-
-import useGoals from '@/hooks/useGoals';
-import type { TOppositeVariants } from '@/types/widgets';
 
 import Item from './Item';
 import styles from './Opposite.module.scss';

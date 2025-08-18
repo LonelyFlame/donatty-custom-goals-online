@@ -40,7 +40,7 @@ const Circle = ({
   const timeoutRef = useRef<number|undefined>(undefined);
   const percentRef = useRef<number>(0);
 
-  const percent = useGoals({ goal, goalSecondary, leverage });
+  const { percent } = useGoals({ goal, goalSecondary, leverage });
 
   const [animatedPercent, setAnimatedPercent] = useState<number>(0);
 

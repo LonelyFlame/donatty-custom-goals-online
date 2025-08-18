@@ -38,6 +38,7 @@ export interface TWidget {
   infinite?: boolean;
   fade?: boolean;
   variant?: string;
+  parts?: (number | string)[];
   animationDuration?: number;
   animationFunction?: string;
 }
@@ -76,6 +77,7 @@ export interface TWidgetOpposite extends TGoal {
   liquid?: boolean;
   colorTertiary?: string;
   variant?: TOppositeVariants;
+  parts?: (number | string)[];
 }
 
 export interface TWidgetClock extends TGoal {

@@ -1,7 +1,10 @@
 import cn from 'classnames';
 import type { CSSProperties } from 'react';
 
-import { LIQUID_DEFAULT_ANIMATION_DURATION, LIQUID_DEFAULT_ANIMATION_FUNCTION } from '@/constants/widgets';
+import {
+  LIQUID_DEFAULT_ANIMATION_DURATION,
+  LIQUID_DEFAULT_ANIMATION_FUNCTION,
+} from '@/constants/widgets';
 import type { TOppositeVariants } from '@/types/widgets';
 
 import Bubbles from '../Boubles';
@@ -23,6 +26,7 @@ interface Props {
   animationDuration?: number;
   animationFunction?: string;
   variant?: TOppositeVariants;
+  parts?: (number | string)[];
 }
 
 const Opposite = async ({
@@ -39,6 +43,7 @@ const Opposite = async ({
   animationDuration,
   animationFunction,
   variant,
+  parts,
 }: Props) => {
   const animationDurationValue = !animationDuration && liquid ? LIQUID_DEFAULT_ANIMATION_DURATION : animationDuration;
   const animationFunctionValue= !animationFunction && liquid ? LIQUID_DEFAULT_ANIMATION_FUNCTION : animationFunction;
@@ -65,6 +70,7 @@ const Opposite = async ({
         liquid={liquid}
         timer={timer}
         variant={variant}
+        parts={parts?.map(Number)}
       >
         {liquid && <Bubbles />}
       </Items>

@@ -37,7 +37,7 @@ const Clock = ({
 
   const timeoutRef = useRef<number|undefined>(undefined);
 
-  const percent = useGoals({ goal, goalSecondary, leverage, infinite: isInfinite });
+  const { percent } = useGoals({ goal, goalSecondary, leverage, infinite: isInfinite });
 
   const [degrees, setDegrees] = useState(0);
 

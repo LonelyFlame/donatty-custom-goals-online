@@ -6,8 +6,11 @@ import type { PropsWithChildren } from 'react';
 import useGoals from '@/hooks/useGoals';
 import type { TOppositeVariants } from '@/types/widgets';
 
+import Parts from '../Parts';
+
 import Filling from './Filling';
 import Contestation from './Contestation';
+import styles from './Opposite.module.scss';
 
 interface Props extends PropsWithChildren {
   goal: string;
@@ -16,12 +19,13 @@ interface Props extends PropsWithChildren {
   liquid?: boolean;
   timer?: number;
   variant?: TOppositeVariants;
+  parts?: number[];
 }
 
-const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children, variant }: Props) => {
+const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children, variant, parts }: Props) => {
   const timeoutRef = useRef<number|undefined>(undefined);
 
-  const percent = useGoals({ goal, goalSecondary, leverage });
+  const { percent, goalLeverage, goalLeverageSecondary } = useGoals({ goal, goalSecondary, leverage });
 
   const [percentPrimary, setPercentPrimary] = useState(0);
   const [percentSecondary, setPercentSecondary] = useState(0);
@@ -39,6 +43,14 @@ const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children, var
 
   return (
     <>
+      {!!parts?.length && (
+        <div className={styles.parts}>
+          {Boolean(goalSecondary) &&
+            <Parts parts={parts} leverage={goalLeverageSecondary} className={styles.partsSecondary} />
+          }
+          <Parts parts={parts} leverage={goalLeverage} />
+        </div>
+      )}
       {isFilling && (
         <Filling
           isOpposite={Boolean(goalSecondary)}

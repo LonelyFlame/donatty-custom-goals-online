@@ -3,7 +3,7 @@ import isString from 'lodash/isString';
 
 import { TWidgetOpposite } from '@/types/widgets';
 
-import { goalLinkValidator, colorValidator } from './validators';
+import { goalLinkValidator, colorValidator, partsValidator } from './validators';
 
 export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, string> => {
   const errors: Record<string, string> = {};
@@ -50,6 +50,11 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
 
   if (!data.variant || !['filling', 'contestation'].includes(data.variant)) {
     errors.variant = 'requiredOneOf:filling,contestation';
+  }
+
+  const partsValidate = !data.parts?.length || partsValidator(data.parts);
+  if (partsValidate) {
+    errors.parts = 'emptyOrIntegers';
   }
 
   return errors;

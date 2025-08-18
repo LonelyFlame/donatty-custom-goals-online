@@ -1,3 +1,4 @@
+import { PARTS_DELIMITER } from '@/constants/widgets';
 import type { TOppositeVariants } from '@/types/widgets';
 
 import Opposite from './_components/Opposite';
@@ -17,6 +18,7 @@ interface Props {
     animationDuration?: number;
     animationFunction?: string;
     variant?: TOppositeVariants;
+    parts?: string;
   }>;
 
 }
@@ -37,6 +39,7 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
     animationDuration,
     animationFunction,
     variant,
+    parts,
   } = await searchParams || {};
 
   const missingPrimary = !goal || !color;
@@ -44,6 +47,8 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
   if (missingPrimary || missingSecondary) {
     return null;
   }
+
+  const mappedParts = parts ? parts.split(PARTS_DELIMITER).map(Number) : undefined;
 
   return (
     <Opposite
@@ -60,6 +65,7 @@ const WidgetOpposite = async ({ searchParams }: Props) => {
       animationDuration={animationDuration}
       animationFunction={animationFunction}
       variant={variant}
+      parts={mappedParts}
     />
   )
 };

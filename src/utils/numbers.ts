@@ -9,3 +9,7 @@ export const roundPercents = (percent: number): number => {
 export const matchPercents = (first: number, second: number): boolean => {
   return roundPercents(first) === roundPercents(second);
 }
+
+export const valueToPercent = (value: number, max: number) => {
+  return (value / max) * 100;
+}

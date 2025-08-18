@@ -40,7 +40,7 @@ const Oscilloscope = ({
 
   const [percentValue, setPercentValue] = useState<number>(0);
 
-  const percent = useGoals({ goal, goalSecondary, leverage });
+  const { percent } = useGoals({ goal, goalSecondary, leverage });
 
   const handleUpdatePercent = useCallback(() => {
     clearTimeout(timeoutRef.current);

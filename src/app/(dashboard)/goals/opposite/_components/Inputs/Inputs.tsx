@@ -8,7 +8,7 @@ import translations from '@/translations';
 
 import { TopInputs, AnimationSettings } from '@/app/(dashboard)/_components/Form';
 
-import Bubbles from './Bubbles';
+import Parts from './Parts';
 import { VARIANTS_OPTIONS } from './constants';
 
 const { forms: t } = translations;
@@ -33,19 +33,22 @@ const Inputs = () => {
       </Row>
 
       <Row gutter={16}>
-        <Col span={14}>
-          <Row gutter={16}>
-            <Col span={11}>
-              <FormItem name="liquid" label={t.liquid.label}>
-                <Switch />
-              </FormItem>
-            </Col>
-            <Col span={13}>
-              <Bubbles />
-            </Col>
-          </Row>
+        <Col span={11}>
+          <Parts />
         </Col>
-        <Col span={10}>
+        <Col span={6}>
+          <FormItem
+            name="colorTertiary"
+            label={t.colorAdditional.label}
+            initialValue="#808080"
+          >
+            <ColorPicker showText />
+          </FormItem>
+        </Col>
+        <Col span={7}>
+          <FormItem name="liquid" label={t.liquid.label}>
+            <Switch />
+          </FormItem>
         </Col>
       </Row>
 

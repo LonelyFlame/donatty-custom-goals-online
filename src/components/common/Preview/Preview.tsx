@@ -10,6 +10,7 @@ import { MAP_TYPE_TO_WIDGET_ROUTE } from '@/constants/routes';
 import translations from '@/translations';
 import type { TWidget, TWidgetType } from '@/types/widgets';
 import type { TWidgetFormData } from '@/types/forms';
+import { PARTS_DELIMITER } from '../../../constants/widgets';
 
 import styles from './Preview.module.scss';
 
@@ -22,49 +23,65 @@ interface Props {
   variant?: 'square' | 'rectangle' | 'default';
 }
 
+interface PreviewSearchParams extends Omit<TWidget, 'type' | 'parts'> {
+  parts?: string;
+}
+
 const Preview = ({ type, variant = 'default' }: Props) => {
   const [src, setSrc] = useState('');
 
   const form = Form.useFormInstance<TWidgetFormData>();
 
   const handleRefresh = () => {
-    const { color, colorSecondary, colorTertiary, image, imageSecondary, ...fields } = form.getFieldsValue();
-    const settings: Omit<TWidget, 'type'> = { ...fields };
+    const {
+      color,
+      colorSecondary,
+      colorTertiary,
+      image,
+      imageSecondary,
+      parts,
+      ...fields
+    } = form.getFieldsValue();
+    const searchParams: PreviewSearchParams = { ...fields };
 
     if (color) {
-      settings.color = typeof color === 'string'
+      searchParams.color = typeof color === 'string'
         ? color
         : color?.toHexString() || '';
     }
 
     if (colorSecondary) {
-      settings.colorSecondary = typeof colorSecondary === 'string'
+      searchParams.colorSecondary = typeof colorSecondary === 'string'
         ? colorSecondary
         : colorSecondary?.toHexString() || '';
     }
 
     if (colorTertiary) {
-      settings.colorTertiary = typeof colorTertiary === 'string'
+      searchParams.colorTertiary = typeof colorTertiary === 'string'
         ? colorTertiary
         : colorTertiary?.toHexString() || '';
     }
 
     if (image?.length) {
-      settings.image = image.at(0)?.url;
+      searchParams.image = image.at(0)?.url;
     }
 
     if (imageSecondary?.length) {
-      settings.imageSecondary = imageSecondary.at(0)?.url;
+      searchParams.imageSecondary = imageSecondary.at(0)?.url;
     }
 
-    const searchParams = Object.entries(settings).map<string>(([key, value]) => {
+    if (parts?.length) {
+      searchParams.parts = parts.join(PARTS_DELIMITER);
+    }
+
+    const searchParamsString = Object.entries(searchParams).map<string>(([key, value]) => {
       return `${key}=${encodeURIComponent(String(value || ''))}`;
     });
 
 
     const url = template(MAP_TYPE_TO_WIDGET_ROUTE[type], { slug: '' });
 
-    setSrc(`${url}?${searchParams.join('&')}`);
+    setSrc(`${url}?${searchParamsString.join('&')}`);
   };
 
   useEffect(() => {

@@ -29,6 +29,7 @@ const Goals = async ({ params }: Props) => {
       animationDuration,
       animationFunction,
       variant,
+      parts,
     } = data;
 
     return (
@@ -46,6 +47,7 @@ const Goals = async ({ params }: Props) => {
         animationDuration={animationDuration}
         animationFunction={animationFunction}
         variant={variant}
+        parts={parts}
       />
     );
   }
