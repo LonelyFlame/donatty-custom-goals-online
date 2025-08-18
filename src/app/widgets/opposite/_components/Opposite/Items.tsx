@@ -34,9 +34,12 @@ const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children, var
     }, timer * 1000);
   }, [percent, timer]);
 
+  const isFilling = variant === 'filling' || !goalSecondary;
+  const isContestation = variant === 'contestation';
+
   return (
     <>
-      {variant === 'filling' && (
+      {isFilling && (
         <Filling
           isOpposite={Boolean(goalSecondary)}
           percentPrimary={percentPrimary}
@@ -46,7 +49,7 @@ const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children, var
           {children}
         </Filling>
       )}
-      {variant === 'contestation' && (
+      {isContestation && (
         <Contestation
           percentPrimary={percentPrimary}
           percentSecondary={percentSecondary}
