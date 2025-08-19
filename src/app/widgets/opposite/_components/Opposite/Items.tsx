@@ -38,8 +38,9 @@ const Items = ({ goal, goalSecondary, leverage, liquid, timer = 0, children, var
     }, timer * 1000);
   }, [percent, timer]);
 
-  const isFilling = variant === 'filling' || !goalSecondary;
-  const isContestation = variant === 'contestation';
+  const hasSecondary = Boolean(goalSecondary);
+  const isFilling = variant === 'filling' || !hasSecondary;
+  const isContestation = variant === 'contestation' && hasSecondary;
 
   return (
     <>
