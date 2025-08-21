@@ -20,3 +20,5 @@ export const IMAGE_TRANSFORM_TYPE_MAP_TO_ALIAS = {
   crop: 'c',
   reduce: 'r',
 };
+
+export const PROXY_URI = '/api/proxy?target=';

@@ -4,7 +4,7 @@ import { SYNC_DELAY } from './constants';
 type CRProjectSyncCallback = (_sum: number) => void;
 export const CRProjectSync = (id: number, callback: CRProjectSyncCallback) => {
   const sync = async () => {
-    const project = await CRGetProject(id);
+    const project = await CRGetProject(id, true);
 
     callback(project.funded_sum);
   };

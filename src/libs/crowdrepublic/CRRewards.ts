@@ -5,7 +5,7 @@ import type { TCRReward } from './types/reward';
 type CRRewardsSyncCallback = (_rewards: TCRReward[]) => void;
 export const CRRewardsSync = (id: number, callback: CRRewardsSyncCallback) => {
   const sync = async () => {
-    const rewards = await CRGetRewards(id);
+    const rewards = await CRGetRewards(id, true);
 
     callback(rewards);
   };

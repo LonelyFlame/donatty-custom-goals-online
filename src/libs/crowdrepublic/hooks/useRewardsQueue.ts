@@ -43,7 +43,7 @@ export const useRewardsQueue = (id: number) => {
   };
 
   const init = async () => {
-    const rewards = await CRGetRewards(id);
+    const rewards = await CRGetRewards(id, true);
 
     rewardsRef.current = rewards.reduce<Record<string, TReward>>((acc, reward) => {
       const mappedReward:TReward = mapTCRReward(reward);
