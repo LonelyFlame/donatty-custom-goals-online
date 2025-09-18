@@ -53,7 +53,7 @@ export const validateOppositeWidget = (data: TWidgetOpposite): Record<string, st
   }
 
   const partsValidate = !data.parts?.length || partsValidator(data.parts);
-  if (partsValidate) {
+  if (!partsValidate) {
     errors.parts = 'emptyOrIntegers';
   }
 
