@@ -1,5 +1,5 @@
 import chroma from 'chroma-js';
-import type { Scale, Color } from 'chroma-js';
+import type { Scale } from 'chroma-js';
 
 import { validateColor } from '@/validation/colors';
 import type { TValidateColorOptions } from '@/validation/colors';
