@@ -22,6 +22,8 @@ const Alerts = async ({ params }: Props) => {
       fade,
       variant,
       sfx,
+      font,
+      fontSize,
     } = data;
 
     return (
@@ -36,6 +38,8 @@ const Alerts = async ({ params }: Props) => {
         variant={variant}
         slug={slug}
         sfx={sfx}
+        font={font}
+        fontSize={fontSize}
       />
     );
   }

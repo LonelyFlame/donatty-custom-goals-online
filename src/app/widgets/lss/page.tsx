@@ -13,6 +13,8 @@ interface Props {
     goals?: string[];
     variant?: TOscilloscopeVariants;
     sfx?: boolean;
+    font?: string;
+    fontSize?: number;
   }>;
 
 }
@@ -30,6 +32,8 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
     goals,
     variant,
     sfx,
+    font,
+    fontSize,
   } = await searchParams || {};
 
   if (!alert || !leverage || !timer || !color || !colorSecondary) {
@@ -48,6 +52,8 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
       goals={goals}
       variant={variant}
       sfx={sfx}
+      font={font}
+      fontSize={fontSize}
     />
   )
 };

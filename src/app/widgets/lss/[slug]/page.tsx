@@ -20,6 +20,8 @@ const WidgetOscilloscope = async ({ params }: Props) => {
     goals,
     variant,
     sfx,
+    font,
+    fontSize,
   } = await getData(slug);
 
   return (
@@ -35,6 +37,8 @@ const WidgetOscilloscope = async ({ params }: Props) => {
       variant={variant}
       slug={slug}
       sfx={sfx}
+      font={font}
+      fontSize={fontSize}
     />
   )
 };

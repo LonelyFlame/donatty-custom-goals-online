@@ -8,7 +8,7 @@ import type { Scale } from 'chroma-js';
 import { getColorScale } from '@/utils/colors';
 import type { TOscilloscopeVariants } from '@/types/widgets';
 
-import { MAX_AMPLITUDE, VARIANTS } from './constants';
+import { VARIANTS } from './constants';
 import styles from './Oscilloscope.module.scss';
 
 interface Props {
@@ -34,23 +34,22 @@ const Oscilloscope = ({
 }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
+  const colorScaleRef = useRef<Scale>(getColorScale([color, colorSecondary, colorTertiary], { notTransparent: true }));
   const animationFrameRef = useRef<number>(0);
   const phaseRef = useRef<number>(0);
   const percentRef = useRef<number>(0);
 
-  const drawWave = useCallback(({
-    quart,
-    lastQuart,
-    colorScale,
-  }: { quart: number, lastQuart: number, colorScale: Scale }) => {
+  const drawWave = useCallback((quart: number, lastQuart: number) => {
     const ctx = ctxRef.current!;
     const canvas = canvasRef.current!;
+    const colorScale = colorScaleRef.current;
 
     const {
       plot,
       getSpeed,
       getFrequencyStep,
       reset,
+      getAmplitude,
     } = VARIANTS[variant];
 
     const phase = phaseRef.current;
@@ -64,7 +63,7 @@ const Oscilloscope = ({
       color = chroma(colorFull);
     }
 
-    const stepAmplitude = (MAX_AMPLITUDE * percent);
+    const stepAmplitude = getAmplitude(percent);
     const stepSpeed = getSpeed(percent);
     const frequencyStep = getFrequencyStep(percent);
 
@@ -110,8 +109,9 @@ const Oscilloscope = ({
       phaseRef.current = 0;
     }
 
-    animationFrameRef.current = requestAnimationFrame(() => drawWave({ quart, lastQuart, colorScale }));
+    animationFrameRef.current = requestAnimationFrame(() => drawWave(quart, lastQuart));
   }, [fade, colorFull, variant, colorEmpty]);
+
   const initAnimation = useCallback(() => {
     cancelAnimationFrame(animationFrameRef.current);
 
@@ -129,14 +129,9 @@ const Oscilloscope = ({
     const quart = canvas.width / (Math.PI - (Math.E / Math.PI));
     const lastQuart = canvas.width - quart;
 
-    const colorScale = getColorScale([color, colorSecondary, colorTertiary], { notTransparent: true });
+    drawWave(quart, lastQuart);
+  }, [drawWave]);
 
-    drawWave({
-      quart,
-      lastQuart,
-      colorScale,
-    });
-  }, [color, colorSecondary, colorTertiary, drawWave]);
   useEffect(() => {
     initAnimation();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

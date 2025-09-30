@@ -9,3 +9,14 @@ export const resetSFX = (audio: false | HTMLAudioElement, muted: boolean) => {
 
   audio.play();
 };
+
+export const getTimerDisplay = (timer: number, percent: number): string => {
+  const timerLeft = timer * percent;
+  const timerMinutesLeft = Math.floor(timerLeft);
+  const timerSecondsLeft = Math.floor((timerLeft * 60) % 60);
+
+  const minutesDisplay = `${timerMinutesLeft < 10 ? '0' : ''}${timerMinutesLeft}`;
+  const secondsDisplay = `${timerSecondsLeft < 10 ? '0' : ''}${timerSecondsLeft}`;
+
+  return `${minutesDisplay}:${secondsDisplay}`;
+};

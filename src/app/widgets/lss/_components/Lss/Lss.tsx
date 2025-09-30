@@ -1,21 +1,22 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo, type CSSProperties } from 'react';
 import cn from 'classnames';
 import { InputNumber } from 'antd';
 import { PauseCircleTwoTone } from '@ant-design/icons';
 import type { KeyboardEvent } from 'react';
+import type { Scale } from 'chroma-js';
 
-import { matchPercents } from '@/utils/numbers';
 import useAlert from '@/hooks/useAlert';
 import Visualisation from '@/components/common/Oscilloscope';
-import { MIN_BY_MLSECS } from '@/constants/datetime';
+import { FontWrapper } from '@/components/common/Fonts';
+import { SEC_BY_MLSECS } from '@/constants/datetime';
 import { BEEP_SFX_URL, DEATH_SFX_URL } from '@/constants/widgets';
 import type { TOscilloscopeVariants } from '@/types/widgets';
+import { getColorScale } from '@/utils/colors';
 
-import { resetSFX } from './utils';
+import { getTimerDisplay, resetSFX } from './utils';
 import {
-  ANIMATION_STEP,
   DEFAULT_DELAY,
   MAX_PERCENT_SFX,
   MAX_SFX_DELAY,
@@ -36,6 +37,8 @@ interface Props {
   slug?: string;
   goals?: string[];
   sfx?: boolean;
+  font?: string;
+  fontSize?: number;
 }
 
 const beepSFX = typeof window !== 'undefined' && new Audio(BEEP_SFX_URL);
@@ -47,24 +50,32 @@ const Lss = ({
   color,
   colorSecondary,
   colorTertiary,
-  timer,
+  timer, // in minutes
   fade,
   variant,
   slug,
   goals,
-  sfx = true,
+  sfx,
+  font = 'roboto',
+  fontSize,
 }: Props) => {
-  const tick = (timer * MIN_BY_MLSECS) / 100;
-  const step = leverage / 100;
+  const timerBySeconds = timer * 60; // timer in seconds
+  const valueStep = leverage / timerBySeconds; // value per second
 
-  const percentRef = useRef<number>(0);
+  const colorScaleRef = useRef<Scale>(getColorScale([colorSecondary, colorTertiary], { notTransparent: true }));
   const timeoutRef = useRef<number|undefined>(undefined);
+  const valueRef = useRef<number>(0);
   const pauseRef = useRef<boolean>(true);
 
   const [value, setValue] = useState<number>(0);
   const [pause, setPause] = useState<boolean>(true);
-  const [percentValue, setPercentValue] = useState<number>(0);
   const [inputValue, setInputValue] = useState<number | null>(0);
+
+  const percentValue = value / leverage;
+
+  const timerDisplay = useMemo(() => {
+    return getTimerDisplay(timer, percentValue);
+  }, [percentValue, timer]);
 
   const rememberValue = useCallback((value: number) => {
     if (slug) {
@@ -73,65 +84,39 @@ const Lss = ({
   }, [slug]);
 
   const handleAlert = useCallback(({ amount }: { amount: number }) => {
-    setValue((current) => {
-      const newValue = Math.max(0, Math.min(leverage, current + amount));
+    const newValue = Math.max(0, Math.min(leverage, valueRef.current + amount));
 
-      rememberValue(newValue);
-      return newValue;
-    });
+    valueRef.current = newValue;
+
+    rememberValue(newValue);
   }, [leverage, rememberValue]);
   useAlert(alert, handleAlert, goals);
 
-  const handleSchedulePercentTick = useCallback(() => {
-    if (pauseRef.current) return;
+  const scheduleAnimate = (delay: number = DEFAULT_DELAY) => {
+    clearTimeout(timeoutRef.current);
 
     timeoutRef.current = window.setTimeout(() => {
-      if (pauseRef.current) return;
+      setValue((currentValue) => {
+        const targetValue = valueRef.current;
+        const sign: 1 | -1 = targetValue <= currentValue ? -1 : 1;
 
-      setValue((current: number) => {
-        const newValue = Math.max(0, current - step);
+        scheduleAnimate(sign > 0 ? DEFAULT_DELAY : SEC_BY_MLSECS);
 
-        rememberValue(newValue);
+        if (pauseRef.current) {
+          return targetValue;
+        }
+
+        const newValue = Math.max(currentValue + (valueStep * sign), 0);
+
+        if (sign < 0) {
+          valueRef.current = newValue;
+          rememberValue(newValue);
+        }
+
         return newValue;
-      });
-    }, tick);
-  }, [rememberValue, step, tick]);
-
-  const handleUpdatePercent = useCallback(() => {
-    clearTimeout(timeoutRef.current);
-
-    const percent = percentRef.current;
-
-    setPercentValue((current) => {
-      if (current === percent) {
-        handleSchedulePercentTick();
-
-        return current;
-      }
-
-      const sign: 1 | -1 = current <= percent ? 1 : -1;
-      const localPercent = current + (ANIMATION_STEP * sign);
-
-      const isMatched = matchPercents(localPercent, percent);
-      if (isMatched) {
-        handleSchedulePercentTick();
-      } else {
-        timeoutRef.current = window.setTimeout(() => {
-          handleUpdatePercent();
-        }, DEFAULT_DELAY);
-      }
-
-      return Math.max(Math.min(localPercent, 1), 0);
-    });
-  }, [handleSchedulePercentTick]);
-  useEffect(() => {
-    clearTimeout(timeoutRef.current);
-    percentRef.current = value / leverage;
-
-    timeoutRef.current = window.setTimeout(() => {
-      handleUpdatePercent();
-    }, DEFAULT_DELAY);
-  }, [value, leverage, handleUpdatePercent]);
+      })
+    }, delay)
+  };
 
   const handleClick = () => {
     const paused = !pauseRef.current;
@@ -139,17 +124,19 @@ const Lss = ({
     pauseRef.current = paused;
     setPause(paused);
     setInputValue(0);
-
-    if (!paused) {
-      handleUpdatePercent();
-    }
   };
 
   useEffect(() => {
-    if (slug) {
-      const initialValue = Number(localStorage.getItem(`${slug}_value`));
-      setValue(initialValue || 0);
+    scheduleAnimate();
+
+    if (!slug) {
+      return;
     }
+
+    const initialValue = Number(localStorage.getItem(`${slug}_value`)) || 0;
+
+    setValue(initialValue);
+    valueRef.current = initialValue;
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -188,7 +175,22 @@ const Lss = ({
   };
 
   return (
-    <>
+    <FontWrapper
+      className={cn('container', styles.container)}
+      slug={font}
+      style={{
+        ...(!!fontSize && { '--fontSize': `${fontSize}px` }),
+      } as CSSProperties}
+    >
+      <div
+        className={cn('timer', styles.timer)}
+        style={{
+          opacity: percentValue <= 0.1 || percentValue >= 0.9 ? 1 : 0,
+          color: percentValue === 0 ? color : colorScaleRef.current(percentValue).toString(),
+        }}
+      >
+        {timerDisplay}
+      </div>
       <div className={styles.lss} onClick={handleClick}>
         <Visualisation
           color={colorSecondary}
@@ -215,7 +217,7 @@ const Lss = ({
           />
         </>
       )}
-    </>
+    </FontWrapper>
   );
 };
 

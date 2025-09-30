@@ -4,6 +4,7 @@ import { auth } from '@/auth';
 
 import Form from '@/app/(dashboard)/_components/Form';
 import type { TWidgetLSS } from '@/types/widgets';
+import { FontsLoader } from '@/components/common/Fonts';
 
 import Lss from './_components/Lss';
 
@@ -28,9 +29,12 @@ const CreateLss = async () => {
   }
 
   return (
-    <Form data={defaultData} type="lss">
-      <Lss />
-    </Form>
+    <>
+      <Form data={defaultData} type="lss">
+        <Lss />
+      </Form>
+      <FontsLoader />
+    </>
   );
 }
 

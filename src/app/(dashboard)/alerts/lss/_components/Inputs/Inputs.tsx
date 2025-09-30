@@ -6,6 +6,7 @@ import Name from '@/components/ui/Name';
 import HintedSwitch from '@/components/ui/HintedSwitch';
 import ColorsPreview from '@/components/common/ColorsPreview';
 import translations from '@/translations';
+import Font from '../../../../../../components/ui/Font';
 
 import { VARIANTS_OPTIONS } from './constants';
 import LifetimePopover from './LifetimePopover';
@@ -20,8 +21,11 @@ const Inputs = () => {
   return (
     <>
       <Row gutter={16}>
-        <Col span={24}>
+        <Col span={10}>
           <Name />
+        </Col>
+        <Col span={14}>
+          <Font />
         </Col>
       </Row>
 
