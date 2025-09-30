@@ -35,7 +35,7 @@ const WidgetInput = ({ name, required, widgetType }: Props) => {
         },
       ]}
     >
-      <BlurredInput placeholder={t.placeholder} autoComplete="off" />
+      <BlurredInput placeholder={t.placeholder[widgetType]} autoComplete="off" />
     </FormItem>
   );
 };

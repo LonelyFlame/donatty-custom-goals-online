@@ -17,7 +17,11 @@ const translations = {
   },
   widget: {
     label: 'Ссылка на виджет',
-    placeholder: 'https://widgets.donatty.com/goal/?ref=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&token=ffffffffffffffffffffffffffffff',
+    placeholder: {
+      GOAL: 'https://widgets.donatty.com/goal/?ref=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&token=ffffffffffffffffffffffffffffff',
+      ALERT: 'https://widgets.donatty.com/donations/?ref=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&token=ffffffffffffffffffffffffffffff',
+      EVENTS: 'https://widgets.donatty.com/events/?ref=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&token=ffffffffffffffffffffffffffffff',
+    },
     required: 'Ссылка на виджет обязательна для заполнения',
     format: 'Недействительная ссылка',
   },
