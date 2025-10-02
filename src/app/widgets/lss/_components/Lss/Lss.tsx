@@ -72,6 +72,7 @@ const Lss = ({
   const [inputValue, setInputValue] = useState<number | null>(0);
 
   const percentValue = value / leverage;
+  const showTimer = pause || percentValue <= 0.1 || percentValue >= 0.9;
 
   const timerDisplay = useMemo(() => {
     return getTimerDisplay(timer, percentValue);
@@ -185,7 +186,7 @@ const Lss = ({
       <div
         className={cn('timer', styles.timer)}
         style={{
-          opacity: percentValue <= 0.1 || percentValue >= 0.9 ? 1 : 0,
+          opacity: showTimer ? 1 : 0,
           color: percentValue === 0 ? color : colorScaleRef.current(percentValue).toString(),
         }}
       >
