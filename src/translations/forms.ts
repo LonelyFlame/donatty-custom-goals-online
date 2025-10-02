@@ -118,6 +118,14 @@ const translations = {
     label: 'Макс. значение',
     placeholder: 'В рублях',
   },
+  valueOverflow: {
+    label: 'Пиковое значение',
+    placeholder: 'В рублях',
+    hint: {
+      units: 'В рублях',
+      description: 'Значение счетчика при котором график будет отображать максимальное значение',
+    },
+  },
   lifetime: {
     label: 'Время жизни',
     placeholder: 'В минутах',

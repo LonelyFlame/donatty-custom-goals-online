@@ -1,7 +1,7 @@
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { relations } from 'drizzle-orm';
 
-import { WIDGET_TYPE_LSS } from '@/constants/widgets';
+import { WIDGET_TYPE_DYING, WIDGET_TYPE_LSS } from '@/constants/widgets';
 
 import users from './users';
 
@@ -12,6 +12,7 @@ const alerts = sqliteTable('alerts', {
   name: text().notNull(),
   type: text({ enum: [
     WIDGET_TYPE_LSS,
+    WIDGET_TYPE_DYING,
   ] }).notNull(),
   settings: text().notNull(),
 });

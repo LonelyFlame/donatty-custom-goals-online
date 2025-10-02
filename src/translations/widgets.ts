@@ -14,6 +14,11 @@ const translations = {
   lss: {
     title: 'Жизнеобеспечение',
   },
+  dying: {
+    title: 'Умирание',
+    value: 'Текущее значение(руб.) ',
+    valueTotal: 'Всего учтено(руб.) ',
+  },
   cr: {
     title: 'Сбор Crowdrepublic',
     defaultLabel: 'Собрано\u00A0{amount}₽({goalPercentage}%)\u00A0из\u00A0{goal}₽!',

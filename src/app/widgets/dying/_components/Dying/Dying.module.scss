@@ -1,0 +1,57 @@
+@use "@/theme";
+
+.container {
+  --font: Roboto;
+  --fontSize: min(4.8vw, 20vh);
+}
+
+.timer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity theme.$duration-base;
+  font-family: var(--font), theme.$fontFamily-default;
+  font-size: var(--fontSize);
+}
+
+.lss {
+  height: 100%;
+  width: 100%;
+}
+
+.valueContainer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: theme.$spacing-m;
+  padding: 0 theme.$spacing-m theme.$spacing-m 0;
+}
+
+.value {
+  text-align: end;
+}
+
+.change {
+  background-color: transparent;
+  border-color: theme.$color-base500;
+
+  &:global(.ant-input-number) {
+    background-color: transparent;
+  }
+
+  :global(.ant-input-number-handler-wrap), {
+    background-color: transparent;
+  }
+
+  :global(.ant-input-number-input),
+  :global(.ant-input-number-handler .anticon) {
+    color: theme.$color-base500;
+  }
+}
+
+.pauseIcon {
+  @include theme.positionCenter;
+  font-size: 80px;
+}

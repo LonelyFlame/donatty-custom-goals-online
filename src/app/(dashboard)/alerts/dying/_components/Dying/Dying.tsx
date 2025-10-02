@@ -1,0 +1,31 @@
+import { Col, Row } from 'antd';
+
+import Preview from '@/components/common/Preview';
+import WidgetLink from '@/components/ui/WidgetLink';
+
+import Inputs from '../Inputs';
+import Note from './Note';
+
+interface Props {
+  slug?: string;
+}
+
+const Dying = ({ slug }: Props) => {
+  return (
+    <div>
+      <Row gutter={16}>
+        <Col span={12}>
+          {!!slug && <WidgetLink slug={slug} type="alert" />}
+          <Inputs />
+        </Col>
+        <Col span={12}>
+          <Preview type="dying" variant="rectangle" />
+
+          <Note />
+        </Col>
+      </Row>
+    </div>
+  );
+}
+
+export default Dying;

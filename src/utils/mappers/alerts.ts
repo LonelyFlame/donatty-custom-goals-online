@@ -1,8 +1,9 @@
-import { WIDGET_TYPE_LSS } from '@/constants/widgets';
+import { WIDGET_TYPE_DYING, WIDGET_TYPE_LSS } from '@/constants/widgets';
 import type { TAlert as TAlertEntity } from '@/types/entities';
 import {
   TAlert,
   TAlerts,
+  TWidgetDying,
   TWidgetLSS,
   TWidgetType,
 } from '@/types/widgets';
@@ -17,6 +18,10 @@ export const mapAlertToWidget = ({ settings, type, ...data }: TAlertEntity): TAl
 
   if (type === WIDGET_TYPE_LSS) {
     return mappedData as TWidgetLSS;
+  }
+
+  if (type === WIDGET_TYPE_DYING) {
+    return mappedData as TWidgetDying;
   }
 
   throw new Error('Unexpected widget type?!');

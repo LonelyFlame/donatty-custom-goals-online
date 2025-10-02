@@ -30,7 +30,7 @@ export const POST = auth(async (request) => {
       return Response.json(mapCRToWidget(widget));
     }
 
-    const isAlert = widget.type === 'lss';
+    const isAlert = widget.type === 'lss' || widget.type === 'dying';
     if (isAlert) {
       return Response.json(mapAlertToWidget(widget));
     }

@@ -1,10 +1,11 @@
-import Lss from './_components/Lss';
+import Dying from './_components/Dying';
 import type { TOscilloscopeVariants } from '@/types/widgets';
 
 interface Props {
   searchParams?: Promise<{
     alert?: string;
     leverage?: number;
+    leverageSecondary?: number;
     color?: string;
     colorSecondary?: string;
     colorTertiary?: string;
@@ -22,6 +23,7 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
   const {
     alert,
     leverage,
+    leverageSecondary,
     color,
     colorSecondary,
     colorTertiary,
@@ -34,14 +36,15 @@ const WidgetOscilloscope = async ({ searchParams }: Props) => {
     fontSize,
   } = await searchParams || {};
 
-  if (!alert || !leverage || !timer || !color || !colorSecondary) {
+  if (!alert || !leverage || !leverageSecondary || !timer || !color || !colorSecondary) {
     return null;
   }
 
   return (
-    <Lss
+    <Dying
       alert={alert}
       leverage={leverage}
+      leverageSecondary={leverageSecondary}
       color={color}
       colorSecondary={colorSecondary}
       colorTertiary={colorTertiary}

@@ -6,7 +6,9 @@ import {
   WIDGET_TYPE_CIRCLE,
   WIDGET_TYPE_OSCILLOSCOPE,
   WIDGET_TYPE_LSS,
-  WIDGET_TYPE_CR, WIDGET_TYPE_CRALERT,
+  WIDGET_TYPE_CR,
+  WIDGET_TYPE_CRALERT,
+  WIDGET_TYPE_DYING,
 } from './widgets';
 
 export const ROUTES = {
@@ -20,6 +22,7 @@ export const ROUTES = {
   OSCILLOSCOPE: '/goals/oscilloscope/{slug}',
 
   LSS: '/alerts/lss/{slug}',
+  DYING: '/alerts/dying/{slug}',
 
   CR: '/crowdrepublic/{slug}',
   CR_ALERT: '/crowdrepublicAlert/{slug}',
@@ -32,6 +35,7 @@ export const ROUTES = {
 
   ALERTS: '/widgets/alerts/{slug}',
   WIDGETS_LSS: '/widgets/lss/{slug}',
+  WIDGETS_DYING: '/widgets/dying/{slug}',
 
   WIDGETS_CR: '/widgets/crowdrepublic/{slug}',
   WIDGETS_CR_ALERT: '/widgets/crowdrepublicAlert/{slug}',
@@ -47,6 +51,7 @@ export const MAP_TYPE_TO_MANAGE_ROUTE = {
   [WIDGET_TYPE_CIRCLE]: ROUTES.CIRCLE,
   [WIDGET_TYPE_OSCILLOSCOPE]: ROUTES.OSCILLOSCOPE,
   [WIDGET_TYPE_LSS]: ROUTES.LSS,
+  [WIDGET_TYPE_DYING]: ROUTES.DYING,
   [WIDGET_TYPE_CR]: ROUTES.CR,
   [WIDGET_TYPE_CRALERT]: ROUTES.CR_ALERT,
 } satisfies Record<TWidgetType, string>;
@@ -57,6 +62,7 @@ export const MAP_TYPE_TO_WIDGET_ROUTE = {
   [WIDGET_TYPE_CIRCLE]: ROUTES.WIDGETS_CIRCLE,
   [WIDGET_TYPE_OSCILLOSCOPE]: ROUTES.WIDGETS_OSCILLOSCOPE,
   [WIDGET_TYPE_LSS]: ROUTES.WIDGETS_LSS,
+  [WIDGET_TYPE_DYING]: ROUTES.WIDGETS_DYING,
   [WIDGET_TYPE_CR]: ROUTES.WIDGETS_CR,
   [WIDGET_TYPE_CRALERT]: ROUTES.WIDGETS_CR_ALERT,
 } satisfies Record<TWidgetType, string>;

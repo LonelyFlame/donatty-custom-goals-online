@@ -16,7 +16,7 @@ export type TAlertType = ValueOf<typeof ALERTS_TYPES>;
 export type TCRType = ValueOf<typeof CR_TYPES>;
 export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS | TWidgetCR | TWidgetCRAlert;
 export type TGoals = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope;
-export type TAlerts = TWidgetLSS;
+export type TAlerts = TWidgetLSS | TWidgetDying;
 export type TCRs = TWidgetCR | TWidgetCRAlert;
 
 export interface TWidget {
@@ -32,6 +32,7 @@ export interface TWidget {
   image?: string;
   imageSecondary?: string;
   leverage?: number;
+  leverageSecondary?: number;
   rotate?: boolean;
   half?: boolean;
   liquid?: boolean;
@@ -117,6 +118,20 @@ export interface TWidgetLSS extends TAlert {
   colorSecondary: string;
   colorTertiary: string;
   leverage: number;
+  fade?: boolean;
+  goals?: string[]
+  variant: TOscilloscopeVariants;
+  sfx?: boolean;
+}
+
+export interface TWidgetDying extends TAlert {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_DYING;
+  timer: number;
+  color: string;
+  colorSecondary: string;
+  colorTertiary: string;
+  leverage: number;
+  leverageSecondary: number;
   fade?: boolean;
   goals?: string[]
   variant: TOscilloscopeVariants;

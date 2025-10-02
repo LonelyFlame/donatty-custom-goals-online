@@ -21,7 +21,7 @@ class WidgetsServices {
       return GoalRepository.createOrUpdate(user.id, data, slug);
     }
 
-    const isAlert = data.type === 'lss';
+    const isAlert = data.type === 'lss' || data.type === 'dying';
     if (isAlert) {
       return AlertRepository.createOrUpdate(user.id, data, slug);
     }

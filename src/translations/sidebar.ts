@@ -15,6 +15,7 @@ const translations = {
   alerts: {
     title: 'Алерты',
     lss: widgets.lss.title,
+    dying: widgets.dying.title,
   },
   crs: {
     title: 'Crowdrepublic',

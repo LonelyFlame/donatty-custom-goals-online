@@ -99,6 +99,14 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
             href: template(ROUTES.LSS, { id: '' }),
           }),
         },
+        {
+          key: 'create_lss_overflow',
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.dying),
+          label: createElement(Item, {
+            title: t.alerts.dying,
+            href: template(ROUTES.DYING, { id: '' }),
+          }),
+        },
       ],
     },
     {

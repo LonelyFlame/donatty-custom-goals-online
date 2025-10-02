@@ -4,6 +4,7 @@ import {
   PieChartFilled,
   FundFilled,
   HeartFilled,
+  FrownFilled,
   ProjectFilled,
   StarFilled,
 } from '@ant-design/icons';
@@ -31,6 +32,7 @@ export const WIDGET_TYPE_CLOCK = 'clock' as const;
 export const WIDGET_TYPE_CIRCLE = 'circle' as const;
 export const WIDGET_TYPE_OSCILLOSCOPE = 'oscilloscope' as const;
 export const WIDGET_TYPE_LSS = 'lss' as const;
+export const WIDGET_TYPE_DYING = 'dying' as const;
 export const WIDGET_TYPE_CR = 'cr' as const;
 export const WIDGET_TYPE_CRALERT = 'crAlert' as const;
 
@@ -40,6 +42,7 @@ export const WIDGET_TYPES = {
   WIDGET_TYPE_CIRCLE,
   WIDGET_TYPE_OSCILLOSCOPE,
   WIDGET_TYPE_LSS,
+  WIDGET_TYPE_DYING,
   WIDGET_TYPE_CR,
   WIDGET_TYPE_CRALERT,
 };
@@ -53,6 +56,7 @@ export const GOALS_TYPES = {
 
 export const ALERTS_TYPES = {
   WIDGET_TYPE_LSS,
+  WIDGET_TYPE_DYING,
 };
 
 export const CR_TYPES = {
@@ -72,6 +76,7 @@ export const MAP_WIDGET_TYPE_TO_TITLE = {
   [WIDGET_TYPE_CIRCLE]: t.circle.title,
   [WIDGET_TYPE_OSCILLOSCOPE]: t.oscilloscope.title,
   [WIDGET_TYPE_LSS]: t.lss.title,
+  [WIDGET_TYPE_DYING]: t.dying.title,
   [WIDGET_TYPE_CR]: t.cr.title,
   [WIDGET_TYPE_CRALERT]: t.crAlert.title,
 } satisfies Record<TWidgetType, string>;
@@ -82,6 +87,7 @@ export const MAP_WIDGET_TYPE_TO_ICON_COMPONENT = {
   [WIDGET_TYPE_CIRCLE]: PieChartFilled,
   [WIDGET_TYPE_OSCILLOSCOPE]: FundFilled,
   [WIDGET_TYPE_LSS]: HeartFilled,
+  [WIDGET_TYPE_DYING]: FrownFilled,
   [WIDGET_TYPE_CR]: ProjectFilled,
   [WIDGET_TYPE_CRALERT]: StarFilled,
 } satisfies Record<TWidgetType, ComponentType>;
@@ -92,6 +98,7 @@ export const MAP_WIDGET_TYPE_TO_TYPE: Record<TWidgetType, TType> = {
   [WIDGET_TYPE_CIRCLE]: 'goal',
   [WIDGET_TYPE_OSCILLOSCOPE]: 'goal',
   [WIDGET_TYPE_LSS]: 'alert',
+  [WIDGET_TYPE_DYING]: 'alert',
   [WIDGET_TYPE_CR]: 'cr',
   [WIDGET_TYPE_CRALERT]: 'cr',
 };

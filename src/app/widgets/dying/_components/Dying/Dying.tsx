@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback, useMemo, type CSSProperties } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import cn from 'classnames';
 import { InputNumber } from 'antd';
 import { PauseCircleTwoTone } from '@ant-design/icons';
+import type { CSSProperties } from 'react';
 import type { KeyboardEvent } from 'react';
 import type { Scale } from 'chroma-js';
 
@@ -11,6 +12,7 @@ import useAlert from '@/hooks/useAlert';
 import { getColorScale } from '@/utils/colors';
 import Visualisation from '@/components/common/Oscilloscope';
 import { FontWrapper } from '@/components/common/Fonts';
+import widgets from '@/translations/widgets';
 import { SEC_BY_MLSECS } from '@/constants/datetime';
 import { BEEP_SFX_URL, DEATH_SFX_URL } from '@/constants/widgets';
 import type { TOscilloscopeVariants } from '@/types/widgets';
@@ -23,11 +25,12 @@ import {
   BEEP_SFX_DURATION,
   DEATH_SFX_DURATION,
 } from './constants';
-import styles from './Lss.module.scss';
+import styles from './Dying.module.scss';
 
 interface Props {
   alert: string;
   leverage: number;
+  leverageSecondary: number;
   color: string;
   colorSecondary: string;
   colorTertiary?: string;
@@ -44,9 +47,10 @@ interface Props {
 const beepSFX = typeof window !== 'undefined' && new Audio(BEEP_SFX_URL);
 const deathSFX = typeof window !== 'undefined' && new Audio(DEATH_SFX_URL);
 
-const Lss = ({
+const Dying = ({
   alert,
   leverage,
+  leverageSecondary,
   color,
   colorSecondary,
   colorTertiary,
@@ -65,30 +69,49 @@ const Lss = ({
   const colorScaleRef = useRef<Scale>(getColorScale([colorSecondary, colorTertiary], { notTransparent: true }));
   const timeoutRef = useRef<number|undefined>(undefined);
   const valueRef = useRef<number>(0);
+  const valueTotalRef = useRef<number>(0);
   const pauseRef = useRef<boolean>(true);
 
   const [value, setValue] = useState<number>(0);
   const [pause, setPause] = useState<boolean>(true);
   const [inputValue, setInputValue] = useState<number | null>(0);
+  const [inputValueTotal, setInputValueTotal] = useState<number | null>(0);
 
-  const percentValue = value / leverage;
+  const percentValue = Math.min(value, leverageSecondary) / leverageSecondary;
+  const percentValueTotal = value / leverage;
+  const showTimer = pause || percentValueTotal <= 0.1 || percentValueTotal >= 0.9;
 
   const timerDisplay = useMemo(() => {
-    return getTimerDisplay(timer, percentValue);
-  }, [percentValue, timer]);
+    return getTimerDisplay(timer, percentValueTotal);
+  }, [timer, percentValueTotal]);
 
-  const rememberValue = useCallback((value: number) => {
+  const rememberValue = useCallback((value?: number, valueTotal?: number) => {
     if (slug) {
-      localStorage.setItem(`${slug}_value`, String(value));
+      if (value) {
+        localStorage.setItem(`${slug}_value`, String(value));
+      }
+
+      if (valueTotal) {
+        localStorage.setItem(`${slug}_value_total`, String(valueTotal));
+      }
     }
   }, [slug]);
 
   const handleAlert = useCallback(({ amount }: { amount: number }) => {
-    const newValue = Math.max(0, Math.min(leverage, valueRef.current + amount));
+    const valueTotal = valueTotalRef.current;
+    const calculatedAmount = Math.min(amount, leverage - valueTotal);
 
+    if(valueTotal >= leverage) {
+      return;
+    }
+
+    const newValue = Math.max(0, Math.min(leverage, valueRef.current + calculatedAmount));
     valueRef.current = newValue;
 
-    rememberValue(newValue);
+    const newValueTotal = valueTotal + calculatedAmount;
+    valueTotalRef.current = newValueTotal;
+
+    rememberValue(newValue, newValueTotal);
   }, [leverage, rememberValue]);
   useAlert(alert, handleAlert, goals);
 
@@ -123,7 +146,7 @@ const Lss = ({
 
     pauseRef.current = paused;
     setPause(paused);
-    setInputValue(0);
+    setInputValue(paused ? valueTotalRef.current || 0 : 0);
   };
 
   useEffect(() => {
@@ -137,6 +160,9 @@ const Lss = ({
 
     setValue(initialValue);
     valueRef.current = initialValue;
+
+    const initialTotalValue = Number(localStorage.getItem(`${slug}_value_total`)) || 0;
+    valueTotalRef.current = initialTotalValue;
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -170,8 +196,23 @@ const Lss = ({
 
     if (key !== 'Enter') return;
 
-    handleAlert({ amount: Number(inputValue) || 0 });
-    setInputValue(0);
+    const newValue = Number(inputValue) || 0 ;
+
+    valueRef.current = newValue;
+
+    rememberValue(newValue);
+  };
+
+  const handleKeyDownTotal = (event: KeyboardEvent<HTMLInputElement>) => {
+    const { key } = event;
+
+    if (key !== 'Enter') return;
+
+    const newValue = Number(inputValueTotal) || 0 ;
+
+    valueTotalRef.current = newValue;
+
+    rememberValue(newValue, newValue);
   };
 
   return (
@@ -185,7 +226,7 @@ const Lss = ({
       <div
         className={cn('timer', styles.timer)}
         style={{
-          opacity: percentValue <= 0.1 || percentValue >= 0.9 ? 1 : 0,
+          opacity: showTimer ? 1 : 0,
           color: percentValue === 0 ? color : colorScaleRef.current(percentValue).toString(),
         }}
       >
@@ -208,17 +249,32 @@ const Lss = ({
             twoToneColor="#808080"
             className={cn('pause', styles.pauseIcon)}
           />
-          <InputNumber
-            onKeyDown={handleKeyDown}
-            className={cn('input', styles.change)}
-            value={inputValue}
-            onChange={setInputValue}
-            size="large"
-          />
+          <div className={styles.valueContainer}>
+            <div className={styles.value}>
+              {widgets.dying.value}
+              <InputNumber
+                onKeyDown={handleKeyDown}
+                className={cn('input', styles.change)}
+                value={inputValue}
+                onChange={setInputValue}
+                size="large"
+              />
+            </div>
+            <div className={styles.value}>
+              {widgets.dying.valueTotal}
+              <InputNumber
+                onKeyDown={handleKeyDownTotal}
+                className={cn('input', styles.change)}
+                value={inputValueTotal}
+                onChange={setInputValueTotal}
+                size="large"
+              />
+            </div>
+          </div>
         </>
       )}
     </FontWrapper>
   );
 };
 
-export default Lss;
+export default Dying;
