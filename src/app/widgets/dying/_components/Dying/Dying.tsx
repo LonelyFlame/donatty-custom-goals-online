@@ -146,7 +146,8 @@ const Dying = ({
 
     pauseRef.current = paused;
     setPause(paused);
-    setInputValue(paused ? valueTotalRef.current || 0 : 0);
+    setInputValue(paused ? valueRef.current || 0 : 0);
+    setInputValueTotal(paused ? valueTotalRef.current || 0 : 0);
   };
 
   useEffect(() => {
