@@ -206,7 +206,7 @@ const Lss = ({
           percent={percentValue}
         />
       </div>
-      {(pause || true) && (
+      {pause && (
         <>
           <PauseCircleTwoTone
             onClick={handleClick}
