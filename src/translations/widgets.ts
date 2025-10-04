@@ -13,6 +13,7 @@ const translations = {
   },
   lss: {
     title: 'Жизнеобеспечение',
+    value: 'Текущее значение(руб.)',
   },
   dying: {
     title: 'Умирание',

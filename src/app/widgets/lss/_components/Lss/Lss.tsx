@@ -11,6 +11,7 @@ import useAlert from '@/hooks/useAlert';
 import { getColorScale } from '@/utils/colors';
 import Visualisation from '@/components/common/Oscilloscope';
 import { FontWrapper } from '@/components/common/Fonts';
+import translations from '@/translations/widgets';
 import { SEC_BY_MLSECS } from '@/constants/datetime';
 import { BEEP_SFX_URL, DEATH_SFX_URL } from '@/constants/widgets';
 import type { TOscilloscopeVariants } from '@/types/widgets';
@@ -22,6 +23,8 @@ import {
   MAX_SFX_DELAY,
   BEEP_SFX_DURATION,
   DEATH_SFX_DURATION,
+  NEGATIVE_MULTIPLIER,
+  POSITIVE_MULTIPLIER,
 } from './constants';
 import styles from './Lss.module.scss';
 
@@ -107,7 +110,8 @@ const Lss = ({
           return targetValue;
         }
 
-        const newValue = Math.max(currentValue + (valueStep * sign), 0);
+        const multiplier = sign > 0 ? POSITIVE_MULTIPLIER : NEGATIVE_MULTIPLIER;
+        const newValue = Math.min(Math.max(currentValue + (valueStep * sign * multiplier), 0), targetValue);
 
         if (sign < 0) {
           valueRef.current = newValue;
@@ -202,20 +206,28 @@ const Lss = ({
           percent={percentValue}
         />
       </div>
-      {pause && (
+      {(pause || true) && (
         <>
           <PauseCircleTwoTone
             onClick={handleClick}
             twoToneColor="#808080"
             className={cn('pause', styles.pauseIcon)}
           />
-          <InputNumber
-            onKeyDown={handleKeyDown}
-            className={cn('input', styles.change)}
-            value={inputValue}
-            onChange={setInputValue}
-            size="large"
-          />
+          <div
+            className={styles.value}
+            style={{
+              color: percentValue === 0 ? color : colorScaleRef.current(percentValue).toString(),
+            }}
+          >
+            {translations.lss.value}: {Math.round(value)}
+            <InputNumber
+              onKeyDown={handleKeyDown}
+              className={cn('input', styles.change)}
+              value={inputValue}
+              onChange={setInputValue}
+              size="large"
+            />
+          </div>
         </>
       )}
     </FontWrapper>

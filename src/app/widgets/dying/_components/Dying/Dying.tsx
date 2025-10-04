@@ -24,6 +24,8 @@ import {
   MAX_SFX_DELAY,
   BEEP_SFX_DURATION,
   DEATH_SFX_DURATION,
+  NEGATIVE_MULTIPLIER,
+  POSITIVE_MULTIPLIER,
 } from './constants';
 import styles from './Dying.module.scss';
 
@@ -129,7 +131,8 @@ const Dying = ({
           return targetValue;
         }
 
-        const newValue = Math.max(currentValue + (valueStep * sign), 0);
+        const multiplier = sign > 0 ? POSITIVE_MULTIPLIER : NEGATIVE_MULTIPLIER;
+        const newValue = Math.min(Math.max(currentValue + (valueStep * sign * multiplier), 0), targetValue);
 
         if (sign < 0) {
           valueRef.current = newValue;
