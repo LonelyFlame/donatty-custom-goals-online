@@ -105,12 +105,13 @@ $quaternaryColor: #c4a392;
   background-size: 100% 100%;
 }
 .name {
-  @include ellipsis;
   font-size: 51pt;
   line-height: 28pt;
   font-weight: 1000;
   -webkit-text-stroke: 1px $tertiaryColor;
   padding: theme.$spacing-xxl32 theme.$spacing-xxl32;
+
+  @include ellipsis;
 }
 
 .raceclass {
@@ -129,13 +130,15 @@ $quaternaryColor: #c4a392;
   box-sizing: border-box;
 }
 .race {
-  @include ellipsis;
   padding: theme.$spacing-xxl24 0;
+
+  @include ellipsis;
 }
 .class {
-  @include ellipsis;
   padding: theme.$spacing-xxl24 0;
   color: $secondaryColor;
+
+  @include ellipsis;
 }
 
 .roll {
