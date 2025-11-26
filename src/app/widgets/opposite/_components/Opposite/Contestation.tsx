@@ -12,7 +12,7 @@ interface Props extends PropsWithChildren {
 }
 
 const Contestation = ({ percentPrimary, percentSecondary = 0, liquid, children }: Props) => {
-  const percent = 0.5 + (percentPrimary / 2) - (percentSecondary / 2);
+  const percent = 0.5 + (percentSecondary / 2) - (percentPrimary / 2);
 
   return (
     <div className={cn('contestationContainer', styles.contestationContainer)}>
