@@ -1,6 +1,7 @@
-import { Col, Row, ColorPicker, Input, InputNumber } from 'antd';
+'use client';
 
-import FormItem from '@/components/ui/FormItem';
+import { Col, Row, ColorPicker, Input, InputNumber, Space, Form } from 'antd';
+
 import CRProjectInput from '@/components/ui/CRProjectInput';
 import Name from '@/components/ui/Name';
 import Font from '@/components/ui/Font';
@@ -9,8 +10,6 @@ import translations from '@/translations';
 import LabelTemplatePopover from './LabelTemplatePopover';
 
 const { forms: t } = translations;
-
-const labelTemplatePopover = <LabelTemplatePopover />;
 
 const Inputs = () => {
   return (
@@ -26,37 +25,40 @@ const Inputs = () => {
 
       <Row gutter={16}>
         <Col span={24}>
-          <FormItem
+          <Form.Item
             name="text"
             label={t.labelAlertTemplate.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
-            <Input
-              placeholder={t.labelAlertTemplate.placeholder}
-              addonAfter={labelTemplatePopover}
-            />
-          </FormItem>
+            <Space.Compact block>
+              <Input placeholder={t.labelAlertTemplate.placeholder} />
+
+              <Space.Addon>
+                <LabelTemplatePopover />
+              </Space.Addon>
+            </Space.Compact>
+          </Form.Item>
         </Col>
       </Row>
 
       <Row gutter={16}>
         <Col span={5}>
-          <FormItem
+          <Form.Item
             name="color"
             label={t.colorLabel.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
-          </FormItem>
+          </Form.Item>
         </Col>
         <Col span={19}>
-          <FormItem
+          <Form.Item
             name="delay"
             label={t.alertVisibility.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <InputNumber />
-          </FormItem>
+          </Form.Item>
         </Col>
       </Row>
 

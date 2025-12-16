@@ -1,6 +1,7 @@
-import { Col, Row, ColorPicker, Select, InputNumber } from 'antd';
+'use client';
 
-import FormItem from '@/components/ui/FormItem';
+import { Col, Row, ColorPicker, Select, InputNumber, Space, Form } from 'antd';
+
 import WidgetInput from '@/components/ui/WidgetInput';
 import Name from '@/components/ui/Name';
 import HintedSwitch from '@/components/ui/HintedSwitch';
@@ -16,9 +17,6 @@ const { forms: t } = translations;
 
 const COLOR_PREVIEW_DOMAIN: number[] = [0, 0.01, 1];
 
-const lifetimePopover = <LifetimePopover />;
-const valueOverflow = <ValueOverflowPopover />;
-
 const Inputs = () => {
   return (
     <>
@@ -33,32 +31,47 @@ const Inputs = () => {
 
       <Row gutter={16}>
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="leverage"
             label={t.maxValue.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <InputNumber placeholder={t.maxValue.placeholder}/>
-          </FormItem>
+          </Form.Item>
         </Col>
+
         <Col span={7}>
-          <FormItem
+          <Form.Item
             name="leverageSecondary"
             label={t.valueOverflow.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
-            <InputNumber placeholder={t.valueOverflow.placeholder} addonAfter={valueOverflow} />
-          </FormItem>
+            <Space.Compact block>
+              <InputNumber placeholder={t.valueOverflow.placeholder} />
+
+              <Space.Addon>
+                <ValueOverflowPopover />
+              </Space.Addon>
+            </Space.Compact>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="timer"
             label={t.lifetime.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
-            <InputNumber placeholder={t.lifetime.placeholder} addonAfter={lifetimePopover} />
-          </FormItem>
+            <Space.Compact block>
+              <InputNumber placeholder={t.lifetime.placeholder} />
+
+              <Space.Addon>
+                <LifetimePopover />
+              </Space.Addon>
+            </Space.Compact>
+          </Form.Item>
         </Col>
+
         <Col span={5} />
       </Row>
 
@@ -66,6 +79,7 @@ const Inputs = () => {
         <Col span={6}>
           <HintedSwitch label={t.fade.label} hint={t.fade.hint} name="fade" />
         </Col>
+
         <Col span={6}>
           <HintedSwitch
             hint={<>{t.sfx.hint.beeps}<br />{t.sfx.hint.death}</>}
@@ -73,46 +87,50 @@ const Inputs = () => {
             name="sfx"
           />
         </Col>
+
         <Col span={12} />
       </Row>
 
       <Row gutter={16}>
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="color"
             label={t.colorEmpty.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
-          </FormItem>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="colorSecondary"
             label={t.colorMin.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
-          </FormItem>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="colorTertiary"
             label={t.colorMax.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
-          </FormItem>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="variant"
             label={t.plot.label}
             rules={[{ required: true, message: t.validation.required }]}
 
           >
             <Select options={VARIANTS_OPTIONS} />
-          </FormItem>
+          </Form.Item>
         </Col>
       </Row>
 

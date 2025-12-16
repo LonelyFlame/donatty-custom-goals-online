@@ -1,9 +1,9 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Dropdown } from 'antd';
-import { CopyOutlined, EditOutlined, FileAddOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Dropdown, Button, Space } from 'antd';
+import { CopyOutlined, EditOutlined, FileAddOutlined, DeleteOutlined, EllipsisOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 
 import { template } from '@/utils/strings';
@@ -27,6 +27,8 @@ interface Props {
 
 const Actions = ({ widgetType, slug }: Props) => {
   const router = useRouter();
+
+  const [open, setOpen] = useState(false);
 
   const type = MAP_WIDGET_TYPE_TO_TYPE[widgetType];
   const widgetLink = useWidgetLink(slug, type);
@@ -78,9 +80,13 @@ const Actions = ({ widgetType, slug }: Props) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Dropdown.Button menu={menu} onClick={handleCopy}>
-      {copyIcon}
-    </Dropdown.Button>
+    <Space.Compact>
+      <Button onClick={handleCopy} icon={copyIcon} />
+
+      <Dropdown menu={menu} open={open}>
+        <Button icon={<EllipsisOutlined />} onClick={() => setOpen(prev => !prev)} />
+      </Dropdown>
+    </Space.Compact>
   );
 };
 

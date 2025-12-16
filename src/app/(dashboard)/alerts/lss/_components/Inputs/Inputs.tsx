@@ -1,12 +1,13 @@
-import { Col, Row, ColorPicker, Select, InputNumber } from 'antd';
+'use client';
 
-import FormItem from '@/components/ui/FormItem';
+import { Col, Row, ColorPicker, Select, InputNumber, Space, Form } from 'antd';
+
 import WidgetInput from '@/components/ui/WidgetInput';
 import Name from '@/components/ui/Name';
 import HintedSwitch from '@/components/ui/HintedSwitch';
 import ColorsPreview from '@/components/common/ColorsPreview';
 import translations from '@/translations';
-import Font from '../../../../../../components/ui/Font';
+import Font from '@/components/ui/Font';
 
 import { VARIANTS_OPTIONS } from './constants';
 import LifetimePopover from './LifetimePopover';
@@ -15,8 +16,6 @@ const { forms: t } = translations;
 
 const COLOR_PREVIEW_DOMAIN: number[] = [0, 0.01, 1];
 
-const lifetimePopover = <LifetimePopover />;
-
 const Inputs = () => {
   return (
     <>
@@ -24,6 +23,7 @@ const Inputs = () => {
         <Col span={10}>
           <Name />
         </Col>
+
         <Col span={14}>
           <Font />
         </Col>
@@ -31,26 +31,35 @@ const Inputs = () => {
 
       <Row gutter={16}>
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="leverage"
             label={t.maxValue.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <InputNumber placeholder={t.maxValue.placeholder}/>
-          </FormItem>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="timer"
             label={t.lifetime.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
-            <InputNumber placeholder={t.lifetime.placeholder} addonAfter={lifetimePopover} />
-          </FormItem>
+            <Space.Compact block>
+              <InputNumber placeholder={t.lifetime.placeholder} />
+
+              <Space.Addon>
+                <LifetimePopover />
+              </Space.Addon>
+            </Space.Compact>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
           <HintedSwitch label={t.fade.label} hint={t.fade.hint} name="fade" />
         </Col>
+
         <Col span={6}>
           <HintedSwitch
             hint={<>{t.sfx.hint.beeps}<br />{t.sfx.hint.death}</>}
@@ -62,41 +71,44 @@ const Inputs = () => {
 
       <Row gutter={16}>
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="color"
             label={t.colorEmpty.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
-          </FormItem>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="colorSecondary"
             label={t.colorMin.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
-          </FormItem>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="colorTertiary"
             label={t.colorMax.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <ColorPicker showText />
-          </FormItem>
+          </Form.Item>
         </Col>
+
         <Col span={6}>
-          <FormItem
+          <Form.Item
             name="variant"
             label={t.plot.label}
             rules={[{ required: true, message: t.validation.required }]}
 
           >
             <Select options={VARIANTS_OPTIONS} />
-          </FormItem>
+          </Form.Item>
         </Col>
       </Row>
 

@@ -92,11 +92,11 @@ const ImageUpload = ({ name, label, required }: Props) => {
         </Upload>
       </FormItem>
       <AntdImage
-        wrapperStyle={{ display: 'none' }}
+        styles={{ root: { display: 'none' } }}
         preview={{
-          visible: open,
-          onVisibleChange: (visible: boolean) => setOpen(visible),
-          toolbarRender: () => null,
+          open,
+          onOpenChange: (visible: boolean) => setOpen(visible),
+          actionsRender: () => null,
         }}
         src={value.at(0)?.url || undefined}
       />

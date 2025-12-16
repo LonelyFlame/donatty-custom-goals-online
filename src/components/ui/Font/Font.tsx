@@ -1,8 +1,7 @@
 'use client';
 
-import { Row, Col, Select, InputNumber } from 'antd';
+import { Row, Col, Select, InputNumber, Form } from 'antd';
 
-import FormItem from '@/components/ui/FormItem';
 import { FONTS } from '@/constants/theme';
 import translations from '@/translations';
 
@@ -14,7 +13,7 @@ const Font = () => {
   return (
     <Row gutter={16}>
       <Col span={14}>
-        <FormItem name="font" label={tFont.label}>
+        <Form.Item name="font" label={tFont.label} initialValue="roboto">
           <Select
             filterSort={(optionA, optionB) =>
               (optionA?.name ?? '').toLowerCase().localeCompare((optionB?.name ?? '').toLowerCase())
@@ -22,15 +21,14 @@ const Font = () => {
             options={options}
             placeholder={tFont.placeholder}
             optionFilterProp="name"
-            defaultValue="roboto"
             showSearch
           />
-        </FormItem>
+        </Form.Item>
       </Col>
       <Col span={10}>
-        <FormItem name="fontSize" label={tFontSize.label}>
+        <Form.Item name="fontSize" label={tFontSize.label}>
           <InputNumber />
-        </FormItem>
+        </Form.Item>
       </Col>
     </Row>
   );

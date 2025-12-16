@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Table as AntdTable, Tag, Input, Row, Col, Button } from 'antd';
+import { Table as AntdTable, Tag, Input, Row, Col, Button, Space } from 'antd';
 import type { ChangeEvent } from 'react';
 import type { TableColumnsType } from 'antd';
 
@@ -81,7 +81,13 @@ const Table = ({ data }: Props) => {
     <div>
       <Row gutter={16} justify="space-between">
         <Col span={24}>
-          <Input addonBefore={t.filter.name} onChange={handleChangeFilter} allowClear />
+          <Space.Compact block>
+            <Space.Addon>
+              {t.filter.name}
+            </Space.Addon>
+
+            <Input onChange={handleChangeFilter} allowClear />
+          </Space.Compact>
         </Col>
         <Col>
           {!!selectedRowKeys.length && (

@@ -1,6 +1,7 @@
-import { InputNumber } from 'antd';
+'use client';
 
-import FormItem from '@/components/ui/FormItem';
+import { InputNumber, Space, Form } from 'antd';
+
 import translations from '@/translations'
 
 import Popover from './Popover';
@@ -12,17 +13,19 @@ interface Props {
 
 const { components: { leverage: t } } = translations;
 
-const addon = <Popover />;
-
 const Leverage = ({ name = 'leverage' }: Props) => {
   return (
-    <FormItem name={name} label={t.label}>
-      <InputNumber
-        className={styles.leverage}
-        placeholder={t.placeholder}
-        addonAfter={addon}
-      />
-    </FormItem>
+    <Form.Item name={name} label={t.label}>
+      <Space.Compact block>
+        <InputNumber
+          className={styles.leverage}
+          placeholder={t.placeholder}
+        />
+        <Space.Addon>
+          <Popover />
+        </Space.Addon>
+      </Space.Compact>
+    </Form.Item>
   );
 };
 

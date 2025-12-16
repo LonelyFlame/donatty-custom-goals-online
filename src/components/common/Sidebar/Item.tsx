@@ -11,7 +11,7 @@ const Item = ({ href, title }: Props) => {
   return (
     <>
       {title}
-      <Link href={href} className={styles.item} />
+      <Link href={href} className={styles.item} prefetch={false} />
     </>
   );
 }

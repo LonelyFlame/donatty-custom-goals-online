@@ -1,19 +1,24 @@
-import { InputNumber } from 'antd';
+'use client';
 
-import FormItem from '@/components/ui/FormItem';
+import { InputNumber, Space, Form } from 'antd';
+
 import translations from '@/translations';
 
 import Popover from './Popover';
 
 const { components: { delay: t } } = translations;
 
-const addon = <Popover />
-
 const Delay = () => {
   return (
-    <FormItem name="timer" label={t.label}>
-      <InputNumber placeholder={t.placeholder} addonAfter={addon}/>
-    </FormItem>
+    <Form.Item name="timer" label={t.label}>
+      <Space.Compact block>
+        <InputNumber placeholder={t.placeholder}/>
+
+        <Space.Addon>
+          <Popover />
+        </Space.Addon>
+      </Space.Compact>
+    </Form.Item>
   );
 };
 
