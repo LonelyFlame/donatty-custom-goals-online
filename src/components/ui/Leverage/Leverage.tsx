@@ -15,12 +15,15 @@ const { components: { leverage: t } } = translations;
 
 const Leverage = ({ name = 'leverage' }: Props) => {
   return (
-    <Form.Item name={name} label={t.label}>
+    <Form.Item label={t.label}>
       <Space.Compact block>
-        <InputNumber
-          className={styles.leverage}
-          placeholder={t.placeholder}
-        />
+        <Form.Item name={name} style={{ margin: 0, width: '100%' }}>
+          <InputNumber
+            className={styles.leverage}
+            placeholder={t.placeholder}
+          />
+        </Form.Item>
+
         <Space.Addon>
           <Popover />
         </Space.Addon>

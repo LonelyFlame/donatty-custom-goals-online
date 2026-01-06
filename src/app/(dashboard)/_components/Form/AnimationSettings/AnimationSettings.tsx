@@ -48,9 +48,12 @@ const AnimationSettings = () => {
   return (
     <Row gutter={16}>
       <Col span={18}>
-        <Form.Item name="animationFunction" label={t.animationFunction.label}>
+        <Form.Item label={t.animationFunction.label}>
           <Space.Compact block>
-            <Input placeholder={t.animationFunction.placeholder} />
+            <Form.Item name="animationFunction" style={{ margin: 0, width: '100%'}}>
+              <Input placeholder={t.animationFunction.placeholder} />
+            </Form.Item>
+
             <Space.Addon>
               <AnimationFunctionHint />
             </Space.Addon>

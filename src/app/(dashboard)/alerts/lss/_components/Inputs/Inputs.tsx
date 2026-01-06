@@ -42,12 +42,17 @@ const Inputs = () => {
 
         <Col span={6}>
           <Form.Item
-            name="timer"
             label={t.lifetime.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <Space.Compact block>
-              <InputNumber placeholder={t.lifetime.placeholder} />
+              <Form.Item
+                name="timer"
+                style={{ margin: 0, width: '100%'}}
+                rules={[{ required: true, message: t.validation.required }]}
+              >
+                <InputNumber placeholder={t.lifetime.placeholder} />
+              </Form.Item>
 
               <Space.Addon>
                 <LifetimePopover />

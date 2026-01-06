@@ -26,12 +26,17 @@ const Inputs = () => {
       <Row gutter={16}>
         <Col span={24}>
           <Form.Item
-            name="text"
             label={t.labelAlertTemplate.label}
             rules={[{ required: true, message: t.validation.required }]}
           >
             <Space.Compact block>
-              <Input placeholder={t.labelAlertTemplate.placeholder} />
+              <Form.Item
+                name="text"
+                style={{ margin: 0, width: '100%' }}
+                rules={[{ required: true, message: t.validation.required }]}
+              >
+                <Input placeholder={t.labelTemplate.placeholder} />
+              </Form.Item>
 
               <Space.Addon>
                 <LabelTemplatePopover />

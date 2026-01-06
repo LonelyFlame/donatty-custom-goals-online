@@ -10,9 +10,11 @@ const { components: { delay: t } } = translations;
 
 const Delay = () => {
   return (
-    <Form.Item name="timer" label={t.label}>
+    <Form.Item label={t.label}>
       <Space.Compact block>
-        <InputNumber placeholder={t.placeholder}/>
+        <Form.Item name="timer" style={{ margin: 0, width: '100%' }}>
+          <InputNumber placeholder={t.placeholder}/>
+        </Form.Item>
 
         <Space.Addon>
           <Popover />

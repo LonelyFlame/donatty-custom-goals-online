@@ -31,9 +31,11 @@ const Inputs = () => {
 
       <Row gutter={16}>
         <Col span={24}>
-          <Form.Item name="text" label={t.labelTemplate.label}>
+          <Form.Item label={t.labelTemplate.label}>
             <Space.Compact block>
-              <Input placeholder={t.labelTemplate.placeholder} />
+              <Form.Item name="text" style={{ margin: 0, width: '100%' }}>
+                <Input placeholder={t.labelTemplate.placeholder} />
+              </Form.Item>
 
               <Space.Addon>
                 <LabelTemplatePopover />
