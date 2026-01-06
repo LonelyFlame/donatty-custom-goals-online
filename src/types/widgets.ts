@@ -85,8 +85,10 @@ export interface TWidgetMultiple extends TGoal {
   goalSecondary: string;
   type: typeof WIDGET_TYPES.WIDGET_TYPE_MULTIPLE;
   color: string;
+  colorSecondary?: string;
   image: string;
   leverage: number;
+  text?: string;
 }
 
 export interface TWidgetClock extends TGoal {

@@ -14,6 +14,7 @@ const defaultData: TWidgetMultiple = {
   goalSecondary: '',
   image: '',
   name: '',
+  text: '',
   leverage: 10_000,
 };
 

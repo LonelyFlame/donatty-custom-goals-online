@@ -3,9 +3,11 @@ import { Col, Row, ColorPicker, Divider, InputNumber } from 'antd';
 import FormItem from '@/components/ui/FormItem';
 import WidgetInput from '@/components/ui/WidgetInput';
 import ImageUpload from '@/components/ui/ImageUpload';
+import Font from '@/components/ui/Font';
 import translations from '@/translations';
 
 import { TopInputs, AnimationSettings } from '@/app/(dashboard)/_components/Form';
+import LabelTemplate from './LabelTemplate';
 
 const { forms: t } = translations;
 
@@ -15,6 +17,16 @@ const Inputs = () => {
       <TopInputs />
 
       <AnimationSettings />
+
+      <Row gutter={16}>
+        <Col span={14}>
+          <LabelTemplate />
+        </Col>
+
+        <Col span={10}>
+          <Font />
+        </Col>
+      </Row>
 
       <Row gutter={16}>
         <Col span={8}>
@@ -37,7 +49,18 @@ const Inputs = () => {
         </Col>
 
         <Col span={8}>
-          <ImageUpload label={t.image.label} name="image" required />
+          <FormItem
+            name="colorSecondary"
+            label={t.colorLabel.label}
+          >
+            <ColorPicker showText />
+          </FormItem>
+        </Col>
+      </Row>
+
+      <Row gutter={16}>
+        <Col span={24}>
+          <ImageUpload label={t.image.label} name="image" />
         </Col>
       </Row>
 

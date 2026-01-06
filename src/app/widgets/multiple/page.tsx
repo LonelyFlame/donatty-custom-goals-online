@@ -10,6 +10,10 @@ interface Props {
     timer?: number;
     animationDuration?: number;
     animationFunction?: string;
+    colorSecondary?: string;
+    text?: string;
+    font?: string;
+    fontSize?: number;
   }>;
 
 }
@@ -25,6 +29,10 @@ const WidgetMultiple = async ({ searchParams }: Props) => {
     timer,
     animationDuration,
     animationFunction,
+    colorSecondary,
+    text,
+    font,
+    fontSize
   } = await searchParams || {};
 
   if (!leverage || !goal || !color) {
@@ -41,6 +49,10 @@ const WidgetMultiple = async ({ searchParams }: Props) => {
       timer={timer}
       animationDuration={animationDuration}
       animationFunction={animationFunction}
+      colorSecondary={colorSecondary}
+      text={text}
+      font={font}
+      fontSize={fontSize}
     />
   )
 };

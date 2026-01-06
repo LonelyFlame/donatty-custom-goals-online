@@ -145,6 +145,10 @@ const Goals = async ({ params }: Props) => {
       timer,
       animationDuration,
       animationFunction,
+      colorSecondary,
+      text,
+      font,
+      fontSize
     } = data;
 
     return (
@@ -157,6 +161,10 @@ const Goals = async ({ params }: Props) => {
         timer={timer}
         animationDuration={animationDuration}
         animationFunction={animationFunction}
+        colorSecondary={colorSecondary}
+        text={text}
+        font={font}
+        fontSize={fontSize}
       />
     );
   }

@@ -1,15 +1,31 @@
 @use '@/theme';
 
-.opposite {
+.multiple {
   height: 100%;
   width: 100%;
   display: flex;
   position: relative;
 
   --color-primary: gray;
+  --color-secondary: green;
   --image-primary: none;
   --animation-duration: #{theme.$duration-1};
   --animation-function: linear;
+  --font: Roboto;
+  --fontSize: min(4.8vw, 20vh);
+}
+
+.text {
+  color: var(--color-secondary);
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: var(--font), theme.$fontFamily-default;
+  text-align: center;
+  font-size: var(--fontSize);
 }
 
 .item {

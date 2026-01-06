@@ -35,5 +35,10 @@ export const validateMultipleWidget = (data: TWidgetMultiple): Record<string, st
     errors.color = colorValidate;
   }
 
+  const colorSecondaryValidate = Boolean(data.colorSecondary) && colorValidator(data.colorSecondary);
+  if (isString(colorSecondaryValidate)) {
+    errors.colorSecondary = colorSecondaryValidate;
+  }
+
   return errors;
 };

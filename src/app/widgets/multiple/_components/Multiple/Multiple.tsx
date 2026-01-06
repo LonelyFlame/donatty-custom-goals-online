@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 
 import DGoal from '@/libs/dontatty/DGoal';
 
+import { FontWrapper } from '@/components/common/Fonts';
 import { PARTS_DELIMITER } from '@/constants/widgets';
 
 import Goal from './Goal';
@@ -17,6 +18,10 @@ interface Props {
   timer?: number;
   animationDuration?: number;
   animationFunction?: string;
+  colorSecondary?: string;
+  text?: string;
+  font?: string;
+  fontSize?: number;
 }
 
 const Multiple = async ({
@@ -28,6 +33,10 @@ const Multiple = async ({
   timer,
   animationDuration,
   animationFunction,
+  colorSecondary,
+  text,
+  font,
+  fontSize,
 }: Props) => {
   const goals = goal.split(PARTS_DELIMITER).reduce<string[]>((acc, item) => {
     if (item) {
@@ -55,22 +64,26 @@ const Multiple = async ({
   }
 
   return (
-    <div
+    <FontWrapper
+      slug={font}
       style={{
         '--color-primary': color || 'gray',
+        '--color-secondary': colorSecondary || 'gray',
         '--image-primary': image ? `url(${image})` : 'none',
+        ...(!!fontSize && { '--fontSize': `${fontSize}px` }),
         ...(!!animationDuration && { '--animation-duration': `${animationDuration}s` }),
         ...(!!animationFunction && { '--animation-function': animationFunction }),
       } as CSSProperties}
-      className={cn('container', styles.opposite)}
+      className={cn('container', styles.multiple)}
     >
       <Goal
         goals={goals}
         additionalValue={additionalValue}
         leverage={leverage}
         timer={timer}
+        text={text}
       />
-    </div>
+    </FontWrapper>
   )
 };
 

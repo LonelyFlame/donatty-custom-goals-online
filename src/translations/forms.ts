@@ -156,9 +156,11 @@ const translations = {
   },
   labelTemplate: {
     label: 'Текст цели',
-    placeholder: 'Собрано {amount}₽ из {goal}₽!',
+    placeholder: 'Собрано {amount}₽!',
     hint: {
       amount: 'уже собранная сумма.',
+      leverage: 'цель сбора.',
+      percentage: 'уже собранный процент.',
       goal: 'основная цель крауда. Для предзаказов всегда равна 1000.',
       goalPercentage: 'процент от основной цели.',
       next: 'следующая ближайшая цель(основаня, сверхцели).',
