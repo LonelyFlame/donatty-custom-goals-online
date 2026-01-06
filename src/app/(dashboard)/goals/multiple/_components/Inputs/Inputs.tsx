@@ -1,4 +1,4 @@
-import { Col, Row, ColorPicker, Divider, Form, Space, InputNumber } from 'antd';
+import { Col, Row, ColorPicker, Divider, InputNumber } from 'antd';
 
 import FormItem from '@/components/ui/FormItem';
 import WidgetInput from '@/components/ui/WidgetInput';
