@@ -5,17 +5,18 @@ import type { TDWidgetType } from '@/libs/dontatty/types/widget';
 import FormItem from '@/components/ui/FormItem';
 import BlurredInput from '@/components/ui/BlurredInput';
 import translations from '@/translations';
-import { widgetLinkValidator } from '@/validation/validators';
+import { widgetLinkValidator, multipleWidgetLinkValidator } from '@/validation/validators';
 
 interface Props {
   name: string;
   widgetType: TDWidgetType,
   required?: boolean;
+  multiple?: boolean;
 }
 
 const { forms: { widget: t } } = translations;
 
-const WidgetInput = ({ name, required, widgetType }: Props) => {
+const WidgetInput = ({ name, required, widgetType, multiple }: Props) => {
   return (
     <FormItem
       name={name}
@@ -24,7 +25,8 @@ const WidgetInput = ({ name, required, widgetType }: Props) => {
         { required: required, message: t.required },
         {
           validator: (_, value: string) => {
-            const isValid = widgetLinkValidator(widgetType, value, false);
+            const validator = multiple ? multipleWidgetLinkValidator : widgetLinkValidator;
+            const isValid = validator(widgetType, value, false);
 
             if (isValid === true) {
               return Promise.resolve();

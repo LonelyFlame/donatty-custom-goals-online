@@ -2,6 +2,7 @@ import Opposite from '@/app/widgets/opposite/_components/Opposite';
 import Clock from '@/app/widgets/clock/_components/Clock';
 import Circle from '@/app/widgets/circle/_components/Circle';
 import Oscilloscope from '@/app/widgets/oscilloscope/_components/Oscilloscope';
+import Multiple from '@/app/widgets/multiple/_components/Multiple';
 
 import { getData } from './utils';
 
@@ -130,6 +131,32 @@ const Goals = async ({ params }: Props) => {
         timer={timer}
         fade={fade}
         variant={variant}
+      />
+    );
+  }
+
+  if (data.type === 'multiple') {
+    const {
+      goal,
+      goalSecondary,
+      color,
+      image,
+      leverage,
+      timer,
+      animationDuration,
+      animationFunction,
+    } = data;
+
+    return (
+      <Multiple
+        goal={goal}
+        goalSecondary={goalSecondary}
+        color={color}
+        image={image}
+        leverage={leverage}
+        timer={timer}
+        animationDuration={animationDuration}
+        animationFunction={animationFunction}
       />
     );
   }

@@ -3,6 +3,7 @@ import {
   WIDGET_TYPE_CLOCK,
   WIDGET_TYPE_OPPOSITE,
   WIDGET_TYPE_OSCILLOSCOPE,
+  WIDGET_TYPE_MULTIPLE,
 } from '@/constants/widgets';
 import type { TGoal as TGoalEntity } from '@/types/entities';
 import {
@@ -12,6 +13,7 @@ import {
   TWidgetClock,
   TWidgetCircle,
   TWidgetOscilloscope,
+  TWidgetMultiple,
   TWidgetType,
 } from '@/types/widgets';
 
@@ -37,6 +39,10 @@ export const mapGoalToWidget = ({ settings, type, ...data }: TGoalEntity): TGoal
 
   if (type === WIDGET_TYPE_OSCILLOSCOPE) {
     return mappedData as TWidgetOscilloscope;
+  }
+
+  if (type === WIDGET_TYPE_MULTIPLE) {
+    return mappedData as TWidgetMultiple;
   }
 
   throw new Error('Unexpected widget type?!');

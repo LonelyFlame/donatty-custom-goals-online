@@ -16,6 +16,12 @@ export interface TUseGoals {
   infinite?: boolean;
 }
 
+export interface TUseMultipleGoals {
+  goals: string[];
+  leverage: number;
+  additionalValue?: number;
+}
+
 export interface TUseGoalsReturnValue {
   percent: number;
   goalLeverage: number;

@@ -1,0 +1,55 @@
+@use '@/theme';
+
+.opposite {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+
+  --color-primary: gray;
+  --image-primary: none;
+  --animation-duration: #{theme.$duration-1};
+  --animation-function: linear;
+}
+
+.item {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+}
+.right {
+  justify-content: flex-start;
+
+  .fill {
+    background-color: var(--color-primary);
+  }
+
+  .image {
+    background-image: var(--image-primary);
+    background-position: center left;
+    right: auto;
+  }
+}
+
+.fill {
+  height: 100%;
+  width: 0;
+  transition: width theme.$duration-1;
+  transition-duration: var(--animation-duration);
+  transition-timing-function: var(--animation-function);
+  overflow: hidden;
+  position: relative;
+
+  animation-duration: theme.$duration-3;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.image {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  inset: 0;
+  background-size: contain;
+}

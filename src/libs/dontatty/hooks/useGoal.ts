@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 
 import DGoal from '../DGoal';
 
-const useGoal = (widgetLink? : string) => {
+const useGoal = (widgetLink?: string) => {
   const ref = useRef<DGoal | null>(null);
 
   const [goal, setGoal] = useState<number>(0);

@@ -84,6 +84,14 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
             href: template(ROUTES.OSCILLOSCOPE, { id: '' }),
           }),
         },
+        {
+          key: 'create_multiple',
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.multiple),
+          label: createElement(Item, {
+            title: t.goals.multiple,
+            href: template(ROUTES.MULTIPLE, { id: '' }),
+          }),
+        },
       ],
     },
     {

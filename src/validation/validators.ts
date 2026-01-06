@@ -2,14 +2,37 @@ import { BASE_URI, WIDGET_TYPES_TO_PATHNAMES } from '@/libs/dontatty/constants';
 import { BASE_URI as CR_BASE_URI } from '@/libs/crowdrepublic/constants';
 import { TDWidgetType } from '@/libs/dontatty/types/widget';
 
+import { PARTS_DELIMITER } from '@/constants/widgets';
+
 import { validateColor } from './colors';
 import { CR_PROJECT_REGEX } from './constants';
 import type { TValidateColorOptions } from './colors';
 
+export const multipleWidgetLinkValidator = (
+  widgetType: TDWidgetType,
+  value?: string,
+  required: boolean = true,
+): true|string => {
+  if (!value) {
+    return !required || 'required';
+  }
+
+  const values = value.split(PARTS_DELIMITER);
+  for (const value of values) {
+    const result = widgetLinkValidator(widgetType, value, required);
+
+    if (result !== true) {
+      return result;
+    }
+  }
+
+  return true;
+};
+
 export const widgetLinkValidator = (
   widgetType: TDWidgetType,
   value?: string,
-  required: boolean = true
+  required: boolean = true,
 ): true|string => {
   if (!value) {
     return !required || 'required';
@@ -65,6 +88,10 @@ export const crProjectLinkValidator = (
 
 export const goalLinkValidator = (value?: string, required: boolean = true): true|string => {
   return widgetLinkValidator('GOAL', value, required);
+};
+
+export const multipleGoalLinkValidator = (value?: string, required: boolean = true): true|string => {
+  return multipleWidgetLinkValidator('GOAL', value, required);
 };
 
 export const alertLinkValidator = (value?: string, required: boolean = true): true|string => {

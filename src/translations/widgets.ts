@@ -1,4 +1,7 @@
 const translations = {
+  multiple: {
+    title: 'Множественный',
+  },
   opposite: {
     title: 'Соревновательный',
   },

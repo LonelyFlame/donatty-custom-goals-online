@@ -7,6 +7,7 @@ import {
   FrownFilled,
   ProjectFilled,
   StarFilled,
+  BarcodeOutlined,
 } from '@ant-design/icons';
 import { ComponentType } from 'react';
 
@@ -27,6 +28,7 @@ export const TYPES = {
   TYPE_CR_ALERT,
 };
 
+export const WIDGET_TYPE_MULTIPLE = 'multiple' as const;
 export const WIDGET_TYPE_OPPOSITE = 'opposite' as const;
 export const WIDGET_TYPE_CLOCK = 'clock' as const;
 export const WIDGET_TYPE_CIRCLE = 'circle' as const;
@@ -37,6 +39,7 @@ export const WIDGET_TYPE_CR = 'cr' as const;
 export const WIDGET_TYPE_CRALERT = 'crAlert' as const;
 
 export const WIDGET_TYPES = {
+  WIDGET_TYPE_MULTIPLE,
   WIDGET_TYPE_OPPOSITE,
   WIDGET_TYPE_CLOCK,
   WIDGET_TYPE_CIRCLE,
@@ -48,6 +51,7 @@ export const WIDGET_TYPES = {
 };
 
 export const GOALS_TYPES = {
+  WIDGET_TYPE_MULTIPLE,
   WIDGET_TYPE_OPPOSITE,
   WIDGET_TYPE_CLOCK,
   WIDGET_TYPE_CIRCLE,
@@ -71,6 +75,7 @@ export const BEEP_SFX_URL = '/audio/beep.mp3';
 export const DEATH_SFX_URL = '/audio/death.mp4';
 
 export const MAP_WIDGET_TYPE_TO_TITLE = {
+  [WIDGET_TYPE_MULTIPLE]: t.multiple.title,
   [WIDGET_TYPE_OPPOSITE]: t.opposite.title,
   [WIDGET_TYPE_CLOCK]: t.clock.title,
   [WIDGET_TYPE_CIRCLE]: t.circle.title,
@@ -82,6 +87,7 @@ export const MAP_WIDGET_TYPE_TO_TITLE = {
 } satisfies Record<TWidgetType, string>;
 
 export const MAP_WIDGET_TYPE_TO_ICON_COMPONENT = {
+  [WIDGET_TYPE_MULTIPLE]: BarcodeOutlined,
   [WIDGET_TYPE_OPPOSITE]: BoxPlotFilled,
   [WIDGET_TYPE_CLOCK]: DashboardFilled,
   [WIDGET_TYPE_CIRCLE]: PieChartFilled,
@@ -93,6 +99,7 @@ export const MAP_WIDGET_TYPE_TO_ICON_COMPONENT = {
 } satisfies Record<TWidgetType, ComponentType>;
 
 export const MAP_WIDGET_TYPE_TO_TYPE: Record<TWidgetType, TType> = {
+  [WIDGET_TYPE_MULTIPLE]: 'goal',
   [WIDGET_TYPE_OPPOSITE]: 'goal',
   [WIDGET_TYPE_CLOCK]: 'goal',
   [WIDGET_TYPE_CIRCLE]: 'goal',

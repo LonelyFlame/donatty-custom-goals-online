@@ -47,6 +47,12 @@ class DWidget<Response extends TDWidgetsResponse = TDWidgetsResponse, MessageDat
   }
 
   public readonly start = async () => {
+    await this.fetch();
+
+    this.sse.start();
+  }
+
+  public readonly fetch = async () => {
     const { props, type } = await this.connection.fetchData();
 
     this.verifyWidgetType(type);
@@ -57,8 +63,6 @@ class DWidget<Response extends TDWidgetsResponse = TDWidgetsResponse, MessageDat
     }
 
     this.handleMessage(message);
-
-    this.sse.start();
   }
 
   public readonly stop = async () => {

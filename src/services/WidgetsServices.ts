@@ -16,7 +16,7 @@ class WidgetsServices {
       throw new Error('Something went wrong on widget creation/update. User is unavailable.');
     }
 
-    const isGoal = data.type === 'opposite' || data.type === 'clock' || data.type === 'circle' || data.type === 'oscilloscope';
+    const isGoal = data.type === 'opposite' || data.type === 'clock' || data.type === 'circle' || data.type === 'oscilloscope' || data.type === 'multiple';
     if (isGoal) {
       return GoalRepository.createOrUpdate(user.id, data, slug);
     }

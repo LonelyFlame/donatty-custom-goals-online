@@ -14,8 +14,8 @@ export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
 export type TGoalType = ValueOf<typeof GOALS_TYPES>;
 export type TAlertType = ValueOf<typeof ALERTS_TYPES>;
 export type TCRType = ValueOf<typeof CR_TYPES>;
-export type TWidgets = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS | TWidgetCR | TWidgetCRAlert;
-export type TGoals = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope;
+export type TWidgets = TWidgetMultiple | TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS | TWidgetCR | TWidgetCRAlert;
+export type TGoals = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetMultiple;
 export type TAlerts = TWidgetLSS | TWidgetDying;
 export type TCRs = TWidgetCR | TWidgetCRAlert;
 
@@ -79,6 +79,14 @@ export interface TWidgetOpposite extends TGoal {
   colorTertiary?: string;
   variant?: TOppositeVariants;
   parts?: (number | string)[];
+}
+
+export interface TWidgetMultiple extends TGoal {
+  goalSecondary: string;
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_MULTIPLE;
+  color: string;
+  image: string;
+  leverage: number;
 }
 
 export interface TWidgetClock extends TGoal {

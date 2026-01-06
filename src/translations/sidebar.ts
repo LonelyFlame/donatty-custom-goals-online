@@ -7,6 +7,7 @@ const translations = {
   faq: 'F.A.Q.',
   goals: {
     title: 'Сборы',
+    multiple: widgets.multiple.title,
     opposite: widgets.opposite.title,
     clock: widgets.clock.title,
     circle: widgets.circle.title,
