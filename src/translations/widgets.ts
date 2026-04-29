@@ -33,6 +33,9 @@ const translations = {
     defaultLabel: 'Только что купили {soldCopies}: {title}!',
     previewTitle: 'Очень крутая награда!',
   },
+  boostyCount: {
+    title: 'Подписчики Boosty',
+  },
 };
 
 export default translations;

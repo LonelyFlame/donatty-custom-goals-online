@@ -23,6 +23,10 @@ const translations = {
     cr: widgets.cr.title,
     crAlert: widgets.crAlert.title,
   },
+  boosty: {
+    title: 'Boosty',
+    count: widgets.boostyCount.title,
+  },
 };
 
 export default translations;

@@ -1,4 +1,4 @@
-import { users, goals, alerts, crs } from '@/db/schema';
+import { users, goals, alerts, crs, boosty } from '@/db/schema';
 
 export type TUser = typeof users.$inferSelect;
 
@@ -10,3 +10,6 @@ export type TAlertCompact = Pick<TAlert, 'slug' | 'name' | 'type'>;
 
 export type TCR = typeof crs.$inferSelect;
 export type TCRCompact = Pick<TCR, 'slug' | 'name' | 'type'>;
+
+export type TBoosty = typeof boosty.$inferSelect;
+export type TBoostyCompact = Pick<TCR, 'slug' | 'name' | 'type'>;

@@ -8,6 +8,7 @@ import {
   ProjectFilled,
   StarFilled,
   BarcodeOutlined,
+  SmileFilled,
 } from '@ant-design/icons';
 import { ComponentType } from 'react';
 
@@ -20,12 +21,14 @@ export const TYPE_GOAL = 'goal' as const;
 export const TYPE_ALERT = 'alert' as const;
 export const TYPE_CR = 'cr' as const;
 export const TYPE_CR_ALERT = 'crAlert' as const;
+export const TYPE_BOOSTY = 'boosty' as const;
 
 export const TYPES = {
   TYPE_GOAL,
   TYPE_ALERT,
   TYPE_CR,
   TYPE_CR_ALERT,
+  TYPE_BOOSTY,
 };
 
 export const WIDGET_TYPE_MULTIPLE = 'multiple' as const;
@@ -38,6 +41,8 @@ export const WIDGET_TYPE_DYING = 'dying' as const;
 export const WIDGET_TYPE_CR = 'cr' as const;
 export const WIDGET_TYPE_CRALERT = 'crAlert' as const;
 
+export const WIDGET_TYPE_BOOSTY_COUNT = 'boosty_count' as const;
+
 export const WIDGET_TYPES = {
   WIDGET_TYPE_MULTIPLE,
   WIDGET_TYPE_OPPOSITE,
@@ -48,6 +53,7 @@ export const WIDGET_TYPES = {
   WIDGET_TYPE_DYING,
   WIDGET_TYPE_CR,
   WIDGET_TYPE_CRALERT,
+  WIDGET_TYPE_BOOSTY_COUNT,
 };
 
 export const GOALS_TYPES = {
@@ -68,6 +74,10 @@ export const CR_TYPES = {
   WIDGET_TYPE_CRALERT,
 };
 
+export const BOOSTY_TYPES = {
+  WIDGET_TYPE_BOOSTY_COUNT,
+};
+
 export const BUBBLES_COUNT = 30;
 
 export const DEFAULT_CLOCK_IMAGE_URL = '/images/clockHand.png';
@@ -84,6 +94,7 @@ export const MAP_WIDGET_TYPE_TO_TITLE = {
   [WIDGET_TYPE_DYING]: t.dying.title,
   [WIDGET_TYPE_CR]: t.cr.title,
   [WIDGET_TYPE_CRALERT]: t.crAlert.title,
+  [WIDGET_TYPE_BOOSTY_COUNT]: t.boostyCount.title,
 } satisfies Record<TWidgetType, string>;
 
 export const MAP_WIDGET_TYPE_TO_ICON_COMPONENT = {
@@ -96,6 +107,7 @@ export const MAP_WIDGET_TYPE_TO_ICON_COMPONENT = {
   [WIDGET_TYPE_DYING]: FrownFilled,
   [WIDGET_TYPE_CR]: ProjectFilled,
   [WIDGET_TYPE_CRALERT]: StarFilled,
+  [WIDGET_TYPE_BOOSTY_COUNT]: SmileFilled,
 } satisfies Record<TWidgetType, ComponentType>;
 
 export const MAP_WIDGET_TYPE_TO_TYPE: Record<TWidgetType, TType> = {
@@ -108,6 +120,7 @@ export const MAP_WIDGET_TYPE_TO_TYPE: Record<TWidgetType, TType> = {
   [WIDGET_TYPE_DYING]: 'alert',
   [WIDGET_TYPE_CR]: 'cr',
   [WIDGET_TYPE_CRALERT]: 'cr',
+  [WIDGET_TYPE_BOOSTY_COUNT]: 'boosty',
 };
 
 export const LIQUID_DEFAULT_ANIMATION_DURATION = 3;
