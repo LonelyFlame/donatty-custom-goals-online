@@ -21,4 +21,4 @@ export const IMAGE_TRANSFORM_TYPE_MAP_TO_ALIAS = {
   reduce: 'r',
 };
 
-export const PROXY_URI = '/api/proxy?target=';
+export const PROXY_URI = '/api/proxy/crowdrepublic?target=';
