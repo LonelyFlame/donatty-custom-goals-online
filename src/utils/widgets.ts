@@ -7,6 +7,7 @@ const mapTypeToRoute = {
   alert: ROUTES.ALERTS,
   cr: ROUTES.WIDGETS_CR,
   crAlert: ROUTES.WIDGETS_CR_ALERT,
+  boosty: ROUTES.WIDGETS_BOOSTY,
 }
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URI;
 export const getWidgetLink = (slug: string, includeOrigin: boolean, widgetType: TType): string => {

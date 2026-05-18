@@ -2,13 +2,18 @@ import { useState, useEffect, useRef } from 'react';
 
 import { SYNC_DELAY } from '../constants';
 
-export function useSync<T>(
-  sync: () => Promise<T>,
+function useSync<T>(
+  syncCallback: () => Promise<T>,
   initialValue: T,
 ): T {
   const timeoutRef = useRef<number|undefined>(undefined);
+  const callbackRef = useRef<() => Promise<T>>(syncCallback);
 
   const [value, setValue] = useState<T>(initialValue);
+
+  useEffect(() => {
+    callbackRef.current = syncCallback;
+  }, [syncCallback]);
 
   useEffect(() => {
     const clearTimeout = () => {
@@ -16,8 +21,13 @@ export function useSync<T>(
 
       timeoutRef.current = undefined;
     };
+
     const startSync = async () => {
-      const newValue = await sync();
+      if (!callbackRef.current) {
+        return;
+      }
+
+      const newValue = await callbackRef.current();
 
       setValue(newValue);
     };
@@ -35,7 +45,9 @@ export function useSync<T>(
     initSync();
 
     return clearTimeout
-  }, [sync]);
+  }, []);
 
   return value;
 }
+
+export default useSync;

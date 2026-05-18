@@ -34,7 +34,7 @@ const Inputs = () => {
           <Form.Item label={t.labelTemplate.label}>
             <Space.Compact block>
               <Form.Item name="text" style={{ margin: 0, width: '100%' }}>
-                <Input placeholder={t.labelTemplate.placeholder} />
+                <Input placeholder={t.labelTemplate.placeholder.cr} />
               </Form.Item>
 
               <Space.Addon>

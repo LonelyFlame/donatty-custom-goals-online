@@ -11,6 +11,7 @@ const translations = {
       goals: 'Сборы',
       alerts: 'Алерты',
       crowdrepublic: 'Crowdrepublic',
+      boosty: 'Boosty',
     },
     table: {
       columns: {

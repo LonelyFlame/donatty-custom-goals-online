@@ -46,14 +46,17 @@ export const GET = async (
       }
 
       if (offset) {
-        params.limit = String(offset);
+        params.offset = String(offset);
       }
+
+      params.is_free = String(false);
     }
 
     const response = await boostyGetJson(secret, section, params);
 
     return Response.json(response);
   } catch (error: any) {
-    return Response.json({ message: error.message }, { status: 500 });
+    console.error('***** [BNextProxy]', error)
+    return Response.json({ error: 'Internal Server Error', message: error.message }, { status: 500 });
   }
 };

@@ -1,7 +1,7 @@
-import Hint from '../../../../../components/ui/Hint';
-import translations from '../../../../../translations';
+import Hint from '@/components/ui/Hint';
+import translations from '@/translations';
 
-const { forms: { labelTemplate: { hint: t } } } = translations;
+const { forms: { labelTemplate: { hintCR: t } } } = translations;
 
 const LabelTemplatePopover = () => {
   return (

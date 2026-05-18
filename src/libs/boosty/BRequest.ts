@@ -27,7 +27,15 @@ export function boostyGetJson<R extends keyof TBRequestResponseMap>(
       method: 'GET',
       headers: { [SECRET_KEY_HEADER]: secret },
     },
-  ).then((response) => response.json());
+  ).then(async (response) => {
+    const rawText = await response.text();
+
+    if (!rawText) {
+      throw new Error('Boosty Server Error');
+    }
+
+    return JSON.parse(rawText);
+  });
 }
 
 async function fetchByProxy<R extends keyof TBRequestResponseMap>(
@@ -82,7 +90,7 @@ export function boostyGetSubscribers(slug: string, limit: number = 20, offset?: 
 }
 
 async function getAllSubscribers (slug: string, limit: number = 20): Promise<TBSubscribers[]> {
-  const users: TBSubscribers[] = [];
+  const subscribers: TBSubscribers[] = [];
 
   let offset = 0;
   let keepFetching = true;
@@ -98,9 +106,9 @@ async function getAllSubscribers (slug: string, limit: number = 20): Promise<TBS
 
         const { users, subscriptions } = response;
 
-        const subscribers = matchUserSubscriptions(users, subscriptions);
+        const matchedSubscribers = matchUserSubscriptions(users, subscriptions, false);
 
-        users.push(...subscribers);
+        subscribers.push(...matchedSubscribers);
       })
       .catch((error) => {
         console.error('[getAllSubscribers]', { slug, limit, offset }, error);
@@ -109,7 +117,7 @@ async function getAllSubscribers (slug: string, limit: number = 20): Promise<TBS
       });
   }
 
-  return users;
+  return subscribers;
 }
 
 export function boostyGetAllActiveSubscribers(slug: string, limit: number = 20): Promise<TBSubscribers[]> {

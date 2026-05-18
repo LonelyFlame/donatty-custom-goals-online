@@ -12,3 +12,7 @@ export const SECRET_KEY_HEADER = 'X-Api-Key';
 export const PROXY_URI = '/api/proxy/boosty';
 
 export const SYNC_DELAY = 2 * 60 * 1000; // 2 min
+
+export const MAX_REQUEST_TRIES = 5;
+
+export const FOLOWERS_PRICE_TAG = 'RUB0.00';

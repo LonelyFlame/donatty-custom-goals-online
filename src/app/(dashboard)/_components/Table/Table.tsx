@@ -10,13 +10,13 @@ import { template } from '@/utils/strings';
 import { MAP_TYPE_TO_MANAGE_ROUTE } from '@/constants/routes';
 import { MAP_WIDGET_TYPE_TO_ICON_COMPONENT, MAP_WIDGET_TYPE_TO_TITLE } from '@/constants/widgets';
 import translations from '@/translations';
-import type { TGoalCompact, TAlertCompact, TCRCompact } from '@/types/entities';
+import type { TGoalCompact, TAlertCompact, TCRCompact, TBoostyCompact } from '@/types/entities';
 import type { TEntitiesCompact, TWidgetType } from '@/types/widgets';
 
 import Actions from './Actions';
 
 interface Props {
-  data: TGoalCompact[] | TAlertCompact[] | TCRCompact[];
+  data: TGoalCompact[] | TAlertCompact[] | TCRCompact[] | TBoostyCompact[];
 }
 
 const { pages: { dashboard: t } } = translations;
@@ -97,7 +97,9 @@ const Table = ({ data }: Props) => {
           )}
         </Col>
       </Row>
+
       <br />
+
       <AntdTable<TEntitiesCompact>
         dataSource={filteredData}
         columns={columns}

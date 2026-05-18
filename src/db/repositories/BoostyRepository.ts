@@ -7,7 +7,7 @@ import { boosty } from '@/db/schema';
 import type { TBoosty as TBoostyEntity, TUser } from '@/types/entities';
 import type { TBoosty } from '@/types/widgets';
 
-class CrRepository {
+class BoostyRepository {
   public static create = async (
     userId: number,
     { type, name, ...settings }: Omit<TBoosty, 'slug'>,
@@ -98,4 +98,4 @@ class CrRepository {
   };
 }
 
-export default CrRepository;
+export default BoostyRepository;

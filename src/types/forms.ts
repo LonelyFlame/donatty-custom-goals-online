@@ -1,7 +1,14 @@
 import type { UploadFile } from 'antd';
 
 import type { TAntdColorValue } from './inputs';
-import { TWidgetOpposite, TWidgetClock, TWidgetCircle, TWidget, TWidgetOscilloscope, TWidgetMultiple } from './widgets';
+import {
+  TWidgetOpposite,
+  TWidgetClock,
+  TWidgetCircle,
+  TWidget,
+  TWidgetOscilloscope,
+  TWidgetMultiple,
+} from './widgets';
 
 export interface TWidgetFormData extends Omit<TWidget, 'type' | 'color' | 'colorSecondary' | 'colorTertiary' | 'image' | 'imageSecondary'> {
   color?: string | TAntdColorValue;

@@ -20,3 +20,8 @@ export interface TBSubscribersResponse {
     nextOffset: number;
   }
 }
+
+export interface TBErrorResponse {
+  error: string;
+  error_description: string;
+}

@@ -1,7 +1,7 @@
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { relations } from 'drizzle-orm';
 
-import { WIDGET_TYPE_BOOSTY_COUNT } from '@/constants/widgets';
+import { WIDGET_TYPE_BOOSTY_COUNT, WIDGET_TYPE_BOOSTY_LIST } from '@/constants/widgets';
 
 import users from './users';
 
@@ -12,6 +12,7 @@ const boosty = sqliteTable('boosty', {
   name: text().notNull(),
   type: text({ enum: [
     WIDGET_TYPE_BOOSTY_COUNT,
+    WIDGET_TYPE_BOOSTY_LIST,
   ] }).notNull(),
   settings: text().notNull(),
 });

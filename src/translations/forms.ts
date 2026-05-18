@@ -38,6 +38,19 @@ const translations = {
     required: 'Ссылка на проект обязательна для заполнения',
     format: 'Недействительная ссылка',
   },
+  boostyInput: {
+    secret: {
+      label: 'Secret Key приложения',
+      placeholder: 'abcde12345abcde12345abcde12345abcde12345abc',
+      required: 'Secret Key обязательна для заполнения',
+    },
+    levels: {
+      label: 'Уровни подписчиков',
+      required: 'Выбор уровней подписчиков обязателен для заполнения',
+      loading: 'Загрузка...',
+      select: 'Выберите уровни',
+    },
+  },
   animationDuration: {
     label: 'Длительность',
     placeholder: 'В секундах',
@@ -156,8 +169,11 @@ const translations = {
   },
   labelTemplate: {
     label: 'Текст цели',
-    placeholder: 'Собрано {amount}₽!',
-    hint: {
+    placeholder: {
+      cr: 'Собрано {amount}₽!',
+      boostyCount: 'Подписалось {count} из 1000',
+    },
+    hintCR: {
       amount: 'уже собранная сумма.',
       leverage: 'цель сбора.',
       percentage: 'уже собранный процент.',
@@ -169,6 +185,9 @@ const translations = {
       max: 'самая дорогая цель. Если нет сверхцелей - равна основной цели.',
       maxPercentage: 'процент от самой дорогой цели.',
       maxName: 'название самой дорогой сверхцели. Пустая строка, если сверхцелей нет.',
+    },
+    hintBoosty: {
+      count: 'кол-во подписчиков на выбранных уровнях',
     },
   },
   labelAlertTemplate: {
@@ -188,6 +207,10 @@ const translations = {
       contestation: 'Перетягивание',
     },
   },
+  boostyGoal: {
+    label: 'Цель',
+    placeholder: '1000',
+  }
 };
 
 export default translations;

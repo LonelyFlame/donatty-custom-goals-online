@@ -12,4 +12,4 @@ export type TCR = typeof crs.$inferSelect;
 export type TCRCompact = Pick<TCR, 'slug' | 'name' | 'type'>;
 
 export type TBoosty = typeof boosty.$inferSelect;
-export type TBoostyCompact = Pick<TCR, 'slug' | 'name' | 'type'>;
+export type TBoostyCompact = Pick<TBoosty, 'slug' | 'name' | 'type'>;

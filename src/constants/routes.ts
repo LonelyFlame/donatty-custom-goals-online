@@ -8,7 +8,7 @@ import {
   WIDGET_TYPE_LSS,
   WIDGET_TYPE_CR,
   WIDGET_TYPE_CRALERT,
-  WIDGET_TYPE_DYING, WIDGET_TYPE_MULTIPLE, WIDGET_TYPE_BOOSTY_COUNT,
+  WIDGET_TYPE_DYING, WIDGET_TYPE_MULTIPLE, WIDGET_TYPE_BOOSTY_COUNT, WIDGET_TYPE_BOOSTY_LIST,
 } from './widgets';
 
 export const ROUTES = {
@@ -29,6 +29,7 @@ export const ROUTES = {
   CR_ALERT: '/crowdrepublicAlert/{slug}',
 
   BOOSTY_COUNT: '/boosty/count/{slug}',
+  BOOSTY_LIST: '/boosty/list/{slug}',
 
   GOALS: '/widgets/goals/{slug}',
   WIDGETS_MULTIPLE: '/widgets/multiple/{slug}',
@@ -45,7 +46,8 @@ export const ROUTES = {
   WIDGETS_CR_ALERT: '/widgets/crowdrepublicAlert/{slug}',
 
   WIDGETS_BOOSTY: '/widgets/boosty/{slug}',
-  WIDGETS_BOOSTY_COUNT: '/widgets/boosty/count/{slug}',
+  WIDGETS_BOOSTY_COUNT: '/widgets/boostyCount/{slug}',
+  WIDGETS_BOOSTY_LIST: '/widgets/boostyList/{slug}',
 
   API_WIDGETS: '/api/widgets',
   API_ALERTS: '/api/alerts',
@@ -63,6 +65,7 @@ export const MAP_TYPE_TO_MANAGE_ROUTE = {
   [WIDGET_TYPE_CR]: ROUTES.CR,
   [WIDGET_TYPE_CRALERT]: ROUTES.CR_ALERT,
   [WIDGET_TYPE_BOOSTY_COUNT]: ROUTES.BOOSTY_COUNT,
+  [WIDGET_TYPE_BOOSTY_LIST]: ROUTES.BOOSTY_LIST,
 } satisfies Record<TWidgetType, string>;
 
 export const MAP_TYPE_TO_WIDGET_ROUTE = {
@@ -76,4 +79,5 @@ export const MAP_TYPE_TO_WIDGET_ROUTE = {
   [WIDGET_TYPE_CR]: ROUTES.WIDGETS_CR,
   [WIDGET_TYPE_CRALERT]: ROUTES.WIDGETS_CR_ALERT,
   [WIDGET_TYPE_BOOSTY_COUNT]: ROUTES.WIDGETS_BOOSTY_COUNT,
+  [WIDGET_TYPE_BOOSTY_LIST]: ROUTES.WIDGETS_BOOSTY_LIST,
 } satisfies Record<TWidgetType, string>;

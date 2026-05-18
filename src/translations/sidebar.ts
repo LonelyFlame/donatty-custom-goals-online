@@ -26,6 +26,7 @@ const translations = {
   boosty: {
     title: 'Boosty',
     count: widgets.boostyCount.title,
+    list: widgets.boostyList.title,
   },
 };
 

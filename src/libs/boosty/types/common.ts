@@ -9,6 +9,10 @@ export interface TBUser {
   };
 }
 
+export interface TBUserCompact {
+  id: number;
+}
+
 export interface TBSubscriptionLevel {
   id: number;
   price: string;
@@ -31,4 +35,10 @@ export interface TBSubscription {
 
 export interface TBSubscribers extends TBUser {
   subscription: TBSubscription;
+}
+
+export interface TBSubscribersCompact extends TBUserCompact {
+  subscription: {
+    levelId: number;
+  }
 }

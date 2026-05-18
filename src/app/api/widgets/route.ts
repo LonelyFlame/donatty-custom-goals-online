@@ -5,6 +5,7 @@ import WidgetsServices from '@/services/WidgetsServices';
 import { mapGoalToWidget } from '@/utils/mappers/goals';
 import { mapAlertToWidget } from '@/utils/mappers/alerts';
 import { mapCRToWidget } from '@/utils/mappers/cr';
+import { mapBoostyToWidget } from '@/utils/mappers/boosty';
 import { validateWidget } from '@/validation/widget';
 import type { TWidgets } from '@/types/widgets';
 
@@ -33,6 +34,11 @@ export const POST = auth(async (request) => {
     const isAlert = widget.type === 'lss' || widget.type === 'dying';
     if (isAlert) {
       return Response.json(mapAlertToWidget(widget));
+    }
+
+    const isBoosty = widget.type === 'boosty_count';
+    if (isBoosty) {
+      return Response.json(mapBoostyToWidget(widget));
     }
 
     // TODO: Fix types mismatch issue

@@ -1,11 +1,12 @@
 import { BASE_URL, PROXY_URI, SECRET_KEY_HEADER } from '../constants';
 import type { TBRequestResponseMap } from '../types/requests';
+import { TBErrorResponse } from '../types/responses';
 
 export function boostyGetJson<R extends keyof TBRequestResponseMap>(
   secret: string,
   section: R,
   params?: Record<string, string>,
-): Promise<TBRequestResponseMap[R]> {
+): Promise<TBRequestResponseMap[R] | TBErrorResponse> {
   const url = new URL(`${BASE_URL}/${section}`);
 
   if (params) {
@@ -23,12 +24,23 @@ export function boostyGetJson<R extends keyof TBRequestResponseMap>(
 
 export async function fetchByProxy<R extends keyof TBRequestResponseMap>(
   section: R,
-  slug: string,
+  slug?: string,
+  secret?: string,
   params?: Record<string, string>,
-): Promise<TBRequestResponseMap[R] | null> {
-  const url = new URL(`${PROXY_URI}/${section}`);
+): Promise<TBRequestResponseMap[R] | TBErrorResponse | null> {
+  if (!slug && !secret) {
+    return null;
+  }
 
-  const query: Record<string, string> = { slug };
+  let url = PROXY_URI;
+
+  const query: Record<string, string> = { section };
+  if (slug) {
+    query.slug = String(slug);
+  }
+  if (secret) {
+    query.secret = String(secret);
+  }
   if (params?.limit) {
     query.limit = String(params.limit);
   }
@@ -36,7 +48,8 @@ export async function fetchByProxy<R extends keyof TBRequestResponseMap>(
     query.offset = String(params.offset);
   }
 
-  url.search = new URLSearchParams(query).toString();
+  const queryString = new URLSearchParams(query).toString();
+  url += `?${queryString}`;
 
   try {
     const response = await fetch(url);

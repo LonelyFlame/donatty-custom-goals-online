@@ -1,13 +1,14 @@
 import { TYPES, WIDGET_TYPES, GOALS_TYPES, ALERTS_TYPES, CR_TYPES, BOOSTY_TYPES } from '@/constants/widgets';
 import type { ValueOf } from '@/types/utils';
 
-import type { TAlertCompact, TCRCompact, TGoalCompact } from './entities';
+import type { TAlertCompact, TCRCompact, TGoalCompact, TBoostyCompact } from './entities';
 
 export type TOppositeVariants = 'filling' | 'contestation';
 export type TOscilloscopeVariants = 'sin' | 'heart';
 export type TCrowdRepublicVariants = 'nearest' | 'main' | 'full';
+export type TBoostyListVariants = 'row' | 'column';
 
-export type TEntitiesCompact = TGoalCompact | TAlertCompact | TCRCompact
+export type TEntitiesCompact = TGoalCompact | TAlertCompact | TCRCompact | TBoostyCompact;
 
 export type TType = ValueOf<typeof TYPES>;
 export type TWidgetType = ValueOf<typeof WIDGET_TYPES>;
@@ -15,11 +16,20 @@ export type TGoalType = ValueOf<typeof GOALS_TYPES>;
 export type TAlertType = ValueOf<typeof ALERTS_TYPES>;
 export type TCRType = ValueOf<typeof CR_TYPES>;
 export type TBoostyType = ValueOf<typeof BOOSTY_TYPES>;
-export type TWidgets = TWidgetMultiple | TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetLSS | TWidgetCR | TWidgetCRAlert;
+export type TWidgets =
+  TWidgetMultiple
+  | TWidgetOpposite
+  | TWidgetClock
+  | TWidgetCircle
+  | TWidgetOscilloscope
+  | TWidgetLSS
+  | TWidgetCR
+  | TWidgetCRAlert
+  | TWidgetBoostyCount;
 export type TGoals = TWidgetOpposite | TWidgetClock | TWidgetCircle | TWidgetOscilloscope | TWidgetMultiple;
 export type TAlerts = TWidgetLSS | TWidgetDying;
 export type TCRs = TWidgetCR | TWidgetCRAlert;
-export type TBoosties = TWidgetBoostyCount;
+export type TBoosties = TWidgetBoostyCount | TWidgetBoostyList;
 
 export interface TWidget {
   slug?: string;
@@ -73,13 +83,17 @@ export interface TCrowdRepublic extends TWidget {
 export interface TBoosty extends TWidget {
   secret: string;
   type: TBoostyType;
-  color?: string;
+  parts: number[];
+  leverage?: number;
+  color: string;
   colorSecondary?: string;
   colorTertiary?: string;
   text?: string;
   delay?: number;
   animationDuration?: number;
   animationFunction?: string;
+  columnGap?: number;
+  rowGap?: number;
 }
 
 export interface TWidgetOpposite extends TGoal {
@@ -182,10 +196,18 @@ export interface TWidgetCRAlert extends TCrowdRepublic {
 
 export interface TWidgetBoostyCount extends TBoosty {
   type: typeof WIDGET_TYPES.WIDGET_TYPE_BOOSTY_COUNT;
-  color: string;
+  leverage: number;
   colorSecondary: string;
-  colorTertiary: string;
   text?: string;
   animationDuration?: number;
   animationFunction?: string;
+}
+
+export interface TWidgetBoostyList extends TBoosty {
+  type: typeof WIDGET_TYPES.WIDGET_TYPE_BOOSTY_LIST;
+  text: string;
+  fontSize: number;
+  variant: TBoostyListVariants;
+  columnGap: number;
+  rowGap: number;
 }

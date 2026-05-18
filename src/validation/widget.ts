@@ -7,6 +7,7 @@ import {
   WIDGET_TYPE_LSS,
   WIDGET_TYPE_CR,
   WIDGET_TYPE_CRALERT,
+  WIDGET_TYPE_BOOSTY_COUNT,
 } from '@/constants/widgets';
 import { TWidgets } from '@/types/widgets';
 
@@ -73,6 +74,12 @@ export const validateWidget = (data: TWidgets): { isValid: boolean; errors: Reco
     }
     case WIDGET_TYPE_CRALERT: {
       const validation = validateCrAlertWidget(data);
+
+      errors = { ...errors, ...validation };
+      break;
+    }
+    case WIDGET_TYPE_BOOSTY_COUNT: {
+      const validation = {};
 
       errors = { ...errors, ...validation };
       break;

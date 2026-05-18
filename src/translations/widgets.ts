@@ -34,7 +34,11 @@ const translations = {
     previewTitle: 'Очень крутая награда!',
   },
   boostyCount: {
-    title: 'Подписчики Boosty',
+    title: 'Счетчик Boosty',
+    defaultLabel: '{count} из 10000',
+  },
+  boostyList: {
+    title: 'Список Boosty',
   },
 };
 

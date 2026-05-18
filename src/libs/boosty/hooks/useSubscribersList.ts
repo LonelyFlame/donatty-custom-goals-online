@@ -3,9 +3,9 @@ import { useCallback } from 'react';
 import { boostyGetAllActiveSubscribers, boostyGetActiveSubscribersByLevels } from '../requests/subscribers';
 import type { TBSubscribers } from '../types/common';
 
-import { useSync } from './useSync';
+import useSync from './useSync';
 
-export const useSubscribersList = (
+const useSubscribersList = (
   slug: string,
   initialValue: TBSubscribers[],
   levelIds?: number[],
@@ -15,9 +15,9 @@ export const useSubscribersList = (
     let list: TBSubscribers[];
 
     if (levelIds?.length) {
-      list = await boostyGetActiveSubscribersByLevels(slug, levelIds, limit);
+      list = await boostyGetActiveSubscribersByLevels(slug, levelIds, limit, false);
     } else {
-      list = await boostyGetAllActiveSubscribers(slug, limit);
+      list = await boostyGetAllActiveSubscribers(slug, limit, false);
     }
 
     return list;
@@ -25,3 +25,5 @@ export const useSubscribersList = (
 
   return useSync<TBSubscribers[]>(sync, initialValue);
 };
+
+export default useSubscribersList;

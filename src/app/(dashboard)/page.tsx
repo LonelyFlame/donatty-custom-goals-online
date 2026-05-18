@@ -4,7 +4,7 @@ import { auth } from '@/auth';
 import translations from '@/translations/pages';
 
 import Table from './_components/Table';
-import { getUser, getGoals, getAlerts, getCrs } from './utils';
+import { getUser, getGoals, getAlerts, getCrs, getBoosties } from './utils';
 import styles from './page.module.scss';
 
 const { dashboard: { entities: t } } = translations;
@@ -28,6 +28,7 @@ export default async function Page() {
   const goals = await getGoals(user);
   const alerts = await getAlerts(user);
   const crs = await getCrs(user);
+  const boosties = await getBoosties(user);
 
   return (
     <Row gutter={[16, 16]}>
@@ -38,6 +39,11 @@ export default async function Page() {
         <Table data={goals} />
       </Col>
       <Col span={12}>
+        <Divider>
+          {t.boosty}
+        </Divider>
+        <Table data={boosties} />
+
         <Divider>
           {t.crowdrepublic}
         </Divider>

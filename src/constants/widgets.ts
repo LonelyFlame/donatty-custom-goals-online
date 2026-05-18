@@ -8,7 +8,8 @@ import {
   ProjectFilled,
   StarFilled,
   BarcodeOutlined,
-  SmileFilled,
+  OrderedListOutlined,
+  UnorderedListOutlined,
 } from '@ant-design/icons';
 import { ComponentType } from 'react';
 
@@ -42,6 +43,7 @@ export const WIDGET_TYPE_CR = 'cr' as const;
 export const WIDGET_TYPE_CRALERT = 'crAlert' as const;
 
 export const WIDGET_TYPE_BOOSTY_COUNT = 'boosty_count' as const;
+export const WIDGET_TYPE_BOOSTY_LIST = 'boosty_list' as const;
 
 export const WIDGET_TYPES = {
   WIDGET_TYPE_MULTIPLE,
@@ -54,6 +56,7 @@ export const WIDGET_TYPES = {
   WIDGET_TYPE_CR,
   WIDGET_TYPE_CRALERT,
   WIDGET_TYPE_BOOSTY_COUNT,
+  WIDGET_TYPE_BOOSTY_LIST,
 };
 
 export const GOALS_TYPES = {
@@ -76,6 +79,7 @@ export const CR_TYPES = {
 
 export const BOOSTY_TYPES = {
   WIDGET_TYPE_BOOSTY_COUNT,
+  WIDGET_TYPE_BOOSTY_LIST,
 };
 
 export const BUBBLES_COUNT = 30;
@@ -95,6 +99,7 @@ export const MAP_WIDGET_TYPE_TO_TITLE = {
   [WIDGET_TYPE_CR]: t.cr.title,
   [WIDGET_TYPE_CRALERT]: t.crAlert.title,
   [WIDGET_TYPE_BOOSTY_COUNT]: t.boostyCount.title,
+  [WIDGET_TYPE_BOOSTY_LIST]: t.boostyList.title,
 } satisfies Record<TWidgetType, string>;
 
 export const MAP_WIDGET_TYPE_TO_ICON_COMPONENT = {
@@ -107,7 +112,8 @@ export const MAP_WIDGET_TYPE_TO_ICON_COMPONENT = {
   [WIDGET_TYPE_DYING]: FrownFilled,
   [WIDGET_TYPE_CR]: ProjectFilled,
   [WIDGET_TYPE_CRALERT]: StarFilled,
-  [WIDGET_TYPE_BOOSTY_COUNT]: SmileFilled,
+  [WIDGET_TYPE_BOOSTY_COUNT]: OrderedListOutlined,
+  [WIDGET_TYPE_BOOSTY_LIST]: UnorderedListOutlined,
 } satisfies Record<TWidgetType, ComponentType>;
 
 export const MAP_WIDGET_TYPE_TO_TYPE: Record<TWidgetType, TType> = {
@@ -121,6 +127,7 @@ export const MAP_WIDGET_TYPE_TO_TYPE: Record<TWidgetType, TType> = {
   [WIDGET_TYPE_CR]: 'cr',
   [WIDGET_TYPE_CRALERT]: 'cr',
   [WIDGET_TYPE_BOOSTY_COUNT]: 'boosty',
+  [WIDGET_TYPE_BOOSTY_LIST]: 'boosty',
 };
 
 export const LIQUID_DEFAULT_ANIMATION_DURATION = 3;

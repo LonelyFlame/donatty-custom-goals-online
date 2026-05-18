@@ -7,6 +7,7 @@ import {
   PlusCircleOutlined,
   QuestionCircleOutlined,
   ProjectOutlined,
+  ThunderboltOutlined,
 } from '@ant-design/icons';
 import type { Session } from 'next-auth';
 import type { MenuProps } from 'antd';
@@ -138,6 +139,30 @@ export const getItems = (session: Session | null): MenuProps['items'] => {
             href: template(ROUTES.CR_ALERT, { id: '' }),
           }),
         },
+      ],
+    },
+    {
+      key: 'boosty',
+      icon: createElement(ThunderboltOutlined),
+      label: t.boosty.title,
+      children: [
+        {
+          key: 'create_boosty_count',
+          icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.boosty_count),
+          label: createElement(Item, {
+            title: t.boosty.count,
+            href: template(ROUTES.BOOSTY_COUNT, { id: '' }),
+          }),
+        },
+        // TODO: Add boosty subs list
+        // {
+        //   key: 'create_boosty_list',
+        //   icon: createElement(MAP_WIDGET_TYPE_TO_ICON_COMPONENT.boosty_list),
+        //   label: createElement(Item, {
+        //     title: t.boosty.list,
+        //     href: template(ROUTES.BOOSTY_COUNT, { id: '' }),
+        //   }),
+        // },
       ],
     },
 
