@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "tsx watch src/server.ts",
+    "devNext": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node src/server.ts",
+    "startNext": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -23,12 +25,14 @@
     "next-auth": "^5.0.0-beta.25",
     "react": "^19.2.1",
     "react-dom": "^19.0.0",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/lodash": "^4.17.15",
-    "@types/node": "^20",
+    "@types/node": "^20.19.41",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.30.6",
@@ -36,7 +40,8 @@
     "eslint-config-next": "15.1.7",
     "eslint-config-prettier": "^10.0.1",
     "sass": "^1.85.0",
-    "tsx": "^4.19.3",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "tsx": "^4.22.2",
+    "typescript": "^5.9.3"
   }
 }

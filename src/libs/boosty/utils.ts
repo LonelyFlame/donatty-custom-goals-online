@@ -41,7 +41,7 @@ export function matchUserSubscriptions<T extends boolean>(
   const subscriptionsByUser = mapSubscriptionsByUsers(subscriptions, isCompact);
 
   users.forEach((user) => {
-    const { id } = user;
+    const { id, name } = user;
 
     const subscription = subscriptionsByUser.get(id) as TSubscriptionValue;
 
@@ -50,7 +50,7 @@ export function matchUserSubscriptions<T extends boolean>(
     }
 
     if (isCompact) {
-      result.push({ id, subscription: { levelId: subscription } } as TResultValue);
+      result.push({ id, name, subscription: { levelId: subscription } } as TResultValue);
     } else {
       result.push({ ...user, subscription } as TResultValue);
     }

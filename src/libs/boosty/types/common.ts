@@ -11,6 +11,7 @@ export interface TBUser {
 
 export interface TBUserCompact {
   id: number;
+  name: string;
 }
 
 export interface TBSubscriptionLevel {

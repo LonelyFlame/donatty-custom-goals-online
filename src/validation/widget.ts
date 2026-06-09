@@ -19,6 +19,7 @@ import { validateOscilloscopeWidget } from './oscilloscope';
 import { validateLssWidget } from './lss';
 import { validateCrWidget } from './cr';
 import { validateCrAlertWidget } from './crAlert';
+import { validateBoostyCountWidget } from './boostyCount';
 
 export const validateWidget = (data: TWidgets): { isValid: boolean; errors: Record<string, string> } => {
   const { name, type } = data;
@@ -79,7 +80,7 @@ export const validateWidget = (data: TWidgets): { isValid: boolean; errors: Reco
       break;
     }
     case WIDGET_TYPE_BOOSTY_COUNT: {
-      const validation = {};
+      const validation = validateBoostyCountWidget(data);
 
       errors = { ...errors, ...validation };
       break;

@@ -37,7 +37,7 @@ const eslintConfig = [
       "max-len": 0,
       "newline-per-chained-call": 0,
       "no-confusing-arrow": 0,
-      "no-console": ["error", { "allow": ["error"] }],
+      "no-console": ["error", { "allow": ["error", "info", "warn"] }],
       "no-use-before-define": 0,
       "prefer-template": 2,
       "prefer-destructuring": "off",
