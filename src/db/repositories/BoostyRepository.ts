@@ -99,3 +99,4 @@ class BoostyRepository {
 }
 
 export default BoostyRepository;
+export { BoostyRepository };
