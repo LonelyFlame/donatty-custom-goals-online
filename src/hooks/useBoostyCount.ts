@@ -48,7 +48,7 @@ export const useBoostyCount = (
           levelIds,
         });
       }
-    }, 100);
+    }, 1000);
 
     return () => {
       clearTimeout(timeoutId);
