@@ -15,7 +15,7 @@ app.prepare().then(() => {
 
   const io = new Server(httpServer, {
     cors: {
-      origin: dev ? '*' : process.env.NEXT_PUBLIC_URL || 'http://localhost:3000',
+      origin: dev ? '*' : process.env.NEXT_PUBLIC_BASE_URI || 'http://localhost:3000',
       methods: ['GET', 'POST'],
     },
   });

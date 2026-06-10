@@ -35,7 +35,7 @@ const Inputs = () => {
                 style={{ margin: 0, width: '100%' }}
                 rules={[{ required: true, message: t.validation.required }]}
               >
-                <Input placeholder={t.labelTemplate.placeholder} />
+                <Input placeholder={t.labelTemplate.placeholder.cr} />
               </Form.Item>
 
               <Space.Addon>

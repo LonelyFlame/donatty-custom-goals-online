@@ -6,7 +6,8 @@
     "dev": "tsx watch src/server.ts",
     "devNext": "next dev --turbopack",
     "build": "next build",
-    "start": "NODE_ENV=production node src/server.ts",
+    "buildServer": "npx tsc --project tsconfig.server.json && npx tsc-alias -p tsconfig.server.json",
+    "start": "NODE_ENV=production node dist/server.js",
     "startNext": "next start",
     "lint": "next lint"
   },
@@ -27,6 +28,7 @@
     "react-dom": "^19.0.0",
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3",
+    "tsconfig-paths": "^4.2.0",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
@@ -41,6 +43,7 @@
     "eslint-config-prettier": "^10.0.1",
     "sass": "^1.85.0",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.17",
     "tsx": "^4.22.2",
     "typescript": "^5.9.3"
   }

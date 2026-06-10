@@ -13,7 +13,7 @@ class BoostySocketService {
 
   public async addClient(socket: Socket, clientData: TData) {
     const { slug, levelIds, type } = clientData;
-    const { default: BoostyRepository } = await import('@/db/repositories/BoostyRepository');
+    const { BoostyRepository } = await import('../../db/repositories/BoostyRepository.js');
     const secret = await BoostyRepository.getSecretBySlug(slug);
 
     if (!secret) {

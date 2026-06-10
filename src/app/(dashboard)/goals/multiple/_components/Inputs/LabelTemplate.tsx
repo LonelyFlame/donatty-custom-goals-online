@@ -12,15 +12,15 @@ const LabelTemplate = () => {
     <Form.Item label={t.label}>
       <Space.Compact block>
         <Form.Item name="text" style={{ margin: 0, width: '100%' }}>
-          <Input placeholder={t.placeholder} />
+          <Input placeholder={t.placeholder.cr} />
         </Form.Item>
 
         <Space.Addon>
           <Hint>
             <ul>
-              <li><b>{'{amount}'}</b> — {t.hint.amount}</li>
-              <li><b>{'{leverage}'}</b> — {t.hint.leverage}</li>
-              <li><b>{'{percentage}'}</b> — {t.hint.percentage}</li>
+              <li><b>{'{amount}'}</b> — {t.hintCR.amount}</li>
+              <li><b>{'{leverage}'}</b> — {t.hintCR.leverage}</li>
+              <li><b>{'{percentage}'}</b> — {t.hintCR.percentage}</li>
             </ul>
           </Hint>
         </Space.Addon>
