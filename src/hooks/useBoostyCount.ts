@@ -55,7 +55,7 @@ export const useBoostyCount = (
       socket?.off('boosty:count:update', handleUpdate);
       socket?.off('error', handleError);
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (initialValue) {

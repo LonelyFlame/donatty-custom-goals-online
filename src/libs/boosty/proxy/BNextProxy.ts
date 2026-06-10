@@ -49,6 +49,7 @@ export const GET = async (
         params.offset = String(offset);
       }
 
+      // eslint-disable-next-line camelcase
       params.is_free = String(false);
     }
 

@@ -4,11 +4,9 @@ import { useMemo } from 'react';
 
 import { LoadingOutlined } from '@ant-design/icons';
 
-import { useSubscribersCount } from '@/libs/boosty/hooks';
-
 import translations from '@/translations/widgets';
 import { template } from '@/utils/strings';
-import { useBoostyCount } from '../../../../../hooks/useBoostyCount';
+import { useBoostyCount } from '@/hooks/useBoostyCount';
 
 import styles from './Goal.module.scss';
 
