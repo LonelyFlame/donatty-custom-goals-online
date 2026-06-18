@@ -47,7 +47,9 @@ export async function getAllSubscribers(
 
       keepFetching = false;
 
-      break;
+      console.error(`[BoostySocketService] Boosty API are crashed over ${MAX_REQUEST_TRIES} times`);
+
+      return [];
     }
 
     const { users, subscriptions, extra } = response;

@@ -107,6 +107,12 @@ class BoostySocketService {
     try {
       const data = await getAllSubscribers(secret);
 
+      if (!data.length) {
+        console.warn(`[BoostySocketService] Returned empty list of subscribers for secret`, secret);
+
+        return;
+      }
+
       group.data = data;
 
       const countSubscribers = Array.from(group.subscribers.values()).filter(({ type }) => type === 'count');
