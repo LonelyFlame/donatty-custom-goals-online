@@ -14,6 +14,8 @@ function getSubscribers(
     secret,
     API_SECTIONS.SUBSCRIBERS,
     {
+      // eslint-disable-next-line camelcase
+      is_free: String(false),
       limit: String(limit),
       ...(offset && { offset: String(offset) }),
     },
